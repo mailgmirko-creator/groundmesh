@@ -1,4 +1,6 @@
 ﻿name: GroundMesh CI
+run-name: "GroundMesh CI • ${{ github.ref_name }}"
+
 on:
   pull_request:
     branches: [ "main" ]
