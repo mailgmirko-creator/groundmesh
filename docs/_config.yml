@@ -1,3 +1,6 @@
 ﻿title: GroundMesh
 description: Decentralized, transparent AI for the commons—balance-first, capture-resistant.
 theme: jekyll-theme-cayman
+url: "https://mailgmirko-creator.github.io"
+baseurl: "/groundmesh"
+permalink: pretty

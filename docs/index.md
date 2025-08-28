@@ -1,4 +1,9 @@
-﻿# GroundMesh
+﻿---
+layout: default
+title: GroundMesh
+---
+
+# GroundMesh
 
 **Decentralized, transparent AI for the commons — balance-first, capture-resistant.**
 
@@ -13,8 +18,12 @@ GroundMesh is the public/docs side of a two-repo pattern
 - First-moves for resilient, off-grid nodes,
 - Bootstrap scripts and contribution guides.
 
+## Get Started
+- 👉 [Follow the quick guide]({{ site.baseurl }}/get-started)
+
 ## Contribute
 - Read the Constitution, then open a PR or issue.
 - Follow the **Contributing** and **Code of Conduct** in the repo.
 
 **Balance over extraction. Commons over control. Open over opaque.**
+
