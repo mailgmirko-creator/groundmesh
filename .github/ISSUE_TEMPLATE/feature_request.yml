@@ -1,0 +1,23 @@
+﻿name: Feature request
+description: Propose an enhancement aligned with balance & transparency
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / opportunity
+      description: What user problem or balance goal does this address?
+      placeholder: Who benefits? What improves?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      placeholder: What should change? Any alternatives?
+      render: markdown
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope & impact
+      placeholder: Small/medium/large? Risks? Dependencies?

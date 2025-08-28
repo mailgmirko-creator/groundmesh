@@ -1,0 +1,22 @@
+﻿name: Bug report
+description: Something isn’t working as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the problem and what you expected to happen.
+      placeholder: Clear steps + expected vs. actual
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: 1) … 2) … 3) …
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: OS, shell, etc.
