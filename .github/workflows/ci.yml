@@ -1,0 +1,17 @@
+﻿name: GroundMesh CI
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify repository structure
+        run: |
+          test -f README.md
+          test -d constitution
+          test -d checklists
