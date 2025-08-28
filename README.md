@@ -58,3 +58,5 @@ This project is one node in a global effort to:
 - Build distributed intelligence aligned with **Tranquility Protocol** principles.  
 - Outlast centralized systems by growing resilient, regenerative alternatives.  
 
+
+[![pages deploy](https://github.com/mailgmirko-creator/groundmesh/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/mailgmirko-creator/groundmesh/actions/workflows/pages/pages-build-deployment)
