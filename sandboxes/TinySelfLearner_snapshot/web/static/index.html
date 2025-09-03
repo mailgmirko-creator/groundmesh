@@ -1,0 +1,97 @@
+﻿<!doctype html>
+<html lang="en">
+<head>\n  <link rel="stylesheet" href="/static/styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh — Donate a Breath of Compute</title>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, Arial; margin: 2rem; }
+    .card { max-width: 680px; padding: 1.25rem; border: 1px solid #ddd; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.05);}
+    button { padding: .7rem 1rem; border: 0; border-radius: 12px; cursor: pointer; }
+    .primary { background: #111; color: #fff; }
+    .muted { color:#666; }
+    .row { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+    .stats { margin-top:1rem; font-size:1.1rem; }
+    code { background:#f6f6f6; padding:2px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a class="active" href="/">Home</a>
+  <a href="/leaders">Leaders</a>
+</nav>
+  <div class="card">
+    <h1>GroundMesh Transparency Grid</h1>
+    <p class="muted">Opt-in compute: your browser performs tiny, safe calculations for a few hundred milliseconds at a time, then reports a “cycle” count. All contributions are visible in aggregate — by design, with consent.</p>
+
+    <div class="row">
+      <input id="device" placeholder="Your name or device label" />
+      <button id="start" class="primary">Start Donating Cycles</button>
+      <button id="stop">Stop</button>
+    </div>
+
+    <div class="stats">
+      <div>🌍 Global total cycles: <b id="global">0</b></div>
+      <div>🫵 Your total cycles: <b id="yours">0</b></div>
+    </div>
+
+    <p class="muted">Transparency: The server counts only what you submit. View current <code>/stats</code> anytime.</p>
+  </div>
+
+<script>
+let running = false;
+let yourTotal = 0;
+
+async function fetchStats(){
+  const r = await fetch('/stats');
+  const j = await r.json();
+  document.getElementById('global').textContent = j.total_cycles ?? 0;
+}
+
+async function getTask(){
+  const r = await fetch('/task');
+  return r.json();
+}
+
+// Busy loop “work” — pure JS, no special permissions.
+function doWorkFor(ms){
+  const end = performance.now() + ms;
+  let cycles = 0;
+  let x = 0;
+  while (performance.now() < end){
+    // trivial math to keep CPU busy
+    x = (x * 1664525 + 1013904223) % 4294967296;
+    cycles++;
+  }
+  return cycles;
+}
+
+async function loop(){
+  while (running){
+    const task = await getTask(); // { duration_ms }
+    const cycles = doWorkFor(task.duration_ms || 300);
+    const device = (document.getElementById('device').value || 'anonymous').slice(0,64);
+    const r = await fetch('/submit', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ device, cycles })
+    });
+    const j = await r.json();
+    yourTotal = j.your_total || 0;
+    document.getElementById('yours').textContent = yourTotal;
+    document.getElementById('global').textContent = j.global_total || 0;
+
+    await new Promise(res=>setTimeout(res, 250)); // small rest
+  }
+}
+
+document.getElementById('start').onclick = ()=>{
+  if (running) return;
+  running = true;
+  loop();
+};
+document.getElementById('stop').onclick = ()=>{ running = false; };
+fetchStats();
+</script>
+</body>
+</html>

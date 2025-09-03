@@ -1,0 +1,126 @@
+{
+  "model": "gemma:2b",
+  "best_score": 0.0,
+  "best_prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n",
+  "history": [
+    {
+      "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n",
+      "score": 0.0
+    },
+    {
+      "iter": 1,
+      "candidates": [
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Always return only the tasks not marked done."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- If uncertain, err on precision over recall (avoid hallucinating tasks)."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Preserve original proper names (e.g., 'John', 'Maja')."
+        }
+      ],
+      "best_score": 0.0,
+      "best_prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+    },
+    {
+      "iter": 2,
+      "candidates": [
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Always return only the tasks not marked done."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- If uncertain, err on precision over recall (avoid hallucinating tasks)."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Preserve original proper names (e.g., 'John', 'Maja')."
+        }
+      ],
+      "best_score": 0.0,
+      "best_prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+    },
+    {
+      "iter": 3,
+      "candidates": [
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Always return only the tasks not marked done."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- If uncertain, err on precision over recall (avoid hallucinating tasks)."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Preserve original proper names (e.g., 'John', 'Maja')."
+        }
+      ],
+      "best_score": 0.0,
+      "best_prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+    },
+    {
+      "iter": 4,
+      "candidates": [
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Always return only the tasks not marked done."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- If uncertain, err on precision over recall (avoid hallucinating tasks)."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Preserve original proper names (e.g., 'John', 'Maja')."
+        }
+      ],
+      "best_score": 0.0,
+      "best_prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+    },
+    {
+      "iter": 5,
+      "candidates": [
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Always return only the tasks not marked done."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- If uncertain, err on precision over recall (avoid hallucinating tasks)."
+        },
+        {
+          "score": 0.0,
+          "prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n\\n- Preserve original proper names (e.g., 'John', 'Maja')."
+        }
+      ],
+      "best_score": 0.0,
+      "best_prompt": "You extract actionable TODO items from a short note.\n\nRules:\n- Return only the pending TODOs as a bullet list, one item per line, no numbering.\n- Use concise verb-first phrasing (e.g., \"buy milk\", \"call John\").\n- Exclude anything explicitly marked as done/completed.\n- If there are no TODOs, return an empty string.\n"
+    }
+  ]
+}

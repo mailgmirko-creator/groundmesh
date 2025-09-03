@@ -12,3 +12,19 @@ __pycache__/
 # Editors
 .vscode/
 .idea/
+# Backups & caches
+*.bak
+*.tmp
+*.log
+node_modules/
+dist/
+.build/
+.cache/
+.DS_Store
+
+# Local archives & snapshots (keep these patterns general)
+archives/
+sandboxes/*/node_modules/
+
+# Keep specific docs backups untracked unless you add them explicitly
+docs/*.backup.*.md
