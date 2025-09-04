@@ -14,6 +14,13 @@
     .muted{opacity:.75}
   </style>
 </head>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(console.error);
+  });
+}
+</script>
 <body>
   <h1>GroundMesh</h1>
   <p class="lede"><strong>Decentralized, transparent AI for the commons — balance-first, capture-resistant.</strong></p>
