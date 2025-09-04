@@ -53,3 +53,9 @@ docs/*.backup.*.md
 # Archives/snapshots (large)
 archives/
 sandboxes/*/node_modules/
+# Logs
+data/logs/*
+!data/logs/.gitkeep
+# Releases
+releases/
+!releases/.gitkeep
