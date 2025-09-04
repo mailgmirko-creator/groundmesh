@@ -37,7 +37,12 @@ def run_command(cmd: str, dry_run: bool, yes: bool):
 
     print(f"[run] {cmd}")
     try:
-        completed = subprocess.run(cmd, shell=True)
+        if os.name == "nt":
+            completed = subprocess.run(
+                ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", cmd]
+            )
+        else:
+            completed = subprocess.run(cmd, shell=True)
         rc = completed.returncode
         log_line("run", cmd, rc)
         return rc

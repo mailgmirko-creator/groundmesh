@@ -1,0 +1,1 @@
+powershell -NoProfile -ExecutionPolicy Bypass -File ${PROJECT_ROOT}\scripts\ipfs_publish.ps1

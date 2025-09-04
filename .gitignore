@@ -59,3 +59,8 @@ data/logs/*
 # Releases
 releases/
 !releases/.gitkeep
+# Runtime data
+data/logs/*
+!data/logs/.gitkeep
+data/cids/*
+!data/cids/.gitkeep
