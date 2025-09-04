@@ -28,3 +28,28 @@ sandboxes/*/node_modules/
 
 # Keep specific docs backups untracked unless you add them explicitly
 docs/*.backup.*.md
+# Python
+**/.venv/
+**/__pycache__/
+*.pyc
+
+# Env files
+.env
+.env.*
+
+# Node
+node_modules/
+**/node_modules/
+dist/
+.build/
+.cache/
+
+# Backups
+*.bak
+*.tmp
+*.log
+docs/*.backup.*.md
+
+# Archives/snapshots (large)
+archives/
+sandboxes/*/node_modules/
