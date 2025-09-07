@@ -1,0 +1,44 @@
+﻿name: Release & IPFS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "docs/**"
+      - "apps/local-cli/**"
+      - "apps/transparency-grid/**"
+      - "scripts/**"
+
+jobs:
+  build-publish:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install local-cli deps
+        run: |
+          cd apps\local-cli
+          python -m venv .venv
+          .\.venv\Scripts\python -m pip install -r requirements.txt
+
+      - name: Build release zip
+        run: |
+          cd apps\local-cli
+          .\.venv\Scripts\python .\main.py --task release
+
+      - name: Publish to IPFS (Web3.Storage)
+        if: ${{ secrets.W3S_TOKEN != '' }}
+        env:
+          W3S_TOKEN: ${{ secrets.W3S_TOKEN }}
+        shell: pwsh
+        run: |
+          powershell -NoProfile -ExecutionPolicy Bypass -File scripts\ipfs_publish.ps1
