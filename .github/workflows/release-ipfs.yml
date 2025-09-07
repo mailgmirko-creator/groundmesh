@@ -7,14 +7,16 @@ on:
     paths:
       - "docs/**"
       - "apps/local-cli/**"
-      - "apps/transparency-grid/**"
       - "scripts/**"
+      - ".github/workflows/release-ipfs.yml"
 
 jobs:
   build-publish:
     runs-on: windows-latest
     permissions:
       contents: write
+    env:
+      W3S_TOKEN: ${{ secrets.W3S_TOKEN }}
 
     steps:
       - uses: actions/checkout@v4
@@ -36,9 +38,9 @@ jobs:
           .\.venv\Scripts\python .\main.py --task release
 
       - name: Publish to IPFS (Web3.Storage)
-        if: ${{ secrets.W3S_TOKEN != '' }}
-        env:
-          W3S_TOKEN: ${{ secrets.W3S_TOKEN }}
+        if: ${{ env.W3S_TOKEN != '' }}
         shell: pwsh
+        env:
+          W3S_TOKEN: ${{ env.W3S_TOKEN }}
         run: |
           powershell -NoProfile -ExecutionPolicy Bypass -File scripts\ipfs_publish.ps1
