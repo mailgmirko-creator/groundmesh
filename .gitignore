@@ -64,3 +64,15 @@ data/logs/*
 !data/logs/.gitkeep
 data/cids/*
 !data/cids/.gitkeep
+
+# --- transparency-grid state ---
+!data/profiles.json
+!data/donations.json
+# local secrets & artifacts
+ci-key.json
+ci-proof.txt
+w3up-agent.json
+last_ipfs.json
+data/profiles.json
+sandboxes/TinySelfLearner_snapshot/web/stats.json
+sandboxes/TinySelfLearner_snapshot/web/app.py.bak-*
