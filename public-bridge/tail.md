@@ -1,225 +1,227 @@
 # PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 20:02:37
-- Files considered: ps_transcript_20250911_194704.txt, ps_transcript_20250911_171115.txt
+- Updated: 2025-09-11 20:26:12
 
 ```text
+Command start time: 20250911202302
 **********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> # Run the publisher directly (not via function), then also call pt
-**********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-**********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> & 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -Count 400
+PS C:\Projects\GroundMesh-DEV> if ($py) { & python "apps/tsl/tsl_core/learner.py" "apps/tsl/principles/principles.yaml" "apps/tsl/artifacts" }
 
-
-[bridge-public 6cd8730] ﻿publish tail snapshot (aggregated)
- 2 files changed, 218 insertions(+), 218 deletions(-)
-Enumerating objects: 9, done.
-Counting objects: 100% (9/9), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 2.00 KiB | 512.00 KiB/s, done.
-Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
-To github.com:mailgmirko-creator/groundmesh.git
-   a225404..6cd8730  bridge-public -> bridge-public
-branch 'bridge-public' set up to track 'origin/bridge-public'.
 **********************
-Command start time: 20250911195635
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> # Commit via message file (avoids quoting issues)
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-Content -Path $MsgFile -Encoding UTF8 -Value "feat(tsl): scaffold with 7 principles and learner stub"
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> git add apps/tsl
+
+**********************
+Command start time: 20250911202303
+**********************
+PS C:\Projects\GroundMesh-DEV> git commit -F $MsgFile
+
+**********************
+Command start time: 20250911202303
+**********************
+PS C:\Projects\GroundMesh-DEV> git push -u origin dev
+
+**********************
+Command start time: 20250911202305
+**********************
+PS C:\Projects\GroundMesh-DEV> Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+**********************
+Command start time: 20250911202305
+**********************
+PS C:\Projects\GroundMesh-DEV> # refresh PSO snapshot so I can read it automatically
+**********************
+Command start time: 20250911202305
 **********************
 PS C:\Projects\GroundMesh-DEV> pt
 
 
-[bridge-public 52d1fdb] ﻿publish tail snapshot (aggregated)
- 2 files changed, 38 insertions(+), 38 deletions(-)
-Enumerating objects: 9, done.
-Counting objects: 100% (9/9), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 676 bytes | 676.00 KiB/s, done.
-Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
-To github.com:mailgmirko-creator/groundmesh.git
-   6cd8730..52d1fdb  bridge-public -> bridge-public
-branch 'bridge-public' set up to track 'origin/bridge-public'.
-**********************
-Command start time: 20250911195839
-**********************
-PS C:\Projects\GroundMesh-DEV> # Ensure this window is recording + has pt loaded
-**********************
-Command start time: 20250911195839
-**********************
-PS C:\Projects\GroundMesh-DEV> $ProfilePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-**********************
-Command start time: 20250911195839
-**********************
-PS C:\Projects\GroundMesh-DEV> if (Test-Path $ProfilePath) { . $ProfilePath }
-**********************
-Command start time: 20250911195839
-**********************
-PS C:\Projects\GroundMesh-DEV> Write-Host ("EYES DIAG MARK " + (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))
-EYES DIAG MARK 2025-09-11 19:58:39
-**********************
-Command start time: 20250911195839
-**********************
-PS C:\Projects\GroundMesh-DEV> Write-Host "=== Publisher head (first 25 lines) ==="
-=== Publisher head (first 25 lines) ===
-**********************
-Command start time: 20250911195839
-**********************
-PS C:\Projects\GroundMesh-DEV> Get-Content 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -ErrorAction SilentlyContinue | Select-Object -First 25
-param(
-  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
-  [Alias("Lines")][int]$Count = 400,
-  [int]$LookBackFiles = 5
-)
 
-function Read-UnlockedText {
-  param([string]$Path)
-  try {
-    $fs = New-Object System.IO.FileStream($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
-    try {
-      $sr = New-Object System.IO.StreamReader($fs, [System.Text.Encoding]::UTF8, $true)
-      $text = $sr.ReadToEnd()
-      $sr.Close()
-      return $text
-    } finally { $fs.Close() }
-  } catch { return $null }
+
+**********************
+Command start time: 20250911202539
+**********************
+PS C:\Projects\GroundMesh-DEV> # === Set up dedicated worktree for bridge-public and update the publisher to use it ===
+**********************
+Command start time: 20250911202539
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911202540
+**********************
+PS C:\Projects\GroundMesh-DEV> $WT      = "C:\Projects\GroundMesh-DEV\.bridge-wt"
+**********************
+Command start time: 20250911202540
+**********************
+PS C:\Projects\GroundMesh-DEV> cd $DevRepo
+**********************
+Command start time: 20250911202540
+**********************
+PS C:\Projects\GroundMesh-DEV> # 1) Fetch and create a clean worktree for bridge-public
+**********************
+Command start time: 20250911202540
+**********************
+PS C:\Projects\GroundMesh-DEV> git fetch origin
+
+**********************
+Command start time: 20250911202542
+**********************
+PS C:\Projects\GroundMesh-DEV> & git worktree remove --force $WT 2>$null
+git.exe : fatal: 'C:\Projects\GroundMesh-DEV\.bridge-wt' is not a working tree
+At line:1 char:1
++ & git worktree remove --force $WT 2>$null
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: 'C:\Proj... a working tree:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+**********************
+Command start time: 20250911202542
+**********************
+PS C:\Projects\GroundMesh-DEV> # If branch doesn't exist yet remotely, this creates local branch from current HEAD; else tracks remote.
+**********************
+Command start time: 20250911202542
+**********************
+PS C:\Projects\GroundMesh-DEV> if ((git ls-remote --heads origin bridge-public) -ne $null) {
+  git worktree add -B bridge-public $WT origin/bridge-public
+} else {
+  git worktree add -B bridge-public $WT
+  Push-Location $WT; git push -u origin bridge-public; Pop-Location
 }
 
-# 1) Gather newest-by-name transcripts (handles multiple windows)
-$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
-if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
-$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
-
-# 2) Read each file (unlocked), split into lines, prepend a file marker
 **********************
-Command start time: 20250911195840
+Command start time: 20250911202544
 **********************
-PS C:\Projects\GroundMesh-DEV> Write-Host "`n=== Transcripts by NAME (newest first) ==="
-
-=== Transcripts by NAME (newest first) ===
+PS C:\Projects\GroundMesh-DEV> # 2) Ensure no stray public-bridge files linger in the main worktree
 **********************
-Command start time: 20250911195840
+Command start time: 20250911202544
 **********************
-PS C:\Projects\GroundMesh-DEV> Get-ChildItem 'C:\Projects\Bridge\transcripts' -Filter 'ps_transcript_*.txt' `
-| Sort-Object Name -Descending | Select-Object -First 8 Name, LastWriteTime
-
-Name                              LastWriteTime
-----                              -------------
-ps_transcript_20250911_194704.txt 11/09/2025 19:56:35
-ps_transcript_20250911_171115.txt 11/09/2025 17:12:40
-
-
+PS C:\Projects\GroundMesh-DEV> Remove-Item -Recurse -Force (Join-Path $DevRepo "public-bridge") -ErrorAction SilentlyContinue
 **********************
-Command start time: 20250911195840
+Command start time: 20250911202544
 **********************
-PS C:\Projects\GroundMesh-DEV> # Run the publisher directly, then via pt (so both paths are exercised)
+PS C:\Projects\GroundMesh-DEV> # 3) Overwrite publisher to use the dedicated worktree
 **********************
-Command start time: 20250911195840
+Command start time: 20250911202544
 **********************
-PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+PS C:\Projects\GroundMesh-DEV> $Tools = Join-Path $DevRepo "tools"
 **********************
-Command start time: 20250911195840
-**********************
-PS C:\Projects\GroundMesh-DEV> & 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -Count 400
-
-
-[bridge-public f28210e] ﻿publish tail snapshot (aggregated)
- 2 files changed, 192 insertions(+), 192 deletions(-)
-Enumerating objects: 9, done.
-Counting objects: 100% (9/9), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 1.44 KiB | 1.44 MiB/s, done.
-Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
-To github.com:mailgmirko-creator/groundmesh.git
-   52d1fdb..f28210e  bridge-public -> bridge-public
-branch 'bridge-public' set up to track 'origin/bridge-public'.
-**********************
-Command start time: 20250911195843
-**********************
-PS C:\Projects\GroundMesh-DEV> pt
-
-
-[bridge-public 164a8d0] ﻿publish tail snapshot (aggregated)
- 2 files changed, 38 insertions(+), 38 deletions(-)
-Enumerating objects: 9, done.
-Counting objects: 100% (9/9), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 659 bytes | 329.00 KiB/s, done.
-Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
-To github.com:mailgmirko-creator/groundmesh.git
-   f28210e..164a8d0  bridge-public -> bridge-public
-branch 'bridge-public' set up to track 'origin/bridge-public'.
-**********************
-Command start time: 20250911200237
-**********************
-PS C:\Projects\GroundMesh-DEV> # Publisher: aggregate last transcripts + unlocked reads + stamped header (WinPS 5.1 safe)
-**********************
-Command start time: 20250911200237
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = 'C:\Projects\GroundMesh-DEV'
-**********************
-Command start time: 20250911200237
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo 'tools'
-**********************
-Command start time: 20250911200237
+Command start time: 20250911202544
 **********************
 PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
 **********************
-Command start time: 20250911200237
+Command start time: 20250911202606
+**********************
+PS C:\Projects\GroundMesh-DEV> # === Set up dedicated worktree for bridge-public and update the publisher to use it ===
+**********************
+Command start time: 20250911202607
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911202607
+**********************
+PS C:\Projects\GroundMesh-DEV> $WT      = "C:\Projects\GroundMesh-DEV\.bridge-wt"
+**********************
+Command start time: 20250911202607
+**********************
+PS C:\Projects\GroundMesh-DEV> cd $DevRepo
+**********************
+Command start time: 20250911202607
+**********************
+PS C:\Projects\GroundMesh-DEV> # 1) Fetch and create a clean worktree for bridge-public
+**********************
+Command start time: 20250911202607
+**********************
+PS C:\Projects\GroundMesh-DEV> git fetch origin
+
+**********************
+Command start time: 20250911202609
+**********************
+PS C:\Projects\GroundMesh-DEV> & git worktree remove --force $WT 2>$null
+
+**********************
+Command start time: 20250911202609
+**********************
+PS C:\Projects\GroundMesh-DEV> # If branch doesn't exist yet remotely, this creates local branch from current HEAD; else tracks remote.
+**********************
+Command start time: 20250911202609
+**********************
+PS C:\Projects\GroundMesh-DEV> if ((git ls-remote --heads origin bridge-public) -ne $null) {
+  git worktree add -B bridge-public $WT origin/bridge-public
+} else {
+  git worktree add -B bridge-public $WT
+  Push-Location $WT; git push -u origin bridge-public; Pop-Location
+}
+
+**********************
+Command start time: 20250911202612
+**********************
+PS C:\Projects\GroundMesh-DEV> # 2) Ensure no stray public-bridge files linger in the main worktree
+**********************
+Command start time: 20250911202612
+**********************
+PS C:\Projects\GroundMesh-DEV> Remove-Item -Recurse -Force (Join-Path $DevRepo "public-bridge") -ErrorAction SilentlyContinue
+**********************
+Command start time: 20250911202612
+**********************
+PS C:\Projects\GroundMesh-DEV> # 3) Overwrite publisher to use the dedicated worktree
+**********************
+Command start time: 20250911202612
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools = Join-Path $DevRepo "tools"
+**********************
+Command start time: 20250911202612
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911202612
 **********************
 PS C:\Projects\GroundMesh-DEV> @'
 param(
-  [string]$TranscriptDir = 'C:\Projects\Bridge\transcripts',
+  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
   [Alias("Lines")][int]$Count = 400,
-  [int]$LookBackFiles = 6
+  [int]$LookBackFiles = 6,
+  [string]$WorktreeRoot = "C:\Projects\GroundMesh-DEV\.bridge-wt"
 )
 
 function Read-UnlockedText {
   param([string]$Path)
   try {
-    $fs = New-Object System.IO.FileStream($Path,[System.IO.FileMode]::Open,[System.IO.FileAccess]::Read,[System.IO.FileShare]::ReadWrite)
-    try {
-      $sr = New-Object System.IO.StreamReader($fs,[System.Text.Encoding]::UTF8,$true)
-      $text = $sr.ReadToEnd(); $sr.Close(); return $text
-    } finally { $fs.Close() }
+    $fs = New-Object System.IO.FileStream($Path,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::ReadWrite)
+    try { $sr = New-Object IO.StreamReader($fs,[Text.Encoding]::UTF8,$true); $t=$sr.ReadToEnd(); $sr.Close(); return $t }
+    finally { $fs.Close() }
   } catch { return $null }
 }
 
-# 1) Pick newest-by-name files (handles multiple windows)
+# 1) Collect newest-by-name transcripts
 $all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
 if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
 $pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
-$srcNames = @()
 
-# 2) Read each with unlocked share, split to lines, collect
-$lines = New-Object System.Collections.Generic.List[string]
+# 2) Merge lines from picked files
+$lines  = New-Object System.Collections.Generic.List[string]
 foreach ($f in $pick) {
   $t = Read-UnlockedText -Path $f.FullName
   if ($t) {
-    $srcNames += $f.Name
-    $parts = [System.Text.RegularExpressions.Regex]::Split($t,'\r?\n')
-    foreach ($p in $parts){ if ($p -ne $null) { $lines.Add($p) | Out-Null } }
+    $parts = [Text.RegularExpressions.Regex]::Split($t,'\r?\n')
+    foreach ($p in $parts) { if ($p -ne $null) { $lines.Add($p) | Out-Null } }
   }
 }
 
-# 3) Take global tail (last N across all files)
+# 3) Global tail → redact
 $globalTail = $lines | Select-Object -Last $Count
 if (-not $globalTail) { $globalTail = @('<empty>') }
-
-# 4) Redactions per-line
 $redacted = foreach ($line in $globalTail) {
   $x = $line
   $x = [regex]::Replace($x,'ghp_[A-Za-z0-9]{36,}','[REDACTED_GH_TOKEN]')
@@ -229,36 +231,33 @@ $redacted = foreach ($line in $globalTail) {
   $x
 }
 
-# 5) Write outputs
-$OutDir  = Join-Path $PSScriptRoot '..\public-bridge'
+# 4) Write outputs into the WORKTREE (not the main tree)
+$OutDir  = Join-Path $WorktreeRoot 'public-bridge'
 $TxtFile = Join-Path $OutDir 'tail.txt'
 $MdFile  = Join-Path $OutDir 'tail.md'
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
-$enc = New-Object System.Text.UTF8Encoding($false)
+$enc = New-Object Text.UTF8Encoding($false)
 $updated = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
 
-# tail.txt — newest-first with clear header for the “eyes”
+# tail.txt — newest-first with header
 $rev = $redacted.Clone(); [Array]::Reverse($rev)
-$hdr = 'AGGREGATED | Updated: {0} | Files: {1}' -f $updated, ($(if($srcNames){$srcNames -join ', '}else{'<none>'}))
-[System.IO.File]::WriteAllLines($TxtFile, @($hdr) + $rev, $enc)
+[IO.File]::WriteAllLines($TxtFile, @("AGGREGATED | Updated: $updated") + $rev, $enc)
 
-# tail.md — human-friendly order + header
+# tail.md — human order with header
 $md = New-Object System.Collections.Generic.List[string]
 $md.Add('# PowerShell Transcript Tail (Aggregated)') | Out-Null
 $md.Add('') | Out-Null
 $md.Add('- Updated: ' + $updated) | Out-Null
-$md.Add('- Files considered: ' + ($(if($srcNames){$srcNames -join ', '}else{'<none>'}))) | Out-Null
 $md.Add('') | Out-Null
 $md.Add('```text') | Out-Null
 foreach($l in $redacted){ $md.Add($l) | Out-Null }
 $md.Add('```') | Out-Null
-[System.IO.File]::WriteAllLines($MdFile, $md, $enc)
+[IO.File]::WriteAllLines($MdFile, $md, $enc)
 
-# 6) Commit & push via message file (no quoting issues)
-Push-Location (Join-Path $PSScriptRoot '..')
+# 5) Commit & push from INSIDE the worktree
+Push-Location $WorktreeRoot
 $MsgFile = Join-Path (Get-Location) 'COMMITMSG.txt'
-Set-Content -Path $MsgFile -Value 'publish tail snapshot (aggregated merge)' -Encoding UTF8
-& git checkout bridge-public | Out-Null
+Set-Content -Path $MsgFile -Value 'publish tail snapshot (worktree)' -Encoding UTF8
 & git add public-bridge\tail.txt
 & git add public-bridge\tail.md
 & git commit -F $MsgFile
@@ -267,11 +266,11 @@ Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
 Pop-Location
 '@ | Set-Content -Encoding UTF8 (Join-Path $Tools 'publish-tail.ps1')
 **********************
-Command start time: 20250911200237
+Command start time: 20250911202612
 **********************
-PS C:\Projects\GroundMesh-DEV> # Publish now (no paste needed)
+PS C:\Projects\GroundMesh-DEV> # 4) Publish now (eyes auto-refresh), no branch switching in main tree
 **********************
-Command start time: 20250911200237
+Command start time: 20250911202612
 **********************
 PS C:\Projects\GroundMesh-DEV> pt
 
