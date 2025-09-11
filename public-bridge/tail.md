@@ -1,90 +1,9 @@
-# PowerShell Transcript Tail
+# PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 19:50:09
-- Source file: ps_transcript_20250911_194704.txt
+- Updated: 2025-09-11 19:53:10
+- Files considered: ps_transcript_20250911_194704.txt, ps_transcript_20250911_171115.txt
 
 ```text
-**********************
-Windows PowerShell transcript start
-Start time: 20250911194704
-Username: DESKTOP-C9G76VK\mailg
-RunAs User: DESKTOP-C9G76VK\mailg
-Configuration Name: 
-Machine: DESKTOP-C9G76VK (Microsoft Windows NT 10.0.19045.0)
-Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-Process ID: 6980
-PSVersion: 5.1.19041.6328
-PSEdition: Desktop
-PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6328
-BuildVersion: 10.0.19041.6328
-CLRVersion: 4.0.30319.42000
-WSManStackVersion: 3.0
-PSRemotingProtocolVersion: 2.3
-SerializationVersion: 1.1.0.1
-**********************
-🟢 Auto-transcript to: C:\Projects\Bridge\transcripts\ps_transcript_20250911_194704.txt
-**********************
-Command start time: 20250911194704
-**********************
-PS C:\Projects\GroundMesh-DEV> # Write a visible heartbeat line into the transcript for this window
-**********************
-Command start time: 20250911194704
-**********************
-PS C:\Projects\GroundMesh-DEV> Write-Host ("EYES HEARTBEAT " + (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))
-EYES HEARTBEAT 2025-09-11 19:47:04
-**********************
-Command start time: 20250911194704
-**********************
-PS C:\Projects\GroundMesh-DEV> # Publish the latest tail (newest-first in tail.txt) so I can read it automatically
-**********************
-Command start time: 20250911194704
-**********************
-PS C:\Projects\GroundMesh-DEV> pt
-Exception calling "ReadAllText" with "1" argument(s): "The process cannot access the file 
-'C:\Projects\Bridge\transcripts\ps_transcript_20250911_194704.txt' because it is being used by another process."
-At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:13 char:1
-+ $allLines = [System.Text.RegularExpressions.Regex]::Split(
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
-    + FullyQualifiedErrorId : IOException
-Exception calling "ReadAllText" with "1" argument(s): "The process cannot access
-the file 'C:\Projects\Bridge\transcripts\ps_transcript_20250911_194704.txt'
-because it is being used by another process."
-At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:13 char:1
-+ $allLines = [System.Text.RegularExpressions.Regex]::Split(
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
-    + FullyQualifiedErrorId : IOException
-
-You cannot call a method on a null-valued expression.
-At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:38 char:1
-+ $rev = $redacted.Clone(); [Array]::Reverse($rev)
-+ ~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
-    + FullyQualifiedErrorId : InvokeMethodOnNull
-You cannot call a method on a null-valued expression.
-At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:38 char:1
-+ $rev = $redacted.Clone(); [Array]::Reverse($rev)
-+ ~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
-    + FullyQualifiedErrorId : InvokeMethodOnNull
-
-Exception calling "Reverse" with "1" argument(s): "Value cannot be null.
-Parameter name: array"
-At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:38 char:27
-+ $rev = $redacted.Clone(); [Array]::Reverse($rev)
-+                           ~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
-    + FullyQualifiedErrorId : ArgumentNullException
-Exception calling "Reverse" with "1" argument(s): "Value cannot be null.
-Parameter name: array"
-At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:38 char:27
-+ $rev = $redacted.Clone(); [Array]::Reverse($rev)
-+                           ~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
-    + FullyQualifiedErrorId : ArgumentNullException
-
-
 
 [bridge-public 5fc8fa6] ﻿publish tail snapshot (latest-by-name + stamped)
  2 files changed, 3 insertions(+), 260 deletions(-)
@@ -210,5 +129,279 @@ PS C:\Projects\GroundMesh-DEV> # Publish now (eyes auto-refresh)
 Command start time: 20250911195009
 **********************
 PS C:\Projects\GroundMesh-DEV> pt
+
+
+[bridge-public 40a18e7] ﻿publish tail snapshot (unlocked read + fallback)
+ 2 files changed, 415 insertions(+), 2 deletions(-)
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 3.95 KiB | 1.97 MiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To github.com:mailgmirko-creator/groundmesh.git
+   5fc8fa6..40a18e7  bridge-public -> bridge-public
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+**********************
+Command start time: 20250911195245
+**********************
+PS C:\Projects\GroundMesh-DEV> # Upgrade publisher: merge last few transcript files, then take last N lines
+**********************
+Command start time: 20250911195245
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911195245
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
+**********************
+Command start time: 20250911195245
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911195309
+**********************
+PS C:\Projects\GroundMesh-DEV> # Upgrade publisher: merge last few transcript files, then take last N lines
+**********************
+Command start time: 20250911195309
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911195310
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
+**********************
+Command start time: 20250911195310
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911195310
+**********************
+PS C:\Projects\GroundMesh-DEV> @'
+param(
+  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
+  [Alias("Lines")][int]$Count = 400,
+  [int]$LookBackFiles = 5
+)
+
+function Read-UnlockedText {
+  param([string]$Path)
+  try {
+    $fs = New-Object System.IO.FileStream($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
+    try {
+      $sr = New-Object System.IO.StreamReader($fs, [System.Text.Encoding]::UTF8, $true)
+      $text = $sr.ReadToEnd()
+      $sr.Close()
+      return $text
+    } finally { $fs.Close() }
+  } catch { return $null }
+}
+
+# 1) Gather newest-by-name transcripts (handles multiple windows)
+$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
+if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
+$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
+
+# 2) Read each file (unlocked), split into lines, prepend a file marker
+$lines = New-Object System.Collections.Generic.List[string]
+foreach ($f in $pick) {
+  $t = Read-UnlockedText -Path $f.FullName
+  if ($t) {
+    $lines.Add(("=== SRC: {0} ===" -f $f.Name)) | Out-Null
+    $parts = [System.Text.RegularExpressions.Regex]::Split($t, '\r?\n')
+    foreach ($p in $parts) { if ($p -ne $null) { $lines.Add($p) | Out-Null } }
+  }
+}
+
+# 3) Take the global tail (last N lines across all picked files)
+$globalTail = $lines | Select-Object -Last $Count
+if (-not $globalTail) { $globalTail = @('<empty>') }
+
+# 4) Redactions per-line
+$redacted = foreach ($line in $globalTail) {
+  $x = $line
+  $x = [regex]::Replace($x, 'ghp_[A-Za-z0-9]{36,}', '[REDACTED_GH_TOKEN]')
+  $x = [regex]::Replace($x, 'sk-[A-Za-z0-9\-_]{20,}', '[REDACTED_KEY]')
+  $x = [regex]::Replace($x, 'Bearer\s+[A-Za-z0-9\._\-]+', 'Bearer [REDACTED]')
+  $x = [regex]::Replace($x, '([A-Za-z]:\\Users\\[^\\]+\\)', '[HOME]\\')
+  $x
+}
+
+# 5) Write outputs
+$OutDir  = Join-Path $PSScriptRoot '..\public-bridge'
+$TxtFile = Join-Path $OutDir 'tail.txt'
+$MdFile  = Join-Path $OutDir 'tail.md'
+New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
+$enc = New-Object System.Text.UTF8Encoding($false)
+$updated = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+
+# tail.txt — newest-first for the “eyes”
+$rev = $redacted.Clone(); [Array]::Reverse($rev)
+$txtOut = @("AGGREGATED | Updated: $updated") + $rev
+[System.IO.File]::WriteAllLines($TxtFile, $txtOut, $enc)
+
+# tail.md — human-friendly order, with header
+$mdList = New-Object System.Collections.Generic.List[string]
+$mdList.Add('# PowerShell Transcript Tail (Aggregated)') | Out-Null
+$mdList.Add('') | Out-Null
+$mdList.Add( ('- Updated: {0}' -f $updated) ) | Out-Null
+$mdList.Add( ('- Files considered: {0}' -f (($pick | Select-Object -ExpandProperty Name) -join ', ')) ) | Out-Null
+$mdList.Add('') | Out-Null
+$mdList.Add('```text') | Out-Null
+foreach($line in $redacted){ $mdList.Add($line) | Out-Null }
+$mdList.Add('```') | Out-Null
+[System.IO.File]::WriteAllLines($MdFile, $mdList, $enc)
+
+# 6) Commit & push (message file to avoid quoting issues)
+Push-Location (Join-Path $PSScriptRoot '..')
+$MsgFile = Join-Path (Get-Location) 'COMMITMSG.txt'
+Set-Content -Path $MsgFile -Value 'publish tail snapshot (aggregated)' -Encoding UTF8
+& git checkout bridge-public | Out-Null
+& git add public-bridge\tail.txt
+& git add public-bridge\tail.md
+& git commit -F $MsgFile
+& git push -u origin bridge-public
+Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+Pop-Location
+'@ | Set-Content -Encoding UTF8 (Join-Path $Tools 'publish-tail.ps1')
+**********************
+Command start time: 20250911195310
+**********************
+PS C:\Projects\GroundMesh-DEV> # auto-publish so I can read it immediately
+**********************
+Command start time: 20250911195310
+**********************
+PS C:\Projects\GroundMesh-DEV> pt
+
+=== SRC: ps_transcript_20250911_171115.txt ===
+**********************
+Windows PowerShell transcript start
+Start time: 20250911171115
+Username: DESKTOP-C9G76VK\mailg
+RunAs User: DESKTOP-C9G76VK\mailg
+Configuration Name: 
+Machine: DESKTOP-C9G76VK (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 5576
+PSVersion: 5.1.19041.6328
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6328
+BuildVersion: 10.0.19041.6328
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+**********************
+Command start time: 20250911171115
+**********************
+PS C:\Users\mailg> Write-Host "🟢 Transcript recording to: $Transcript"
+🟢 Transcript recording to: C:\Projects\Bridge\transcripts\ps_transcript_20250911_171115.txt
+**********************
+Command start time: 20250911171211
+**********************
+PS [HOME]\\Projects
+**********************
+Command start time: 20250911171212
+**********************
+PS C:\Projects> New-Item -ItemType Directory -Force -Path C:\Projects\Bridge | Out-Null
+**********************
+Command start time: 20250911171212
+**********************
+PS C:\Projects> cd C:\Projects\Bridge
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects\Bridge> cd C:\Projects
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects> New-Item -ItemType Directory -Force -Path C:\Projects\Bridge | Out-Null
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects> cd C:\Projects\Bridge
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects\Bridge> @'
+param(
+  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
+  [int]$Port = 5059,
+  [int]$Tail = 400
+)
+
+Add-Type -AssemblyName System.Net.HttpListener
+
+$listener = [System.Net.HttpListener]::new()
+$prefix = "http://127.0.0.1:$Port/"
+$listener.Prefixes.Clear()
+$listener.Prefixes.Add($prefix)
+$listener.Start()
+Write-Host "🔎 Bridge reader listening on $prefix"
+
+function Get-LatestTranscript {
+  param([string]$Dir)
+  $files = Get-ChildItem $Dir -Filter "ps_transcript_*.txt" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending
+  if ($files) { return $files[0].FullName } else { return $null }
+}
+
+while ($listener.IsListening) {
+  $ctx = $listener.GetContext()
+  try {
+    $req = $ctx.Request
+    $res = $ctx.Response
+
+    switch ($req.Url.AbsolutePath) {
+      "/tail" {
+        $file = Get-LatestTranscript -Dir $TranscriptDir
+        if (-not $file) {
+          $msg = "No transcript files found."
+          $bytes = [Text.Encoding]::UTF8.GetBytes($msg)
+          $res.StatusCode = 404
+          $res.OutputStream.Write($bytes,0,$bytes.Length)
+          break
+        }
+        $lines = Get-Content $file -ErrorAction SilentlyContinue | Select-Object -Last $Tail
+        $text  = ($lines -join "`n")
+        $bytes = [Text.Encoding]::UTF8.GetBytes($text)
+        $res.ContentType = "text/plain; charset=utf-8"
+        $res.StatusCode = 200
+        $res.OutputStream.Write($bytes,0,$bytes.Length)
+      }
+      default {
+        $msg = "Use /tail to read the latest $Tail lines."
+        $bytes = [Text.Encoding]::UTF8.GetBytes($msg)
+        $res.ContentType = "text/plain; charset=utf-8"
+        $res.StatusCode = 200
+        $res.OutputStream.Write($bytes,0,$bytes.Length)
+      }
+    }
+  } catch {
+    Write-Host "Bridge error: $_" -ForegroundColor Red
+  } finally {
+    $ctx.Response.OutputStream.Close()
+  }
+}
+'@ | Set-Content -Encoding UTF8 .\reader.ps1
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects\Bridge> # Verify it exists
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects\Bridge> Get-ChildItem .\reader.ps1
+
+
+    Directory: C:\Projects\Bridge
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/09/2025     17:12           1848 reader.ps1
+
+
 
 ```
