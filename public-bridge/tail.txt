@@ -1,4 +1,4 @@
-AGGREGATED | Updated: 2025-09-11 20:33:45
+AGGREGATED | Updated: 2025-09-11 20:36:33
 
 
 
@@ -131,6 +131,231 @@ Windows PowerShell transcript start
 
 PS C:\Projects\GroundMesh-DEV> pt
 **********************
+Command start time: 20250911203632
+**********************
+Job OK -> grid\outbox\result_tsl_principles_learn_20250911_203629.json
+
+    + FullyQualifiedErrorId : DirectoryNotFoundException
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++   [IO.File]::WriteAllText($Path, $json, [Text.UTF8Encoding]::new($fal ...
+At C:\Projects\GroundMesh-DEV\tools\grid-worker.ps1:11 char:3
+'[HOME]\\grid\outbox\result_tsl_principles_learn_20250911_203629.json'."
+the path
+Exception calling "WriteAllText" with "3" argument(s): "Could not find a part of
+    + FullyQualifiedErrorId : DirectoryNotFoundException
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++   [IO.File]::WriteAllText($Path, $json, [Text.UTF8Encoding]::new($fal ...
+At C:\Projects\GroundMesh-DEV\tools\grid-worker.ps1:11 char:3
+'[HOME]\\grid\outbox\result_tsl_principles_learn_20250911_203629.json'."
+Exception calling "WriteAllText" with "3" argument(s): "Could not find a part of the path 
+
+Picked job: tsl_principles_learn_20250911_203629.json
+PS C:\Projects\GroundMesh-DEV> & "C:\Projects\GroundMesh-DEV\tools\grid-worker.ps1"
+**********************
+Command start time: 20250911203632
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+**********************
+Command start time: 20250911203632
+**********************
+PS C:\Projects\GroundMesh-DEV> # Run one cycle and refresh eyes so I can read PSO
+**********************
+Command start time: 20250911203632
+**********************
+PS C:\Projects\GroundMesh-DEV> Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+**********************
+Command start time: 20250911203632
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git push -u origin dev
+**********************
+Command start time: 20250911203630
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git commit -F $MsgFile
+**********************
+Command start time: 20250911203630
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git add grid/inbox grid/outbox grid/processed grid/failed -A
+**********************
+Command start time: 20250911203630
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git add tools/grid-worker.ps1 grid/.gitignore
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-Content -Path $MsgFile -Encoding UTF8 -Value "feat(grid): add minimal one-shot worker + inbox/outbox structure"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> # Commit the worker to dev
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> Copy-Item "apps/tsl/jobs/learn_principles.json" $JobEnq -Force
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $JobEnq = Join-Path $Inbox ("tsl_principles_learn_" + $Stamp + ".json")
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $Stamp = Get-Date -Format "yyyyMMdd_HHmmss"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> # Enqueue one job based on our sample spec
+**********************
+Command start time: 20250911203629
+**********************
+'@ | Set-Content -Encoding UTF8 (Join-Path $Tools "grid-worker.ps1")
+}
+  }
+    Write-Host "Unsupported job type: $jobType"
+    Move-Item $jobFile.FullName (Join-Path $Failed $jobFile.Name) -Force
+    Write-ResultJson -Path $outFile -Obj $res
+    $outFile = Join-Path $Outbox ("result_" + [IO.Path]::GetFileNameWithoutExtension($jobFile.Name) + ".json")
+    }
+      status   = "unsupported_job_type"
+      finished = (Get-Date).ToString("s")
+      started  = $started.ToString("s")
+      job_type = $jobType
+    $res = @{
+  default {
+  }
+    Write-Host "Job OK -> $outFile"
+    Move-Item $jobFile.FullName (Join-Path $Processed $jobFile.Name) -Force
+    Write-ResultJson -Path $outFile -Obj $res
+    $outFile = Join-Path $Outbox ("result_" + [IO.Path]::GetFileNameWithoutExtension($jobFile.Name) + ".json")
+    }
+      outputs  = @{ model_file = $model; size_bytes = $size }
+      status   = "success"
+      finished = (Get-Date).ToString("s")
+      started  = $started.ToString("s")
+      job_type = $jobType
+    $res  = @{
+    $size = (Get-Item $model).Length
+
+    if (-not (Test-Path $model)) { throw "Model file missing after run: $model" }
+
+    if ($LASTEXITCODE -ne 0) { throw "Learner failed with exit code $LASTEXITCODE." }
+    & python "apps/tsl/tsl_core/learner.py" $inYaml $outDir
+
+    if (-not $py) { throw "Python not found on PATH." }
+    $py = Get-Command python -ErrorAction SilentlyContinue
+
+    New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+
+    $model   = Join-Path $outDir ($job.outputs.model_file)
+    $outDir  = $job.outputs.artifact_dir
+    $inYaml  = $job.inputs.principles_yaml
+  'tsl_principles_learn' {
+switch ($jobType) {
+
+$started = Get-Date
+$jobType = $job.job_type
+
+}
+  exit 1
+  Move-Item $jobFile.FullName (Join-Path $Failed $jobFile.Name) -Force
+  Write-Host "Invalid job JSON: $($jobFile.Name)"
+} catch {
+  $job = Get-Content $jobFile.FullName -Raw | ConvertFrom-Json
+try {
+# Load job
+
+Write-Host "Picked job: $($jobFile.Name)"
+
+if (-not $jobFile) { Write-Host "No jobs in $Inbox"; exit 0 }
+$jobFile = Get-ChildItem $Inbox -Filter *.json -ErrorAction SilentlyContinue | Sort-Object Name | Select-Object -First 1
+
+}
+  [IO.File]::WriteAllText($Path, $json, [Text.UTF8Encoding]::new($false))
+  $json = $Obj | ConvertTo-Json -Depth 8
+  param([string]$Path,[hashtable]$Obj)
+function Write-ResultJson {
+
+)
+  [string]$Failed    = "grid\failed"
+  [string]$Processed = "grid\processed",
+  [string]$Outbox    = "grid\outbox",
+  [string]$Inbox     = "grid\inbox",
+param(
+PS C:\Projects\GroundMesh-DEV> @'
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> # Worker: processes a single job file from grid\inbox (supports tsl_principles_learn)
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools = Join-Path $DevRepo "tools"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Inbox,$Outbox,$Processed,$Failed | Out-Null
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $Failed    = Join-Path $Grid "failed"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $Processed = Join-Path $Grid "processed"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $Outbox    = Join-Path $Grid "outbox"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $Inbox     = Join-Path $Grid "inbox"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $Grid = Join-Path $DevRepo "grid"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> # Grid dirs
+**********************
+Command start time: 20250911203629
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git checkout dev
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> cd $DevRepo
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911203629
+**********************
+PS C:\Projects\GroundMesh-DEV> # === Minimal Grid Worker (one-shot) for TSL, enqueue 1 job, run, refresh eyes ===
+**********************
+Command start time: 20250911203628
+**********************
+
+
+
+
+PS C:\Projects\GroundMesh-DEV> pt
+**********************
 Command start time: 20250911203345
 **********************
 Model written: apps\tsl\artifacts\principles_model.json (5331 bytes)
@@ -174,228 +399,3 @@ $outDir  = $job.outputs.artifact_dir
 $inYaml  = $job.inputs.principles_yaml
 
 if (-not $py) { Write-Host "Python not found on PATH. Install Python 3.8+."; exit 1 }
-$py = Get-Command python -ErrorAction SilentlyContinue
-
-catch { Write-Host "Failed to parse job JSON: $JobFile"; exit 1 }
-try { $job = Get-Content $JobFile -Raw | ConvertFrom-Json }
-
-if (-not (Test-Path $JobFile)) { Write-Host "Job file not found: $JobFile"; exit 1 }
-
-)
-  [string]$JobFile = "apps/tsl/jobs/learn_principles.json"
-param(
-@'
-PS C:\Projects\GroundMesh-DEV> if (-not (Test-Path $Runner)) {
-**********************
-Command start time: 20250911203345
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911203345
-**********************
-
-PS C:\Projects\GroundMesh-DEV> git checkout dev
-**********************
-Command start time: 20250911203345
-**********************
-PS C:\Projects\GroundMesh-DEV> cd $DevRepo
-**********************
-Command start time: 20250911203344
-**********************
-PS C:\Projects\GroundMesh-DEV> $Runner  = Join-Path $Tools "run-tsl.ps1"
-**********************
-Command start time: 20250911203344
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911203344
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911203344
-**********************
-PS C:\Projects\GroundMesh-DEV> # Ensure TSL job runner exists, then run it and refresh eyes
-**********************
-Command start time: 20250911203344
-**********************
-
-
-
-
-PS C:\Projects\GroundMesh-DEV> pt
-**********************
-Command start time: 20250911203034
-**********************
-Model written: apps\tsl\artifacts\principles_model.json (5331 bytes)
-
-PS C:\Projects\GroundMesh-DEV> & "C:\Projects\GroundMesh-DEV\tools\run-tsl.ps1"
-**********************
-Command start time: 20250911203034
-**********************
-PS C:\Projects\GroundMesh-DEV> # Run the job once (optional) and refresh eyes so I can see it
-**********************
-Command start time: 20250911203034
-**********************
-PS C:\Projects\GroundMesh-DEV> Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
-**********************
-Command start time: 20250911203034
-**********************
-
-PS C:\Projects\GroundMesh-DEV> git push -u origin dev
-**********************
-Command start time: 20250911203031
-**********************
-
-PS C:\Projects\GroundMesh-DEV> git commit -F $MsgFile
-**********************
-Command start time: 20250911203031
-**********************
-
-PS C:\Projects\GroundMesh-DEV> git add tools/run-tsl.ps1
-**********************
-Command start time: 20250911203031
-**********************
-PS C:\Projects\GroundMesh-DEV> Set-Content -Path $MsgFile -Encoding UTF8 -Value "feat(tsl): add minimal job runner (PowerShell)"
-**********************
-Command start time: 20250911203031
-**********************
-PS C:\Projects\GroundMesh-DEV> $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
-**********************
-Command start time: 20250911203031
-**********************
-PS C:\Projects\GroundMesh-DEV> # Commit runner
-**********************
-Command start time: 20250911203031
-**********************
-'@ | Set-Content -Encoding UTF8 (Join-Path $Tools "run-tsl.ps1")
-
-}
-  Write-Host "Model file not found after run: $model"
-} else {
-  Write-Host "Model written: $model ($size bytes)"
-  $size = (Get-Item $model).Length
-if (Test-Path $model) {
-# Simple verification
-
-}
-  exit $LASTEXITCODE
-  Write-Host "Learner failed with exit code $LASTEXITCODE."
-if ($LASTEXITCODE -ne 0) {
-& python "apps/tsl/tsl_core/learner.py" $inYaml $outDir
-# Run the learner
-
-New-Item -ItemType Directory -Force -Path $outDir | Out-Null
-# Ensure output directory exists
-
-$model   = Join-Path $outDir ($job.outputs.model_file)
-$outDir  = $job.outputs.artifact_dir
-$inYaml  = $job.inputs.principles_yaml
-
-}
-  exit 1
-  Write-Host "Python not found on PATH. Install Python 3.8+."
-if (-not $py) {
-$py = Get-Command python -ErrorAction SilentlyContinue
-
-}
-  exit 1
-  Write-Host "Failed to parse job JSON: $JobFile"
-} catch {
-  $job = Get-Content $JobFile -Raw | ConvertFrom-Json
-try {
-
-}
-  exit 1
-  Write-Host "Job file not found: $JobFile"
-if (-not (Test-Path $JobFile)) {
-
-)
-  [string]$JobFile = "apps/tsl/jobs/learn_principles.json"
-param(
-PS C:\Projects\GroundMesh-DEV> @'
-**********************
-Command start time: 20250911203031
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911203031
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911203031
-**********************
-
-PS C:\Projects\GroundMesh-DEV> git checkout dev
-**********************
-Command start time: 20250911203031
-**********************
-PS C:\Projects\GroundMesh-DEV> cd $DevRepo
-**********************
-Command start time: 20250911203031
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911203031
-**********************
-PS C:\Projects\GroundMesh-DEV> # === Add a minimal TSL job runner, commit to dev, run once, refresh eyes ===
-**********************
-Command start time: 20250911203031
-**********************
-
-
-
-
-PS C:\Projects\GroundMesh-DEV> pt
-**********************
-Command start time: 20250911202612
-**********************
-PS C:\Projects\GroundMesh-DEV> # 4) Publish now (eyes auto-refresh), no branch switching in main tree
-**********************
-Command start time: 20250911202612
-**********************
-'@ | Set-Content -Encoding UTF8 (Join-Path $Tools 'publish-tail.ps1')
-Pop-Location
-Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
-& git push -u origin bridge-public
-& git commit -F $MsgFile
-& git add public-bridge\tail.md
-& git add public-bridge\tail.txt
-Set-Content -Path $MsgFile -Value 'publish tail snapshot (worktree)' -Encoding UTF8
-$MsgFile = Join-Path (Get-Location) 'COMMITMSG.txt'
-Push-Location $WorktreeRoot
-# 5) Commit & push from INSIDE the worktree
-
-[IO.File]::WriteAllLines($MdFile, $md, $enc)
-$md.Add('```') | Out-Null
-foreach($l in $redacted){ $md.Add($l) | Out-Null }
-$md.Add('```text') | Out-Null
-$md.Add('') | Out-Null
-$md.Add('- Updated: ' + $updated) | Out-Null
-$md.Add('') | Out-Null
-$md.Add('# PowerShell Transcript Tail (Aggregated)') | Out-Null
-$md = New-Object System.Collections.Generic.List[string]
-# tail.md — human order with header
-
-[IO.File]::WriteAllLines($TxtFile, @("AGGREGATED | Updated: $updated") + $rev, $enc)
-$rev = $redacted.Clone(); [Array]::Reverse($rev)
-# tail.txt — newest-first with header
-
-$updated = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
-$enc = New-Object Text.UTF8Encoding($false)
-New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
-$MdFile  = Join-Path $OutDir 'tail.md'
-$TxtFile = Join-Path $OutDir 'tail.txt'
-$OutDir  = Join-Path $WorktreeRoot 'public-bridge'
-# 4) Write outputs into the WORKTREE (not the main tree)
-
-}
-  $x
-  $x = [regex]::Replace($x,'([A-Za-z]:\\Users\\[^\\]+\\)','[HOME]\\')
-  $x = [regex]::Replace($x,'Bearer\s+[A-Za-z0-9\._\-]+','Bearer [REDACTED]')
-  $x = [regex]::Replace($x,'sk-[A-Za-z0-9\-_]{20,}','[REDACTED_KEY]')
-  $x = [regex]::Replace($x,'ghp_[A-Za-z0-9]{36,}','[REDACTED_GH_TOKEN]')
-  $x = $line
-$redacted = foreach ($line in $globalTail) {
-if (-not $globalTail) { $globalTail = @('<empty>') }
-$globalTail = $lines | Select-Object -Last $Count
-# 3) Global tail → redact
