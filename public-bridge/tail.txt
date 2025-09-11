@@ -1,4 +1,4 @@
-AGGREGATED | Updated: 2025-09-11 19:56:35
+AGGREGATED | Updated: 2025-09-11 19:58:40
 
 
 
@@ -129,6 +129,101 @@ Start time: 20250911171115
 Windows PowerShell transcript start
 **********************
 === SRC: ps_transcript_20250911_171115.txt ===
+
+PS C:\Projects\GroundMesh-DEV> & 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -Count 400
+**********************
+Command start time: 20250911195840
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+**********************
+Command start time: 20250911195840
+**********************
+PS C:\Projects\GroundMesh-DEV> # Run the publisher directly, then via pt (so both paths are exercised)
+**********************
+Command start time: 20250911195840
+**********************
+
+
+ps_transcript_20250911_171115.txt 11/09/2025 17:12:40
+ps_transcript_20250911_194704.txt 11/09/2025 19:56:35
+----                              -------------
+Name                              LastWriteTime
+
+| Sort-Object Name -Descending | Select-Object -First 8 Name, LastWriteTime
+PS C:\Projects\GroundMesh-DEV> Get-ChildItem 'C:\Projects\Bridge\transcripts' -Filter 'ps_transcript_*.txt' `
+**********************
+Command start time: 20250911195840
+**********************
+=== Transcripts by NAME (newest first) ===
+
+PS C:\Projects\GroundMesh-DEV> Write-Host "`n=== Transcripts by NAME (newest first) ==="
+**********************
+Command start time: 20250911195840
+**********************
+# 2) Read each file (unlocked), split into lines, prepend a file marker
+
+$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
+if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
+$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
+# 1) Gather newest-by-name transcripts (handles multiple windows)
+
+}
+  } catch { return $null }
+    } finally { $fs.Close() }
+      return $text
+      $sr.Close()
+      $text = $sr.ReadToEnd()
+      $sr = New-Object System.IO.StreamReader($fs, [System.Text.Encoding]::UTF8, $true)
+    try {
+    $fs = New-Object System.IO.FileStream($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
+  try {
+  param([string]$Path)
+function Read-UnlockedText {
+
+)
+  [int]$LookBackFiles = 5
+  [Alias("Lines")][int]$Count = 400,
+  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
+param(
+PS C:\Projects\GroundMesh-DEV> Get-Content 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -ErrorAction SilentlyContinue | Select-Object -First 25
+**********************
+Command start time: 20250911195839
+**********************
+=== Publisher head (first 25 lines) ===
+PS C:\Projects\GroundMesh-DEV> Write-Host "=== Publisher head (first 25 lines) ==="
+**********************
+Command start time: 20250911195839
+**********************
+EYES DIAG MARK 2025-09-11 19:58:39
+PS C:\Projects\GroundMesh-DEV> Write-Host ("EYES DIAG MARK " + (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> if (Test-Path $ProfilePath) { . $ProfilePath }
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> $ProfilePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> # Ensure this window is recording + has pt loaded
+**********************
+Command start time: 20250911195839
+**********************
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+   6cd8730..52d1fdb  bridge-public -> bridge-public
+To github.com:mailgmirko-creator/groundmesh.git
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+Writing objects: 100% (5/5), 676 bytes | 676.00 KiB/s, done.
+Compressing objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Counting objects: 100% (9/9), done.
+Enumerating objects: 9, done.
+ 2 files changed, 38 insertions(+), 38 deletions(-)
+[bridge-public 52d1fdb] ﻿publish tail snapshot (aggregated)
+
 
 PS C:\Projects\GroundMesh-DEV> pt
 **********************
@@ -304,98 +399,3 @@ $OutDir  = Join-Path $PSScriptRoot '..\public-bridge'
 
 }
   $x
-  $x = [regex]::Replace($x, '([A-Za-z]:\\Users\\[^\\]+\\)', '[HOME]\\')
-  $x = [regex]::Replace($x, 'Bearer\s+[A-Za-z0-9\._\-]+', 'Bearer [REDACTED]')
-  $x = [regex]::Replace($x, 'sk-[A-Za-z0-9\-_]{20,}', '[REDACTED_KEY]')
-  $x = [regex]::Replace($x, 'ghp_[A-Za-z0-9]{36,}', '[REDACTED_GH_TOKEN]')
-  $x = $line
-$redacted = foreach ($line in $globalTail) {
-# 4) Redactions per-line
-
-if (-not $globalTail) { $globalTail = @('<empty>') }
-$globalTail = $lines | Select-Object -Last $Count
-# 3) Take the global tail (last N lines across all picked files)
-
-}
-  }
-    foreach ($p in $parts) { if ($p -ne $null) { $lines.Add($p) | Out-Null } }
-    $parts = [System.Text.RegularExpressions.Regex]::Split($t, '\r?\n')
-    $lines.Add(("=== SRC: {0} ===" -f $f.Name)) | Out-Null
-  if ($t) {
-  $t = Read-UnlockedText -Path $f.FullName
-foreach ($f in $pick) {
-$lines = New-Object System.Collections.Generic.List[string]
-# 2) Read each file (unlocked), split into lines, prepend a file marker
-
-$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
-if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
-$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
-# 1) Gather newest-by-name transcripts (handles multiple windows)
-
-}
-  } catch { return $null }
-    } finally { $fs.Close() }
-      return $text
-      $sr.Close()
-      $text = $sr.ReadToEnd()
-      $sr = New-Object System.IO.StreamReader($fs, [System.Text.Encoding]::UTF8, $true)
-    try {
-    $fs = New-Object System.IO.FileStream($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
-  try {
-  param([string]$Path)
-function Read-UnlockedText {
-
-)
-  [int]$LookBackFiles = 5
-  [Alias("Lines")][int]$Count = 400,
-  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
-param(
-PS C:\Projects\GroundMesh-DEV> @'
-**********************
-Command start time: 20250911195310
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911195310
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911195310
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911195309
-**********************
-PS C:\Projects\GroundMesh-DEV> # Upgrade publisher: merge last few transcript files, then take last N lines
-**********************
-Command start time: 20250911195309
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911195245
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911195245
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911195245
-**********************
-PS C:\Projects\GroundMesh-DEV> # Upgrade publisher: merge last few transcript files, then take last N lines
-**********************
-Command start time: 20250911195245
-**********************
-branch 'bridge-public' set up to track 'origin/bridge-public'.
-   5fc8fa6..40a18e7  bridge-public -> bridge-public
-To github.com:mailgmirko-creator/groundmesh.git
-remote: Resolving deltas: 100% (2/2), completed with 1 local object.
-Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
-Writing objects: 100% (5/5), 3.95 KiB | 1.97 MiB/s, done.
-Compressing objects: 100% (5/5), done.
-Delta compression using up to 8 threads
-Counting objects: 100% (9/9), done.
-Enumerating objects: 9, done.
- 2 files changed, 415 insertions(+), 2 deletions(-)
-[bridge-public 40a18e7] ﻿publish tail snapshot (unlocked read + fallback)
-

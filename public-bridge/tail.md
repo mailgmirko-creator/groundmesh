@@ -1,104 +1,9 @@
 # PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 19:56:35
+- Updated: 2025-09-11 19:58:40
 - Files considered: ps_transcript_20250911_194704.txt, ps_transcript_20250911_171115.txt
 
 ```text
-
-[bridge-public 40a18e7] ﻿publish tail snapshot (unlocked read + fallback)
- 2 files changed, 415 insertions(+), 2 deletions(-)
-Enumerating objects: 9, done.
-Counting objects: 100% (9/9), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 3.95 KiB | 1.97 MiB/s, done.
-Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (2/2), completed with 1 local object.
-To github.com:mailgmirko-creator/groundmesh.git
-   5fc8fa6..40a18e7  bridge-public -> bridge-public
-branch 'bridge-public' set up to track 'origin/bridge-public'.
-**********************
-Command start time: 20250911195245
-**********************
-PS C:\Projects\GroundMesh-DEV> # Upgrade publisher: merge last few transcript files, then take last N lines
-**********************
-Command start time: 20250911195245
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911195245
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911195245
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911195309
-**********************
-PS C:\Projects\GroundMesh-DEV> # Upgrade publisher: merge last few transcript files, then take last N lines
-**********************
-Command start time: 20250911195309
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911195310
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911195310
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911195310
-**********************
-PS C:\Projects\GroundMesh-DEV> @'
-param(
-  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
-  [Alias("Lines")][int]$Count = 400,
-  [int]$LookBackFiles = 5
-)
-
-function Read-UnlockedText {
-  param([string]$Path)
-  try {
-    $fs = New-Object System.IO.FileStream($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
-    try {
-      $sr = New-Object System.IO.StreamReader($fs, [System.Text.Encoding]::UTF8, $true)
-      $text = $sr.ReadToEnd()
-      $sr.Close()
-      return $text
-    } finally { $fs.Close() }
-  } catch { return $null }
-}
-
-# 1) Gather newest-by-name transcripts (handles multiple windows)
-$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
-if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
-$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
-
-# 2) Read each file (unlocked), split into lines, prepend a file marker
-$lines = New-Object System.Collections.Generic.List[string]
-foreach ($f in $pick) {
-  $t = Read-UnlockedText -Path $f.FullName
-  if ($t) {
-    $lines.Add(("=== SRC: {0} ===" -f $f.Name)) | Out-Null
-    $parts = [System.Text.RegularExpressions.Regex]::Split($t, '\r?\n')
-    foreach ($p in $parts) { if ($p -ne $null) { $lines.Add($p) | Out-Null } }
-  }
-}
-
-# 3) Take the global tail (last N lines across all picked files)
-$globalTail = $lines | Select-Object -Last $Count
-if (-not $globalTail) { $globalTail = @('<empty>') }
-
-# 4) Redactions per-line
-$redacted = foreach ($line in $globalTail) {
-  $x = $line
-  $x = [regex]::Replace($x, 'ghp_[A-Za-z0-9]{36,}', '[REDACTED_GH_TOKEN]')
-  $x = [regex]::Replace($x, 'sk-[A-Za-z0-9\-_]{20,}', '[REDACTED_KEY]')
-  $x = [regex]::Replace($x, 'Bearer\s+[A-Za-z0-9\._\-]+', 'Bearer [REDACTED]')
-  $x = [regex]::Replace($x, '([A-Za-z]:\\Users\\[^\\]+\\)', '[HOME]\\')
   $x
 }
 
@@ -273,6 +178,101 @@ branch 'bridge-public' set up to track 'origin/bridge-public'.
 Command start time: 20250911195635
 **********************
 PS C:\Projects\GroundMesh-DEV> pt
+
+
+[bridge-public 52d1fdb] ﻿publish tail snapshot (aggregated)
+ 2 files changed, 38 insertions(+), 38 deletions(-)
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 676 bytes | 676.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:mailgmirko-creator/groundmesh.git
+   6cd8730..52d1fdb  bridge-public -> bridge-public
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> # Ensure this window is recording + has pt loaded
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> $ProfilePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> if (Test-Path $ProfilePath) { . $ProfilePath }
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> Write-Host ("EYES DIAG MARK " + (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))
+EYES DIAG MARK 2025-09-11 19:58:39
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> Write-Host "=== Publisher head (first 25 lines) ==="
+=== Publisher head (first 25 lines) ===
+**********************
+Command start time: 20250911195839
+**********************
+PS C:\Projects\GroundMesh-DEV> Get-Content 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -ErrorAction SilentlyContinue | Select-Object -First 25
+param(
+  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
+  [Alias("Lines")][int]$Count = 400,
+  [int]$LookBackFiles = 5
+)
+
+function Read-UnlockedText {
+  param([string]$Path)
+  try {
+    $fs = New-Object System.IO.FileStream($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
+    try {
+      $sr = New-Object System.IO.StreamReader($fs, [System.Text.Encoding]::UTF8, $true)
+      $text = $sr.ReadToEnd()
+      $sr.Close()
+      return $text
+    } finally { $fs.Close() }
+  } catch { return $null }
+}
+
+# 1) Gather newest-by-name transcripts (handles multiple windows)
+$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
+if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
+$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
+
+# 2) Read each file (unlocked), split into lines, prepend a file marker
+**********************
+Command start time: 20250911195840
+**********************
+PS C:\Projects\GroundMesh-DEV> Write-Host "`n=== Transcripts by NAME (newest first) ==="
+
+=== Transcripts by NAME (newest first) ===
+**********************
+Command start time: 20250911195840
+**********************
+PS C:\Projects\GroundMesh-DEV> Get-ChildItem 'C:\Projects\Bridge\transcripts' -Filter 'ps_transcript_*.txt' `
+| Sort-Object Name -Descending | Select-Object -First 8 Name, LastWriteTime
+
+Name                              LastWriteTime
+----                              -------------
+ps_transcript_20250911_194704.txt 11/09/2025 19:56:35
+ps_transcript_20250911_171115.txt 11/09/2025 17:12:40
+
+
+**********************
+Command start time: 20250911195840
+**********************
+PS C:\Projects\GroundMesh-DEV> # Run the publisher directly, then via pt (so both paths are exercised)
+**********************
+Command start time: 20250911195840
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+**********************
+Command start time: 20250911195840
+**********************
+PS C:\Projects\GroundMesh-DEV> & 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -Count 400
 
 === SRC: ps_transcript_20250911_171115.txt ===
 **********************
