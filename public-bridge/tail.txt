@@ -1,4 +1,4 @@
-**********************
+﻿**********************
 Windows PowerShell transcript start
 Start time: 20250911171115
 Username: DESKTOP-C9G76VK\mailg
@@ -19,7 +19,8 @@ SerializationVersion: 1.1.0.1
 **********************
 Command start time: 20250911171115
 **********************
-PS [HOME]\Projects\Bridge\transcripts\ps_transcript_20250911_171115.txt
+PS C:\Users\mailg> Write-Host "🟢 Transcript recording to: $Transcript"
+🟢 Transcript recording to: C:\Projects\Bridge\transcripts\ps_transcript_20250911_171115.txt
 **********************
 Command start time: 20250911171211
 **********************
@@ -123,5 +124,6 @@ PS C:\Projects\Bridge> Get-ChildItem .\reader.ps1
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 -a----        11/09/2025     17:12           1848 reader.ps1
+
 
 
