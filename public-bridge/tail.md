@@ -1,101 +1,8 @@
 # PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 20:30:34
+- Updated: 2025-09-11 20:33:45
 
 ```text
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911202607
-**********************
-PS C:\Projects\GroundMesh-DEV> $WT      = "C:\Projects\GroundMesh-DEV\.bridge-wt"
-**********************
-Command start time: 20250911202607
-**********************
-PS C:\Projects\GroundMesh-DEV> cd $DevRepo
-**********************
-Command start time: 20250911202607
-**********************
-PS C:\Projects\GroundMesh-DEV> # 1) Fetch and create a clean worktree for bridge-public
-**********************
-Command start time: 20250911202607
-**********************
-PS C:\Projects\GroundMesh-DEV> git fetch origin
-
-**********************
-Command start time: 20250911202609
-**********************
-PS C:\Projects\GroundMesh-DEV> & git worktree remove --force $WT 2>$null
-
-**********************
-Command start time: 20250911202609
-**********************
-PS C:\Projects\GroundMesh-DEV> # If branch doesn't exist yet remotely, this creates local branch from current HEAD; else tracks remote.
-**********************
-Command start time: 20250911202609
-**********************
-PS C:\Projects\GroundMesh-DEV> if ((git ls-remote --heads origin bridge-public) -ne $null) {
-  git worktree add -B bridge-public $WT origin/bridge-public
-} else {
-  git worktree add -B bridge-public $WT
-  Push-Location $WT; git push -u origin bridge-public; Pop-Location
-}
-
-**********************
-Command start time: 20250911202612
-**********************
-PS C:\Projects\GroundMesh-DEV> # 2) Ensure no stray public-bridge files linger in the main worktree
-**********************
-Command start time: 20250911202612
-**********************
-PS C:\Projects\GroundMesh-DEV> Remove-Item -Recurse -Force (Join-Path $DevRepo "public-bridge") -ErrorAction SilentlyContinue
-**********************
-Command start time: 20250911202612
-**********************
-PS C:\Projects\GroundMesh-DEV> # 3) Overwrite publisher to use the dedicated worktree
-**********************
-Command start time: 20250911202612
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911202612
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911202612
-**********************
-PS C:\Projects\GroundMesh-DEV> @'
-param(
-  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
-  [Alias("Lines")][int]$Count = 400,
-  [int]$LookBackFiles = 6,
-  [string]$WorktreeRoot = "C:\Projects\GroundMesh-DEV\.bridge-wt"
-)
-
-function Read-UnlockedText {
-  param([string]$Path)
-  try {
-    $fs = New-Object System.IO.FileStream($Path,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::ReadWrite)
-    try { $sr = New-Object IO.StreamReader($fs,[Text.Encoding]::UTF8,$true); $t=$sr.ReadToEnd(); $sr.Close(); return $t }
-    finally { $fs.Close() }
-  } catch { return $null }
-}
-
-# 1) Collect newest-by-name transcripts
-$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
-if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
-$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
-
-# 2) Merge lines from picked files
-$lines  = New-Object System.Collections.Generic.List[string]
-foreach ($f in $pick) {
-  $t = Read-UnlockedText -Path $f.FullName
-  if ($t) {
-    $parts = [Text.RegularExpressions.Regex]::Split($t,'\r?\n')
-    foreach ($p in $parts) { if ($p -ne $null) { $lines.Add($p) | Out-Null } }
-  }
-}
-
 # 3) Global tail → redact
 $globalTail = $lines | Select-Object -Last $Count
 if (-not $globalTail) { $globalTail = @('<empty>') }
@@ -271,6 +178,99 @@ PS C:\Projects\GroundMesh-DEV> & "C:\Projects\GroundMesh-DEV\tools\run-tsl.ps1"
 Model written: apps\tsl\artifacts\principles_model.json (5331 bytes)
 **********************
 Command start time: 20250911203034
+**********************
+PS C:\Projects\GroundMesh-DEV> pt
+
+
+
+
+**********************
+Command start time: 20250911203344
+**********************
+PS C:\Projects\GroundMesh-DEV> # Ensure TSL job runner exists, then run it and refresh eyes
+**********************
+Command start time: 20250911203344
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911203344
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
+**********************
+Command start time: 20250911203344
+**********************
+PS C:\Projects\GroundMesh-DEV> $Runner  = Join-Path $Tools "run-tsl.ps1"
+**********************
+Command start time: 20250911203344
+**********************
+PS C:\Projects\GroundMesh-DEV> cd $DevRepo
+**********************
+Command start time: 20250911203345
+**********************
+PS C:\Projects\GroundMesh-DEV> git checkout dev
+
+**********************
+Command start time: 20250911203345
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911203345
+**********************
+PS C:\Projects\GroundMesh-DEV> if (-not (Test-Path $Runner)) {
+@'
+param(
+  [string]$JobFile = "apps/tsl/jobs/learn_principles.json"
+)
+
+if (-not (Test-Path $JobFile)) { Write-Host "Job file not found: $JobFile"; exit 1 }
+
+try { $job = Get-Content $JobFile -Raw | ConvertFrom-Json }
+catch { Write-Host "Failed to parse job JSON: $JobFile"; exit 1 }
+
+$py = Get-Command python -ErrorAction SilentlyContinue
+if (-not $py) { Write-Host "Python not found on PATH. Install Python 3.8+."; exit 1 }
+
+$inYaml  = $job.inputs.principles_yaml
+$outDir  = $job.outputs.artifact_dir
+$model   = Join-Path $outDir ($job.outputs.model_file)
+
+New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+
+& python "apps/tsl/tsl_core/learner.py" $inYaml $outDir
+if ($LASTEXITCODE -ne 0) { Write-Host "Learner failed with exit code $LASTEXITCODE."; exit $LASTEXITCODE }
+
+if (Test-Path $model) {
+  $size = (Get-Item $model).Length
+  Write-Host "Model written: $model ($size bytes)"
+} else {
+  Write-Host "Model file not found after run: $model"
+}
+'@ | Set-Content -Encoding UTF8 $Runner
+
+  # commit the new runner
+  $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
+  Set-Content -Path $MsgFile -Encoding UTF8 -Value "feat(tsl): add minimal job runner (PowerShell)"
+  git add $Runner
+  git commit -F $MsgFile
+  git push -u origin dev
+  Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+}
+**********************
+Command start time: 20250911203345
+**********************
+PS C:\Projects\GroundMesh-DEV> # Run the job once and refresh eyes so I can read the PSO automatically
+**********************
+Command start time: 20250911203345
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+**********************
+Command start time: 20250911203345
+**********************
+PS C:\Projects\GroundMesh-DEV> & $Runner
+
+Model written: apps\tsl\artifacts\principles_model.json (5331 bytes)
+**********************
+Command start time: 20250911203345
 **********************
 PS C:\Projects\GroundMesh-DEV> pt
 
