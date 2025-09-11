@@ -1,131 +1,8 @@
 # PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 20:26:12
+- Updated: 2025-09-11 20:30:34
 
 ```text
-Command start time: 20250911202302
-**********************
-PS C:\Projects\GroundMesh-DEV> if ($py) { & python "apps/tsl/tsl_core/learner.py" "apps/tsl/principles/principles.yaml" "apps/tsl/artifacts" }
-
-**********************
-Command start time: 20250911202302
-**********************
-PS C:\Projects\GroundMesh-DEV> # Commit via message file (avoids quoting issues)
-**********************
-Command start time: 20250911202302
-**********************
-PS C:\Projects\GroundMesh-DEV> $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
-**********************
-Command start time: 20250911202302
-**********************
-PS C:\Projects\GroundMesh-DEV> Set-Content -Path $MsgFile -Encoding UTF8 -Value "feat(tsl): scaffold with 7 principles and learner stub"
-**********************
-Command start time: 20250911202302
-**********************
-PS C:\Projects\GroundMesh-DEV> git add apps/tsl
-
-**********************
-Command start time: 20250911202303
-**********************
-PS C:\Projects\GroundMesh-DEV> git commit -F $MsgFile
-
-**********************
-Command start time: 20250911202303
-**********************
-PS C:\Projects\GroundMesh-DEV> git push -u origin dev
-
-**********************
-Command start time: 20250911202305
-**********************
-PS C:\Projects\GroundMesh-DEV> Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
-**********************
-Command start time: 20250911202305
-**********************
-PS C:\Projects\GroundMesh-DEV> # refresh PSO snapshot so I can read it automatically
-**********************
-Command start time: 20250911202305
-**********************
-PS C:\Projects\GroundMesh-DEV> pt
-
-
-
-
-**********************
-Command start time: 20250911202539
-**********************
-PS C:\Projects\GroundMesh-DEV> # === Set up dedicated worktree for bridge-public and update the publisher to use it ===
-**********************
-Command start time: 20250911202539
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911202540
-**********************
-PS C:\Projects\GroundMesh-DEV> $WT      = "C:\Projects\GroundMesh-DEV\.bridge-wt"
-**********************
-Command start time: 20250911202540
-**********************
-PS C:\Projects\GroundMesh-DEV> cd $DevRepo
-**********************
-Command start time: 20250911202540
-**********************
-PS C:\Projects\GroundMesh-DEV> # 1) Fetch and create a clean worktree for bridge-public
-**********************
-Command start time: 20250911202540
-**********************
-PS C:\Projects\GroundMesh-DEV> git fetch origin
-
-**********************
-Command start time: 20250911202542
-**********************
-PS C:\Projects\GroundMesh-DEV> & git worktree remove --force $WT 2>$null
-git.exe : fatal: 'C:\Projects\GroundMesh-DEV\.bridge-wt' is not a working tree
-At line:1 char:1
-+ & git worktree remove --force $WT 2>$null
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (fatal: 'C:\Proj... a working tree:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
-
-**********************
-Command start time: 20250911202542
-**********************
-PS C:\Projects\GroundMesh-DEV> # If branch doesn't exist yet remotely, this creates local branch from current HEAD; else tracks remote.
-**********************
-Command start time: 20250911202542
-**********************
-PS C:\Projects\GroundMesh-DEV> if ((git ls-remote --heads origin bridge-public) -ne $null) {
-  git worktree add -B bridge-public $WT origin/bridge-public
-} else {
-  git worktree add -B bridge-public $WT
-  Push-Location $WT; git push -u origin bridge-public; Pop-Location
-}
-
-**********************
-Command start time: 20250911202544
-**********************
-PS C:\Projects\GroundMesh-DEV> # 2) Ensure no stray public-bridge files linger in the main worktree
-**********************
-Command start time: 20250911202544
-**********************
-PS C:\Projects\GroundMesh-DEV> Remove-Item -Recurse -Force (Join-Path $DevRepo "public-bridge") -ErrorAction SilentlyContinue
-**********************
-Command start time: 20250911202544
-**********************
-PS C:\Projects\GroundMesh-DEV> # 3) Overwrite publisher to use the dedicated worktree
-**********************
-Command start time: 20250911202544
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911202544
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911202606
-**********************
-PS C:\Projects\GroundMesh-DEV> # === Set up dedicated worktree for bridge-public and update the publisher to use it ===
-**********************
-Command start time: 20250911202607
 **********************
 PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
 **********************
@@ -271,6 +148,129 @@ Command start time: 20250911202612
 PS C:\Projects\GroundMesh-DEV> # 4) Publish now (eyes auto-refresh), no branch switching in main tree
 **********************
 Command start time: 20250911202612
+**********************
+PS C:\Projects\GroundMesh-DEV> pt
+
+
+
+
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> # === Add a minimal TSL job runner, commit to dev, run once, refresh eyes ===
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> cd $DevRepo
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> git checkout dev
+
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools = Join-Path $DevRepo "tools"
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> @'
+param(
+  [string]$JobFile = "apps/tsl/jobs/learn_principles.json"
+)
+
+if (-not (Test-Path $JobFile)) {
+  Write-Host "Job file not found: $JobFile"
+  exit 1
+}
+
+try {
+  $job = Get-Content $JobFile -Raw | ConvertFrom-Json
+} catch {
+  Write-Host "Failed to parse job JSON: $JobFile"
+  exit 1
+}
+
+$py = Get-Command python -ErrorAction SilentlyContinue
+if (-not $py) {
+  Write-Host "Python not found on PATH. Install Python 3.8+."
+  exit 1
+}
+
+$inYaml  = $job.inputs.principles_yaml
+$outDir  = $job.outputs.artifact_dir
+$model   = Join-Path $outDir ($job.outputs.model_file)
+
+# Ensure output directory exists
+New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+
+# Run the learner
+& python "apps/tsl/tsl_core/learner.py" $inYaml $outDir
+if ($LASTEXITCODE -ne 0) {
+  Write-Host "Learner failed with exit code $LASTEXITCODE."
+  exit $LASTEXITCODE
+}
+
+# Simple verification
+if (Test-Path $model) {
+  $size = (Get-Item $model).Length
+  Write-Host "Model written: $model ($size bytes)"
+} else {
+  Write-Host "Model file not found after run: $model"
+}
+
+'@ | Set-Content -Encoding UTF8 (Join-Path $Tools "run-tsl.ps1")
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> # Commit runner
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-Content -Path $MsgFile -Encoding UTF8 -Value "feat(tsl): add minimal job runner (PowerShell)"
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> git add tools/run-tsl.ps1
+
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> git commit -F $MsgFile
+
+**********************
+Command start time: 20250911203031
+**********************
+PS C:\Projects\GroundMesh-DEV> git push -u origin dev
+
+**********************
+Command start time: 20250911203034
+**********************
+PS C:\Projects\GroundMesh-DEV> Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+**********************
+Command start time: 20250911203034
+**********************
+PS C:\Projects\GroundMesh-DEV> # Run the job once (optional) and refresh eyes so I can see it
+**********************
+Command start time: 20250911203034
+**********************
+PS C:\Projects\GroundMesh-DEV> & "C:\Projects\GroundMesh-DEV\tools\run-tsl.ps1"
+
+Model written: apps\tsl\artifacts\principles_model.json (5331 bytes)
+**********************
+Command start time: 20250911203034
 **********************
 PS C:\Projects\GroundMesh-DEV> pt
 
