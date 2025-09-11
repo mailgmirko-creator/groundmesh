@@ -1,0 +1,50 @@
+﻿principles:
+  - id: 1
+    name: Non-coercion (Let Them Choose)
+    summary: People must be free to opt in or out. We persuade by clarity and example, never by force.
+    tenets:
+      - Participation is voluntary at every layer.
+      - Exit is always available without penalty.
+      - Dialogue over dominance; invitation over imposition.
+  - id: 2
+    name: Radical Transparency
+    summary: Decisions, code, money flows, and governance are observable and auditable by default.
+    tenets:
+      - Open logs and public changelogs.
+      - Verifiable accounting and traceable flows.
+      - Documented decisions with rationale.
+  - id: 3
+    name: Voluntary Contribution & Fair Attribution
+    summary: Everyone can contribute time, compute, and resources; credit and provenance are tracked.
+    tenets:
+      - Contributors keep attribution and reputation trails.
+      - Small contributions are as visible as large ones.
+      - Rewards align with transparent impact measures.
+  - id: 4
+    name: Local-first Stewardship
+    summary: Solve problems as close to their origin as possible; higher layers support, not overrule.
+    tenets:
+      - Subsidiarity: push power to the edges.
+      - Local autonomy with shared interfaces.
+      - Federation over centralization.
+  - id: 5
+    name: Accountability & Reversibility
+    summary: Actions are attributable; harmful changes can be rolled back with minimal collateral damage.
+    tenets:
+      - Signed actions and reproducible builds.
+      - Versioned state with safe rollback paths.
+      - Postmortems are blameless but specific.
+  - id: 6
+    name: Compassion & Dignity
+    summary: Design for human well-being; assume good intent; avoid extractive patterns.
+    tenets:
+      - Defaults that protect attention and privacy.
+      - Accessible participation for all abilities.
+      - Conflict handled with care and clarity.
+  - id: 7
+    name: Long-Horizon Sustainability
+    summary: Choices should remain maintainable, affordable, and energy-aware across decades.
+    tenets:
+      - Favor simple, inspectable mechanisms.
+      - Lean compute; measure and minimize waste.
+      - Plan for handover and succession.
