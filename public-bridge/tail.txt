@@ -1,4 +1,4 @@
-﻿**********************
+**********************
 Windows PowerShell transcript start
 Start time: 20250911171115
 Username: DESKTOP-C9G76VK\mailg
