@@ -1,27 +1,9 @@
 # PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 19:58:40
+- Updated: 2025-09-11 19:58:43
 - Files considered: ps_transcript_20250911_194704.txt, ps_transcript_20250911_171115.txt
 
 ```text
-  $x
-}
-
-# 5) Write outputs
-$OutDir  = Join-Path $PSScriptRoot '..\public-bridge'
-$TxtFile = Join-Path $OutDir 'tail.txt'
-$MdFile  = Join-Path $OutDir 'tail.md'
-New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
-$enc = New-Object System.Text.UTF8Encoding($false)
-$updated = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
-
-# tail.txt — newest-first for the “eyes”
-$rev = $redacted.Clone(); [Array]::Reverse($rev)
-$txtOut = @("AGGREGATED | Updated: $updated") + $rev
-[System.IO.File]::WriteAllLines($TxtFile, $txtOut, $enc)
-
-# tail.md — human-friendly order, with header
-$mdList = New-Object System.Collections.Generic.List[string]
 $mdList.Add('# PowerShell Transcript Tail (Aggregated)') | Out-Null
 $mdList.Add('') | Out-Null
 $mdList.Add( ('- Updated: {0}' -f $updated) ) | Out-Null
@@ -273,6 +255,24 @@ PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPoli
 Command start time: 20250911195840
 **********************
 PS C:\Projects\GroundMesh-DEV> & 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -Count 400
+
+
+[bridge-public f28210e] ﻿publish tail snapshot (aggregated)
+ 2 files changed, 192 insertions(+), 192 deletions(-)
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.44 KiB | 1.44 MiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:mailgmirko-creator/groundmesh.git
+   52d1fdb..f28210e  bridge-public -> bridge-public
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+**********************
+Command start time: 20250911195843
+**********************
+PS C:\Projects\GroundMesh-DEV> pt
 
 === SRC: ps_transcript_20250911_171115.txt ===
 **********************

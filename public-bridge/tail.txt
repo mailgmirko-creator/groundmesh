@@ -1,4 +1,4 @@
-AGGREGATED | Updated: 2025-09-11 19:58:40
+AGGREGATED | Updated: 2025-09-11 19:58:43
 
 
 
@@ -129,6 +129,24 @@ Start time: 20250911171115
 Windows PowerShell transcript start
 **********************
 === SRC: ps_transcript_20250911_171115.txt ===
+
+PS C:\Projects\GroundMesh-DEV> pt
+**********************
+Command start time: 20250911195843
+**********************
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+   52d1fdb..f28210e  bridge-public -> bridge-public
+To github.com:mailgmirko-creator/groundmesh.git
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+Writing objects: 100% (5/5), 1.44 KiB | 1.44 MiB/s, done.
+Compressing objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Counting objects: 100% (9/9), done.
+Enumerating objects: 9, done.
+ 2 files changed, 192 insertions(+), 192 deletions(-)
+[bridge-public f28210e] ﻿publish tail snapshot (aggregated)
+
 
 PS C:\Projects\GroundMesh-DEV> & 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -Count 400
 **********************
@@ -381,21 +399,3 @@ $mdList.Add( ('- Files considered: {0}' -f (($pick | Select-Object -ExpandProper
 $mdList.Add( ('- Updated: {0}' -f $updated) ) | Out-Null
 $mdList.Add('') | Out-Null
 $mdList.Add('# PowerShell Transcript Tail (Aggregated)') | Out-Null
-$mdList = New-Object System.Collections.Generic.List[string]
-# tail.md — human-friendly order, with header
-
-[System.IO.File]::WriteAllLines($TxtFile, $txtOut, $enc)
-$txtOut = @("AGGREGATED | Updated: $updated") + $rev
-$rev = $redacted.Clone(); [Array]::Reverse($rev)
-# tail.txt — newest-first for the “eyes”
-
-$updated = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
-$enc = New-Object System.Text.UTF8Encoding($false)
-New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
-$MdFile  = Join-Path $OutDir 'tail.md'
-$TxtFile = Join-Path $OutDir 'tail.txt'
-$OutDir  = Join-Path $PSScriptRoot '..\public-bridge'
-# 5) Write outputs
-
-}
-  $x
