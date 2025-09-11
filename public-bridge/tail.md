@@ -1,3 +1,9 @@
+# PowerShell Transcript Tail
+
+- Updated: 2025-09-11 19:14:28
+- Source file: ps_transcript_20250911_171115.txt
+
+```text
 **********************
 Windows PowerShell transcript start
 Start time: 20250911171115
@@ -127,3 +133,4 @@ Mode                 LastWriteTime         Length Name
 
 
 
+```
