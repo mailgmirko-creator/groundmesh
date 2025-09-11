@@ -1,0 +1,401 @@
+AGGREGATED | Updated: 2025-09-11 20:23:06 | Files: ps_transcript_20250911_194704.txt, ps_transcript_20250911_171115.txt
+
+
+
+-a----        11/09/2025     17:12           1848 reader.ps1
+----                 -------------         ------ ----
+Mode                 LastWriteTime         Length Name
+
+
+    Directory: C:\Projects\Bridge
+
+
+PS C:\Projects\Bridge> Get-ChildItem .\reader.ps1
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects\Bridge> # Verify it exists
+**********************
+Command start time: 20250911171240
+**********************
+'@ | Set-Content -Encoding UTF8 .\reader.ps1
+}
+  }
+    $ctx.Response.OutputStream.Close()
+  } finally {
+    Write-Host "Bridge error: $_" -ForegroundColor Red
+  } catch {
+    }
+      }
+        $res.OutputStream.Write($bytes,0,$bytes.Length)
+        $res.StatusCode = 200
+        $res.ContentType = "text/plain; charset=utf-8"
+        $bytes = [Text.Encoding]::UTF8.GetBytes($msg)
+        $msg = "Use /tail to read the latest $Tail lines."
+      default {
+      }
+        $res.OutputStream.Write($bytes,0,$bytes.Length)
+        $res.StatusCode = 200
+        $res.ContentType = "text/plain; charset=utf-8"
+        $bytes = [Text.Encoding]::UTF8.GetBytes($text)
+        $text  = ($lines -join "`n")
+        $lines = Get-Content $file -ErrorAction SilentlyContinue | Select-Object -Last $Tail
+        }
+          break
+          $res.OutputStream.Write($bytes,0,$bytes.Length)
+          $res.StatusCode = 404
+          $bytes = [Text.Encoding]::UTF8.GetBytes($msg)
+          $msg = "No transcript files found."
+        if (-not $file) {
+        $file = Get-LatestTranscript -Dir $TranscriptDir
+      "/tail" {
+    switch ($req.Url.AbsolutePath) {
+
+    $res = $ctx.Response
+    $req = $ctx.Request
+  try {
+  $ctx = $listener.GetContext()
+while ($listener.IsListening) {
+
+}
+  if ($files) { return $files[0].FullName } else { return $null }
+  $files = Get-ChildItem $Dir -Filter "ps_transcript_*.txt" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending
+  param([string]$Dir)
+function Get-LatestTranscript {
+
+Write-Host "🔎 Bridge reader listening on $prefix"
+$listener.Start()
+$listener.Prefixes.Add($prefix)
+$listener.Prefixes.Clear()
+$prefix = "http://127.0.0.1:$Port/"
+$listener = [System.Net.HttpListener]::new()
+
+Add-Type -AssemblyName System.Net.HttpListener
+
+)
+  [int]$Tail = 400
+  [int]$Port = 5059,
+  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
+param(
+PS C:\Projects\Bridge> @'
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects> cd C:\Projects\Bridge
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects> New-Item -ItemType Directory -Force -Path C:\Projects\Bridge | Out-Null
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects\Bridge> cd C:\Projects
+**********************
+Command start time: 20250911171240
+**********************
+PS C:\Projects> cd C:\Projects\Bridge
+**********************
+Command start time: 20250911171212
+**********************
+PS C:\Projects> New-Item -ItemType Directory -Force -Path C:\Projects\Bridge | Out-Null
+**********************
+Command start time: 20250911171212
+**********************
+PS [HOME]\\Projects
+**********************
+Command start time: 20250911171211
+**********************
+🟢 Transcript recording to: C:\Projects\Bridge\transcripts\ps_transcript_20250911_171115.txt
+PS C:\Users\mailg> Write-Host "🟢 Transcript recording to: $Transcript"
+**********************
+Command start time: 20250911171115
+**********************
+**********************
+SerializationVersion: 1.1.0.1
+PSRemotingProtocolVersion: 2.3
+WSManStackVersion: 3.0
+CLRVersion: 4.0.30319.42000
+BuildVersion: 10.0.19041.6328
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6328
+PSEdition: Desktop
+PSVersion: 5.1.19041.6328
+Process ID: 5576
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Machine: DESKTOP-C9G76VK (Microsoft Windows NT 10.0.19045.0)
+Configuration Name: 
+RunAs User: DESKTOP-C9G76VK\mailg
+Username: DESKTOP-C9G76VK\mailg
+Start time: 20250911171115
+Windows PowerShell transcript start
+**********************
+
+PS C:\Projects\GroundMesh-DEV> pt
+**********************
+Command start time: 20250911202305
+**********************
+PS C:\Projects\GroundMesh-DEV> # refresh PSO snapshot so I can read it automatically
+**********************
+Command start time: 20250911202305
+**********************
+PS C:\Projects\GroundMesh-DEV> Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+**********************
+Command start time: 20250911202305
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git push -u origin dev
+**********************
+Command start time: 20250911202303
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git commit -F $MsgFile
+**********************
+Command start time: 20250911202303
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git add apps/tsl
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-Content -Path $MsgFile -Encoding UTF8 -Value "feat(tsl): scaffold with 7 principles and learner stub"
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> # Commit via message file (avoids quoting issues)
+**********************
+Command start time: 20250911202302
+**********************
+
+PS C:\Projects\GroundMesh-DEV> if ($py) { & python "apps/tsl/tsl_core/learner.py" "apps/tsl/principles/principles.yaml" "apps/tsl/artifacts" }
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> $py = Get-Command python -ErrorAction SilentlyContinue
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> # Optional local test (only if Python exists)
+**********************
+Command start time: 20250911202302
+**********************
+'@ | Set-Content -Encoding UTF8 (Join-Path $Base "jobs\learn_principles.json")
+}
+  "params": { "version": 1, "tokenizer": "regex-alpha-lower" }
+  "outputs": { "artifact_dir": "apps/tsl/artifacts", "model_file": "principles_model.json" },
+  "inputs": { "principles_yaml": "apps/tsl/principles/principles.yaml" },
+  "job_type": "tsl_principles_learn",
+{
+PS C:\Projects\GroundMesh-DEV> @'
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> # learn_principles.json
+**********************
+Command start time: 20250911202302
+**********************
+'@ | Set-Content -Encoding UTF8 (Join-Path $Base "tsl_core\learner.py")
+    main(in_yaml, out_dir)
+    out_dir = sys.argv[2] if len(sys.argv) > 2 else "apps/tsl/artifacts"
+    in_yaml = sys.argv[1] if len(sys.argv) > 1 else "apps/tsl/principles/principles.yaml"
+if __name__ == "__main__":
+
+    print(f"Wrote {out_path}")
+    out_path.write_text(json.dumps(model, ensure_ascii=False, indent=2), encoding="utf-8")
+    out_path = Path(out_dir) / "principles_model.json"
+    Path(out_dir).mkdir(parents=True, exist_ok=True)
+    model = learn(data.get("principles",[]))
+    data = load_yaml(in_yaml)
+def main(in_yaml="apps/tsl/principles/principles.yaml", out_dir="apps/tsl/artifacts"):
+
+    return {"version":1, "principles": learned, "global_top":[w for w,_ in global_freq.most_common(200)]}
+        learned.append({"id": p.get("id"), "name": p.get("name"), "top_tokens":[w for w,_ in freq.most_common(15)]})
+        toks = tokenize(blob); freq = collections.Counter(toks); global_freq.update(freq)
+        blob = (p.get("summary","") + " " + " ".join(p.get("tenets",[]))).strip()
+    for p in principles:
+    learned = []
+    global_freq = collections.Counter()
+def learn(principles):
+
+def tokenize(text): return [t.lower() for t in re.findall(r"[a-zA-Z]{2,}", text or "")]
+
+        return data
+        if cur: data["principles"].append(cur)
+                cur["tenets"].append(line.strip()[2:].strip())
+            elif re.match(r"^\s{6}-\s", line):
+                cur["summary"] = line.split("summary:",1)[1].strip()
+            elif re.search(r"\bsummary:\s*", line):
+                cur["name"] = line.split("name:",1)[1].strip()
+            elif re.search(r"\bname:\s*", line):
+                if m: cur["id"] = int(m.group(1))
+                m = re.search(r"id:\s*(\d+)", line)
+                cur = {"tenets":[]}
+                if cur: data["principles"].append(cur)
+            if re.match(r"^\s*-\s+id:\s*\d+", line):
+        for line in read_text(path).splitlines():
+        data, cur = {"principles":[]}, None
+    except Exception:
+        return yaml.safe_load(read_text(path))
+        import yaml
+    try:
+def load_yaml(path):
+
+def read_text(p): return Path(p).read_text(encoding="utf-8")
+
+from pathlib import Path
+import sys, json, re, collections
+# Minimal learner: loads principles YAML, tokenizes summaries/tenets, emits a tiny "model".
+#!/usr/bin/env python3
+PS C:\Projects\GroundMesh-DEV> @'
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> # learner.py
+**********************
+Command start time: 20250911202302
+**********************
+'@ | Set-Content -Encoding UTF8 (Join-Path $Base "principles\principles.yaml")
+      - Plan for handover and succession.
+      - Lean compute; measure and minimize waste.
+      - Favor simple, inspectable mechanisms.
+    tenets:
+    summary: Choices should remain maintainable, affordable, and energy-aware across decades.
+    name: Long-Horizon Sustainability
+  - id: 7
+      - Conflict handled with care and clarity.
+      - Accessible participation for all abilities.
+      - Defaults that protect attention and privacy.
+    tenets:
+    summary: Design for human well-being; assume good intent; avoid extractive patterns.
+    name: Compassion & Dignity
+  - id: 6
+      - Postmortems are blameless but specific.
+      - Versioned state with safe rollback paths.
+      - Signed actions and reproducible builds.
+    tenets:
+    summary: Actions are attributable; harmful changes can be rolled back with minimal collateral damage.
+    name: Accountability & Reversibility
+  - id: 5
+      - Federation over centralization.
+      - Local autonomy with shared interfaces.
+      - Subsidiarity: push power to the edges.
+    tenets:
+    summary: Solve problems as close to their origin as possible; higher layers support, not overrule.
+    name: Local-first Stewardship
+  - id: 4
+      - Rewards align with transparent impact measures.
+      - Small contributions are as visible as large ones.
+      - Contributors keep attribution and reputation trails.
+    tenets:
+    summary: Everyone can contribute time, compute, and resources; credit and provenance are tracked.
+    name: Voluntary Contribution & Fair Attribution
+  - id: 3
+      - Documented decisions with rationale.
+      - Verifiable accounting and traceable flows.
+      - Open logs and public changelogs.
+    tenets:
+    summary: Decisions, code, money flows, and governance are observable and auditable by default.
+    name: Radical Transparency
+  - id: 2
+      - Dialogue over dominance; invitation over imposition.
+      - Exit is always available without penalty.
+      - Participation is voluntary at every layer.
+    tenets:
+    summary: People must be free to opt in or out. We persuade by clarity and example, never by force.
+    name: Non-coercion (Let Them Choose)
+  - id: 1
+principles:
+PS C:\Projects\GroundMesh-DEV> @'
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> # principles.yaml
+**********************
+Command start time: 20250911202302
+**********************
+'@ | Set-Content -Encoding UTF8 (Join-Path $Base "README.md")
+This writes: apps/tsl/artifacts/principles_model.json
+
+python apps/tsl/tsl_core/learner.py apps/tsl/principles/principles.yaml apps/tsl/artifacts
+Run:
+Requires Python 3.8+ on PATH.
+## Local test (optional)
+
+- apps/tsl/artifacts/ — model outputs (e.g., principles_model.json).
+- apps/tsl/jobs/learn_principles.json — example job spec for future distributed runs.
+- apps/tsl/tsl_core/learner.py — pure-Python “learning” stub: tokenizes/summarizes principles.
+- apps/tsl/principles/principles.yaml — canonical 7 principles (edit this with final wording).
+## Layout
+
+(Transparency Grid) can run learning jobs later.
+token-based pass (no external ML libs). This sets the contract so donated compute
+Purpose: learn and internalize the project’s Seven Principles, starting with a simple
+
+# TinySelfLearner (TSL) — seed
+PS C:\Projects\GroundMesh-DEV> @'
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> # README.md (no markdown code fences to avoid here-string confusion)
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType File -Force -Path (Join-Path $Base "artifacts\.gitkeep") | Out-Null
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Base, "$Base\principles", "$Base\tsl_core", "$Base\jobs", "$Base\artifacts" | Out-Null
+**********************
+Command start time: 20250911202302
+**********************
+PS C:\Projects\GroundMesh-DEV> $Base = Join-Path $DevRepo "apps\tsl"
+**********************
+Command start time: 20250911202302
+**********************
+
+PS C:\Projects\GroundMesh-DEV> git checkout dev
+**********************
+Command start time: 20250911202301
+**********************
+PS C:\Projects\GroundMesh-DEV> cd $DevRepo
+**********************
+Command start time: 20250911202301
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911202301
+**********************
+PS C:\Projects\GroundMesh-DEV> # === Clean rewrite of TSL scaffold (no code fences), commit to dev, push, refresh ===
+**********************
+Command start time: 20250911202301
+**********************
+PS C:\Projects\GroundMesh-DEV> # principles.yaml
+**********************
+Command start time: 20250911202210
+**********************
+'@ | Set-Content -Encoding UTF8 (Join-Path $Base "README.md")
+This writes: apps/tsl/artifacts/principles_model.json
+
+python apps/tsl/tsl_core/learner.py apps/tsl/principles/principles.yaml apps/tsl/artifacts
+Run:
+Requires Python 3.8+ on PATH.
+## Local test (optional)
+
+- apps/tsl/artifacts/ — model outputs (e.g., principles_model.json).
+- apps/tsl/jobs/learn_principles.json — example job spec for future distributed runs.
+- apps/tsl/tsl_core/learner.py — pure-Python “learning” stub: tokenizes/summarizes principles.
+- apps/tsl/principles/principles.yaml — canonical 7 principles (edit this with final wording).
+## Layout
+
+(Transparency Grid) can run learning jobs later.
+token-based pass (no external ML libs). This sets the contract so donated compute
+Purpose: learn and internalize the project’s Seven Principles, starting with a simple
+
+# TinySelfLearner (TSL) — seed
+PS C:\Projects\GroundMesh-DEV> @'
+**********************
+Command start time: 20250911202210
+**********************
+PS C:\Projects\GroundMesh-DEV> # README.md (no markdown code fences to avoid here-string confusion)
