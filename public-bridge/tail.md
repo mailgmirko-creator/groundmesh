@@ -1,135 +1,9 @@
 # PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 19:58:43
+- Updated: 2025-09-11 20:02:37
 - Files considered: ps_transcript_20250911_194704.txt, ps_transcript_20250911_171115.txt
 
 ```text
-$mdList.Add('# PowerShell Transcript Tail (Aggregated)') | Out-Null
-$mdList.Add('') | Out-Null
-$mdList.Add( ('- Updated: {0}' -f $updated) ) | Out-Null
-$mdList.Add( ('- Files considered: {0}' -f (($pick | Select-Object -ExpandProperty Name) -join ', ')) ) | Out-Null
-$mdList.Add('') | Out-Null
-$mdList.Add('```text') | Out-Null
-foreach($line in $redacted){ $mdList.Add($line) | Out-Null }
-$mdList.Add('```') | Out-Null
-[System.IO.File]::WriteAllLines($MdFile, $mdList, $enc)
-
-# 6) Commit & push (message file to avoid quoting issues)
-Push-Location (Join-Path $PSScriptRoot '..')
-$MsgFile = Join-Path (Get-Location) 'COMMITMSG.txt'
-Set-Content -Path $MsgFile -Value 'publish tail snapshot (aggregated)' -Encoding UTF8
-& git checkout bridge-public | Out-Null
-& git add public-bridge\tail.txt
-& git add public-bridge\tail.md
-& git commit -F $MsgFile
-& git push -u origin bridge-public
-Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
-Pop-Location
-'@ | Set-Content -Encoding UTF8 (Join-Path $Tools 'publish-tail.ps1')
-**********************
-Command start time: 20250911195310
-**********************
-PS C:\Projects\GroundMesh-DEV> # auto-publish so I can read it immediately
-**********************
-Command start time: 20250911195310
-**********************
-PS C:\Projects\GroundMesh-DEV> pt
-
-
-[bridge-public a225404] ﻿publish tail snapshot (aggregated)
- 2 files changed, 552 insertions(+), 166 deletions(-)
-Enumerating objects: 9, done.
-Counting objects: 100% (9/9), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 3.50 KiB | 1.17 MiB/s, done.
-Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
-To github.com:mailgmirko-creator/groundmesh.git
-   40a18e7..a225404  bridge-public -> bridge-public
-branch 'bridge-public' set up to track 'origin/bridge-public'.
-**********************
-Command start time: 20250911195339
-**********************
-PS C:\Projects\GroundMesh-DEV> Hellooooo, do you see meeeee???;DDDD
-At line:1 char:10
-+ Hellooooo, do you see meeeee???;DDDD
-+          ~
-Missing argument in parameter list.
-At line:1 char:10
-+ Hellooooo, do you see meeeee???;DDDD
-+          ~
-Missing argument in parameter list.
-    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordExce
-   ption
-    + FullyQualifiedErrorId : MissingArgument
-
-**********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> # DIAG: show first lines of the current publisher & the newest transcript files
-**********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> Write-Host "=== EYES DIAG START ==="
-=== EYES DIAG START ===
-**********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> Write-Host "Publisher head (first 30 lines):"
-Publisher head (first 30 lines):
-**********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> Get-Content 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -ErrorAction SilentlyContinue | Select-Object -First 30
-param(
-  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
-  [Alias("Lines")][int]$Count = 400,
-  [int]$LookBackFiles = 5
-)
-
-function Read-UnlockedText {
-  param([string]$Path)
-  try {
-    $fs = New-Object System.IO.FileStream($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
-    try {
-      $sr = New-Object System.IO.StreamReader($fs, [System.Text.Encoding]::UTF8, $true)
-      $text = $sr.ReadToEnd()
-      $sr.Close()
-      return $text
-    } finally { $fs.Close() }
-  } catch { return $null }
-}
-
-# 1) Gather newest-by-name transcripts (handles multiple windows)
-$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
-if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
-$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
-
-# 2) Read each file (unlocked), split into lines, prepend a file marker
-$lines = New-Object System.Collections.Generic.List[string]
-foreach ($f in $pick) {
-  $t = Read-UnlockedText -Path $f.FullName
-  if ($t) {
-    $lines.Add(("=== SRC: {0} ===" -f $f.Name)) | Out-Null
-**********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> Write-Host "`nNewest transcript files (by name):"
-
-Newest transcript files (by name):
-**********************
-Command start time: 20250911195632
-**********************
-PS C:\Projects\GroundMesh-DEV> Get-ChildItem 'C:\Projects\Bridge\transcripts' -Filter 'ps_transcript_*.txt' `
-| Sort-Object Name -Descending | Select-Object -First 6 Name, LastWriteTime
-
-Name                              LastWriteTime
-----                              -------------
-ps_transcript_20250911_194704.txt 11/09/2025 19:53:10
-ps_transcript_20250911_171115.txt 11/09/2025 17:12:40
-
-
 **********************
 Command start time: 20250911195632
 **********************
@@ -274,7 +148,133 @@ Command start time: 20250911195843
 **********************
 PS C:\Projects\GroundMesh-DEV> pt
 
-=== SRC: ps_transcript_20250911_171115.txt ===
+
+[bridge-public 164a8d0] ﻿publish tail snapshot (aggregated)
+ 2 files changed, 38 insertions(+), 38 deletions(-)
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 659 bytes | 329.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:mailgmirko-creator/groundmesh.git
+   f28210e..164a8d0  bridge-public -> bridge-public
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+**********************
+Command start time: 20250911200237
+**********************
+PS C:\Projects\GroundMesh-DEV> # Publisher: aggregate last transcripts + unlocked reads + stamped header (WinPS 5.1 safe)
+**********************
+Command start time: 20250911200237
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = 'C:\Projects\GroundMesh-DEV'
+**********************
+Command start time: 20250911200237
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo 'tools'
+**********************
+Command start time: 20250911200237
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911200237
+**********************
+PS C:\Projects\GroundMesh-DEV> @'
+param(
+  [string]$TranscriptDir = 'C:\Projects\Bridge\transcripts',
+  [Alias("Lines")][int]$Count = 400,
+  [int]$LookBackFiles = 6
+)
+
+function Read-UnlockedText {
+  param([string]$Path)
+  try {
+    $fs = New-Object System.IO.FileStream($Path,[System.IO.FileMode]::Open,[System.IO.FileAccess]::Read,[System.IO.FileShare]::ReadWrite)
+    try {
+      $sr = New-Object System.IO.StreamReader($fs,[System.Text.Encoding]::UTF8,$true)
+      $text = $sr.ReadToEnd(); $sr.Close(); return $text
+    } finally { $fs.Close() }
+  } catch { return $null }
+}
+
+# 1) Pick newest-by-name files (handles multiple windows)
+$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
+if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
+$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
+$srcNames = @()
+
+# 2) Read each with unlocked share, split to lines, collect
+$lines = New-Object System.Collections.Generic.List[string]
+foreach ($f in $pick) {
+  $t = Read-UnlockedText -Path $f.FullName
+  if ($t) {
+    $srcNames += $f.Name
+    $parts = [System.Text.RegularExpressions.Regex]::Split($t,'\r?\n')
+    foreach ($p in $parts){ if ($p -ne $null) { $lines.Add($p) | Out-Null } }
+  }
+}
+
+# 3) Take global tail (last N across all files)
+$globalTail = $lines | Select-Object -Last $Count
+if (-not $globalTail) { $globalTail = @('<empty>') }
+
+# 4) Redactions per-line
+$redacted = foreach ($line in $globalTail) {
+  $x = $line
+  $x = [regex]::Replace($x,'ghp_[A-Za-z0-9]{36,}','[REDACTED_GH_TOKEN]')
+  $x = [regex]::Replace($x,'sk-[A-Za-z0-9\-_]{20,}','[REDACTED_KEY]')
+  $x = [regex]::Replace($x,'Bearer\s+[A-Za-z0-9\._\-]+','Bearer [REDACTED]')
+  $x = [regex]::Replace($x,'([A-Za-z]:\\Users\\[^\\]+\\)','[HOME]\\')
+  $x
+}
+
+# 5) Write outputs
+$OutDir  = Join-Path $PSScriptRoot '..\public-bridge'
+$TxtFile = Join-Path $OutDir 'tail.txt'
+$MdFile  = Join-Path $OutDir 'tail.md'
+New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
+$enc = New-Object System.Text.UTF8Encoding($false)
+$updated = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+
+# tail.txt — newest-first with clear header for the “eyes”
+$rev = $redacted.Clone(); [Array]::Reverse($rev)
+$hdr = 'AGGREGATED | Updated: {0} | Files: {1}' -f $updated, ($(if($srcNames){$srcNames -join ', '}else{'<none>'}))
+[System.IO.File]::WriteAllLines($TxtFile, @($hdr) + $rev, $enc)
+
+# tail.md — human-friendly order + header
+$md = New-Object System.Collections.Generic.List[string]
+$md.Add('# PowerShell Transcript Tail (Aggregated)') | Out-Null
+$md.Add('') | Out-Null
+$md.Add('- Updated: ' + $updated) | Out-Null
+$md.Add('- Files considered: ' + ($(if($srcNames){$srcNames -join ', '}else{'<none>'}))) | Out-Null
+$md.Add('') | Out-Null
+$md.Add('```text') | Out-Null
+foreach($l in $redacted){ $md.Add($l) | Out-Null }
+$md.Add('```') | Out-Null
+[System.IO.File]::WriteAllLines($MdFile, $md, $enc)
+
+# 6) Commit & push via message file (no quoting issues)
+Push-Location (Join-Path $PSScriptRoot '..')
+$MsgFile = Join-Path (Get-Location) 'COMMITMSG.txt'
+Set-Content -Path $MsgFile -Value 'publish tail snapshot (aggregated merge)' -Encoding UTF8
+& git checkout bridge-public | Out-Null
+& git add public-bridge\tail.txt
+& git add public-bridge\tail.md
+& git commit -F $MsgFile
+& git push -u origin bridge-public
+Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+Pop-Location
+'@ | Set-Content -Encoding UTF8 (Join-Path $Tools 'publish-tail.ps1')
+**********************
+Command start time: 20250911200237
+**********************
+PS C:\Projects\GroundMesh-DEV> # Publish now (no paste needed)
+**********************
+Command start time: 20250911200237
+**********************
+PS C:\Projects\GroundMesh-DEV> pt
+
 **********************
 Windows PowerShell transcript start
 Start time: 20250911171115
