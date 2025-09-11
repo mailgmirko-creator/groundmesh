@@ -1,27 +1,9 @@
 # PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 19:56:32
+- Updated: 2025-09-11 19:56:35
 - Files considered: ps_transcript_20250911_194704.txt, ps_transcript_20250911_171115.txt
 
 ```text
-Set-Content -Path $MsgFile -Value 'publish tail snapshot (unlocked read + fallback)' -Encoding UTF8
-& git checkout bridge-public | Out-Null
-& git add public-bridge\tail.txt
-& git add public-bridge\tail.md
-& git commit -F $MsgFile
-& git push -u origin bridge-public
-Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
-Pop-Location
-'@ | Set-Content -Encoding UTF8 (Join-Path $Tools 'publish-tail.ps1')
-**********************
-Command start time: 20250911195009
-**********************
-PS C:\Projects\GroundMesh-DEV> # Publish now (eyes auto-refresh)
-**********************
-Command start time: 20250911195009
-**********************
-PS C:\Projects\GroundMesh-DEV> pt
-
 
 [bridge-public 40a18e7] ﻿publish tail snapshot (unlocked read + fallback)
  2 files changed, 415 insertions(+), 2 deletions(-)
@@ -273,6 +255,24 @@ PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPoli
 Command start time: 20250911195632
 **********************
 PS C:\Projects\GroundMesh-DEV> & 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -Count 400
+
+
+[bridge-public 6cd8730] ﻿publish tail snapshot (aggregated)
+ 2 files changed, 218 insertions(+), 218 deletions(-)
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 2.00 KiB | 512.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:mailgmirko-creator/groundmesh.git
+   a225404..6cd8730  bridge-public -> bridge-public
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+**********************
+Command start time: 20250911195635
+**********************
+PS C:\Projects\GroundMesh-DEV> pt
 
 === SRC: ps_transcript_20250911_171115.txt ===
 **********************

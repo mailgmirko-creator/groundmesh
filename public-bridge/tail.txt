@@ -1,4 +1,4 @@
-AGGREGATED | Updated: 2025-09-11 19:56:32
+AGGREGATED | Updated: 2025-09-11 19:56:35
 
 
 
@@ -129,6 +129,24 @@ Start time: 20250911171115
 Windows PowerShell transcript start
 **********************
 === SRC: ps_transcript_20250911_171115.txt ===
+
+PS C:\Projects\GroundMesh-DEV> pt
+**********************
+Command start time: 20250911195635
+**********************
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+   a225404..6cd8730  bridge-public -> bridge-public
+To github.com:mailgmirko-creator/groundmesh.git
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+Writing objects: 100% (5/5), 2.00 KiB | 512.00 KiB/s, done.
+Compressing objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Counting objects: 100% (9/9), done.
+Enumerating objects: 9, done.
+ 2 files changed, 218 insertions(+), 218 deletions(-)
+[bridge-public 6cd8730] ﻿publish tail snapshot (aggregated)
+
 
 PS C:\Projects\GroundMesh-DEV> & 'C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1' -Count 400
 **********************
@@ -381,21 +399,3 @@ Enumerating objects: 9, done.
  2 files changed, 415 insertions(+), 2 deletions(-)
 [bridge-public 40a18e7] ﻿publish tail snapshot (unlocked read + fallback)
 
-
-PS C:\Projects\GroundMesh-DEV> pt
-**********************
-Command start time: 20250911195009
-**********************
-PS C:\Projects\GroundMesh-DEV> # Publish now (eyes auto-refresh)
-**********************
-Command start time: 20250911195009
-**********************
-'@ | Set-Content -Encoding UTF8 (Join-Path $Tools 'publish-tail.ps1')
-Pop-Location
-Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
-& git push -u origin bridge-public
-& git commit -F $MsgFile
-& git add public-bridge\tail.md
-& git add public-bridge\tail.txt
-& git checkout bridge-public | Out-Null
-Set-Content -Path $MsgFile -Value 'publish tail snapshot (unlocked read + fallback)' -Encoding UTF8
