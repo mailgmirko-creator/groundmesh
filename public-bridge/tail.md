@@ -1,190 +1,8 @@
 # PowerShell Transcript Tail (Aggregated)
 
-- Updated: 2025-09-11 20:56:48
+- Updated: 2025-09-11 21:06:53
 
 ```text
-$Failed    = Join-Path $RepoRoot $FailedRel
-
-# Ensure dirs exist
-$null = New-Item -ItemType Directory -Force -Path $Inbox,$Outbox,$Processed,$Failed
-
-function Write-ResultJson { param([string]$Path,[hashtable]$Obj)
-  $json = $Obj | ConvertTo-Json -Depth 8
-  [IO.File]::WriteAllText($Path, $json, [Text.UTF8Encoding]::new($false))
-}
-
-$jobFile = Get-ChildItem $Inbox -Filter *.json -ErrorAction SilentlyContinue | Sort-Object Name | Select-Object -First 1
-if (-not $jobFile) { Write-Host "No jobs in $Inbox"; exit 0 }
-
-Write-Host ("Picked job: {0}" -f $jobFile.Name)
-
-try { $job = Get-Content $jobFile.FullName -Raw | ConvertFrom-Json }
-catch {
-  Write-Host ("Invalid job JSON: {0}" -f $jobFile.Name)
-  Move-Item $jobFile.FullName (Join-Path $Failed $jobFile.Name) -Force
-  exit 1
-}
-
-$jobType = $job.job_type
-$started = Get-Date
-
-switch ($jobType) {
-  'tsl_principles_learn' {
-    $inYaml  = Join-Path $RepoRoot $job.inputs.principles_yaml
-    $outDir  = Join-Path $RepoRoot $job.outputs.artifact_dir
-    $model   = Join-Path $outDir ($job.outputs.model_file)
-
-    New-Item -ItemType Directory -Force -Path $outDir | Out-Null
-
-    $py = Get-Command python -ErrorAction SilentlyContinue
-    if (-not $py) { throw "Python not found on PATH." }
-
-    & python (Join-Path $RepoRoot "apps\tsl\tsl_core\learner.py") $inYaml $outDir
-    if ($LASTEXITCODE -ne 0) { throw "Learner failed with exit code $LASTEXITCODE." }
-    if (-not (Test-Path $model)) { throw "Model file missing after run: $model" }
-
-    $size = (Get-Item $model).Length
-    $res  = @{
-      job_type = $jobType
-      started  = $started.ToString("s")
-      finished = (Get-Date).ToString("s")
-      status   = "success"
-      outputs  = @{ model_file = $model; size_bytes = $size }
-    }
-    $outFile = Join-Path $Outbox ("result_" + [IO.Path]::GetFileNameWithoutExtension($jobFile.Name) + ".json")
-    Write-ResultJson -Path $outFile -Obj $res
-    Move-Item $jobFile.FullName (Join-Path $Processed $jobFile.Name) -Force
-    Write-Host ("Job OK -> {0}" -f $outFile)
-  }
-  default {
-    $res = @{
-      job_type = $jobType
-      started  = $started.ToString("s")
-      finished = (Get-Date).ToString("s")
-      status   = "unsupported_job_type"
-    }
-    $outFile = Join-Path $Outbox ("result_" + [IO.Path]::GetFileNameWithoutExtension($jobFile.Name) + ".json")
-    Write-ResultJson -Path $outFile -Obj $res
-    Move-Item $jobFile.FullName (Join-Path $Failed $jobFile.Name) -Force
-    Write-Host ("Unsupported job type: {0}" -f $jobType)
-  }
-}
-'@ | Set-Content -Encoding UTF8 (Join-Path $Tools "grid-worker.ps1")
-**********************
-Command start time: 20250911203949
-**********************
-PS C:\Projects\GroundMesh-DEV> # Commit the fixed worker + .gitkeep files
-**********************
-Command start time: 20250911203949
-**********************
-PS C:\Projects\GroundMesh-DEV> $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
-**********************
-Command start time: 20250911203949
-**********************
-PS C:\Projects\GroundMesh-DEV> Set-Content -Path $MsgFile -Encoding UTF8 -Value "fix(grid): absolute repo paths and ensured outbox; add .gitkeep"
-**********************
-Command start time: 20250911203949
-**********************
-PS C:\Projects\GroundMesh-DEV> git add tools/grid-worker.ps1 grid/**/.gitkeep
-
-**********************
-Command start time: 20250911203949
-**********************
-PS C:\Projects\GroundMesh-DEV> git commit -F $MsgFile
-
-**********************
-Command start time: 20250911203949
-**********************
-PS C:\Projects\GroundMesh-DEV> git push -u origin dev
-
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> # Enqueue a fresh job, run one cycle, refresh eyes so I can see it
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> $Stamp  = Get-Date -Format "yyyyMMdd_HHmmss"
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> $Inbox  = Join-Path $DevRepo "grid\inbox"
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> $JobEnq = Join-Path $Inbox ("tsl_principles_learn_" + $Stamp + ".json")
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> Copy-Item "apps/tsl/jobs/learn_principles.json" $JobEnq -Force
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> & "C:\Projects\GroundMesh-DEV\tools\grid-worker.ps1"
-Picked job: tsl_principles_learn_20250911_203952.json
-
-Job OK -> C:\Projects\GroundMesh-DEV\grid\outbox\result_tsl_principles_learn_20250911_203952.json
-**********************
-Command start time: 20250911203952
-**********************
-PS C:\Projects\GroundMesh-DEV> pt
-
-
-
-
-**********************
-Command start time: 20250911205647
-**********************
-PS C:\Projects\GroundMesh-DEV> # === Upgrade publisher: commit-pinned URLs + cachebuster + latest.json pointer ===
-**********************
-Command start time: 20250911205647
-**********************
-PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
-**********************
-Command start time: 20250911205647
-**********************
-PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
-**********************
-Command start time: 20250911205647
-**********************
-PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
-**********************
-Command start time: 20250911205647
-**********************
-PS C:\Projects\GroundMesh-DEV> @'
-param(
-  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
-  [Alias("Lines")][int]$Count = 400,
-  [int]$LookBackFiles = 6,
-  [string]$WorktreeRoot = "C:\Projects\GroundMesh-DEV\.bridge-wt"
-)
-
-function Read-UnlockedText {
-  param([string]$Path)
-  try {
-    $fs = New-Object System.IO.FileStream($Path,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::ReadWrite)
-    try { $sr = New-Object IO.StreamReader($fs,[Text.Encoding]::UTF8,$true); $t=$sr.ReadToEnd(); $sr.Close(); return $t }
-    finally { $fs.Close() }
-  } catch { return $null }
-}
-
-# 1) Collect newest-by-name transcripts
-$all = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue
-if (-not $all) { Write-Output 'No transcript found.'; exit 1 }
-$pick = $all | Sort-Object Name -Descending | Select-Object -First $LookBackFiles
-
-# 2) Merge lines and take global tail
-$lines  = New-Object System.Collections.Generic.List[string]
-foreach ($f in $pick) {
-  $t = Read-UnlockedText -Path $f.FullName
   if ($t) {
     $parts = [Text.RegularExpressions.Regex]::Split($t,'\r?\n')
     foreach ($p in $parts) { if ($p -ne $null) { $lines.Add($p) | Out-Null } }
@@ -271,6 +89,188 @@ Command start time: 20250911205647
 PS C:\Projects\GroundMesh-DEV> # Publish now so I can read it immediately
 **********************
 Command start time: 20250911205647
+**********************
+PS C:\Projects\GroundMesh-DEV> pt
+
+
+
+
+
+
+
+RAW (cachebuster): https://raw.githubusercontent.com/mailgmirko-creator/groundmesh/bridge-public/public-bridge/tail.txt?ts=20250911205648
+RAW (commit):      https://raw.githubusercontent.com/mailgmirko-creator/groundmesh/893ad756fb47bf2aa6dc9e201440d6245535288c/public-bridge/tail.txt
+PRETTY (commit):   https://github.com/mailgmirko-creator/groundmesh/blob/893ad756fb47bf2aa6dc9e201440d6245535288c/public-bridge/tail.md
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> # Read the cache-proof pointers your publisher wrote
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> $latestPath = "C:\Projects\GroundMesh-DEV\.bridge-wt\public-bridge\latest.json"
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> $latest = Get-Content $latestPath -Raw | ConvertFrom-Json
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> "Commit:        $($latest.commit)"
+Commit:        893ad756fb47bf2aa6dc9e201440d6245535288c
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> "RAW (cb):      $($latest.raw_cachebuster_url)"
+RAW (cb):      https://raw.githubusercontent.com/mailgmirko-creator/groundmesh/bridge-public/public-bridge/tail.txt?ts=20250911205648
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> "RAW (commit):  $($latest.raw_commit_url)"
+RAW (commit):  https://raw.githubusercontent.com/mailgmirko-creator/groundmesh/893ad756fb47bf2aa6dc9e201440d6245535288c/public-bridge/tail.txt
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> "PRETTY (commit): $($latest.pretty_commit_url)"
+PRETTY (commit): https://github.com/mailgmirko-creator/groundmesh/blob/893ad756fb47bf2aa6dc9e201440d6245535288c/public-bridge/tail.md
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> # Fetch the cache-busted tail and show top lines (should be the newest)
+**********************
+Command start time: 20250911210125
+**********************
+PS C:\Projects\GroundMesh-DEV> (Invoke-WebRequest $latest.raw_cachebuster_url).Content -split "`r?`n" | Select-Object -First 8
+AGGREGATED | Updated: 2025-09-11 20:56:48
+
+
+
+-a----        11/09/2025     17:12           1848 reader.ps1
+----                 -------------         ------ ----
+Mode                 LastWriteTime         Length Name
+
+**********************
+Command start time: 20250911210649
+**********************
+PS C:\Projects\GroundMesh-DEV> # === Continuous "eyes": 30s auto-publisher window ===
+**********************
+Command start time: 20250911210649
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911210649
+**********************
+PS C:\Projects\GroundMesh-DEV> cd $DevRepo
+**********************
+Command start time: 20250911210649
+**********************
+PS C:\Projects\GroundMesh-DEV> git checkout dev
+
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> # Write the auto-publisher (loops and calls publish-tail.ps1 every N seconds)
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools = Join-Path $DevRepo "tools"
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> @'
+param(
+  [int]$IntervalSec = 30,
+  [string]$Publisher = "C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1"
+)
+$ErrorActionPreference = "SilentlyContinue"
+Write-Host ("EYES AUTOPUB starting; interval={0}s" -f $IntervalSec)
+while ($true) {
+  try {
+    & $Publisher
+  } catch {
+    Write-Host ("EYES AUTOPUB error: " + $_.Exception.Message)
+  }
+  Start-Sleep -Seconds $IntervalSec
+}
+'@ | Set-Content -Encoding UTF8 (Join-Path $Tools "eyes-autopub.ps1")
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> # Commit it
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> $MsgFile = Join-Path $DevRepo "COMMITMSG.txt"
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> Set-Content -Path $MsgFile -Encoding UTF8 -Value "feat(eyes): add 30s auto-publisher (eyes-autopub.ps1)"
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> git add tools/eyes-autopub.ps1
+
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> git commit -F $MsgFile
+
+**********************
+Command start time: 20250911210650
+**********************
+PS C:\Projects\GroundMesh-DEV> git push -u origin dev
+
+**********************
+Command start time: 20250911210652
+**********************
+PS C:\Projects\GroundMesh-DEV> Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+**********************
+Command start time: 20250911210652
+**********************
+PS C:\Projects\GroundMesh-DEV> # Launch a dedicated window that runs the auto-publisher (keep this window open)
+**********************
+Command start time: 20250911210652
+**********************
+PS C:\Projects\GroundMesh-DEV> $Exe = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+**********************
+Command start time: 20250911210652
+**********************
+PS C:\Projects\GroundMesh-DEV> $Args = '-NoLogo -NoExit -ExecutionPolicy Bypass -Command "Set-Location ''C:\Projects\GroundMesh-DEV''; & ''C:\Projects\GroundMesh-DEV\tools\eyes-autopub.ps1'' -IntervalSec 30"'
+**********************
+Command start time: 20250911210652
+**********************
+PS C:\Projects\GroundMesh-DEV> Start-Process -WindowStyle Normal -FilePath $Exe -ArgumentList $Args
+>> TerminatingError(Start-Process): "Cannot validate argument on parameter 'ArgumentList'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+Start-Process : Cannot validate argument on parameter 'ArgumentList'. The argument is null, empty, or an element of the 
+argument collection contains a null value. Supply a collection that does not contain any null values and then try the 
+command again.
+At line:1 char:64
++ Start-Process -WindowStyle Normal -FilePath $Exe -ArgumentList $Args
++                                                                ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Start-Process], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.StartProcessCommand
+Start-Process : Cannot validate argument on parameter 'ArgumentList'. The
+argument is null, empty, or an element of the argument collection contains a
+null value. Supply a collection that does not contain any null values and then
+try the command again.
+At line:1 char:64
++ Start-Process -WindowStyle Normal -FilePath $Exe -ArgumentList $Args
++                                                                ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Start-Process], ParameterBinding
+   ValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerSh
+   ell.Commands.StartProcessCommand
+
+**********************
+Command start time: 20250911210652
+**********************
+PS C:\Projects\GroundMesh-DEV> # Also publish once now, so I can see it immediately
+**********************
+Command start time: 20250911210652
 **********************
 PS C:\Projects\GroundMesh-DEV> pt
 
