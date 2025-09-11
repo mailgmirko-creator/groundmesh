@@ -1,2 +1,208 @@
-SRC: ps_transcript_20250911_194704.txt | Updated: 2025-09-11 19:47:04
+SRC: ps_transcript_20250911_194704.txt | Updated: 2025-09-11 19:50:09
 
+PS C:\Projects\GroundMesh-DEV> pt
+**********************
+Command start time: 20250911195009
+**********************
+PS C:\Projects\GroundMesh-DEV> # Publish now (eyes auto-refresh)
+**********************
+Command start time: 20250911195009
+**********************
+'@ | Set-Content -Encoding UTF8 (Join-Path $Tools 'publish-tail.ps1')
+Pop-Location
+Remove-Item $MsgFile -Force -ErrorAction SilentlyContinue
+& git push -u origin bridge-public
+& git commit -F $MsgFile
+& git add public-bridge\tail.md
+& git add public-bridge\tail.txt
+& git checkout bridge-public | Out-Null
+Set-Content -Path $MsgFile -Value 'publish tail snapshot (unlocked read + fallback)' -Encoding UTF8
+$MsgFile = Join-Path (Get-Location) 'COMMITMSG.txt'
+Push-Location (Join-Path $PSScriptRoot '..')
+# 5) Commit & push (message file to avoid quoting issues)
+
+[System.IO.File]::WriteAllLines($MdFile, $mdList, $enc)
+$mdList.Add('```') | Out-Null
+foreach($line in $redacted){ $mdList.Add($line) | Out-Null }
+$mdList.Add('```text') | Out-Null
+$mdList.Add('') | Out-Null
+$mdList.Add( ('- Source file: {0}' -f $srcName) ) | Out-Null
+$mdList.Add( ('- Updated: {0}' -f $updated) ) | Out-Null
+$mdList.Add('') | Out-Null
+$mdList.Add('# PowerShell Transcript Tail') | Out-Null
+$mdList  = New-Object System.Collections.Generic.List[string]
+# tail.md — normal order with header (for humans)
+
+[System.IO.File]::WriteAllLines($TxtFile, $txtOut, $enc)
+$txtOut = @("SRC: $srcName | Updated: $updated") + $rev
+$rev = $redacted.Clone(); [Array]::Reverse($rev)
+# tail.txt — newest-first with header (for the eyes)
+
+$updated = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+$enc = New-Object System.Text.UTF8Encoding($false)
+New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
+$MdFile  = Join-Path $OutDir 'tail.md'
+$TxtFile = Join-Path $OutDir 'tail.txt'
+$OutDir  = Join-Path $PSScriptRoot '..\public-bridge'
+# 4) Write outputs
+
+}
+  $x
+  $x = [regex]::Replace($x, '([A-Za-z]:\\Users\\[^\\]+\\)', '[HOME]\\')
+  $x = [regex]::Replace($x, 'Bearer\s+[A-Za-z0-9\._\-]+', 'Bearer [REDACTED]')
+  $x = [regex]::Replace($x, 'sk-[A-Za-z0-9\-_]{20,}', '[REDACTED_KEY]')
+  $x = [regex]::Replace($x, 'ghp_[A-Za-z0-9]{36,}', '[REDACTED_GH_TOKEN]')
+  $x = $line
+$redacted = foreach($line in $tailLines){
+# 3) Redactions (per line)
+
+if (-not $tailLines) { $tailLines = @('<empty transcript>') }
+$tailLines = $allLines | Where-Object { $_ -ne $null } | Select-Object -Last $Count
+$allLines = [System.Text.RegularExpressions.Regex]::Split($content, '\r?\n')
+# 2) Split content on CRLF/LF (regex)
+
+$srcName = $chosen.Name
+if (-not $chosen) { Write-Output 'Could not read any transcript (locked).'; exit 1 }
+}
+  if ($content) { $chosen = $f; break }
+  $content = Read-UnlockedText -Path $f.FullName
+foreach ($f in $files | Select-Object -First 5) {
+$chosen = $null; $content = $null
+
+if (-not $files) { Write-Output 'No transcript found.'; exit 1 }
+$files = Get-ChildItem -Path $TranscriptDir -Filter 'ps_transcript_*.txt' -ErrorAction SilentlyContinue | Sort-Object Name -Descending
+# 1) Pick latest transcript by NAME; try newest→older until one can be read
+
+}
+  }
+    return $null
+  } catch {
+    } finally { $fs.Close() }
+      return $text
+      $sr.Close()
+      $text = $sr.ReadToEnd()
+      $sr = New-Object System.IO.StreamReader($fs, [System.Text.Encoding]::UTF8, $true)
+    try {
+    $fs = New-Object System.IO.FileStream($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
+  try {
+  param([string]$Path)
+function Read-UnlockedText {
+
+)
+  [Alias("Lines")][int]$Count = 400
+  [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
+param(
+PS C:\Projects\GroundMesh-DEV> @'
+**********************
+Command start time: 20250911195009
+**********************
+PS C:\Projects\GroundMesh-DEV> New-Item -ItemType Directory -Force -Path $Tools | Out-Null
+**********************
+Command start time: 20250911195008
+**********************
+PS C:\Projects\GroundMesh-DEV> $Tools   = Join-Path $DevRepo "tools"
+**********************
+Command start time: 20250911195008
+**********************
+PS C:\Projects\GroundMesh-DEV> $DevRepo = "C:\Projects\GroundMesh-DEV"
+**********************
+Command start time: 20250911195008
+**********************
+PS C:\Projects\GroundMesh-DEV> # Overwrite publisher: read unlocked + fallback to previous transcript if newest is locked
+**********************
+Command start time: 20250911195008
+**********************
+branch 'bridge-public' set up to track 'origin/bridge-public'.
+   5fa157a..5fc8fa6  bridge-public -> bridge-public
+To github.com:mailgmirko-creator/groundmesh.git
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Writing objects: 100% (5/5), 560 bytes | 280.00 KiB/s, done.
+Compressing objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Counting objects: 100% (9/9), done.
+Enumerating objects: 9, done.
+ 2 files changed, 3 insertions(+), 260 deletions(-)
+[bridge-public 5fc8fa6] ﻿publish tail snapshot (latest-by-name + stamped)
+
+
+
+    + FullyQualifiedErrorId : ArgumentNullException
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
++                           ~~~~~~~~~~~~~~~~~~~~~~
++ $rev = $redacted.Clone(); [Array]::Reverse($rev)
+At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:38 char:27
+Parameter name: array"
+Exception calling "Reverse" with "1" argument(s): "Value cannot be null.
+    + FullyQualifiedErrorId : ArgumentNullException
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
++                           ~~~~~~~~~~~~~~~~~~~~~~
++ $rev = $redacted.Clone(); [Array]::Reverse($rev)
+At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:38 char:27
+Parameter name: array"
+Exception calling "Reverse" with "1" argument(s): "Value cannot be null.
+
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
++ ~~~~~~~~~~~~~~~~~~~~~~~~
++ $rev = $redacted.Clone(); [Array]::Reverse($rev)
+At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:38 char:1
+You cannot call a method on a null-valued expression.
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
++ ~~~~~~~~~~~~~~~~~~~~~~~~
++ $rev = $redacted.Clone(); [Array]::Reverse($rev)
+At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:38 char:1
+You cannot call a method on a null-valued expression.
+
+    + FullyQualifiedErrorId : IOException
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ $allLines = [System.Text.RegularExpressions.Regex]::Split(
+At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:13 char:1
+because it is being used by another process."
+the file 'C:\Projects\Bridge\transcripts\ps_transcript_20250911_194704.txt'
+Exception calling "ReadAllText" with "1" argument(s): "The process cannot access
+    + FullyQualifiedErrorId : IOException
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ $allLines = [System.Text.RegularExpressions.Regex]::Split(
+At C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1:13 char:1
+'C:\Projects\Bridge\transcripts\ps_transcript_20250911_194704.txt' because it is being used by another process."
+Exception calling "ReadAllText" with "1" argument(s): "The process cannot access the file 
+PS C:\Projects\GroundMesh-DEV> pt
+**********************
+Command start time: 20250911194704
+**********************
+PS C:\Projects\GroundMesh-DEV> # Publish the latest tail (newest-first in tail.txt) so I can read it automatically
+**********************
+Command start time: 20250911194704
+**********************
+EYES HEARTBEAT 2025-09-11 19:47:04
+PS C:\Projects\GroundMesh-DEV> Write-Host ("EYES HEARTBEAT " + (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))
+**********************
+Command start time: 20250911194704
+**********************
+PS C:\Projects\GroundMesh-DEV> # Write a visible heartbeat line into the transcript for this window
+**********************
+Command start time: 20250911194704
+**********************
+🟢 Auto-transcript to: C:\Projects\Bridge\transcripts\ps_transcript_20250911_194704.txt
+**********************
+SerializationVersion: 1.1.0.1
+PSRemotingProtocolVersion: 2.3
+WSManStackVersion: 3.0
+CLRVersion: 4.0.30319.42000
+BuildVersion: 10.0.19041.6328
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6328
+PSEdition: Desktop
+PSVersion: 5.1.19041.6328
+Process ID: 6980
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Machine: DESKTOP-C9G76VK (Microsoft Windows NT 10.0.19045.0)
+Configuration Name: 
+RunAs User: DESKTOP-C9G76VK\mailg
+Username: DESKTOP-C9G76VK\mailg
+Start time: 20250911194704
+Windows PowerShell transcript start
+**********************
