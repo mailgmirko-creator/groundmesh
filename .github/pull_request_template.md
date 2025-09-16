@@ -1,13 +1,13 @@
 ﻿## Summary
-Explain what this PR changes and why.
+What does this change do and why?
 
-## Checklist
-- [ ] Follows the Constitution principles (commons, transparency, balance)
-- [ ] Docs updated if needed
-- [ ] Small, focused changes
+## Linked Issue
+Closes #<issue-number>
 
-## Testing
-How did you test this?
+## Acceptance Checklist
+- [ ] I can perform the main action and see the expected result
+- [ ] Clear error messages for invalid input
+- [ ] Works in Brave with shields up (if UI)
+- [ ] Docs updated (if needed)
 
-## Related
-Link to issues/PRs/discussions.
+## Screenshots / Notes

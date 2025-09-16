@@ -1,23 +1,48 @@
-﻿name: Feature request
-description: Propose an enhancement aligned with balance & transparency
-labels: [enhancement]
+﻿name: Feature / Improvement
+description: Turn words into code by filling this friendly spec.
+title: "[Feature]: "
+labels: ["spec","ready-for-CI"]
 body:
-  - type: textarea
-    id: problem
+  - type: input
+    id: purpose
     attributes:
-      label: Problem / opportunity
-      description: What user problem or balance goal does this address?
-      placeholder: Who benefits? What improves?
+      label: Purpose (why)
+      placeholder: What pain or possibility does this address?
     validations:
       required: true
   - type: textarea
-    id: proposal
+    id: user_story
     attributes:
-      label: Proposed solution
-      placeholder: What should change? Any alternatives?
-      render: markdown
+      label: User Story
+      description: As a <who>, I want <what>, so that <why>.
+      placeholder: As a camper, I want a map pin so that I can join easily.
+    validations:
+      required: true
   - type: textarea
-    id: scope
+    id: inputs
     attributes:
-      label: Scope & impact
-      placeholder: Small/medium/large? Risks? Dependencies?
+      label: Inputs
+      placeholder: Buttons, fields, events, data coming in.
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Outputs
+      placeholder: UI changes, saved files, logs, API responses.
+  - type: checkboxes
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria (check all when done)
+      options:
+        - label: I can perform the main action and see the expected result.
+        - label: Error states show clear, human messages.
+        - label: Works in Brave with shields up (if UI).
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-Goals
+      placeholder: What we will not do in this iteration.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / Examples
+      placeholder: Links, sketches, example text/UI states.
