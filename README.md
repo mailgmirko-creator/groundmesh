@@ -71,3 +71,5 @@ This project is one node in a global effort to:
 ?? **Start here:** [https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+](https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+)
 
 More details: [docs/contributors-quickstart.md](docs/contributors-quickstart.md)
+
+**Join the weave:** [Contributors — Start Here](docs/contribute.html)
