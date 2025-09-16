@@ -60,3 +60,14 @@ This project is one node in a global effort to:
 
 
 [![pages deploy](https://github.com/mailgmirko-creator/groundmesh/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/mailgmirko-creator/groundmesh/actions/workflows/pages/pages-build-deployment)
+
+## ?? Contribute in 60 seconds
+
+1. Open a **Feature / Improvement** issue  
+2. Describe the **Purpose**, **User Story**, **Inputs/Outputs**  
+3. Add 2–3 **Acceptance Criteria**  
+4. Submit — words ? code (we’ll open a PR)
+
+?? **Start here:** [https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+](https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+)
+
+More details: [docs/contributors-quickstart.md](docs/contributors-quickstart.md)
