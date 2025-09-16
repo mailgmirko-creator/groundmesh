@@ -73,3 +73,5 @@ This project is one node in a global effort to:
 More details: [docs/contributors-quickstart.md](docs/contributors-quickstart.md)
 
 **Join the weave:** [Contributors — Start Here](docs/contribute.html)
+
+**Docs site:** https://mailgmirko-creator.github.io/groundmesh — [Contributors page](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
