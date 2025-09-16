@@ -1,0 +1,77 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>GroundMesh — Live Ledgers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 20px; }
+      h1 { margin-bottom: 0.2rem; }
+      .muted { color: #666; margin-top: 0; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 16px; }
+      .card { border: 1px solid #ddd; border-radius: 12px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+      .tag { font-size: 12px; padding: 2px 6px; border-radius: 999px; border: 1px solid #ccc; display: inline-block; margin-right: 6px; }
+      .row { margin: 6px 0; }
+      .pill { display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid #ddd; }
+      .opposite { font-weight: 600; }
+      .ts { font-size: 12px; color: #666; }
+      .ledger-title { margin-top: 28px; }
+    </style>
+  </head>
+  <body>
+    <h1>GroundMesh — Live Ledgers</h1>
+    <p class="muted">Powered by the Harmony Engine · Transparency Grid</p>
+
+    <div id="content"></div>
+
+    <script>
+      async function fetchRecent() {
+        const res = await fetch('/api/recent');
+        return res.json();
+      }
+
+      function renderLedger(title, items) {
+        const cards = items.map(item => {
+          const rec = item.record || {};
+          const event = rec.event || {};
+          const decision = rec.decision || {};
+          const ts = rec.ts || '';
+          const type = (event.type || '').toUpperCase();
+          const opp = (decision.opposite || '').toUpperCase();
+          const note = (event.context && (event.context.note || event.context.line)) || '';
+          return `
+            <div class="card">
+              <div class="row"><span class="pill">${type}</span> → <span class="pill opposite">${opp}</span></div>
+              <div class="row ts">${ts}</div>
+              <div class="row">${note ? note : ''}</div>
+              <div class="row">
+                ${(decision.plan || []).slice(0,3).map(s => `<span class="tag">${s}</span>`).join('')}
+              </div>
+            </div>
+          `;
+        }).join('');
+        return `
+          <h2 class="ledger-title">${title}</h2>
+          <div class="grid">${cards || '<div class="muted">No entries yet.</div>'}</div>
+        `;
+      }
+
+      async function tick() {
+        try {
+          const data = await fetchRecent();
+          const html = [
+            renderLedger('System Ledger', data.system),
+            renderLedger('Individual Ledger', data.individual),
+            renderLedger('Planet Ledger', data.planet),
+          ].join('');
+          document.getElementById('content').innerHTML = html;
+        } catch (e) {
+          document.getElementById('content').innerHTML = '<div class="muted">Failed to load ledger.</div>';
+        }
+      }
+
+      tick();
+      setInterval(tick, 2500);
+    </script>
+  </body>
+</html>

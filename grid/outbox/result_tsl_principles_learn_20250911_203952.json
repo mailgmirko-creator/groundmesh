@@ -1,0 +1,10 @@
+{
+    "outputs":  {
+                    "size_bytes":  5331,
+                    "model_file":  "C:\\Projects\\GroundMesh-DEV\\apps\\tsl\\artifacts\\principles_model.json"
+                },
+    "status":  "success",
+    "started":  "2025-09-11T20:39:52",
+    "finished":  "2025-09-11T20:39:52",
+    "job_type":  "tsl_principles_learn"
+}

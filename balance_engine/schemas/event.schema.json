@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "context",
+    "timestamp"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "actor_id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "lie",
+        "steal",
+        "kill",
+        "destroy",
+        "truth",
+        "stewardship",
+        "care",
+        "creation"
+      ]
+    },
+    "context": {
+      "type": "object"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "layer_hint": {
+      "type": "string",
+      "enum": [
+        "individual",
+        "system",
+        "planet"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
