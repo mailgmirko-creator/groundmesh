@@ -1,3 +1,5 @@
+[![Contribute](https://img.shields.io/badge/Contribute-Start%20Here-brightgreen)](https://mailgmirko-creator.github.io/groundmesh/contribute.html) [![Docs](https://img.shields.io/badge/Docs-Open-blue)](https://mailgmirko-creator.github.io/groundmesh/)
+
 
 # üåç GroundMesh / Tranquility Protocol
 
@@ -75,3 +77,4 @@ More details: [docs/contributors-quickstart.md](docs/contributors-quickstart.md)
 **Join the weave:** [Contributors ó Start Here](docs/contribute.html)
 
 **Docs site:** https://mailgmirko-creator.github.io/groundmesh ó [Contributors page](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
+
