@@ -1,0 +1,29 @@
+﻿name: Add my pin
+description: Add your city/country to the GroundMesh living map
+title: "[Pin]: <City, Country>"
+labels: ["map-pin","ready-for-CI"]
+body:
+  - type: input
+    id: city_country
+    attributes:
+      label: City & Country
+      placeholder: "Tel Aviv, Israel"
+    validations:
+      required: true
+  - type: input
+    id: display_name
+    attributes:
+      label: Name (optional)
+      placeholder: "First name or nickname"
+  - type: textarea
+    id: note
+    attributes:
+      label: Short note (optional)
+      placeholder: "How you heard about us (e.g., met at Boka Camping)."
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent
+      options:
+        - label: I consent to show my pin on the public map with the info above.
+          required: true
