@@ -1,28 +1,26 @@
 ﻿<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GroundMesh — Contribute in 60 seconds</title>
   <style>
     :root { --bg:#0b0b0c; --card:#141417; --text:#e9e9ee; --muted:#b8b8c3; --accent:#6ee7b7; --accent2:#93c5fd; }
-    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;line-height:1.4}
-    .wrap{max-width:920px;margin:0 auto;padding:24px}
-    .hero{padding:28px 20px 0}
-    h1{font-size:clamp(1.6rem,2.5vw,2.2rem);margin:0 0 8px}
-    p.lead{color:var(--muted);margin:0 0 22px;max-width:60ch}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin:18px 0 28px}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;line-height:1.45}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 20px}
+    .hero{text-align:left}
+    h1{font-size:clamp(1.6rem,2.8vw,2.2rem);margin:0 0 8px}
+    p.lead{color:var(--muted);margin:0 0 16px;max-width:68ch}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0 6px}
+    .btn{display:inline-block;text-decoration:none;padding:12px 16px;border-radius:12px;border:1px solid #2a2a33;background:#1a1a20;color:var(--text);font-weight:600}
+    .btn:hover{border-color:#3a3a44}
+    .pill{display:inline-block;background:#121218;border:1px solid #22222a;border-radius:999px;padding:6px 10px;color:var(--muted);font-size:.9rem;margin-top:8px}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin:20px 0 0}
     .card{background:var(--card);border:1px solid #23232a;border-radius:16px;padding:18px;box-shadow:0 1px 0 #1c1c22}
     .card h2{font-size:1.05rem;margin:0 0 8px}
     .card p{margin:0 0 10px;color:var(--muted)}
-    .btn{display:inline-block;text-decoration:none;padding:12px 16px;border-radius:12px;border:1px solid #2a2a33;background:#1a1a20;color:var(--text);font-weight:600}
-    .btn:hover{border-color:#3a3a44}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-    .pill{display:inline-block;background:#121218;border:1px solid #22222a;border-radius:999px;padding:6px 10px;color:var(--muted);font-size:.9rem}
-    .ok{color:var(--accent)}
-    .foot{margin-top:22px;color:#9aa0a6}
-    code{background:#101015;border:1px solid #1f1f26;padding:2px 6px;border-radius:6px}
-    ul{margin:8px 0 0 18px}
+    ul{margin:6px 0 0 18px}
     a.inline{color:var(--accent2)}
   </style>
 </head>
@@ -30,45 +28,39 @@
   <div class="wrap">
     <div class="hero">
       <h1>Write words → see code</h1>
-      <p class="lead">Anyone can help GroundMesh. In 60 seconds you can open a feature request that we’ll translate into tasks and code.</p><p class="lead" style="margin-top:8px"><strong>Two simple paths:</strong> <em>Easy</em> — add your pin on Google Maps; <em>Advanced</em> — open a GitHub issue for structured tracking.</p>
-      <div class="cta">   <a class="btn" href="https://github\.com/mailgmirko-creator/groundmesh/issues/new\?template=feature_request\.yml&title=%5BFeature%5D%3A\+" rel="noopener">New Feature / Improvement</a>   <a class="btn" href="https://github\.com/mailgmirko-creator/groundmesh/issues/new\?template=add_my_pin\.yml"   rel="noopener">Add my pin</a>   <a class="btn" href="contributors-quickstart\.md" rel="noopener">Quickstart (Markdown)</a> </div>
-      <div class="pill">Brave-friendly · No trackers · Human-readable first</div>
+      <p class="lead">Anyone can help GroundMesh. In 60 seconds you can open a feature request or add your pin to the living map.</p>
+
+      <div class="cta">
+        <a class="btn" href="mailto:mailgmirko@gmail.com?subject=Add%20my%20pin%20to%20the%20Living%20Map&body=City%2FCountry%3A%20%0AName%20(optional)%3A%20%0ANote%20(optional)%3A%20%0A%0AConsent%3A%20I%20agree%20to%20show%20this%20pin%20on%20the%20public%20map." rel="noopener">Add my pin (Quick Form)</a>
+        <a class="btn" href="https://github.com/mailgmirko-creator/groundmesh/issues/new?template=add_my_pin.yml" rel="noopener">Add my pin (GitHub)</a>
+        <a class="btn" href="map.html" rel="noopener">See the living map</a>
+        <a class="btn" href="https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+" rel="noopener">New Feature / Improvement</a>
+        <a class="btn" href="contributors-quickstart.md" rel="noopener">Quickstart (Markdown)</a>
+        <a class="btn" href="docs/get-started/index.md" rel="noopener">Developer Get Started</a>
+      </div>
+
+      <div class="pill">Two paths: Quick Form (no login) · GitHub (trackable)</div>
     </div>
 
     <div class="grid">
       <div class="card">
-        <h2>How to help (in 4 steps)</h2>
-        <ul>
-          <li>Open <a class="inline" href="https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+">New Issue → Feature / Improvement</a></li>
-          <li>Describe <em>Purpose</em>, <em>User Story</em>, <em>Inputs/Outputs</em></li>
-          <li>Add 2–3 <em>Acceptance Criteria</em></li>
-          <li>Submit — we turn it into a PR</li>
-        </ul>
+        <h2>Quick Form (anyone)</h2>
+        <p>Send your city/country and a short note. We’ll place the pin and keep the map tidy.</p>
+        <p><a class="inline" href="mailto:mailgmirko@gmail.com?subject=Add%20my%20pin%20to%20the%20Living%20Map&body=City%2FCountry%3A%20%0AName%20(optional)%3A%20%0ANote%20(optional)%3A%20%0A%0AConsent%3A%20I%20agree%20to%20show%20this%20pin%20on%20the%20public%20map.">Open the Quick Form</a></p>
       </div>
 
       <div class="card">
-        <h2>What happens next?</h2>
-        <p>We convert your words into a small task list, generate code/UX, and open a pull request for you to review.</p>
-        <p class="ok">You’ll see: <code>OK: proposals/&lt;your-spec&gt;.md</code> in our validator.</p>
+        <h2>GitHub (structured)</h2>
+        <p>Prefer a trackable request? Open a map pin issue. It creates a clear queue and audit trail.</p>
+        <p><a class="inline" href="https://github.com/mailgmirko-creator/groundmesh/issues/new?template=add_my_pin.yml">Open Add-my-pin issue</a></p>
       </div>
 
       <div class="card">
-        <h2>Prefer a file instead of an Issue?</h2>
-        <p>Copy the template: <code>proposals/spec-template.md</code>, write your spec, and open a PR.</p>
-        <p>CI will gently warn if key sections are missing.</p>
+        <h2>Feature ideas</h2>
+        <p>Write what you want to see — Purpose, User Story, Inputs/Outputs, and 2–3 Acceptance Criteria.</p>
+        <p><a class="inline" href="https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+">Open Feature / Improvement</a></p>
       </div>
-    </div>
-
-    <div class="foot">
-      Tip: works even on slow connections, with privacy tools enabled. If something feels rough, open a quick issue and tell us.
     </div>
   </div>
 </body>
 </html>
-
-
-
-
-
-
-
