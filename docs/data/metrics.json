@@ -1,0 +1,11 @@
+﻿{
+    "last_updated_utc":  "2025-09-19T22:11:27Z",
+    "totals":  {
+                   "nodes_online":  0,
+                   "nodes_registered":  0,
+                   "jobs_completed":  0,
+                   "donated_cpu_hours":  0,
+                   "donated_gpu_hours":  0
+               },
+    "note":  "Stub metrics for public transparency demo. Replace via your internal publisher when ready."
+}

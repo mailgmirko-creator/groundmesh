@@ -223,6 +223,44 @@
                            "path":  "",
                            "url":  "",
                            "depends":  null
+                       },
+                       {
+                           "id":  [
+                                      "compute_page",
+                                      "Compute Transparency Page",
+                                      "web",
+                                      "live",
+                                      "docs/compute.html",
+                                      "https://mailgmirko-creator.github.io/groundmesh/compute.html",
+                                      [
+                                          "metrics_json"
+                                      ]
+                                  ],
+                           "name":  null,
+                           "type":  null,
+                           "status":  null,
+                           "path":  null,
+                           "url":  null,
+                           "depends":  null
+                       },
+                       {
+                           "id":  [
+                                      "metrics_json",
+                                      "Public Metrics JSON",
+                                      "data",
+                                      "live",
+                                      "docs/data/metrics.json",
+                                      "https://mailgmirko-creator.github.io/groundmesh/data/metrics.json",
+                                      [
+
+                                      ]
+                                  ],
+                           "name":  null,
+                           "type":  null,
+                           "status":  null,
+                           "path":  null,
+                           "url":  null,
+                           "depends":  null
                        }
                    ]
 }
