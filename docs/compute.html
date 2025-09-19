@@ -1,0 +1,46 @@
+﻿<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GroundMesh — Compute Transparency</title>
+<style>body{margin:0;background:#0b0b0c;color:#e9e9ee;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',sans-serif;line-height:1.45}.wrap{max-width:980px;margin:0 auto;padding:28px 20px}h1{font-size:24px;margin:0 0 8px}p{color:#b8b8c3}.card{background:#141417;border:1px solid #23232a;border-radius:14px;padding:16px;margin:12px 0}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.k{color:#b8b8c3}.btn{display:inline-block;text-decoration:none;padding:10px 14px;border-radius:10px;border:1px solid #2a2a33;background:#1a1a20;color:#e9e9ee;font-weight:600}</style>
+<div class="wrap">
+  <h1>Compute Transparency</h1>
+  <p>This page shows a public snapshot (non-sensitive) of the GroundMesh grid. Values update when we publish a new <code>docs/data/metrics.json</code>.</p>
+
+  <div id="panel" class="card">
+    <div id="updated" class="k">Loading…</div>
+    <div class="row">
+      <div><strong>Nodes online</strong><div id="nodes_online">—</div></div>
+      <div><strong>Nodes registered</strong><div id="nodes_registered">—</div></div>
+      <div><strong>Jobs completed</strong><div id="jobs_completed">—</div></div>
+      <div><strong>Donated CPU hours</strong><div id="donated_cpu_hours">—</div></div>
+      <div><strong>Donated GPU hours</strong><div id="donated_gpu_hours">—</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <a class="btn" href="data/metrics.json" rel="noopener">Open raw metrics JSON</a>
+    <a class="btn" href="https://mailgmirko-creator.github.io/groundmesh/contribute.html" rel="noopener">Back to Contributors</a>
+    <a class="btn" href="https://mailgmirko-creator.github.io/groundmesh/atlas/index.html" rel="noopener">Project Atlas</a>
+  </div>
+</div>
+
+<script>
+(async function(){
+  try{
+    const r = await fetch('data/metrics.json',{cache:'no-store'});
+    if(!r.ok) throw new Error('metrics fetch: '+r.status);
+    const j = await r.json();
+    const g = (id,v)=>document.getElementById(id).textContent = v;
+    g('updated', 'Last updated: ' + (j.last_updated_utc||'n/a'));
+    const t = j.totals||{};
+    g('nodes_online', t.nodes_online ?? '0');
+    g('nodes_registered', t.nodes_registered ?? '0');
+    g('jobs_completed', t.jobs_completed ?? '0');
+    g('donated_cpu_hours', t.donated_cpu_hours ?? '0');
+    g('donated_gpu_hours', t.donated_gpu_hours ?? '0');
+  }catch(e){
+    document.getElementById('panel').innerHTML = '<strong>Could not load metrics.json</strong><p class="k">Publish docs/data/metrics.json first, then refresh.</p>';
+  }
+})();
+</script>
+</html>

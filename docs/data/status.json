@@ -1,5 +1,5 @@
 ﻿{
-    "updated_utc":  "2025-09-19T21:49:28Z",
+    "updated_utc":  "2025-09-19T22:11:27Z",
     "components":  {
                        "contributors_page":  {
                                                  "status":  "green",
@@ -10,8 +10,8 @@
                                         "note":  "Embed OK; small text artifacts cleanup pending"
                                     },
                        "compute_page":  {
-                                            "status":  "red",
-                                            "note":  "Public page/metrics not wired yet"
+                                            "status":  "green",
+                                            "note":  "Page + metrics stub live"
                                         },
                        "atlas_page":  {
                                           "status":  "green",
