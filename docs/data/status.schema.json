@@ -1,0 +1,23 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Status",
+  "type": "object",
+  "required": ["updated_utc","components"],
+  "properties": {
+    "updated_utc": { "type": "string", "format": "date-time" },
+    "components": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["green","yellow","red","unknown"]
+          },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

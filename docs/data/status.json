@@ -1,0 +1,21 @@
+﻿{
+    "updated_utc":  "2025-09-19T21:49:28Z",
+    "components":  {
+                       "contributors_page":  {
+                                                 "status":  "green",
+                                                 "note":  "Visible and loads"
+                                             },
+                       "map_page":  {
+                                        "status":  "yellow",
+                                        "note":  "Embed OK; small text artifacts cleanup pending"
+                                    },
+                       "compute_page":  {
+                                            "status":  "red",
+                                            "note":  "Public page/metrics not wired yet"
+                                        },
+                       "atlas_page":  {
+                                          "status":  "green",
+                                          "note":  "Page published and loads"
+                                      }
+                   }
+}

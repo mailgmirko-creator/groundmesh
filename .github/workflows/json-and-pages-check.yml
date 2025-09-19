@@ -1,0 +1,27 @@
+﻿name: json-and-pages-check
+on:
+  push:
+    branches: [ dev, main, docs/** ]
+  pull_request:
+    branches: [ dev, main ]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JSON well-formed
+        run: |
+          set -e
+          for f in $(git ls-files "*.json"); do
+            echo "Checking $f"
+            python3 -c "import json,sys;json.load(open('$f'))"
+          done
+      - name: Report pages existence (best-effort)
+        run: |
+          set +e
+          BASE="https://'"$GITHUB_REPOSITORY_OWNER"'.github.io/'"$(basename "$GITHUB_REPOSITORY")"
+          for u in "$BASE/" "$BASE/contribute.html" "$BASE/map.html" "$BASE/atlas/index.html" "$BASE/compute.html"; do
+            echo "HEAD $u"
+            code=$(curl -s -o /dev/null -w "%{http_code}" -I "$u")
+            echo " -> $code"
+          done
