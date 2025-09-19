@@ -76,3 +76,7 @@ last_ipfs.json
 data/profiles.json
 sandboxes/TinySelfLearner_snapshot/web/stats.json
 sandboxes/TinySelfLearner_snapshot/web/app.py.bak-*
+# Ignore local bridge working tree and logs
+.bridge-wt/
+public-bridge/*.log
+public-bridge/*.txt

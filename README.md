@@ -1,3 +1,5 @@
+[![Contribute](https://img.shields.io/badge/Contribute-Start%20Here-brightgreen)](https://mailgmirko-creator.github.io/groundmesh/contribute.html) [![Docs](https://img.shields.io/badge/Docs-Open-blue)](https://mailgmirko-creator.github.io/groundmesh/)
+
 
 # üåç GroundMesh / Tranquility Protocol
 
@@ -60,3 +62,19 @@ This project is one node in a global effort to:
 
 
 [![pages deploy](https://github.com/mailgmirko-creator/groundmesh/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/mailgmirko-creator/groundmesh/actions/workflows/pages/pages-build-deployment)
+
+## ?? Contribute in 60 seconds
+
+1. Open a **Feature / Improvement** issue  
+2. Describe the **Purpose**, **User Story**, **Inputs/Outputs**  
+3. Add 2ñ3 **Acceptance Criteria**  
+4. Submit ó words ? code (weíll open a PR)
+
+?? **Start here:** [https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+](https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+)
+
+More details: [docs/contributors-quickstart.md](docs/contributors-quickstart.md)
+
+**Join the weave:** [Contributors ó Start Here](docs/contribute.html)
+
+**Docs site:** https://mailgmirko-creator.github.io/groundmesh ó [Contributors page](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
+

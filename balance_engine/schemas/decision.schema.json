@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision",
+  "type": "object",
+  "required": [
+    "event_id",
+    "opposite",
+    "plan",
+    "safety_checks",
+    "confidence"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "opposite": {
+      "type": "string",
+      "enum": [
+        "truth",
+        "stewardship",
+        "care",
+        "creation",
+        "reinforce"
+      ]
+    },
+    "plan": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "safety_checks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "next_steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics_delta": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

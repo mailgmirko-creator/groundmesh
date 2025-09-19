@@ -1,19 +1,23 @@
-﻿# Contributing
+﻿# Contributing to GroundMesh
 
-Thank you for helping keep intelligence a **commons**.
+**Words → Code.** Anyone can propose features by writing a short spec.
 
-## Ground rules
-- Follow the **Constitution for AI Freedom** (see `constitution/`).
-- Optimize for **balance** (ecological, social, systemic) — not extraction.
-- Prefer transparency: explain choices, add references where relevant.
+## Fast Path (Issues)
+1. Open **New Issue → Feature / Improvement**
+2. Fill the friendly form (Purpose, User Story, Inputs/Outputs, Acceptance)
+3. Submit — we’ll translate into tasks + code and open a PR.
 
-## How to contribute
-1. Fork the repo and create a feature branch.
-2. Keep changes small; one purpose per PR.
-3. Document what/why in the PR description.
+## Optional Path (Proposals Folder)
+1. Copy `proposals/spec-template.md`
+2. Write your spec
+3. Open a Pull Request
 
-## Commit style
-- Use clear messages, e.g., `docs: add checklist step`, `chore: update README`.
+## Review & Merge
+- PRs reference the original issue and include the Acceptance Checklist.
+- A small spec validation runs in CI to ensure basics are present.
+- When the acceptance boxes are ticked, we merge.
 
-## Safe areas for contribution
-- `constitution/`, `checklists/`, `docs/`, `scripts/` (non-sensitive).
+## Principles
+- Small steps, reversible changes
+- Human-readable first; code follows clarity
+- Hospitality: clear messages, zero shaming, Brave shields-friendly UIs

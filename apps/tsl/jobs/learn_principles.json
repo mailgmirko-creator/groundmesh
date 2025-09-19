@@ -1,0 +1,6 @@
+﻿{
+  "job_type": "tsl_principles_learn",
+  "inputs": { "principles_yaml": "apps/tsl/principles/principles.yaml" },
+  "outputs": { "artifact_dir": "apps/tsl/artifacts", "model_file": "principles_model.json" },
+  "params": { "version": 1, "tokenizer": "regex-alpha-lower" }
+}

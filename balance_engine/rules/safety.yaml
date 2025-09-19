@@ -1,0 +1,6 @@
+# Safety requirements (non-adversarial defaults)
+- consent-first
+- proportional-defense
+- de-escalation
+- transparency-hooks
+- legal-compliance

@@ -1,0 +1,16 @@
+{
+  "id": "evt-demo-001",
+  "actor_id": "demo-user",
+  "type": "lie",
+  "context": {
+    "domain": "info-integrity",
+    "note": "Detected false claim in memo."
+  },
+  "evidence": [
+    "memo-123.pdf",
+    "fact-source-A",
+    "fact-source-B"
+  ],
+  "timestamp": "2025-09-14T03:15:41.975914Z",
+  "layer_hint": "system"
+}
