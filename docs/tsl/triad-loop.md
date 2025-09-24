@@ -1,4 +1,9 @@
-﻿# Tranquility Protocol — Triad Loop (Instinct → Reason → Wisdom)
+﻿---
+title: "TSL — Triad Decision Loop"
+layout: page
+nav_order: 20
+---
+# Tranquility Protocol — Triad Loop (Instinct → Reason → Wisdom)
 
 This page documents the minimal TSL decision loop used by GroundNode.
 
@@ -19,3 +24,4 @@ This page documents the minimal TSL decision loop used by GroundNode.
 - A final `RESULT:` block with action, assessment, and outcome
 
 **Source:** `balance_engine/tsl_loop.py`
+
