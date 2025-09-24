@@ -1,4 +1,4 @@
-﻿[
+[
   {"input": "Buy milk, call John; dentist next week. Done: paid electricity.",
    "gold": ["buy milk", "call john", "schedule dentist appointment"]}
 ]
