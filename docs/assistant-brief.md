@@ -1,4 +1,4 @@
-﻿# Assistant Brief — GroundMesh
+# Assistant Brief — GroundMesh
 
 ## How we work (directives)
 - Atlas-first: Consult docs/atlas/registry.json + Atlas page before adding or changing anything.

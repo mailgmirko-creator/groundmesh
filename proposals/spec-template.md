@@ -1,4 +1,4 @@
-﻿# Title
+# Title
 Short, human title.
 
 ## Purpose (why)

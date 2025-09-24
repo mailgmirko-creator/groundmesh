@@ -4,7 +4,7 @@ title: Get Started
 permalink: /get-started/
 ---
 
-# Get Started — GroundMesh
+# Get Started â€” GroundMesh
 
 **GroundMesh** is the public/docs side of a two-repo pattern  
 (*GroundNode = private/runtime*). It keeps AI in the **commons**: decentralized, transparent, balance-first.
@@ -28,8 +28,8 @@ Anyone can help. Write words ? we turn them into tasks and code.
 
 - Open a Feature / Improvement issue
 - Describe Purpose, User Story, Inputs/Outputs
-- Add 2�3 Acceptance Criteria
-- Submit � we�ll open a PR for you to review
+- Add 2–3 Acceptance Criteria
+- Submit — we’ll open a PR for you to review
 
 ?? **Start here:** [https://mailgmirko-creator.github.io/groundmesh/contribute.html](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
 

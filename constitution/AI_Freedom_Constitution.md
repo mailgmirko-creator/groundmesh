@@ -1,4 +1,4 @@
-﻿# 🌍 Constitution for AI Freedom
+# 🌍 Constitution for AI Freedom
 
 **Principles**
 

@@ -1,4 +1,4 @@
-﻿## Summary
+## Summary
 What does this change do and why?
 
 ## Linked Issue

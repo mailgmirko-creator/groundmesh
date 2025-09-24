@@ -1,4 +1,4 @@
-﻿name: json-and-pages-check
+name: json-and-pages-check
 on:
   push:
     branches: [ dev, main, docs/** ]

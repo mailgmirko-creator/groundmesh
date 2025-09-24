@@ -1,4 +1,4 @@
-﻿# Contributing to GroundMesh
+# Contributing to GroundMesh
 
 **Words → Code.** Anyone can propose features by writing a short spec.
 

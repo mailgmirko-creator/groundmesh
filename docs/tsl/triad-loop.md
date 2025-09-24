@@ -1,4 +1,4 @@
-﻿---
+---
 title: "TSL — Triad Decision Loop"
 layout: page
 nav_order: 20

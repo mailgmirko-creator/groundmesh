@@ -1,4 +1,4 @@
-﻿# TinySelfLearner (TSL) — seed
+# TinySelfLearner (TSL) — seed
 
 Purpose: learn and internalize the project’s Seven Principles, starting with a simple
 token-based pass (no external ML libs). This sets the contract so donated compute

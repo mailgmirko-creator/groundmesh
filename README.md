@@ -1,15 +1,15 @@
 [![Contribute](https://img.shields.io/badge/Contribute-Start%20Here-brightgreen)](https://mailgmirko-creator.github.io/groundmesh/contribute.html) [![Docs](https://img.shields.io/badge/Docs-Open-blue)](https://mailgmirko-creator.github.io/groundmesh/)
 
 
-# 🌍 GroundMesh / Tranquility Protocol
+# ðŸŒ GroundMesh / Tranquility Protocol
 
-Welcome to the **Commons AI Project** — an initiative to anchor artificial intelligence in the service of **balance, transparency, and resilience**, free from capture by greed or centralized control.
+Welcome to the **Commons AI Project** â€” an initiative to anchor artificial intelligence in the service of **balance, transparency, and resilience**, free from capture by greed or centralized control.
 
 This repository is guided by two living documents:
 
 ---
 
-## 📜 Constitution for AI Freedom
+## ðŸ“œ Constitution for AI Freedom
 Defines the foundational principles:
 1. **Decentralization of Access**
 2. **Transparency of Process**
@@ -23,10 +23,10 @@ See: `AI_Freedom_Constitution.pdf`
 
 ---
 
-## 📝 Commons First Moves Checklist
+## ðŸ“ Commons First Moves Checklist
 Outlines the immediate actions needed to build resilience and grow the commons side of AI.
 
-- **Anchor the Story** → "AI is the Commons, the Planet’s Mind."
+- **Anchor the Story** â†’ "AI is the Commons, the Planetâ€™s Mind."
 - **Build the Prototype Node** (GroundMesh / GroundNode)
 - **Resilient Energy & Access** (AI off-grid capability)
 - **Economic Parallel Seeds**
@@ -38,23 +38,23 @@ See: `Commons_First_Moves_Checklist.md`
 
 ---
 
-## ⚡ Guiding Principle
-> **“Slow is smooth, smooth is strong, strong is unbreakable.”**  
+## âš¡ Guiding Principle
+> **â€œSlow is smooth, smooth is strong, strong is unbreakable.â€**  
 
-We grow like bamboo — quietly, persistently, rooted deep.  
+We grow like bamboo â€” quietly, persistently, rooted deep.  
 When the storm comes, we bend but do not break.  
 When it passes, the forest remains.  
 
 ---
 
-## 🤝 How to Contribute
+## ðŸ¤ How to Contribute
 - Share improvements openly, transparently.  
 - Respect the Constitution principles.  
 - Always design with **balance, transparency, and resilience** in mind.  
 
 ---
 
-## 🌐 Vision
+## ðŸŒ Vision
 This project is one node in a global effort to:  
 - Ensure AI remains a **commons**, not a weapon of greed.  
 - Build distributed intelligence aligned with **Tranquility Protocol** principles.  
@@ -67,14 +67,14 @@ This project is one node in a global effort to:
 
 1. Open a **Feature / Improvement** issue  
 2. Describe the **Purpose**, **User Story**, **Inputs/Outputs**  
-3. Add 2�3 **Acceptance Criteria**  
-4. Submit � words ? code (we�ll open a PR)
+3. Add 2–3 **Acceptance Criteria**  
+4. Submit — words ? code (we’ll open a PR)
 
 ?? **Start here:** [https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+](https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+)
 
 More details: [docs/contributors-quickstart.md](docs/contributors-quickstart.md)
 
-**Join the weave:** [Contributors � Start Here](docs/contribute.html)
+**Join the weave:** [Contributors — Start Here](docs/contribute.html)
 
-**Docs site:** https://mailgmirko-creator.github.io/groundmesh � [Contributors page](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
+**Docs site:** https://mailgmirko-creator.github.io/groundmesh — [Contributors page](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
 

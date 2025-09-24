@@ -1,4 +1,4 @@
-﻿# Map Pin — Join Flow
+# Map Pin — Join Flow
 
 ## Purpose (why)
 Let a new supporter add their location pin to the living map in under 60 seconds.
