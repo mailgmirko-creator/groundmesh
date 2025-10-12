@@ -1,18 +1,7 @@
-# Normalize text files and enforce LF endings
 * text=auto eol=lf
-
-# Binary files
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.gif binary
-*.webp binary
-*.ico binary
-*.pdf binary
-*.woff binary
-*.woff2 binary
-*.ttf binary
-
-# Keep Windows-specific scripts CRLF if needed
-*.bat eol=crlf
-*.cmd eol=crlf
+*.md   text working-tree-encoding=UTF-8
+*.html text working-tree-encoding=UTF-8
+*.yml  text working-tree-encoding=UTF-8
+*.yaml text working-tree-encoding=UTF-8
+*.json text working-tree-encoding=UTF-8
+*.ps1  text working-tree-encoding=UTF-8
