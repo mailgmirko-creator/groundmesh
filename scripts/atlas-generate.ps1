@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$BaseUrl = "https://mailgmirko-creator.github.io/groundmesh",
   [string]$RegistryPath = "docs/atlas/registry.json",
   [string]$OutPath = "docs/atlas/index.html"

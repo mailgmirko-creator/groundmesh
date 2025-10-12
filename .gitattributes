@@ -1,17 +1,18 @@
-﻿* text=auto
+# Normalize text files and enforce LF endings
+* text=auto eol=lf
 
-# Windows-friendly scripts keep CRLF for PS; everything else default LF
-*.ps1 text eol=crlf
-*.bat text eol=crlf
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
 
-# Common code/text keep LF (nice in Actions/Linux)
-*.py  text eol=lf
-*.sh  text eol=lf
-*.yml text eol=lf
-*.yaml text eol=lf
-*.json text eol=lf
-*.md  text eol=lf
-*.html text eol=lf
-*.css text eol=lf
-*.js  text eol=lf
-*.ts  text eol=lf
+# Keep Windows-specific scripts CRLF if needed
+*.bat eol=crlf
+*.cmd eol=crlf

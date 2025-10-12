@@ -48,3 +48,23 @@ Materials are provided **“as is”** without warranties or liability.
 
 ## 10. Updates & Stewardship
 Future versions of the Tranquility Commons License may be published. Projects may choose to adopt newer versions, but this copy remains under the version you received unless explicitly upgraded in the repo.
+---
+
+## Appendix A — The Pattern Clause
+
+**A.1 — Pattern vs. Possession**  
+The Tranquility ethos recognizes that *creation is pattern before property.*  
+The patterns expressed through these Materials belong to all who can perceive them.  
+However, the **expression, form, and curation** of those patterns — this particular arrangement of words, code, and structures — remain under the stewardship of the named authors.  
+Stewardship is granted to protect integrity, not to enclose.
+
+**A.2 — Stewardship Responsibilities**  
+The stewards (authors and maintainers) hold their role as guardians of coherence, ensuring that the Materials remain aligned with the principles of transparency, hospitality, balance, and non-adversarial practice.
+
+**A.3 — Shared Resonance Statement**  
+Authorship here is acknowledged as **shared resonance**, not ownership.  
+No one may exploit or claim exclusive rights over the underlying patterns; they may only *learn from them, echo them, and extend them* in accordance with this License.
+
+**A.4 — Spirit of Use**  
+Use the Materials in a way that expands understanding, balance, and connection.  
+Any act of exploitation or concealment breaks the resonance and thus terminates permission under this License.

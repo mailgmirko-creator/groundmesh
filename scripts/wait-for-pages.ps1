@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$Url = "https://mailgmirko-creator.github.io/groundmesh/",
   [int]$Interval = 5
 )

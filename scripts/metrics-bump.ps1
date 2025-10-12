@@ -1,4 +1,4 @@
-﻿param([int]$cpu=0,[int]$gpu=0,[int]$jobs=0,[int]$online=$null,[int]$regs=$null)
+param([int]$cpu=0,[int]$gpu=0,[int]$jobs=0,[int]$online=$null,[int]$regs=$null)
 $p="docs/data/metrics.json"
 if(-not (Test-Path $p)){ throw "Missing $p" }
 $m=(Get-Content $p -Raw | ConvertFrom-Json)

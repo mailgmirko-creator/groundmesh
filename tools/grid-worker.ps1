@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
   [string]$InboxRel     = "grid\inbox",
   [string]$OutboxRel    = "grid\outbox",

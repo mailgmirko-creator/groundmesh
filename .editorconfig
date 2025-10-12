@@ -1,9 +1,16 @@
-﻿root = true
+root = true
 
 [*]
+charset = utf-8
 end_of_line = lf
 insert_final_newline = true
-charset = utf-8
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
 
-[*.json]
-charset = utf-8
+[*.md]
+# Allow trailing spaces in Markdown for line breaks
+trim_trailing_whitespace = false
+
+[*.ps1]
+indent_size = 2

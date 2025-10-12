@@ -1,4 +1,4 @@
-﻿param(
+param(
   [int]$IntervalSec = 30,
   [string]$Publisher = "C:\Projects\GroundMesh-DEV\tools\publish-tail.ps1"
 )

@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$Base = "https://mailgmirko-creator.github.io/groundmesh"
 )
 
