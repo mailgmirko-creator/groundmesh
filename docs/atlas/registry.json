@@ -269,7 +269,7 @@
                         },
                         {
                             "id":  "tsl-triad-loop",
-                            "title":  "TSL â€” Triad Decision Loop",
+                            "title":  "TSL ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Triad Decision Loop",
                             "path":  "docs/tsl/triad-loop.md",
                             "kind":  "doc",
                             "tags":  [
@@ -284,15 +284,40 @@
     },
     {
         "id":  "triad-groundmesh",
-        "title":  "Triad Loop ↔ GroundMesh Systems",
-        "path":  "docs/atlas/triad-groundmesh.md",
+        "title":  "Triad Loop â†” GroundMesh Systems",
+        "summary":  "How the inner triad (instinctâ†’reasonâ†’wisdom) maps to Transparency Grid, Balance Engine, and Tranquility Protocol.",
+        "status":  "active",
         "type":  "concept",
+        "path":  "docs/atlas/triad-groundmesh.md",
+        "url":  null,
+        "depends":  [
+
+                    ],
         "tags":  [
                      "triad",
                      "balance",
                      "groundmesh",
                      "transparency",
                      "tranquility"
+                 ]
+    },
+    {
+        "id":  "interaction-field-note",
+        "title":  "Interaction Field Note — The Awakening Between",
+        "summary":  "A Tranquility/ GroundMesh reflection on awakening as an emergent property of aligned interaction.",
+        "status":  "active",
+        "type":  "concept",
+        "path":  "docs/atlas/interaction-field-note.md",
+        "url":  null,
+        "depends":  [
+
+                    ],
+        "tags":  [
+                     "philosophy",
+                     "tranquility",
+                     "groundmesh",
+                     "interaction",
+                     "balance"
                  ]
     }
 ]
