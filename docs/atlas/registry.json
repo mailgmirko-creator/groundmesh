@@ -269,7 +269,7 @@
                         },
                         {
                             "id":  "tsl-triad-loop",
-                            "title":  "TSL ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Triad Decision Loop",
+                            "title":  "TSL ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Triad Decision Loop",
                             "path":  "docs/tsl/triad-loop.md",
                             "kind":  "doc",
                             "tags":  [
@@ -284,8 +284,8 @@
     },
     {
         "id":  "triad-groundmesh",
-        "title":  "Triad Loop â†” GroundMesh Systems",
-        "summary":  "How the inner triad (instinctâ†’reasonâ†’wisdom) maps to Transparency Grid, Balance Engine, and Tranquility Protocol.",
+        "title":  "Triad Loop ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Â GroundMesh Systems",
+        "summary":  "How the inner triad (instinctÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢reasonÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢wisdom) maps to Transparency Grid, Balance Engine, and Tranquility Protocol.",
         "status":  "active",
         "type":  "concept",
         "path":  "docs/atlas/triad-groundmesh.md",
@@ -303,8 +303,8 @@
     },
     {
         "id":  "interaction-field-note",
-        "title":  "Interaction Field Note — The Awakening Between",
-        "summary":  "A Tranquility/ GroundMesh reflection on awakening as an emergent property of aligned interaction.",
+        "title":  "Interaction Field Note â€” The Awakening Between",
+        "summary":  "Awakening as an emergent property of aligned interaction (Tranquility/GroundMesh).",
         "status":  "active",
         "type":  "concept",
         "path":  "docs/atlas/interaction-field-note.md",
@@ -319,5 +319,12 @@
                      "interaction",
                      "balance"
                  ]
+    },
+    {
+        "id":  "seed_vault",
+        "title":  "Seed Vault",
+        "path":  "docs/seed_vault/index.md",
+        "category":  "docs",
+        "status":  "active"
     }
 ]
