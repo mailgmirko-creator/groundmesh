@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Command Contract",
+  "type": "object",
+  "required": ["id","action","scope","contexts","requires","safeguards","approvals","audit","created"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[A-Z0-9._-]{3,64}$" },
+    "version": { "type": "string", "default": "1.0.0" },
+    "action": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "params": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "required": ["project"],
+      "properties": {
+        "project": { "type": "string" },
+        "resources": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "contexts": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["dev","staging","prod"] },
+      "minItems": 1
+    },
+    "requires": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["human_signature","council_quorum","audit_log_entry","change_ticket"] },
+      "minItems": 1
+    },
+    "safeguards": {
+      "type": "object",
+      "properties": {
+        "revert_window": { "type": "string", "pattern": "^[0-9]+[smhd]$" },
+        "alert_nodes": { "type": "array", "items": { "type": "string" } },
+        "rate_limit": { "type": "string", "pattern": "^[0-9]+/[smhd]$" },
+        "dry_run_first": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": false
+    },
+    "approvals": {
+      "type": "object",
+      "properties": {
+        "min_signatures": { "type": "integer", "minimum": 1, "default": 1 },
+        "roles": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "time_window": {
+          "type": "object",
+          "properties": {
+            "start_utc": { "type": "string", "format": "date-time" },
+            "end_utc":   { "type": "string", "format": "date-time" }
+          },
+          "additionalProperties": false
+        },
+        "env_vars_required": { "type": "array", "items": { "type": "string" } },
+        "hash_of_payload": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    },
+    "audit": {
+      "type": "object",
+      "required": ["reason","created_by"],
+      "properties": {
+        "reason": { "type": "string" },
+        "created_by": { "type": "string" },
+        "issue_ref": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "created": { "type": "string", "format": "date-time" },
+    "updated": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}
