@@ -1,0 +1,16 @@
+[
+  {
+    "id": "node-0001",
+    "node_type": "human",
+    "name": "Mirko Giljaca",
+    "location": {
+      "city": "Tivat",
+      "country": "Montenegro",
+      "lat": 42.4364,
+      "lon": 18.6961
+    },
+    "statement": "I stand openly, here and now, to help build a planetary field of responsibility without domination.",
+    "reference": null,
+    "created_at": "2026-01-06T00:00:00Z"
+  }
+]

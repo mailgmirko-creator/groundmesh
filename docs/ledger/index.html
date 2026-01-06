@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GroundMesh — Global Node Ledger (v0)</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #map { height: 100%; }
+    .topbar {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      padding: 10px 12px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      max-width: 520px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .topbar h1 { font-size: 16px; margin: 0 0 6px 0; }
+    .topbar p { font-size: 13px; margin: 0; line-height: 1.35; }
+    .muted { opacity: 0.75; }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <h1>Global Node Ledger (v0)</h1>
+    <p class="muted">Read-only. No anonymity. Human nodes require real name + real city/country.</p>
+  </div>
+
+  <div id="map"></div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script>
+    const map = L.map("map", { worldCopyJump: true }).setView([20, 0], 2);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    function esc(s) {
+      return String(s ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    fetch("./data/nodes.json", { cache: "no-store" })
+      .then(r => r.json())
+      .then(nodes => {
+        if (!Array.isArray(nodes) || nodes.length === 0) {
+          alert("No nodes found.");
+          return;
+        }
+
+        const bounds = [];
+        for (const n of nodes) {
+          const lat = n?.location?.lat;
+          const lon = n?.location?.lon;
+          if (typeof lat !== "number" || typeof lon !== "number") continue;
+
+          bounds.push([lat, lon]);
+
+          const title = `${esc(n.name)} — ${esc(n.location.city)}, ${esc(n.location.country)}`;
+          const body = esc(n.statement);
+
+          const marker = L.marker([lat, lon]).addTo(map);
+          marker.bindPopup(`<strong>${title}</strong><br/><span>${body}</span>`);
+        }
+
+        if (bounds.length === 1) {
+          map.setView(bounds[0], 7);
+        } else if (bounds.length > 1) {
+          map.fitBounds(bounds, { padding: [30, 30] });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Failed to load nodes.json");
+      });
+  </script>
+</body>
+</html>
