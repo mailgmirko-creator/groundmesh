@@ -3,7 +3,7 @@
         "entries":  [
                         {
                             "meta":  {
-                                         "updated_utc":  "2025-09-17T02:47:55Z",
+                                         "updated_utc":  "2026-01-06T01:55:39Z",
                                          "version":  1,
                                          "repo":  "mailgmirko-creator/groundmesh"
                                      },
@@ -264,12 +264,34 @@
                                                    "path":  null,
                                                    "url":  null,
                                                    "depends":  null
+                                               },
+                                               {
+                                                   "id":  "ledger_nodes_json",
+                                                   "name":  "Ledger Nodes JSON",
+                                                   "type":  "data",
+                                                   "status":  "live",
+                                                   "path":  "docs/ledger/data/nodes.json",
+                                                   "url":  "https://mailgmirko-creator.github.io/groundmesh/ledger/data/nodes.json",
+                                                   "depends":  [
+
+                                                               ]
+                                               },
+                                               {
+                                                   "id":  "ledger_page",
+                                                   "name":  "Global Node Ledger (v0)",
+                                                   "type":  "web",
+                                                   "status":  "live",
+                                                   "path":  "docs/ledger/index.html",
+                                                   "url":  "https://mailgmirko-creator.github.io/groundmesh/ledger/",
+                                                   "depends":  [
+                                                                   "ledger_nodes_json"
+                                                               ]
                                                }
                                            ]
                         },
                         {
                             "id":  "tsl-triad-loop",
-                            "title":  "TSL ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Triad Decision Loop",
+                            "title":  "TSL ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Triad Decision Loop",
                             "path":  "docs/tsl/triad-loop.md",
                             "kind":  "doc",
                             "tags":  [
@@ -284,8 +306,8 @@
     },
     {
         "id":  "triad-groundmesh",
-        "title":  "Triad Loop ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Â GroundMesh Systems",
-        "summary":  "How the inner triad (instinctÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢reasonÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢wisdom) maps to Transparency Grid, Balance Engine, and Tranquility Protocol.",
+        "title":  "Triad Loop ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â GroundMesh Systems",
+        "summary":  "How the inner triad (instinctÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢reasonÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢wisdom) maps to Transparency Grid, Balance Engine, and Tranquility Protocol.",
         "status":  "active",
         "type":  "concept",
         "path":  "docs/atlas/triad-groundmesh.md",
@@ -303,7 +325,7 @@
     },
     {
         "id":  "interaction-field-note",
-        "title":  "Interaction Field Note â€” The Awakening Between",
+        "title":  "Interaction Field Note Ã¢â‚¬â€ The Awakening Between",
         "summary":  "Awakening as an emergent property of aligned interaction (Tranquility/GroundMesh).",
         "status":  "active",
         "type":  "concept",
