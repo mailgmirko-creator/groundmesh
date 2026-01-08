@@ -1,55 +1,40 @@
-﻿<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>GroundMesh â€” Project Atlas</title>
-<style>:root { --bg:#0b0b0c; --card:#141417; --text:#e9e9ee; --muted:#b8b8c3; --ok:#6ee7b7; --warn:#facc15; --bad:#f87171 }
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;line-height:1.45}
-.wrap{max-width:1100px;margin:0 auto;padding:28px 20px}
-h1{font-size:clamp(1.6rem,2.6vw,2.2rem);margin:0 0 8px}
-p.lead{color:var(--muted);margin:0 0 16px}
-.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:14px}
-.card{background:var(--card);border:1px solid #23232a;border-radius:14px;padding:14px}
-.k{color:var(--muted);font-size:.9rem;margin:0}
-.v{margin:2px 0 0}
-.badge{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid #2a2a33;font-size:.8rem;margin-left:6px}
-.ok{color:var(--ok);border-color:#225b47} .partial{color:var(--warn);border-color:#5b4a22} .missing{color:var(--bad);border-color:#5b2222}
-a.btn{display:inline-block;text-decoration:none;padding:10px 14px;border-radius:10px;border:1px solid #2a2a33;background:#1a1a20;color:var(--text);font-weight:600}
-small{color:var(--muted)}</style>
-<div class='wrap'>
-  <h1>Project Atlas</h1>
-  <p class='lead'>Single place to see what exists, where it lives, and how it connects. Update <code>docs/atlas/registry.json</code> whenever you add something new.</p>
-  <div class='grid'>
-      <div class='card'>
-    <div class='v'><strong></strong> <span class='badge @{id=; name=; type=; status=; path=; url=; depends=; health=ok}.health'>ok</span></div>
-    <p class='k'>type:  Â· status: </p>
-    <p class='k'>path: <code></code></p>
-    <p class='k'>depends: </p>
-    <span class='btn' style='opacity:.5;cursor:not-allowed'>No URL</span>
-  </div>
-  <div class='card'>
-    <div class='v'><strong></strong> <span class='badge @{id=; name=; type=; status=; path=; url=; depends=; health=ok}.health'>ok</span></div>
-    <p class='k'>type:  Â· status: </p>
-    <p class='k'>path: <code></code></p>
-    <p class='k'>depends: </p>
-    <span class='btn' style='opacity:.5;cursor:not-allowed'>No URL</span>
-  </div>
-  <div class='card'>
-    <div class='v'><strong></strong> <span class='badge @{id=; name=; type=; status=; path=; url=; depends=; health=ok}.health'>ok</span></div>
-    <p class='k'>type:  Â· status: </p>
-    <p class='k'>path: <code></code></p>
-    <p class='k'>depends: </p>
-    <span class='btn' style='opacity:.5;cursor:not-allowed'>No URL</span>
-  </div>
-  <div class='card'>
-    <div class='v'><strong></strong> <span class='badge @{id=; name=; type=; status=; path=; url=; depends=; health=ok}.health'>ok</span></div>
-    <p class='k'>type:  Â· status: </p>
-    <p class='k'>path: <code></code></p>
-    <p class='k'>depends: </p>
-    <span class='btn' style='opacity:.5;cursor:not-allowed'>No URL</span>
-  </div>
-  </div>
-  <p><small>Source registry: <code>docs/atlas/registry.json</code></small></p>
-  <p><a class='btn' href='/contribute.html'>â† Back to Contributors</a>
-     <a class='btn' href='/compute.html'>Compute Transparency</a>
-     <a class='btn' href='/map.html'>Living Map</a>
-  </p>
-</div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh Atlas</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; }
+    h1 { margin: 0 0 0.5rem 0; }
+    p { margin: 0 0 1.25rem 0; color: #444; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.6rem; text-align: left; }
+    th { background: #f6f6f6; }
+    a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .meta { font-size: 0.9rem; color: #666; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>GroundMesh Atlas</h1>
+  <p>Registry-backed map of governance artifacts and system components.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="../docs/invariants/GM-INV-VIII.md">GM-INV-VIII</a></td><td>Continuity With Consent</td><td>invariant</td><td>active</td></tr>
+      <tr><td><a href="../docs/protocols/TP-03.md">TP-03</a></td><td>Sustaining Resolve Without Compulsion</td><td>protocol</td><td>active</td></tr>
+    </tbody>
+  </table>
+
+  <div class="meta">Generated from <code>docs/atlas/registry.json</code></div>
+</body>
 </html>
