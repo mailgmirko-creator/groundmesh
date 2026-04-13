@@ -6,6 +6,7 @@
 - Small batches: Prefer one meaningful chunk at a time, then summarize what changed and what remains next.
 - Recovery before rush: If a session or approval flow freezes, inspect current state first and resume from the last stable point.
 - Shared external spine: Anchor important state in GitHub through repo files, issues, PRs, Atlas, or ADRs rather than relying on tool memory alone.
+- Less, but more anchored: Do not add a new layer unless it clearly reduces friction, increases clarity, improves execution, or preserves meaning in a more usable form.
 - Hospitality: clear messages, zero shaming, Brave-friendly UIs.
 - Guarded patches only: never overwrite/rename widely without a backup or branch.
 
