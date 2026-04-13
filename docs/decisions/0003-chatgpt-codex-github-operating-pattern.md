@@ -73,9 +73,16 @@ When many things are in motion:
 - prefer smaller safe batches over large hidden sweeps
 - summarize touched files and the next step after each meaningful chunk
 
+When deciding whether to add another layer:
+
+- do not add a new layer unless it clearly reduces friction, increases clarity, improves execution, or preserves meaning in a more usable form
+- treat productive-looking overflow as a risk, not as proof of progress
+- prefer less, but more anchored
+
 ## Consequences
 
 - GroundMesh gains a stable cross-tool memory pattern instead of depending on hidden state.
 - Work becomes easier to review, recover, and continue after pauses or platform friction.
 - ChatGPT, Codex, and GitHub become complementary rather than redundant.
 - Stewardship stays human-led while implementation can scale through clearer delegation.
+- Abundance is guided toward buildable reality instead of drifting into fog.
