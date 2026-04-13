@@ -1,5 +1,5 @@
-// docs/sw.js — simple offline-first cache
-const CACHE = "gm-v1";
+// docs/sw.js — prefer fresh network content, fall back to cache when offline
+const CACHE = "gm-v2";
 const ASSETS = ["./", "./index.html"];
 
 self.addEventListener("install", (e) => {
@@ -19,16 +19,16 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
+  const sameOrigin = new URL(req.url).origin === self.location.origin;
+  if (!sameOrigin) return;
+
   e.respondWith(
-    caches.match(req).then((cached) => {
-      const fresh = fetch(req)
-        .then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE).then((c) => c.put(req, clone));
-          return res;
-        })
-        .catch(() => cached);
-      return cached || fresh;
-    })
+    fetch(req)
+      .then((res) => {
+        const clone = res.clone();
+        caches.open(CACHE).then((c) => c.put(req, clone));
+        return res;
+      })
+      .catch(() => caches.match(req))
   );
 });
