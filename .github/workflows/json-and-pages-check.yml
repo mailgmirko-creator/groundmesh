@@ -20,7 +20,7 @@ jobs:
         run: |
           set +e
           BASE="https://'"$GITHUB_REPOSITORY_OWNER"'.github.io/'"$(basename "$GITHUB_REPOSITORY")"
-          for u in "$BASE/" "$BASE/contribute.html" "$BASE/map.html" "$BASE/atlas/index.html" "$BASE/compute.html"; do
+          for u in "$BASE/" "$BASE/contribute.html" "$BASE/get-started/index.html" "$BASE/map.html" "$BASE/contact.html" "$BASE/privacy.html" "$BASE/landscape.html" "$BASE/atlas/index.html" "$BASE/compute.html"; do
             echo "HEAD $u"
             code=$(curl -s -o /dev/null -w "%{http_code}" -I "$u")
             echo " -> $code"
