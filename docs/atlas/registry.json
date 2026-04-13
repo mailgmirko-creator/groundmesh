@@ -1,27 +1,130 @@
 {
-    "entries":  [
-                    {
-                        "id":  "GM-INV-VIII",
-                        "name":  "Continuity With Consent",
-                        "type":  "invariant",
-                        "status":  "active",
-                        "path":  "docs/invariants/GM-INV-VIII.md",
-                        "summary":  "Sustained participation must arise from voluntary re-engagement, not compulsion. Systems must preserve agency, rhythm, and the right to pause without loss of dignity.",
-                        "related":  [
-                                        "GM-INV-VII",
-                                        "TP-03"
-                                    ]
-                    },
-                    {
-                        "id":  "TP-03",
-                        "name":  "Sustaining Resolve Without Compulsion",
-                        "type":  "protocol",
-                        "status":  "active",
-                        "path":  "docs/protocols/TP-03.md",
-                        "summary":  "Guides humans through pressure and delay without collapse or loss of agency; restores resolve through meaning, rhythm, and consent.",
-                        "related":  [
-                                        "GM-INV-VIII"
-                                    ]
-                    }
-                ]
+  "entries": [
+    {
+      "id": "ADR-0001",
+      "name": "Why Project Atlas",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0001-why-atlas.md",
+      "summary": "Establishes Atlas as the shared registry for repo orientation, safer changes, and lower duplication risk."
+    },
+    {
+      "id": "ADR-0002",
+      "name": "Relationship Between GroundMesh World and GroundMesh",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0002-groundmesh-world-relationship.md",
+      "summary": "Keeps GroundMesh as the canonical core repo, keeps groundmesh-world as the narrative public seed, and merges by small translation steps rather than repo collapse."
+    },
+    {
+      "id": "DOC-ASSISTANT-BRIEF",
+      "name": "Assistant Brief",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/assistant-brief.md",
+      "summary": "Defines Atlas-first workflow, smallest-safe-change practice, and the current stabilization focus."
+    },
+    {
+      "id": "DOC-GLOSSARY",
+      "name": "GroundMesh Glossary",
+      "type": "reference",
+      "status": "active",
+      "path": "docs/glossary.md",
+      "summary": "Compact shared language for Atlas, compute transparency, and contributor on-ramps."
+    },
+    {
+      "id": "GM-INV-VIII",
+      "name": "Continuity With Consent",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-VIII.md",
+      "summary": "Sustained participation must arise from voluntary re-engagement, not compulsion. Systems must preserve agency, rhythm, and the right to pause without loss of dignity.",
+      "related": [
+        "TP-03"
+      ]
+    },
+    {
+      "id": "PAGE-COMPUTE",
+      "name": "Compute Transparency",
+      "type": "page",
+      "status": "active",
+      "path": "docs/compute.html",
+      "summary": "Public snapshot page for non-sensitive grid metrics sourced from metrics.json."
+    },
+    {
+      "id": "PAGE-CONTACT",
+      "name": "GroundMesh Contact",
+      "type": "page",
+      "status": "active",
+      "path": "docs/contact.html",
+      "summary": "Simple public contact path for questions, corrections, first contact, and participation guidance."
+    },
+    {
+      "id": "PAGE-GET-STARTED",
+      "name": "GroundMesh Get Started",
+      "type": "page",
+      "status": "active",
+      "path": "docs/get-started/index.html",
+      "summary": "Builder-facing start page for local setup, health checks, Atlas-first work, and small-batch contributions."
+    },
+    {
+      "id": "PAGE-HOME",
+      "name": "GroundMesh Start Here",
+      "type": "page",
+      "status": "active",
+      "path": "docs/index.html",
+      "summary": "Unified public front door that joins the stronger narrative seed with the Atlas-backed docs layer."
+    },
+    {
+      "id": "PAGE-LANDSCAPE",
+      "name": "GroundMesh Landscape",
+      "type": "page",
+      "status": "active",
+      "path": "docs/landscape.html",
+      "summary": "Broad scan of live pages, local repos, mirrors, and adjacent web surfaces around GroundMesh."
+    },
+    {
+      "id": "PAGE-PRIVACY",
+      "name": "GroundMesh Privacy",
+      "type": "page",
+      "status": "active",
+      "path": "docs/privacy.html",
+      "summary": "Plain-language statement of the current public privacy posture, limits, and data-minimization rule."
+    },
+    {
+      "id": "PAGE-CONTRIBUTE",
+      "name": "Contributors Hub",
+      "type": "page",
+      "status": "active",
+      "path": "docs/contribute.html",
+      "summary": "Primary public on-ramp for volunteers, issue filing, and low-friction participation."
+    },
+    {
+      "id": "PAGE-MAP",
+      "name": "GroundMesh Map",
+      "type": "page",
+      "status": "active",
+      "path": "docs/map.html",
+      "summary": "Public-facing orientation page for the project landscape and navigation."
+    },
+    {
+      "id": "STATUS-PUBLIC",
+      "name": "Public Status Snapshot",
+      "type": "data",
+      "status": "active",
+      "path": "docs/data/status.json",
+      "summary": "Tracks public health notes for the current docs surface and Atlas-backed pages."
+    },
+    {
+      "id": "TP-03",
+      "name": "Sustaining Resolve Without Compulsion",
+      "type": "protocol",
+      "status": "active",
+      "path": "docs/protocols/TP-03.md",
+      "summary": "Guides humans through pressure and delay without collapse or loss of agency; restores resolve through meaning, rhythm, and consent.",
+      "related": [
+        "GM-INV-VIII"
+      ]
+    }
+  ]
 }

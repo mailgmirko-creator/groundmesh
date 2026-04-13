@@ -1,33 +1,92 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GroundMesh — Living Map</title>
-<style>body{margin:0;background:#0b0b0c;color:#e9e9ee;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
-.wrap{max-width:980px;margin:0 auto;padding:20px}
-h1{font-size:clamp(1.4rem,2.2vw,2rem);margin:12px 0}
-p{color:#b8b8c3}
-.btn{display:inline-block;text-decoration:none;padding:10px 14px;border-radius:10px;border:1px solid #2a2a33;background:#1a1a20;color:#e9e9ee;font-weight:600}
-.frame{width:100%;height:70vh;border:0;border-top:1px solid #222;border-bottom:1px solid #222;border-radius:12px;overflow:hidden;margin-top:12px}
-</style>
-<div class="wrap">
-  <h1>GroundMesh — Living Map</h1>
-  <p>Explore community pins. Want to join? Use the button below and we’ll add you.</p>
-  \ \ <p>\n\ \ \ \ <a\ class="btn"\ href="https://www\.google\.com/maps/d/edit\?mid=1uobbAh3OfppGwDUm-87NgdT91BKZeWE&usp=sharing"\ \ \ \ \ rel="noopener">Add\ my\ pin\ \(Google\ Maps\)</a>\n\ \ \ \ <a\ class="btn"\ href="https://github\.com/mailgmirko-creator/groundmesh/issues/new\?template=add_my_pin\.yml"\ rel="noopener">Add\ my\ pin\ \(GitHub\)</a>\n\ \ \ \ <a\ class="btn"\ href="mailto:mailgmirko@gmail\.com\?subject=Add%20my%20pin%20to%20the%20Living%20Map&body=City%2FCountry%3A%20%0AName%20\(optional\)%3A%20%0ANote%20\(optional\)%3A%20%0A%0AConsent%3A%20I%20agree%20to%20show%20this%20pin%20on%20the%20public%20map\."\ \ \ \ \ \ rel="noopener">Email\ my\ pin\ \(no\ GitHub\)</a>\n\ \ \ \ <a\ class="btn"\ href="https://mailgmirko-creator\.github\.io/groundmesh/contribute\.html"\ rel="noopener">Back\ to\ Contributors</a>\n\ \ </p>
-  <iframe class="frame" src="https://www.google.com/maps/d/embed?mid=1uobbAh3OfppGwDUm-87NgdT91BKZeWE&ehbc=2E312F" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  <div style=""margin-top:10px;color:#b8b8c3"">
-    <strong>How to add a pin (Google Maps):</strong>
-    <ol style=""margin:6px 0 0 18px"">
-      <li>Click “Add marker” (pin icon) or search your city/country.</li>
-      <li>Place the pin and add a short note.</li>
-      <li>Done — we’ll keep the map tidy.</li>
-    </ol>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh - Living Map</title>
+  <style>
+    :root {
+      --bg:#0b0b0c;
+      --card:#141417;
+      --text:#e9e9ee;
+      --muted:#b8b8c3;
+      --line:#23232a;
+      --accent:#6ee7b7;
+      --accent2:#93c5fd;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
+      line-height:1.45;
+    }
+    .wrap { max-width:980px; margin:0 auto; padding:28px 20px; }
+    h1 { font-size:clamp(1.5rem,2.4vw,2.2rem); margin:0 0 8px; }
+    p { color:var(--muted); }
+    .card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+      margin-top:14px;
+    }
+    .cta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:14px;
+    }
+    .btn {
+      display:inline-block;
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid #2a2a33;
+      background:#1a1a20;
+      color:var(--text);
+      font-weight:600;
+    }
+    .btn:hover { border-color:#3a3a44; }
+    .frame {
+      width:100%;
+      height:70vh;
+      border:0;
+      border-radius:12px;
+      overflow:hidden;
+      margin-top:12px;
+      background:#111;
+    }
+    ol { margin:8px 0 0 18px; color:var(--muted); }
+    .inline-link { color:var(--accent2); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>GroundMesh - Living Map</h1>
+    <p>Explore community pins. Want to join? Use one of the paths below and we will keep the map clear, useful, and consent-based.</p>
+
+    <div class="card">
+      <div class="cta">
+        <a class="btn" href="https://www.google.com/maps/d/edit?mid=1uobbAh3OfppGwDUm-87NgdT91BKZeWE&usp=sharing" rel="noopener">Add my pin (Google Maps)</a>
+        <a class="btn" href="https://github.com/mailgmirko-creator/groundmesh/issues/new?template=add_my_pin.yml" rel="noopener">Add my pin (GitHub)</a>
+        <a class="btn" href="mailto:mailgmirko@gmail.com?subject=Add%20my%20pin%20to%20the%20Living%20Map&body=City%2FCountry%3A%20%0AName%20(optional)%3A%20%0ANote%20(optional)%3A%20%0A%0AConsent%3A%20I%20agree%20to%20show%20this%20pin%20on%20the%20public%20map." rel="noopener">Email my pin</a>
+        <a class="btn" href="contribute.html" rel="noopener">Back to Contributors</a>
+        <a class="btn" href="privacy.html" rel="noopener">Privacy</a>
+      </div>
+      <iframe class="frame" src="https://www.google.com/maps/d/embed?mid=1uobbAh3OfppGwDUm-87NgdT91BKZeWE&ehbc=2E312F" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="card">
+      <strong>How to add a pin</strong>
+      <ol>
+        <li>Choose Google Maps, GitHub, or email, whichever is easiest for you.</li>
+        <li>Share only the level of location detail you are truly comfortable making public.</li>
+        <li>Add a short note if useful, and only with consent.</li>
+      </ol>
+      <p style="margin-top:12px;">For questions about what is public, or if you want to request a correction or removal, use the <a class="inline-link" href="contact.html">contact page</a>.</p>
+    </div>
   </div>
-</div>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
