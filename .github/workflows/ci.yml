@@ -15,5 +15,10 @@ jobs:
       - name: Verify repository structure
         run: |
           test -f README.md
-          test -d constitution
-          test -d checklists
+          test -d docs
+          test -d scripts
+          test -f docs/index.html
+          test -f docs/contribute.html
+          test -f docs/map.html
+          test -f docs/atlas/registry.json
+          test -f scripts/health-check.ps1
