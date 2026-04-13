@@ -17,6 +17,14 @@
       "summary": "Keeps GroundMesh as the canonical core repo, keeps groundmesh-world as the narrative public seed, and merges by small translation steps rather than repo collapse."
     },
     {
+      "id": "ADR-0003",
+      "name": "ChatGPT, Codex, and GitHub Operating Pattern",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0003-chatgpt-codex-github-operating-pattern.md",
+      "summary": "Establishes GitHub as the shared external spine between ChatGPT, Codex, and GroundMesh work so important state is anchored in visible project memory."
+    },
+    {
       "id": "DOC-ASSISTANT-BRIEF",
       "name": "Assistant Brief",
       "type": "guide",

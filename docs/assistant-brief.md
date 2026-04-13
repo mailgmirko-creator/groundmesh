@@ -5,6 +5,7 @@
 - Smallest safe change: Prefer incremental, reversible edits.
 - Small batches: Prefer one meaningful chunk at a time, then summarize what changed and what remains next.
 - Recovery before rush: If a session or approval flow freezes, inspect current state first and resume from the last stable point.
+- Shared external spine: Anchor important state in GitHub through repo files, issues, PRs, Atlas, or ADRs rather than relying on tool memory alone.
 - Hospitality: clear messages, zero shaming, Brave-friendly UIs.
 - Guarded patches only: never overwrite/rename widely without a backup or branch.
 
@@ -29,3 +30,4 @@
 3) Fix one red/yellow or one integration slice, then summarize touched files + next step
 4) Update status.json if state changed
 5) Regenerate Atlas
+6) Anchor any real decision in GitHub-visible memory before treating it as settled
