@@ -1,4 +1,4 @@
-﻿# Security / Responsible Disclosure
+# Security / Responsible Disclosure
 
 If you discover a vulnerability or misuse risk:
 - Email: **mailgmirko@gmail.com**

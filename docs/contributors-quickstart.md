@@ -1,4 +1,4 @@
-﻿# Join the Weave — Write Words, See Code
+# Join the Weave — Write Words, See Code
 
 **How to help (in 60 seconds):**
 1) Open a New Issue → Feature / Improvement  

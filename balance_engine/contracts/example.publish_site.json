@@ -1,0 +1,31 @@
+{
+  "id": "CC.publish_site.v1",
+  "version": "1.0.0",
+  "action": {
+    "name": "publish_site",
+    "params": { "target": "docs", "branch": "dev" }
+  },
+  "scope": {
+    "project": "GroundMesh",
+    "resources": ["docs/","scripts/atlas-generate.ps1"]
+  },
+  "contexts": ["dev","staging"],
+  "requires": ["human_signature","audit_log_entry"],
+  "safeguards": {
+    "revert_window": "10m",
+    "alert_nodes": ["lead_node","guardian_node"],
+    "rate_limit": "3/h",
+    "dry_run_first": true
+  },
+  "approvals": { "min_signatures": 1, "roles": ["maintainer"] },
+  "constraints": {
+    "env_vars_required": ["GITHUB_TOKEN"]
+  },
+  "audit": {
+    "reason": "Update public docs after Atlas generation",
+    "created_by": "Mirko",
+    "issue_ref": "atlas#2025-10-15"
+  },
+  "created": "2025-10-15T16:25:18Z",
+  "updated": "2025-10-15T16:25:18Z"
+}

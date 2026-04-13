@@ -1,4 +1,4 @@
-﻿param(
+param(
   [Parameter(Mandatory)][string]$Path,
   [Parameter(Mandatory)][string]$FindRegex,
   [Parameter(Mandatory)][string]$ReplaceWith,

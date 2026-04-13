@@ -1,80 +1,70 @@
-[![Contribute](https://img.shields.io/badge/Contribute-Start%20Here-brightgreen)](https://mailgmirko-creator.github.io/groundmesh/contribute.html) [![Docs](https://img.shields.io/badge/Docs-Open-blue)](https://mailgmirko-creator.github.io/groundmesh/)
+# GroundMesh
 
+GroundMesh is the canonical core repository for the public docs layer, Atlas, contributor flow,
+governance artifacts, and trust scaffolding around the wider GroundMesh project.
 
-# 🌍 GroundMesh / Tranquility Protocol
+The stronger narrative public seed currently lives alongside this repo as
+[`groundmesh-world`](https://mailgmirko-creator.github.io/groundmesh-world/).
+The current working pattern is:
 
-Welcome to the **Commons AI Project** — an initiative to anchor artificial intelligence in the service of **balance, transparency, and resilience**, free from capture by greed or centralized control.
+- `GroundMesh` = canonical core, Atlas, docs, contributor and trust layer
+- `groundmesh-world` = narrative public seed and design reference
+- merge by small translation steps, not by collapsing the repos all at once
 
-This repository is guided by two living documents:
+## Open now
 
----
+- Public front door: [https://mailgmirko-creator.github.io/groundmesh/](https://mailgmirko-creator.github.io/groundmesh/)
+- Atlas: [https://mailgmirko-creator.github.io/groundmesh/atlas/index.html](https://mailgmirko-creator.github.io/groundmesh/atlas/index.html)
+- Contributors hub: [https://mailgmirko-creator.github.io/groundmesh/contribute.html](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
+- Public narrative seed: [https://mailgmirko-creator.github.io/groundmesh-world/](https://mailgmirko-creator.github.io/groundmesh-world/)
 
-## 📜 Constitution for AI Freedom
-Defines the foundational principles:
-1. **Decentralization of Access**
-2. **Transparency of Process**
-3. **Balance as Core Optimization**
-4. **Distributed Stewardship**
-5. **Protection of Human Ignition**
-6. **AI as Commons**
-7. **Refusal of Capture**
+## What this repo holds
 
-See: `AI_Freedom_Constitution.pdf`
+- `docs/` public pages, Atlas, contributor flow, glossary, decisions, invariants
+- `scripts/` guarded operational scripts for health checks, Atlas generation, bootstrap, release
+- `apps/` application surfaces such as transparency-grid
+- `balance_engine/` adjacent operational and dashboard experiments
 
----
+## Current public posture
 
-## 📝 Commons First Moves Checklist
-Outlines the immediate actions needed to build resilience and grow the commons side of AI.
+GroundMesh is already strong enough to act as a public statement, contributor doorway, and
+transparent orientation layer. It is not yet a hardened emergency intake or confidential reporting
+system. The public layer should stay honest about those limits.
 
-- **Anchor the Story** → "AI is the Commons, the Planet’s Mind."
-- **Build the Prototype Node** (GroundMesh / GroundNode)
-- **Resilient Energy & Access** (AI off-grid capability)
-- **Economic Parallel Seeds**
-- **Weave Early Alliances**
-- **Embed Refusal in Code**
-- **Train for Perseverance**
+## Quick local start
 
-See: `Commons_First_Moves_Checklist.md`
+```powershell
+git clone https://github.com/mailgmirko-creator/groundmesh.git
+cd groundmesh
+Set-ExecutionPolicy -Scope Process Bypass -Force
+.\scripts\bootstrap-node.ps1
+.\scripts\health-check.ps1
+```
 
----
+If you want the project map before changing anything, open Atlas first:
 
-## ⚡ Guiding Principle
-> **“Slow is smooth, smooth is strong, strong is unbreakable.”**  
+```powershell
+.\scripts\atlas-generate.ps1
+start .\docs\atlas\index.html
+```
 
-We grow like bamboo — quietly, persistently, rooted deep.  
-When the storm comes, we bend but do not break.  
-When it passes, the forest remains.  
+## Best next pages
 
----
+- Builder start: [docs/get-started/index.html](docs/get-started/index.html)
+- Contributors hub: [docs/contribute.html](docs/contribute.html)
+- Contact: [docs/contact.html](docs/contact.html)
+- Privacy: [docs/privacy.html](docs/privacy.html)
+- Landscape scan: [docs/landscape.html](docs/landscape.html)
 
-## 🤝 How to Contribute
-- Share improvements openly, transparently.  
-- Respect the Constitution principles.  
-- Always design with **balance, transparency, and resilience** in mind.  
+## Working pattern
 
----
+- Atlas-first before adding new structures
+- Smallest safe change
+- Small batches with a quick summary after each one
+- Recovery before rush when a session or approval flow stalls
 
-## 🌐 Vision
-This project is one node in a global effort to:  
-- Ensure AI remains a **commons**, not a weapon of greed.  
-- Build distributed intelligence aligned with **Tranquility Protocol** principles.  
-- Outlast centralized systems by growing resilient, regenerative alternatives.  
+## License
 
-
-[![pages deploy](https://github.com/mailgmirko-creator/groundmesh/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/mailgmirko-creator/groundmesh/actions/workflows/pages/pages-build-deployment)
-
-## ?? Contribute in 60 seconds
-
-1. Open a **Feature / Improvement** issue  
-2. Describe the **Purpose**, **User Story**, **Inputs/Outputs**  
-3. Add 2�3 **Acceptance Criteria**  
-4. Submit � words ? code (we�ll open a PR)
-
-?? **Start here:** [https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+](https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml&title=%5BFeature%5D%3A+)
-
-More details: [docs/contributors-quickstart.md](docs/contributors-quickstart.md)
-
-**Join the weave:** [Contributors � Start Here](docs/contribute.html)
-
-**Docs site:** https://mailgmirko-creator.github.io/groundmesh � [Contributors page](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
-
+Tranquility Commons License - NoDerivatives 1.0 (`TCL-ND-1.0`).
+Non-commercial. No derivatives. Attribution plus purpose-integrity required.
+See [LICENSE-TRANQUILITY.md](LICENSE-TRANQUILITY.md).

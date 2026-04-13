@@ -1,4 +1,4 @@
-﻿# 🌍 Commons First Moves Checklist
+# 🌍 Commons First Moves Checklist
 
 ## 1) Anchor the Story (Now)
 - Declare: **"AI is the Commons, the Planet’s Mind."**

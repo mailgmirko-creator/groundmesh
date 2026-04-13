@@ -1,19 +1,28 @@
-﻿param(
+param(
   [string]$Base = "https://mailgmirko-creator.github.io/groundmesh"
 )
 
 $urls = @(
   "$Base/",
   "$Base/contribute.html",
+  "$Base/get-started/index.html",
   "$Base/map.html",
+  "$Base/contact.html",
+  "$Base/privacy.html",
+  "$Base/landscape.html",
   "$Base/atlas/index.html",
   "$Base/compute.html",
   "$Base/contributors-quickstart.md"
 )
 
 $files = @(
+  "docs/index.html",
   "docs/contribute.html",
+  "docs/get-started/index.html",
   "docs/map.html",
+  "docs/contact.html",
+  "docs/privacy.html",
+  "docs/landscape.html",
   "docs/assistant-brief.md",
   "docs/glossary.md",
   "docs/decisions/0001-why-atlas.md",

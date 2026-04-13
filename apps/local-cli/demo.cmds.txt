@@ -1,3 +1,3 @@
-﻿echo Hello ${USER_NAME}! Project is at: ${PROJECT_ROOT}
+echo Hello ${USER_NAME}! Project is at: ${PROJECT_ROOT}
 dir ${PROJECT_ROOT}
 echo > ${PROJECT_ROOT}\data\logs\from_demo.txt

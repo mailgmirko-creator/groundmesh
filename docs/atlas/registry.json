@@ -1,228 +1,130 @@
-﻿{
-    "meta":  {
-                 "updated_utc":  "2025-09-17T02:47:55Z",
-                 "version":  1,
-                 "repo":  "mailgmirko-creator/groundmesh"
-             },
-    "components":  [
-                       {
-                           "id":  "contributors_page",
-                           "name":  "Contributors Hub",
-                           "type":  "web",
-                           "status":  "live",
-                           "path":  "docs/contribute.html",
-                           "url":  "https://mailgmirko-creator.github.io/groundmesh/contribute.html",
-                           "depends":  [
-                                           "contributors_quickstart",
-                                           "feature_request_issue_template",
-                                           "add_my_pin_issue_template"
-                                       ]
-                       },
-                       {
-                           "id":  "contributors_quickstart",
-                           "name":  "Contributors Quickstart",
-                           "type":  "doc",
-                           "status":  "live",
-                           "path":  "docs/contributors-quickstart.md",
-                           "url":  "https://mailgmirko-creator.github.io/groundmesh/contributors-quickstart.md",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "map_page",
-                           "name":  "Living Map Page",
-                           "type":  "web",
-                           "status":  "live",
-                           "path":  "docs/map.html",
-                           "url":  "https://mailgmirko-creator.github.io/groundmesh/map.html",
-                           "depends":  [
-                                           "my_maps_embed"
-                                       ]
-                       },
-                       {
-                           "id":  "my_maps_embed",
-                           "name":  "Google My Maps Embed",
-                           "type":  "external",
-                           "status":  "live",
-                           "path":  "",
-                           "url":  "https://www.google.com/maps/d/embed?mid=1uobbAh3OfppGwDUm-87NgdT91BKZeWE\u0026ehbc=2E312F",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "add_my_pin_issue_template",
-                           "name":  "Issue Template: Add my pin",
-                           "type":  "gh-issue-template",
-                           "status":  "live",
-                           "path":  ".github/ISSUE_TEMPLATE/add_my_pin.yml",
-                           "url":  "https://github.com/mailgmirko-creator/groundmesh/issues/new?template=add_my_pin.yml",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "feature_request_issue_template",
-                           "name":  "Issue Template: Feature / Improvement",
-                           "type":  "gh-issue-template",
-                           "status":  "live",
-                           "path":  ".github/ISSUE_TEMPLATE/feature_request.yml",
-                           "url":  "https://github.com/mailgmirko-creator/groundmesh/issues/new?template=feature_request.yml\u0026title=%5BFeature%5D%3A+",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "spec_lint_action",
-                           "name":  "CI: spec-lint Action",
-                           "type":  "gh-action",
-                           "status":  "live",
-                           "path":  ".github/workflows/spec-lint.yml",
-                           "url":  "",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "compute_page",
-                           "name":  "Compute Transparency Page",
-                           "type":  "web",
-                           "status":  "live",
-                           "path":  "docs/compute.html",
-                           "url":  "https://mailgmirko-creator.github.io/groundmesh/compute.html",
-                           "depends":  [
-                                           "metrics_json"
-                                       ]
-                       },
-                       {
-                           "id":  "metrics_json",
-                           "name":  "Public Metrics JSON",
-                           "type":  "data",
-                           "status":  "live",
-                           "path":  "docs/data/metrics.json",
-                           "url":  "https://mailgmirko-creator.github.io/groundmesh/data/metrics.json",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "publish_metrics_script",
-                           "name":  "Script: publish-metrics.ps1",
-                           "type":  "script",
-                           "status":  "live",
-                           "path":  "scripts/publish-metrics.ps1",
-                           "url":  "",
-                           "depends":  [
-                                           "metrics_json"
-                                       ]
-                       },
-                       {
-                           "id":  "guarded_patch_script",
-                           "name":  "Script: guarded-patch.ps1",
-                           "type":  "script",
-                           "status":  "live",
-                           "path":  "scripts/guarded-patch.ps1",
-                           "url":  "",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "docs_index",
-                           "name":  "Docs Index",
-                           "type":  "doc",
-                           "status":  "live",
-                           "path":  "docs/index.md",
-                           "url":  "https://mailgmirko-creator.github.io/groundmesh/",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "get_started_doc",
-                           "name":  "Developer Get Started",
-                           "type":  "doc",
-                           "status":  "live",
-                           "path":  "docs/get-started/index.md",
-                           "url":  "https://mailgmirko-creator.github.io/groundmesh/docs/get-started/index.md",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "internal_dashboard",
-                           "name":  "Internal Dashboard (ops)",
-                           "type":  "internal",
-                           "status":  "exists",
-                           "path":  "balance_engine/dashboard/",
-                           "url":  "",
-                           "depends":  [
-
-                                       ]
-                       },
-                       {
-                           "id":  "assistant_brief Assistant Brief doc live docs/assistant-brief.md https://mailgmirko-creator.github.io/groundmesh/assistant-brief.md System.Object[]",
-                           "name":  "",
-                           "type":  "",
-                           "status":  "",
-                           "path":  "",
-                           "url":  "",
-                           "depends":  null
-                       },
-                       {
-                           "id":  "glossary Glossary doc live docs/glossary.md https://mailgmirko-creator.github.io/groundmesh/glossary.md System.Object[]",
-                           "name":  "",
-                           "type":  "",
-                           "status":  "",
-                           "path":  "",
-                           "url":  "",
-                           "depends":  null
-                       },
-                       {
-                           "id":  "adr_0001 ADR 0001 - Why Atlas doc live docs/decisions/0001-why-atlas.md https://mailgmirko-creator.github.io/groundmesh/decisions/0001-why-atlas.md System.Object[]",
-                           "name":  "",
-                           "type":  "",
-                           "status":  "",
-                           "path":  "",
-                           "url":  "",
-                           "depends":  null
-                       },
-                       {
-                           "id":  "status_json Status JSON data live docs/data/status.json https://mailgmirko-creator.github.io/groundmesh/data/status.json System.Object[]",
-                           "name":  "",
-                           "type":  "",
-                           "status":  "",
-                           "path":  "",
-                           "url":  "",
-                           "depends":  null
-                       },
-                       {
-                           "id":  "status_schema Status JSON Schema data live docs/data/status.schema.json https://mailgmirko-creator.github.io/groundmesh/data/status.schema.json System.Object[]",
-                           "name":  "",
-                           "type":  "",
-                           "status":  "",
-                           "path":  "",
-                           "url":  "",
-                           "depends":  null
-                       },
-                       {
-                           "id":  "health_check Script: health-check.ps1 script live scripts/health-check.ps1  System.Object[]",
-                           "name":  "",
-                           "type":  "",
-                           "status":  "",
-                           "path":  "",
-                           "url":  "",
-                           "depends":  null
-                       },
-                       {
-                           "id":  "json_pages_ci CI: json-and-pages-check gh-action live .github/workflows/json-and-pages-check.yml  System.Object[]",
-                           "name":  "",
-                           "type":  "",
-                           "status":  "",
-                           "path":  "",
-                           "url":  "",
-                           "depends":  null
-                       }
-                   ]
+{
+  "entries": [
+    {
+      "id": "ADR-0001",
+      "name": "Why Project Atlas",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0001-why-atlas.md",
+      "summary": "Establishes Atlas as the shared registry for repo orientation, safer changes, and lower duplication risk."
+    },
+    {
+      "id": "ADR-0002",
+      "name": "Relationship Between GroundMesh World and GroundMesh",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0002-groundmesh-world-relationship.md",
+      "summary": "Keeps GroundMesh as the canonical core repo, keeps groundmesh-world as the narrative public seed, and merges by small translation steps rather than repo collapse."
+    },
+    {
+      "id": "DOC-ASSISTANT-BRIEF",
+      "name": "Assistant Brief",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/assistant-brief.md",
+      "summary": "Defines Atlas-first workflow, smallest-safe-change practice, and the current stabilization focus."
+    },
+    {
+      "id": "DOC-GLOSSARY",
+      "name": "GroundMesh Glossary",
+      "type": "reference",
+      "status": "active",
+      "path": "docs/glossary.md",
+      "summary": "Compact shared language for Atlas, compute transparency, and contributor on-ramps."
+    },
+    {
+      "id": "GM-INV-VIII",
+      "name": "Continuity With Consent",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-VIII.md",
+      "summary": "Sustained participation must arise from voluntary re-engagement, not compulsion. Systems must preserve agency, rhythm, and the right to pause without loss of dignity.",
+      "related": [
+        "TP-03"
+      ]
+    },
+    {
+      "id": "PAGE-COMPUTE",
+      "name": "Compute Transparency",
+      "type": "page",
+      "status": "active",
+      "path": "docs/compute.html",
+      "summary": "Public snapshot page for non-sensitive grid metrics sourced from metrics.json."
+    },
+    {
+      "id": "PAGE-CONTACT",
+      "name": "GroundMesh Contact",
+      "type": "page",
+      "status": "active",
+      "path": "docs/contact.html",
+      "summary": "Simple public contact path for questions, corrections, first contact, and participation guidance."
+    },
+    {
+      "id": "PAGE-GET-STARTED",
+      "name": "GroundMesh Get Started",
+      "type": "page",
+      "status": "active",
+      "path": "docs/get-started/index.html",
+      "summary": "Builder-facing start page for local setup, health checks, Atlas-first work, and small-batch contributions."
+    },
+    {
+      "id": "PAGE-HOME",
+      "name": "GroundMesh Start Here",
+      "type": "page",
+      "status": "active",
+      "path": "docs/index.html",
+      "summary": "Unified public front door that joins the stronger narrative seed with the Atlas-backed docs layer."
+    },
+    {
+      "id": "PAGE-LANDSCAPE",
+      "name": "GroundMesh Landscape",
+      "type": "page",
+      "status": "active",
+      "path": "docs/landscape.html",
+      "summary": "Broad scan of live pages, local repos, mirrors, and adjacent web surfaces around GroundMesh."
+    },
+    {
+      "id": "PAGE-PRIVACY",
+      "name": "GroundMesh Privacy",
+      "type": "page",
+      "status": "active",
+      "path": "docs/privacy.html",
+      "summary": "Plain-language statement of the current public privacy posture, limits, and data-minimization rule."
+    },
+    {
+      "id": "PAGE-CONTRIBUTE",
+      "name": "Contributors Hub",
+      "type": "page",
+      "status": "active",
+      "path": "docs/contribute.html",
+      "summary": "Primary public on-ramp for volunteers, issue filing, and low-friction participation."
+    },
+    {
+      "id": "PAGE-MAP",
+      "name": "GroundMesh Map",
+      "type": "page",
+      "status": "active",
+      "path": "docs/map.html",
+      "summary": "Public-facing orientation page for the project landscape and navigation."
+    },
+    {
+      "id": "STATUS-PUBLIC",
+      "name": "Public Status Snapshot",
+      "type": "data",
+      "status": "active",
+      "path": "docs/data/status.json",
+      "summary": "Tracks public health notes for the current docs surface and Atlas-backed pages."
+    },
+    {
+      "id": "TP-03",
+      "name": "Sustaining Resolve Without Compulsion",
+      "type": "protocol",
+      "status": "active",
+      "path": "docs/protocols/TP-03.md",
+      "summary": "Guides humans through pressure and delay without collapse or loss of agency; restores resolve through meaning, rhythm, and consent.",
+      "related": [
+        "GM-INV-VIII"
+      ]
+    }
+  ]
 }

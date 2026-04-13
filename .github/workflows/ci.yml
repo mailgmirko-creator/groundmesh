@@ -1,4 +1,4 @@
-﻿name: GroundMesh CI
+name: GroundMesh CI
 run-name: "GroundMesh CI • ${{ github.ref_name }}"
 
 on:

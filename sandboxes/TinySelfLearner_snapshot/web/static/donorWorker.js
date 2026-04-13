@@ -1,4 +1,4 @@
-﻿/* donorWorker.js — runs off the UI thread to avoid page freezing */
+/* donorWorker.js — runs off the UI thread to avoid page freezing */
 let running = false;
 let device = "anonymous";
 let total = 0;

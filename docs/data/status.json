@@ -1,21 +1,41 @@
-﻿{
-    "updated_utc":  "2025-09-19T21:49:28Z",
-    "components":  {
-                       "contributors_page":  {
-                                                 "status":  "green",
-                                                 "note":  "Visible and loads"
-                                             },
-                       "map_page":  {
-                                        "status":  "yellow",
-                                        "note":  "Embed OK; small text artifacts cleanup pending"
-                                    },
-                       "compute_page":  {
-                                            "status":  "red",
-                                            "note":  "Public page/metrics not wired yet"
-                                        },
-                       "atlas_page":  {
-                                          "status":  "green",
-                                          "note":  "Page published and loads"
-                                      }
-                   }
+{
+  "updated_utc": "2026-04-13T07:05:00Z",
+  "components": {
+    "home_page": {
+      "status": "yellow",
+      "note": "Unified front door revision is ready locally; live publish still pending"
+    },
+    "contributors_page": {
+      "status": "green",
+      "note": "Visible and loads"
+    },
+    "get_started_page": {
+      "status": "yellow",
+      "note": "Builder-facing HTML page is ready locally; live publish still pending"
+    },
+    "map_page": {
+      "status": "green",
+      "note": "Embed and add-pin paths are present, with cleaned public CTA markup"
+    },
+    "contact_page": {
+      "status": "yellow",
+      "note": "Simple public human contact path is present locally; live publish still pending"
+    },
+    "privacy_page": {
+      "status": "yellow",
+      "note": "Plain-language privacy posture is present locally; live publish still pending"
+    },
+    "landscape_page": {
+      "status": "yellow",
+      "note": "Broad scan page is ready locally; live publish still pending"
+    },
+    "compute_page": {
+      "status": "green",
+      "note": "Page and metrics stub live"
+    },
+    "atlas_page": {
+      "status": "green",
+      "note": "Page published and loads"
+    }
+  }
 }

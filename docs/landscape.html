@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh Landscape</title>
+  <meta name="description" content="Broad scan of GroundMesh-related local repos, public surfaces, and adjacent site layers." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #151c26;
+      --text: #eef2f7;
+      --muted: #b8c2cf;
+      --line: rgba(255,255,255,.08);
+      --accent: #95e3ae;
+      --accent-2: #8bc4ff;
+      --ok: #b6f0c3;
+      --warn: #ffd7a8;
+      --shadow: 0 18px 40px rgba(0,0,0,.24);
+      --radius: 24px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(149,227,174,.10), transparent 28%),
+        linear-gradient(180deg, #0a0e13 0%, #0f141b 100%);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; padding: 28px 0 56px; }
+    .hero, .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero { padding: 28px; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h1, h2, h3 { line-height: 1.08; margin: 0 0 16px; }
+    h1 { font-size: clamp(2.2rem, 4vw, 4rem); max-width: 14ch; }
+    h2 { font-size: clamp(1.6rem, 2.4vw, 2.4rem); margin-top: 24px; }
+    h3 { font-size: 1.05rem; }
+    p { margin: 0 0 16px; color: var(--muted); }
+    .actions, .grid, .mini {
+      display: grid;
+      gap: 18px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      min-height: 48px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: .18s ease;
+    }
+    .btn.primary { background: var(--accent); color: #09100c; }
+    .btn.secondary { background: transparent; color: var(--text); border-color: var(--line); }
+    .grid { grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
+    .mini { grid-template-columns: repeat(2, 1fr); margin-top: 18px; }
+    .card { padding: 24px; }
+    .card a { color: var(--accent); font-weight: 700; }
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      margin-bottom: 10px;
+    }
+    .ok { background: rgba(182,240,195,.12); color: var(--ok); border: 1px solid rgba(182,240,195,.2); }
+    .warn { background: rgba(255,215,168,.12); color: var(--warn); border: 1px solid rgba(255,215,168,.2); }
+    code {
+      background: rgba(255,255,255,.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: Consolas, "Courier New", monospace;
+      word-break: break-word;
+    }
+    ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    li + li { margin-top: 8px; }
+    @media (max-width: 980px) {
+      .grid, .mini { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">GroundMesh Landscape</div>
+      <h1>What exists here, on the web, and around the project right now.</h1>
+      <p>
+        This page is a broad scan of the GroundMesh ecosystem as checked on April 13, 2026.
+        It separates the public-facing surfaces, local repos, and adjacent operational experiments
+        so we can grow from what is already real instead of duplicating it blindly.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="index.html">Back to Front Door</a>
+        <a class="btn secondary" href="atlas/index.html">Open Atlas</a>
+        <a class="btn secondary" href="contribute.html">Contribute</a>
+        <a class="btn secondary" href="contact.html">Contact</a>
+      </div>
+    </section>
+
+    <h2>Confirmed live pages</h2>
+    <section class="grid">
+      <article class="card">
+        <div class="status ok">Live now</div>
+        <h3>GroundMesh docs site</h3>
+        <p>The original public/docs surface is live and reachable.</p>
+        <a href="https://mailgmirko-creator.github.io/groundmesh/">Open live site</a>
+      </article>
+      <article class="card">
+        <div class="status ok">Live now</div>
+        <h3>GroundMesh Atlas</h3>
+        <p>The Atlas page on GitHub Pages responds successfully.</p>
+        <a href="https://mailgmirko-creator.github.io/groundmesh/atlas/index.html">Open live Atlas</a>
+      </article>
+      <article class="card">
+        <div class="status ok">Live now</div>
+        <h3>GroundMesh World</h3>
+        <p>The newer standalone public seed is also live on GitHub Pages.</p>
+        <a href="https://mailgmirko-creator.github.io/groundmesh-world/">Open GroundMesh World</a>
+      </article>
+    </section>
+
+    <h2>Main local repos and working trees</h2>
+    <section class="grid">
+      <article class="card">
+        <div class="status ok">Primary repo</div>
+        <h3>GroundMesh</h3>
+        <p>The strongest operational repo: docs, Atlas, contributors flow, map, compute, scripts, and governance artifacts.</p>
+        <ul>
+          <li><code>C:\Ground Mesh\GroundMesh</code></li>
+          <li>GitHub: <code>git@github.com:mailgmirko-creator/groundmesh.git</code></li>
+          <li>GitLab mirror: <code>git@gitlab.com:mailgmirko-creator/groundmesh.git</code></li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="status ok">Public seed</div>
+        <h3>groundmesh-world</h3>
+        <p>The newer standalone public narrative site with covenant, join, support, trust, and launch sections.</p>
+        <ul>
+          <li><code>C:\Ground Mesh\groundmesh-world</code></li>
+          <li>GitHub: <code>git@github.com:mailgmirko-creator/groundmesh-world.git</code></li>
+          <li>Live page confirmed above</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="status warn">Older / local-only</div>
+        <h3>GroundNode and mirrors</h3>
+        <p>GroundNode, GroundMesh-DEV, and GroundMesh-ACTIVE look like important earlier or parallel layers, but not the main public front door today.</p>
+        <ul>
+          <li><code>C:\Ground Mesh\GroundNode</code></li>
+          <li><code>C:\Ground Mesh\GroundMesh-DEV</code></li>
+          <li><code>C:\Ground Mesh\GroundMesh-ACTIVE</code></li>
+        </ul>
+      </article>
+    </section>
+
+    <h2>Other local web surfaces spotted</h2>
+    <section class="mini">
+      <article class="card">
+        <h3>Live Ledgers dashboard</h3>
+        <p>Local dashboard surface inside the balance engine.</p>
+        <p><code>C:\Ground Mesh\GroundMesh\balance_engine\dashboard\static\index.html</code></p>
+      </article>
+      <article class="card">
+        <h3>Transparency Grid app</h3>
+        <p>Local compute-donation and transparency interface.</p>
+        <p><code>C:\Ground Mesh\GroundMesh\apps\transparency-grid\static\index.html</code></p>
+      </article>
+      <article class="card">
+        <h3>TinySelfLearner snapshot</h3>
+        <p>Experimental local web surface preserved in the sandboxes area.</p>
+        <p><code>C:\Ground Mesh\GroundMesh\sandboxes\TinySelfLearner_snapshot\web\static\index.html</code></p>
+      </article>
+      <article class="card">
+        <h3>Bridge</h3>
+        <p>Transcript-oriented local layer that may still matter as memory or process scaffolding.</p>
+        <p><code>C:\Ground Mesh\Bridge</code></p>
+      </article>
+    </section>
+
+    <h2>Current best reading</h2>
+    <section class="grid">
+      <article class="card">
+        <div class="status ok">Best front door</div>
+        <h3>Public narrative</h3>
+        <p><code>groundmesh-world</code> is the stronger narrative-facing public site and clearly deserves to influence the main front door.</p>
+      </article>
+      <article class="card">
+        <div class="status ok">Best structure</div>
+        <h3>Operational layer</h3>
+        <p><code>GroundMesh/docs</code> is the stronger structural and governance layer, especially through Atlas and the contributor flow.</p>
+      </article>
+      <article class="card">
+        <div class="status ok">Best direction</div>
+        <h3>Unify, do not fork</h3>
+        <p>The right move is to let the public seed and the Atlas/docs layer reinforce each other, instead of maintaining parallel front doors that drift apart.</p>
+      </article>
+    </section>
+
+    <h2>Practical trust layer now present</h2>
+    <section class="mini">
+      <article class="card">
+        <h3>Contact</h3>
+        <p>A simple human contact page now exists for questions, corrections, and first contact.</p>
+        <a href="contact.html">Open Contact</a>
+      </article>
+      <article class="card">
+        <h3>Privacy</h3>
+        <p>A plain-language privacy posture now exists so the public layer states its real limits honestly.</p>
+        <a href="privacy.html">Open Privacy</a>
+      </article>
+    </section>
+  </div>
+</body>
+</html>

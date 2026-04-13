@@ -1,4 +1,4 @@
-﻿# Start GroundMesh Grid
+# Start GroundMesh Grid
 cd "C:\Users\mailg\Projects\TinySelfLearner"
 .\.venv\Scripts\Activate.ps1
 

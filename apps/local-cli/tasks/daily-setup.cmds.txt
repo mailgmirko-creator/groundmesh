@@ -1,4 +1,4 @@
-﻿# daily-setup: quick sanity checks
+# daily-setup: quick sanity checks
 echo Hello ${USER_NAME}, starting daily setup…
 dir ${PROJECT_ROOT}
 echo > ${PROJECT_ROOT}\data\logs\daily-setup-ran.txt

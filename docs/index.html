@@ -1,54 +1,353 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>GroundMesh</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh - Stand for Life</title>
+  <meta name="description" content="GroundMesh is a life-first public covenant and coordination seed joined to an Atlas-backed docs layer for transparent growth." />
   <style>
-    :root { --c:#0366d6; }
-    body{font-family:system-ui,Segoe UI,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.6}
-    h1{font-size:2.0rem;margin:.2rem 0}
-    .lede{font-size:1.05rem;opacity:.9}
-    .btn{display:inline-block;padding:10px 16px;border-radius:8px;background:var(--c);color:#fff;text-decoration:none;border:1px solid var(--c)}
-    ul.links{list-style:disc;margin-left:1.1rem}
-    .muted{opacity:.75}
+    :root {
+      --bg: #0b0f14;
+      --panel: #151c26;
+      --panel-2: #1b2431;
+      --text: #eef2f7;
+      --muted: #b8c2cf;
+      --line: rgba(255,255,255,.08);
+      --accent: #95e3ae;
+      --accent-2: #8bc4ff;
+      --warn: #ffd7a8;
+      --danger: #ffb7b7;
+      --shadow: 0 18px 40px rgba(0,0,0,.24);
+      --radius: 24px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(139,196,255,.10), transparent 28%),
+        linear-gradient(180deg, #0a0e13 0%, #0f141b 100%);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(10,14,19,.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 14px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 8px rgba(149,227,174,.08);
+    }
+    .brand strong { display: block; font-size: 1.05rem; }
+    .brand span { color: var(--muted); font-size: .9rem; }
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-link {
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: .18s ease;
+    }
+    .nav-link:hover {
+      color: #0a0f13;
+      background: var(--accent);
+      border-color: transparent;
+    }
+    main { padding: 34px 0 64px; }
+    .hero, .card, .box {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .hero-copy { padding: 38px; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h1, h2, h3 { line-height: 1.08; margin: 0 0 16px; }
+    h1 { font-size: clamp(2.4rem, 4vw, 4.8rem); max-width: 13ch; }
+    h2 { font-size: clamp(1.7rem, 2.5vw, 2.6rem); }
+    h3 { font-size: 1.08rem; }
+    p { margin: 0 0 16px; color: var(--muted); }
+    .actions, .surface-grid, .cards, .two {
+      display: grid;
+      gap: 18px;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      min-height: 48px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: .18s ease;
+    }
+    .btn.primary { background: var(--accent); color: #09100c; }
+    .btn.secondary { background: transparent; color: var(--text); border-color: var(--line); }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 22px;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+    }
+    .metric strong { display: block; font-size: 1.5rem; margin-bottom: 8px; }
+    .surface-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 18px; }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .two { grid-template-columns: 1fr 1fr; margin-top: 18px; }
+    .card, .box { padding: 24px; }
+    .card a, .box a { color: var(--accent); font-weight: 700; }
+    .list { margin: 0; padding-left: 18px; color: var(--muted); }
+    .list li + li { margin-top: 9px; }
+    .notice {
+      border-left: 4px solid var(--warn);
+      padding-left: 14px;
+      color: var(--text);
+    }
+    .danger-note {
+      border-left: 4px solid var(--danger);
+      padding-left: 14px;
+      color: var(--text);
+    }
+    code {
+      background: rgba(255,255,255,.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: Consolas, "Courier New", monospace;
+    }
+    @media (max-width: 1100px) {
+      .surface-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 980px) {
+      .hero, .cards, .two { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav { grid-template-columns: 1fr; }
+      .nav-links { justify-content: flex-start; }
+      .hero-copy { padding: 26px; }
+      .metric-grid, .surface-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(console.error);
-  });
-}
-</script>
 <body>
-  <h1>GroundMesh</h1>
-  <p class="lede"><strong>Decentralized, transparent AI for the commons — balance-first, capture-resistant.</strong></p>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <div>
+          <strong>GroundMesh</strong>
+          <span>Life-first covenant and public coordination layer</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link" href="#covenant">Covenant</a>
+        <a class="nav-link" href="#join">Join</a>
+        <a class="nav-link" href="#support">Support</a>
+        <a class="nav-link" href="#trust">Trust</a>
+        <a class="nav-link" href="atlas/index.html">Atlas</a>
+        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="map.html">Map</a>
+        <a class="nav-link" href="compute.html">Compute</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link" href="privacy.html">Privacy</a>
+        <a class="nav-link" href="landscape.html">Landscape</a>
+      </nav>
+    </div>
+  </header>
 
-  <ul class="links">
-    <li>🌍 Constitution: <a href="https://github.com/mailgmirko-creator/groundmesh/tree/main/constitution">AI Freedom Constitution (repo)</a></li>
-    <li>📝 First Moves: <a href="https://github.com/mailgmirko-creator/groundmesh/tree/main/checklists">Commons Checklist (repo)</a></li>
-    <li>📦 Repository: <a href="https://github.com/mailgmirko-creator/groundmesh">github.com/mailgmirko-creator/groundmesh</a></li>
-  </ul>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">GroundMesh public seed</div>
+        <h1>Stand for life, then build the weave carefully.</h1>
+        <p>
+          GroundMesh is a voluntary coordination layer for people who refuse war, corruption,
+          coercion, and exploitation, and who want that refusal to become practical,
+          transparent, and connected.
+        </p>
+        <p>
+          This front door now carries the stronger public seed energy from the newer
+          <code>groundmesh-world</code> site while staying joined to the Atlas-backed docs layer
+          that keeps growth inspectable and less likely to drift.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#join">Stand for Life</a>
+          <a class="btn secondary" href="#covenant">Read the Covenant</a>
+          <a class="btn secondary" href="atlas/index.html">Open Atlas</a>
+          <a class="btn secondary" href="https://mailgmirko-creator.github.io/groundmesh-world/">Open World Seed</a>
+          <a class="btn secondary" href="landscape.html">Scan the Landscape</a>
+        </div>
+      </div>
+      <aside class="metric-grid">
+        <div class="metric"><strong>Public seed</strong><span>Human-facing front door</span></div>
+        <div class="metric"><strong>Atlas-backed</strong><span>Operational memory</span></div>
+        <div class="metric"><strong>Life-first</strong><span>Operating ethic</span></div>
+        <div class="metric"><strong>Static and safe</strong><span>Good for careful publishing</span></div>
+      </aside>
+    </section>
 
-  <p style="margin-top:1rem">
-    <a class="btn" href="/groundmesh/get-started.html">Get Started →</a>
-  </p>
+    <section class="surface-grid">
+      <article class="card"><h3>Atlas</h3><p>See what already exists before adding anything new.</p><a href="atlas/index.html">Open Atlas</a></article>
+      <article class="card"><h3>Contribute</h3><p>The low-friction public on-ramp for people who want to help.</p><a href="contribute.html">Open Contributors Hub</a></article>
+      <article class="card"><h3>Map</h3><p>The public orientation layer for visible relation and participation.</p><a href="map.html">Open the Map</a></article>
+      <article class="card"><h3>Compute</h3><p>Transparency page for non-sensitive metrics and public operational signals.</p><a href="compute.html">Open Compute</a></article>
+      <article class="card"><h3>Landscape</h3><p>A broader scan of local repos, live surfaces, and the newer site lineage.</p><a href="landscape.html">Open Landscape</a></article>
+    </section>
 
-  <h2>What is this?</h2>
-  <p>GroundMesh is the public/docs side of a two-repo pattern (GroundNode = private/runtime). It anchors:</p>
-  <ul>
-    <li>A constitution that resists capture,</li>
-    <li>First-moves for resilient, off-grid nodes,</li>
-    <li>Bootstrap scripts and contribution guides.</li>
-  </ul>
+    <section class="two">
+      <div class="box">
+        <div class="eyebrow">Public trust</div>
+        <h2>Contact and privacy now exist as real pages.</h2>
+        <p>The project now has a simple human contact path and a plain-language privacy posture, so the public layer is more honest about what it is and what it is not.</p>
+      </div>
+      <div class="box">
+        <h3>Use these if unsure</h3>
+        <p>If you want to ask a question, request a correction, or check what is public before sharing, start there.</p>
+        <a href="contact.html">Open Contact</a><br />
+        <a href="privacy.html">Open Privacy</a>
+      </div>
+    </section>
 
-  <h2>Contribute</h2>
-  <ul>
-    <li>Read the Constitution, then open a PR or issue.</li>
-    <li>Follow the <strong>Contributing</strong> and <strong>Code of Conduct</strong> in the repo.</li>
-  </ul>
+    <section class="cards">
+      <article class="card"><h3>What this is</h3><p>A public covenant and coordination seed for life-first people, circles, and places. Not a party, not a cult, not a state, not a militia.</p></article>
+      <article class="card"><h3>What works right now</h3><p>The public statement, Atlas, contributors flow, map, and docs layer can already orient people without pretending the emergency network is fully operational.</p></article>
+      <article class="card"><h3>Why the merge matters</h3><p>The public narrative can invite the world in, while the operational layer keeps the project honest, inspectable, and easier to extend safely.</p></article>
+    </section>
 
-  <p class="muted">Balance over extraction. Commons over control. Open over opaque.</p>
+    <section id="covenant" class="two">
+      <div class="box">
+        <div class="eyebrow">Founding text</div>
+        <h2>The GroundMesh Covenant</h2>
+        <p>We are human beings who refuse to give our lives, labor, conscience, and future to war, corruption, coercion, and organized distortion.</p>
+        <p>We stand for life. We stand for truth. We stand for mutual protection. We stand for a world in which people do not need to sell their soul in order to survive.</p>
+      </div>
+      <div class="box">
+        <h3>What we stand for</h3>
+        <ul class="list">
+          <li>Life over destruction</li>
+          <li>Truth over distortion</li>
+          <li>Stewardship over extraction</li>
+          <li>Cooperation over coercion</li>
+          <li>Dignity over humiliation</li>
+          <li>Defense without cruelty</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="join" class="two">
+      <div class="box">
+        <div class="eyebrow">Participation</div>
+        <h2>Join the Mesh</h2>
+        <p><strong>I stand for life.</strong> I refuse corruption, coercion, exploitation, and unjust war. I join this covenant in truth, according to my real capacity.</p>
+        <p>Public declaration, pseudonymous participation, and privately verified local node remain the cleanest initial participation layers.</p>
+      </div>
+      <div class="box">
+        <h3>Current best path</h3>
+        <p>Use the existing contributors flow while the safer live intake layer is still being built.</p>
+        <a href="contribute.html">Go to Contributors</a>
+      </div>
+    </section>
+
+    <section id="support" class="cards">
+      <article class="card"><div class="eyebrow">Practical resilience</div><h3>Economic support</h3><p>When someone loses income for refusing corruption, the wider mesh helps sustain them through transparent and consent-based support.</p></article>
+      <article class="card"><div class="eyebrow">Practical resilience</div><h3>Witness and truth relay</h3><p>When someone is being silenced, buried, or distorted, nearby and distant nodes help document, verify, and relay what is happening.</p></article>
+      <article class="card"><div class="eyebrow">Practical resilience</div><h3>Protection of life</h3><p>Protection means lawful defense, de-escalation, safe shelter, relocation support, and public visibility - not vengeance.</p></article>
+    </section>
+
+    <section id="trust" class="two">
+      <div class="box">
+        <div class="eyebrow">Trust architecture</div>
+        <h2>Verification, transparency, and boundaries</h2>
+        <p>Self-declared node, peer-confirmed node, locally verified node, service-proven node, and emergency reports pending confirmation are all distinct trust levels.</p>
+        <p class="notice">Collect as little as possible in the public layer. Never promise protection you cannot actually provide.</p>
+      </div>
+      <div class="box">
+        <h3>What GroundMesh must never become</h3>
+        <p class="danger-note">A coercive authority. A hidden financial capture mechanism. A cult of personality. An engine of revenge. A surveillance net over ordinary people. A manipulation layer disguised as goodness.</p>
+      </div>
+    </section>
+
+    <section class="two">
+      <div class="box">
+        <div class="eyebrow">Launch guidance</div>
+        <h2>How to share this responsibly</h2>
+        <p>Tell people this is a founding public seed and an Atlas-connected front door, not yet a fully operational emergency network.</p>
+      </div>
+      <div class="box">
+        <h3>Before going wider</h3>
+        <ul class="list">
+          <li>Keep the contact path monitored and responsive</li>
+          <li>Keep the privacy and data-minimization posture current</li>
+          <li>Replace prototype forms with a real intake method</li>
+          <li>Create a moderation and verification review process</li>
+          <li>Keep the first promise smaller than the eventual mission</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="box" style="margin-top:18px;">
+      <h3>Seed-phase note</h3>
+      <p>This version is strong enough as a public statement and directional site. It is not yet strong enough to safely process live public declarations or emergencies without a real intake, review, privacy, and moderation layer behind it.</p>
+    </section>
+  </main>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(console.error);
+      });
+    }
+  </script>
 </body>
 </html>

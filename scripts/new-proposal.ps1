@@ -1,4 +1,4 @@
-﻿param(
+param(
   [Parameter(Mandatory=$true)][string]$Title
 )
 $slug = ($Title.ToLower() -replace "[^a-z0-9]+","-").Trim("-")

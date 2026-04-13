@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$TranscriptPath = "$env:USERPROFILE\Documents\GroundNode_transcript.txt",
   [string]$Layer = "system"
 )

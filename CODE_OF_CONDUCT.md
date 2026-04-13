@@ -1,4 +1,4 @@
-﻿# Code of Conduct
+# Code of Conduct
 
 We commit to a collaborative space that serves **the commons**.
 

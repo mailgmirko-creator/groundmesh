@@ -1,4 +1,4 @@
-﻿name: Feature / Improvement
+name: Feature / Improvement
 description: Turn words into code by filling this friendly spec.
 title: "[Feature]: "
 labels: ["spec","ready-for-CI"]

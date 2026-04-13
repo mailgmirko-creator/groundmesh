@@ -1,4 +1,4 @@
-﻿# Docs License (CC BY-SA 4.0)
+# Docs License (CC BY-SA 4.0)
 
 All **documentation content** in this repository (e.g., files in `constitution/`, `checklists/`, and the `README.md`) is licensed under **Creative Commons Attribution-ShareAlike 4.0 International**.
 

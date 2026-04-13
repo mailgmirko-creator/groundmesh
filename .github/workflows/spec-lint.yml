@@ -1,4 +1,4 @@
-﻿name: spec-lint
+name: spec-lint
 
 on:
   pull_request:

@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$Path = "$env:USERPROFILE\Documents\GroundNode_transcript.txt"
 )
 if (-not (Test-Path $Path)) {

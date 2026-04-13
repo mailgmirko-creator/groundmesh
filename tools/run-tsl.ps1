@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$JobFile = "apps/tsl/jobs/learn_principles.json"
 )
 

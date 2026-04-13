@@ -1,4 +1,4 @@
-﻿name: Add my pin
+name: Add my pin
 description: Add your city/country to the GroundMesh living map
 title: "[Pin]: <City, Country>"
 labels: ["map-pin","ready-for-CI"]

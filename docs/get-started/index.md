@@ -4,34 +4,45 @@ title: Get Started
 permalink: /get-started/
 ---
 
-# Get Started â€” GroundMesh
+# Get Started - GroundMesh
 
-**GroundMesh** is the public/docs side of a two-repo pattern  
-(*GroundNode = private/runtime*). It keeps AI in the **commons**: decentralized, transparent, balance-first.
+This markdown page is the lightweight fallback for the builder start path.
+If the richer HTML page is available, prefer [the builder start page](index.html).
 
----
+## GroundMesh in one line
 
-## 1) Quickstart (check your setup)
+GroundMesh is the canonical core repo for the public docs layer, Atlas, contributor flow,
+governance artifacts, and trust scaffolding around the wider project.
 
-**Windows PowerShell (Run as Administrator):**
+## Two-repo working pattern
+
+- `GroundMesh` = canonical core, Atlas, docs, contributor and trust layer
+- `groundmesh-world` = narrative public seed and design reference
+- merge by careful translation, not by hard repo collapse
+
+## Quick local start
+
 ```powershell
 git clone https://github.com/mailgmirko-creator/groundmesh.git
 cd groundmesh
 Set-ExecutionPolicy -Scope Process Bypass -Force
 .\scripts\bootstrap-node.ps1
+.\scripts\health-check.ps1
+.\scripts\atlas-generate.ps1
+```
 
----
+## First safe steps
 
-## ?? Contribute to GroundMesh (in 60 seconds)
+1. Open `docs/atlas/index.html`
+2. Inspect what already exists before adding anything new
+3. Make one small batch of changes
+4. Update public status if the visible state changed
+5. Regenerate Atlas and rerun health checks
 
-Anyone can help. Write words ? we turn them into tasks and code.
+## Useful public pages
 
-- Open a Feature / Improvement issue
-- Describe Purpose, User Story, Inputs/Outputs
-- Add 2–3 Acceptance Criteria
-- Submit — we’ll open a PR for you to review
-
-?? **Start here:** [https://mailgmirko-creator.github.io/groundmesh/contribute.html](https://mailgmirko-creator.github.io/groundmesh/contribute.html)
-
-<a href=""https://mailgmirko-creator.github.io/groundmesh/contribute.html"" style=""display:inline-block;padding:12px 16px;border:1px solid #2a2a33;border-radius:10px;background:#1a1a20;color:#e9e9ee;text-decoration:none;font-weight:600;margin-top:6px"">? New Feature / Improvement</a>
-
+- [Front door](../index.html)
+- [Atlas](../atlas/index.html)
+- [Contributors Hub](../contribute.html)
+- [Contact](../contact.html)
+- [Privacy](../privacy.html)

@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$TranscriptDir = "C:\Projects\Bridge\transcripts",
   [Alias("Lines")][int]$Count = 400,
   [int]$LookBackFiles = 6,

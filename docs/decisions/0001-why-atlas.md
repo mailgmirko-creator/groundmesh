@@ -1,4 +1,4 @@
-﻿# 0001 — Why Project Atlas
+# 0001 — Why Project Atlas
 Date: 2025-09-19T21:49:28Z
 Status: Accepted
 

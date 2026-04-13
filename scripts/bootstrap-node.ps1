@@ -1,4 +1,4 @@
-﻿Write-Host "=== GroundMesh Bootstrap ===" -ForegroundColor Cyan
+Write-Host "=== GroundMesh Bootstrap ===" -ForegroundColor Cyan
 
 function OK($label,$value){ Write-Host ("[OK]  {0} -> {1}" -f $label,$value) -ForegroundColor Green }
 function XX($label,$value){ Write-Host ("[X]   {0} -> {1}" -f $label,$value) -ForegroundColor Red }
