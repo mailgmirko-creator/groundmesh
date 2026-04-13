@@ -1,41 +1,45 @@
 {
-  "updated_utc": "2026-04-13T07:05:00Z",
+  "updated_utc": "2026-04-13T19:35:00Z",
   "components": {
+    "deployment_source": {
+      "status": "yellow",
+      "note": "GitHub Pages source was switched toward GitHub Actions; awaiting a clean docs-based deploy to replace the stale branch-root site"
+    },
     "home_page": {
       "status": "yellow",
-      "note": "Unified front door revision is ready locally; live publish still pending"
+      "note": "Root URL still resolves, but current live content is a stale branch-root Jekyll page rather than the intended docs front door"
     },
     "contributors_page": {
-      "status": "green",
-      "note": "Visible and loads"
+      "status": "yellow",
+      "note": "Expected docs route, but currently 404 on the public site while deployment source transition completes"
     },
     "get_started_page": {
       "status": "yellow",
-      "note": "Builder-facing HTML page is ready locally; live publish still pending"
+      "note": "Builder-facing HTML page is present in the repo but still 404 publicly until the docs-based Pages deploy takes over"
     },
     "map_page": {
-      "status": "green",
-      "note": "Embed and add-pin paths are present, with cleaned public CTA markup"
+      "status": "yellow",
+      "note": "Map page is correct in docs, but the public route is still 404 under the current stale Pages output"
     },
     "contact_page": {
       "status": "yellow",
-      "note": "Simple public human contact path is present locally; live publish still pending"
+      "note": "Simple public human contact path exists in docs, but the live route is still 404"
     },
     "privacy_page": {
       "status": "yellow",
-      "note": "Plain-language privacy posture is present locally; live publish still pending"
+      "note": "Plain-language privacy posture exists in docs, but the live route is still 404"
     },
     "landscape_page": {
       "status": "yellow",
-      "note": "Broad scan page is ready locally; live publish still pending"
+      "note": "Broad scan page exists in docs, but the live route is still 404"
     },
     "compute_page": {
-      "status": "green",
-      "note": "Page and metrics stub live"
+      "status": "yellow",
+      "note": "Compute page exists in docs, but the live route is still 404 under the stale publish source"
     },
     "atlas_page": {
-      "status": "green",
-      "note": "Page published and loads"
+      "status": "yellow",
+      "note": "Atlas is correct in docs, but the public route is still 404 under the stale publish source"
     }
   }
 }
