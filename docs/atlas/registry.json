@@ -41,6 +41,14 @@
       "summary": "Compact shared language for Atlas, compute transparency, and contributor on-ramps."
     },
     {
+      "id": "EA-0001",
+      "name": "The Soul and the System",
+      "type": "echo",
+      "status": "active",
+      "path": "docs/echo_archive/EA-0001_soul-and-system.md",
+      "summary": "Foundational reflection linking soul to relational balance and emotions to consequence, then translating that pattern into harmony-seeking CI behavior."
+    },
+    {
       "id": "GM-INV-VIII",
       "name": "Continuity With Consent",
       "type": "invariant",
