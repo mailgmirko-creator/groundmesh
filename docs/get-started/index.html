@@ -192,6 +192,33 @@ start .\docs\index.html</code></pre>
 
     <section class="two">
       <article class="card">
+        <div class="eyebrow">First PR loop</div>
+        <h2>Make one small change and ship it cleanly</h2>
+        <pre><code>git checkout -b docs/my-small-change
+# edit one page, doc, or script
+.\scripts\atlas-generate.ps1
+.\scripts\health-check.ps1
+git status
+git add docs\path-you-changed
+git commit -m "docs: explain the small change"
+git push -u origin docs/my-small-change</code></pre>
+        <p>Then open GitHub, create the PR into <code>main</code>, and keep the title and body honest about what changed and why.</p>
+      </article>
+      <article class="card">
+        <div class="eyebrow">Good first batches</div>
+        <h2>Start with one visible improvement</h2>
+        <ul class="list">
+          <li>Fix one broken link or confusing sentence</li>
+          <li>Clarify one public page without changing the whole tone</li>
+          <li>Add one Atlas entry for something that already exists</li>
+          <li>Tighten one workflow step or one trust note</li>
+          <li>Avoid mixing design, policy, and structural edits in one batch</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="two">
+      <article class="card">
         <div class="eyebrow">First safe contribution path</div>
         <h2>Use Atlas before adding structure</h2>
         <ul class="list">
