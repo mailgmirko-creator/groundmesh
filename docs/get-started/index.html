@@ -167,6 +167,28 @@
       </article>
     </section>
 
+    <section class="two">
+      <article class="card">
+        <div class="eyebrow">ChatGPT bridge</div>
+        <h2>Import old conversations without living on copy-paste</h2>
+        <p>
+          If you export your ChatGPT data, GroundMesh can ingest the resulting
+          <code>conversations.json</code> or export zip into a local archive for later reading,
+          indexing, and careful reuse.
+        </p>
+        <pre><code>.\scripts\import-chatgpt-export.ps1 -SourcePath C:\path\to\chatgpt-export.zip</code></pre>
+      </article>
+      <article class="card">
+        <div class="eyebrow">What it creates</div>
+        <h2>Readable local history</h2>
+        <p>
+          The importer writes a timestamped folder under <code>archives/chatgpt_exports</code>
+          with a raw copy of the export, a top-level index, a manifest, and one Markdown file per
+          conversation.
+        </p>
+      </article>
+    </section>
+
     <section class="grid" style="margin-top:18px;">
       <article class="card">
         <div class="eyebrow">1</div>
