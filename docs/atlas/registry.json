@@ -25,6 +25,14 @@
       "summary": "Establishes GitHub as the shared external spine between ChatGPT, Codex, and GroundMesh work so important state is anchored in visible project memory."
     },
     {
+      "id": "ADR-0004",
+      "name": "Active / Dev Promotion Model",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0004-active-dev-promotion-model.md",
+      "summary": "Keeps the ACTIVE / DEV instinct, but translates it into one canonical repo with main as the public lane, dev as staging when needed, and separate sensitive services only where risk truly differs."
+    },
+    {
       "id": "DOC-ASSISTANT-BRIEF",
       "name": "Assistant Brief",
       "type": "guide",
