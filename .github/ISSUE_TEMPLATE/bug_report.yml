@@ -1,5 +1,6 @@
 name: Bug report
 description: Something isn’t working as expected
+title: "[Bug]: "
 labels: [bug]
 body:
   - type: textarea
@@ -10,11 +11,25 @@ body:
       placeholder: Clear steps + expected vs. actual
     validations:
       required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where did this happen?
+      description: Page URL, file path, script name, or workflow run.
+      placeholder: https://..., docs/index.html, scripts/health-check.ps1, GitHub Action run
+    validations:
+      required: true
   - type: textarea
     id: steps
     attributes:
       label: Steps to reproduce
       placeholder: 1) … 2) … 3) …
+  - type: textarea
+    id: smallest_fix
+    attributes:
+      label: Smallest fix you expect
+      description: What would count as the first honest repair?
+      placeholder: One route fixed, one message clarified, one script step corrected.
   - type: input
     id: env
     attributes:

@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Quick Question
-    url: https://github.com
-    about: Short questions or clarifications.
+  - name: GroundMesh Contribute
+    url: https://mailgmirko-creator.github.io/groundmesh/contribute.html
+    about: Start here for contribution paths, quick forms, and GitHub entry points.
+  - name: GroundMesh Contact
+    url: https://mailgmirko-creator.github.io/groundmesh/contact.html
+    about: Use this for first contact, corrections, removals, or questions that do not need an issue.
