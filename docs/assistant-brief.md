@@ -15,6 +15,7 @@
 - Unify the stronger `groundmesh-world` public seed with the Atlas-backed `GroundMesh/docs` front door.
 - Stabilize public docs (Home, Get Started, Contributors, Map, Compute, Atlas, Landscape, Contact, Privacy).
 - Surface existing donate/volunteer flow; avoid re-invention and avoid repo drift.
+- Treat future registration as a narrow pilot with real moderation, privacy, and rollback gates rather than a broad launch.
 
 ## Golden links
 - Get Started: /get-started/index.html

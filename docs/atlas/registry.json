@@ -33,6 +33,22 @@
       "summary": "Keeps the ACTIVE / DEV instinct, but translates it into one canonical repo with main as the public lane, dev as staging when needed, and separate sensitive services only where risk truly differs."
     },
     {
+      "id": "ADR-0005",
+      "name": "Public Registration Begins as a Pilot",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0005-public-registration-pilot.md",
+      "summary": "Requires GroundMesh registration to begin as a narrow pilot with explicit limits, separate sensitive intake, and real moderation, consent, and rollback gates."
+    },
+    {
+      "id": "CHECKLIST-REGISTRATION-PILOT",
+      "name": "Registration Pilot Readiness Checklist",
+      "type": "checklist",
+      "status": "active",
+      "path": "checklists/Registration_Pilot_Readiness_Checklist.md",
+      "summary": "Practical readiness gate for opening any real GroundMesh registration path beyond simple public contact."
+    },
+    {
       "id": "DOC-ASSISTANT-BRIEF",
       "name": "Assistant Brief",
       "type": "guide",
