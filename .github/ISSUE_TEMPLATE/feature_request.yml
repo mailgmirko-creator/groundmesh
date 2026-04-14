@@ -19,6 +19,22 @@ body:
     validations:
       required: true
   - type: textarea
+    id: existing_state
+    attributes:
+      label: What already exists?
+      description: Note any current page, script, issue, or Atlas entry related to this.
+      placeholder: Existing page/path, current behavior, or Atlas item already connected to this idea.
+    validations:
+      required: true
+  - type: textarea
+    id: smallest_slice
+    attributes:
+      label: Smallest useful first slice
+      description: What is the smallest safe version of this idea worth doing first?
+      placeholder: One page, one workflow step, one field, one visible improvement.
+    validations:
+      required: true
+  - type: textarea
     id: inputs
     attributes:
       label: Inputs
