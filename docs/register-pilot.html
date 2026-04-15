@@ -27,6 +27,49 @@
     .badge.bad { background:rgba(255,183,183,.12); color:var(--bad); border:1px solid rgba(255,183,183,.2); }
     form { display:grid; gap:14px; margin-top:12px; }
     .field { display:grid; gap:6px; }
+    .labelrow { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .helpdot {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid #3a3a44;
+      background: #181820;
+      color: var(--accent2);
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: help;
+    }
+    .helpdot::after {
+      content: attr(data-tip);
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      width: min(320px, 70vw);
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #2a2a33;
+      background: #111117;
+      color: var(--text);
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: opacity .18s ease, transform .18s ease;
+      font-size: .88rem;
+      font-weight: 400;
+      line-height: 1.45;
+      z-index: 5;
+    }
+    .helpdot:hover::after,
+    .helpdot:focus-visible::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .field-note { margin: 0; font-size: .92rem; color: var(--muted); }
     input, select, textarea {
       width:100%;
       border:1px solid #2a2a33;
@@ -98,7 +141,15 @@
           <input id="replyContact" name="replyContact" maxlength="120" placeholder="email@example.com or other agreed handle" required />
         </div>
         <div class="field">
-          <label for="contactPreference">Contact preference</label>
+          <div class="labelrow">
+            <label for="contactPreference">Contact preference</label>
+            <span
+              class="helpdot"
+              tabindex="0"
+              aria-label="Explain contact preference options"
+              data-tip="Email means ordinary email. Signal is the Signal messaging app, known for private messaging. WhatsApp is the Meta chat app. Telegram is another chat app. Other means a different contact method you and the steward already agree on."
+            >?</span>
+          </div>
           <select id="contactPreference" name="contactPreference" required>
             <option value="">Choose one</option>
             <option>Email</option>
@@ -107,15 +158,25 @@
             <option>Telegram</option>
             <option>Other</option>
           </select>
+          <p class="field-note">If unsure, choose the route you actually want Mirko to use for follow-up. Signal means the Signal messaging app.</p>
         </div>
         <div class="field">
-          <label for="privacyRequest">Privacy / declaration preference</label>
+          <div class="labelrow">
+            <label for="privacyRequest">Privacy / declaration preference</label>
+            <span
+              class="helpdot"
+              tabindex="0"
+              aria-label="Explain privacy or declaration preference options"
+              data-tip="Public declaration means you are comfortable with an openly named public statement later. Pseudonymous means you prefer a chosen name that is not your legal identity. Private follow-up first means do not treat this as public yet; clarify with the steward first."
+            >?</span>
+          </div>
           <select id="privacyRequest" name="privacyRequest" required>
             <option value="">Choose one</option>
             <option>Public declaration</option>
             <option>Pseudonymous</option>
             <option>Private follow-up first</option>
           </select>
+          <p class="field-note">Choose the most cautious honest option if you are unsure. Nothing here creates automatic public visibility.</p>
         </div>
         <div class="field">
           <label for="note">Short note</label>
