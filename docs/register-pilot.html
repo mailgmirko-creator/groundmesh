@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh Invited-Circle Registration Pilot</title>
+  <style>
+    :root { --bg:#0b0b0c; --card:#141417; --text:#e9e9ee; --muted:#b8b8c3; --line:#23232a; --accent:#6ee7b7; --accent2:#93c5fd; --warn:#ffd7a8; --ok:#b8ffd3; --bad:#ffb7b7; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif; line-height:1.5; }
+    .wrap { max-width:980px; margin:0 auto; padding:28px 20px 56px; }
+    .hero, .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; }
+    .hero { margin-bottom:16px; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.18em; color:var(--accent); font-size:.75rem; font-weight:700; margin-bottom:12px; }
+    h1 { font-size:clamp(1.8rem,3vw,2.8rem); margin:0 0 12px; }
+    h2 { font-size:1.1rem; margin:0 0 10px; }
+    p, li, label { color:var(--muted); }
+    .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:16px; }
+    .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
+    .btn, button { display:inline-block; text-decoration:none; padding:10px 14px; border-radius:10px; border:1px solid #2a2a33; background:#1a1a20; color:var(--text); font-weight:600; cursor:pointer; }
+    .btn.primary, button.primary { background:var(--accent); color:#09100c; border-color:transparent; }
+    .notice { border-left:4px solid var(--warn); padding-left:12px; color:var(--text); }
+    .statusline { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:14px; }
+    .badge { display:inline-block; padding:6px 10px; border-radius:999px; font-size:.82rem; font-weight:700; }
+    .badge.ok { background:rgba(184,255,211,.12); color:var(--ok); border:1px solid rgba(184,255,211,.2); }
+    .badge.warn { background:rgba(255,215,168,.12); color:var(--warn); border:1px solid rgba(255,215,168,.2); }
+    .badge.bad { background:rgba(255,183,183,.12); color:var(--bad); border:1px solid rgba(255,183,183,.2); }
+    form { display:grid; gap:14px; margin-top:12px; }
+    .field { display:grid; gap:6px; }
+    input, select, textarea {
+      width:100%;
+      border:1px solid #2a2a33;
+      border-radius:10px;
+      background:#101015;
+      color:var(--text);
+      padding:12px 14px;
+      font:inherit;
+    }
+    textarea { min-height:110px; resize:vertical; }
+    .checkbox { display:flex; gap:10px; align-items:flex-start; }
+    .checkbox input { width:auto; margin-top:3px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:4px; }
+    .result { margin-top:12px; padding:12px 14px; border-radius:10px; border:1px solid #2a2a33; background:#111117; }
+    .result.ok { border-color:rgba(184,255,211,.2); color:var(--ok); }
+    .result.bad { border-color:rgba(255,183,183,.2); color:var(--bad); }
+    code { background:rgba(255,255,255,.08); padding:2px 6px; border-radius:6px; }
+    ul { margin:8px 0 0 18px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Invited-circle pilot</div>
+      <h1>First GroundMesh registration pilot</h1>
+      <p>
+        This page is for the first invited-circle pilot only: you, then a few directly invited trusted
+        friends. It is not a broad public launch and it is not a confidential secure intake system.
+      </p>
+      <p class="notice">
+        This form only fully works when the steward-run pilot intake is active. If intake is inactive on
+        this host, use the ordinary email path from <a href="register.html">Registration Status</a>.
+      </p>
+      <div class="statusline">
+        <span id="statusBadge" class="badge warn">Checking intake...</span>
+        <span id="statusText">Looking for the local pilot intake service.</span>
+      </div>
+      <div class="cta">
+        <a class="btn" href="register.html">Back to Registration Status</a>
+        <a class="btn" href="contact.html">Contact</a>
+        <a class="btn" href="privacy.html">Privacy</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Submit a pilot registration</h2>
+      <p>Keep this minimal. Do not enter passports, identity numbers, private addresses, or emergency-only information.</p>
+      <form id="pilotForm">
+        <div class="field">
+          <label for="displayName">Display or chosen name</label>
+          <input id="displayName" name="displayName" maxlength="80" required />
+        </div>
+        <div class="field">
+          <label for="region">Region or country</label>
+          <input id="region" name="region" maxlength="80" required />
+        </div>
+        <div class="field">
+          <label for="participationType">Participation type</label>
+          <select id="participationType" name="participationType" required>
+            <option value="">Choose one</option>
+            <option>Public declaration</option>
+            <option>Pseudonymous participation</option>
+            <option>Builder / contributor</option>
+            <option>Local circle / node interest</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="replyContact">Reply email or handle</label>
+          <input id="replyContact" name="replyContact" maxlength="120" placeholder="email@example.com or other agreed handle" required />
+        </div>
+        <div class="field">
+          <label for="contactPreference">Contact preference</label>
+          <select id="contactPreference" name="contactPreference" required>
+            <option value="">Choose one</option>
+            <option>Email</option>
+            <option>Signal</option>
+            <option>WhatsApp</option>
+            <option>Telegram</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="privacyRequest">Privacy / declaration preference</label>
+          <select id="privacyRequest" name="privacyRequest" required>
+            <option value="">Choose one</option>
+            <option>Public declaration</option>
+            <option>Pseudonymous</option>
+            <option>Private follow-up first</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="note">Short note</label>
+          <textarea id="note" name="note" maxlength="500" placeholder="Short note only. Keep it calm and minimal."></textarea>
+        </div>
+        <label class="checkbox">
+          <input id="consent" name="consent" type="checkbox" required />
+          <span>I understand this pilot form is not a confidential intake channel and I will not send highly sensitive identity or emergency-only information through it.</span>
+        </label>
+        <div class="actions">
+          <button class="primary" type="submit">Submit to active pilot intake</button>
+          <button type="button" id="downloadBtn">Download my local copy</button>
+        </div>
+      </form>
+      <div id="result" class="result" hidden></div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>When intake is active</h2>
+        <ul>
+          <li>Your submission is stored in the steward-run local pilot workspace.</li>
+          <li>The smallest useful participant record is created.</li>
+          <li>The current invited-circle pilot rules still apply.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>When intake is inactive</h2>
+        <ul>
+          <li>Use the ordinary interest email path from the registration page.</li>
+          <li>Do not assume a silent form means acceptance.</li>
+          <li>Wait for explicit invited-circle confirmation before sharing this more widely.</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    const form = document.getElementById("pilotForm");
+    const result = document.getElementById("result");
+    const statusBadge = document.getElementById("statusBadge");
+    const statusText = document.getElementById("statusText");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const storageKey = "groundmesh.registrationPilotDraft";
+    let intakeActive = false;
+
+    function setStatus(kind, text) {
+      statusBadge.className = "badge " + kind;
+      statusBadge.textContent = kind === "ok" ? "Pilot intake active" : kind === "bad" ? "Pilot intake inactive" : "Checking intake...";
+      statusText.textContent = text;
+    }
+
+    function formDataObject() {
+      return {
+        display_name: document.getElementById("displayName").value.trim(),
+        region_or_country: document.getElementById("region").value.trim(),
+        participation_type: document.getElementById("participationType").value,
+        reply_contact: document.getElementById("replyContact").value.trim(),
+        contact_preference: document.getElementById("contactPreference").value,
+        privacy_request: document.getElementById("privacyRequest").value,
+        note: document.getElementById("note").value.trim(),
+        consent_ordinary_email_only: document.getElementById("consent").checked
+      };
+    }
+
+    function saveDraft() {
+      localStorage.setItem(storageKey, JSON.stringify(formDataObject()));
+    }
+
+    function loadDraft() {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+        document.getElementById("displayName").value = data.display_name || "";
+        document.getElementById("region").value = data.region_or_country || "";
+        document.getElementById("participationType").value = data.participation_type || "";
+        document.getElementById("replyContact").value = data.reply_contact || "";
+        document.getElementById("contactPreference").value = data.contact_preference || "";
+        document.getElementById("privacyRequest").value = data.privacy_request || "";
+        document.getElementById("note").value = data.note || "";
+        document.getElementById("consent").checked = Boolean(data.consent_ordinary_email_only);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    function showResult(kind, message) {
+      result.hidden = false;
+      result.className = "result " + kind;
+      result.textContent = message;
+    }
+
+    function markdownCopy(data) {
+      return [
+        "# GroundMesh Pilot Registration Draft",
+        "",
+        "- Display or chosen name: " + data.display_name,
+        "- Region or country: " + data.region_or_country,
+        "- Participation type: " + data.participation_type,
+        "- Reply email or handle: " + data.reply_contact,
+        "- Contact preference: " + data.contact_preference,
+        "- Privacy / declaration preference: " + data.privacy_request,
+        "- Short note: " + (data.note || ""),
+        "- Consent to ordinary-channel limitation: " + (data.consent_ordinary_email_only ? "yes" : "no")
+      ].join("\n");
+    }
+
+    async function checkHealth() {
+      try {
+        const response = await fetch("/api/pilot-register/health", { headers: { "Accept": "application/json" } });
+        if (!response.ok) throw new Error("inactive");
+        const data = await response.json();
+        intakeActive = Boolean(data.intake_active);
+        if (intakeActive) {
+          setStatus("ok", "The steward-run pilot intake is active on this host.");
+        } else {
+          setStatus("bad", "The pilot intake answered, but is not active.");
+        }
+      } catch (error) {
+        intakeActive = false;
+        setStatus("bad", "No active intake was found here. Use the ordinary registration-interest email path unless Mirko has explicitly activated this host for the pilot.");
+      }
+    }
+
+    form.addEventListener("input", saveDraft);
+    downloadBtn.addEventListener("click", () => {
+      const data = formDataObject();
+      const blob = new Blob([markdownCopy(data)], { type: "text/markdown;charset=utf-8" });
+      const link = document.createElement("a");
+      const safeName = (data.display_name || "pilot-registration").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      link.href = URL.createObjectURL(blob);
+      link.download = (safeName || "pilot-registration") + ".md";
+      link.click();
+      URL.revokeObjectURL(link.href);
+      showResult("ok", "Downloaded a local copy of your draft.");
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const data = formDataObject();
+      saveDraft();
+
+      if (!intakeActive) {
+        showResult("bad", "Pilot intake is not active on this host. Use the ordinary registration-interest email path from the main registration page for now.");
+        return;
+      }
+
+      try {
+        const response = await fetch("/api/pilot-register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(data)
+        });
+        const payload = await response.json();
+        if (!response.ok || !payload.ok) {
+          throw new Error((payload.errors || ["Submission failed."]).join(" "));
+        }
+        localStorage.removeItem(storageKey);
+        showResult("ok", "Stored as " + payload.record_id + ". The steward-run pilot workspace received your submission.");
+        form.reset();
+      } catch (error) {
+        showResult("bad", error.message || "Submission failed.");
+      }
+    });
+
+    loadDraft();
+    checkHealth();
+  </script>
+</body>
+</html>

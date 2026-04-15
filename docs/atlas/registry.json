@@ -57,12 +57,28 @@
       "summary": "Smallest honest handling checklist for public registration-interest emails before any real pilot intake is open."
     },
     {
+      "id": "PAGE-REGISTER-PILOT",
+      "name": "GroundMesh Invited-Circle Registration Pilot",
+      "type": "page",
+      "status": "active",
+      "path": "docs/register-pilot.html",
+      "summary": "Minimal steward-run pilot form for self-registration and a few invited friends when the local intake host is active."
+    },
+    {
       "id": "TEMPLATE-REGISTRATION-PILOT-SCOPE",
       "name": "Registration Pilot Scope Canvas",
       "type": "template",
       "status": "active",
       "path": "docs/templates/Registration_Pilot_Scope_Canvas.md",
       "summary": "Compact fill-in canvas for defining the first real registration pilot before opening intake beyond simple public contact."
+    },
+    {
+      "id": "TEMPLATE-REGISTRATION-PILOT-RECORD",
+      "name": "Registration Pilot Record Template",
+      "type": "template",
+      "status": "active",
+      "path": "docs/templates/Registration_Pilot_Record.md",
+      "summary": "Reusable minimal record for one actual participant during the invited-circle registration pilot."
     },
     {
       "id": "DOC-ASSISTANT-BRIEF",

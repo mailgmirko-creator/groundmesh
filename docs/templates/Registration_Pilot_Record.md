@@ -13,6 +13,7 @@ Do not commit filled records to the public repo. Keep actual records in a local-
 - Display or chosen name:
 - Region or country:
 - Participation type:
+- Reply email or handle:
 - Contact preference:
 - Short note:
 

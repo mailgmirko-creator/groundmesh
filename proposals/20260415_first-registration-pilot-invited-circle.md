@@ -36,6 +36,7 @@ GroundMesh cannot yet offer:
 ## Minimal data requested
 - display or chosen name
 - region or country
+- reply email or handle
 - participation type
 - contact preference
 - optional short note

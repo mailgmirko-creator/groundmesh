@@ -37,6 +37,7 @@ filled sections into one visible proposal.
 
 ## Minimal data requested
 - Region or country:
+- Reply email or handle:
 - Contact preference:
 - Participation type:
 - Optional note:
