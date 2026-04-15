@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-04-15T08:30:00Z",
+  "updated_utc": "2026-04-15T09:05:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -16,6 +16,10 @@
     "registration_page": {
       "status": "green",
       "note": "Registration status page now loads publicly as the honest path for joining status and pilot-first registration posture"
+    },
+    "registration_checklist": {
+      "status": "green",
+      "note": "Registration pilot readiness checklist now loads publicly from the docs surface and matches the live Atlas and registration path"
     },
     "get_started_page": {
       "status": "green",
