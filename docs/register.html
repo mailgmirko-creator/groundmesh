@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh Registration</title>
+  <style>
+    :root { --bg:#0b0b0c; --card:#141417; --text:#e9e9ee; --muted:#b8b8c3; --line:#23232a; --accent:#6ee7b7; --accent2:#93c5fd; --warn:#ffd7a8; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif; line-height:1.5; }
+    .wrap { max-width:980px; margin:0 auto; padding:28px 20px 56px; }
+    .hero, .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; }
+    .hero { margin-bottom:16px; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.18em; color:var(--accent); font-size:.75rem; font-weight:700; margin-bottom:12px; }
+    h1 { font-size:clamp(1.8rem,3vw,2.8rem); margin:0 0 12px; }
+    h2 { font-size:1.1rem; margin:0 0 10px; }
+    p, li { color:var(--muted); }
+    .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:16px; }
+    .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
+    .btn { display:inline-block; text-decoration:none; padding:10px 14px; border-radius:10px; border:1px solid #2a2a33; background:#1a1a20; color:var(--text); font-weight:600; }
+    .notice { border-left:4px solid var(--warn); padding-left:12px; color:var(--text); }
+    ul { margin:8px 0 0 18px; }
+    code { background:rgba(255,255,255,.08); padding:2px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Registration status</div>
+      <h1>GroundMesh registration is not broadly open yet.</h1>
+      <p>
+        GroundMesh intends to support real declared joining and wider participation in time,
+        but that path must begin as a careful pilot with real moderation, privacy, consent, and
+        rollback gates behind it.
+      </p>
+      <p class="notice">
+        For now, use the current public paths below. Do not treat this site as a confidential
+        intake or emergency registration system.
+      </p>
+      <div class="cta">
+        <a class="btn" href="contribute.html">Open Contributors Hub</a>
+        <a class="btn" href="contact.html">Contact GroundMesh</a>
+        <a class="btn" href="privacy.html">Privacy</a>
+        <a class="btn" href="atlas/index.html">Atlas</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>What works right now</h2>
+        <ul>
+          <li>First contact through the public contact page</li>
+          <li>Low-friction participation through the contributors hub</li>
+          <li>Public map pin requests with explicit consent</li>
+          <li>Builder participation through <code>Get Started</code></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>What is not open yet</h2>
+        <ul>
+          <li>Broad public registration at planetary scale</li>
+          <li>Confidential or sensitive identity intake on the static docs site</li>
+          <li>Emergency handling promises beyond the current public trust layer</li>
+          <li>Automated acceptance without human review</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>How it will open</h2>
+        <p>
+          The first real registration path should open as a narrow pilot, not a symbolic mass
+          launch. Scope, consent, moderation, operations, and rollback must all be honestly green
+          first.
+        </p>
+        <p><a href="decisions/0005-public-registration-pilot.md">Read the pilot decision</a></p>
+      </article>
+    </section>
+  </div>
+</body>
+</html>

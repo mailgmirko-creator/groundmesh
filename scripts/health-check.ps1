@@ -5,6 +5,7 @@ param(
 $urls = @(
   "$Base/",
   "$Base/contribute.html",
+  "$Base/register.html",
   "$Base/get-started/index.html",
   "$Base/map.html",
   "$Base/contact.html",
@@ -18,6 +19,7 @@ $urls = @(
 $files = @(
   "docs/index.html",
   "docs/contribute.html",
+  "docs/register.html",
   "docs/get-started/index.html",
   "docs/map.html",
   "docs/contact.html",
