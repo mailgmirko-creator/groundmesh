@@ -7,9 +7,33 @@ param(
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 $ServerPath = Join-Path $RepoRoot "tools/registration_pilot_server.py"
 $HostAddress = if ($AllowLan) { "0.0.0.0" } else { "127.0.0.1" }
+$localUrl = "http://127.0.0.1:$Port/register-pilot.html"
 
 if (!(Test-Path $ServerPath)) {
   throw "Registration pilot server not found: $ServerPath"
+}
+
+$existingPilotProcesses = Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
+  Where-Object {
+    $_.Name -eq 'python.exe' -and
+    $_.CommandLine -match 'registration_pilot_server\.py'
+  } |
+  Sort-Object ProcessId
+
+if ($existingPilotProcesses) {
+  Write-Host ""
+  Write-Host "GroundMesh registration pilot is already running."
+  foreach ($proc in $existingPilotProcesses) {
+    Write-Host ("Existing PID {0}: {1}" -f $proc.ProcessId, $proc.CommandLine)
+  }
+  Write-Host "Use .\\scripts\\stop-registration-pilot.ps1 first if you want a clean restart."
+  Write-Host "Local URL: $localUrl"
+
+  if ($OpenBrowser) {
+    Start-Process $localUrl
+  }
+
+  return
 }
 
 $python = Get-Command python -ErrorAction SilentlyContinue
@@ -25,8 +49,6 @@ if (-not $python) {
   $pythonExe = $python.Source
   $pythonArgs = @($ServerPath, "--host", $HostAddress, "--port", $Port)
 }
-
-$localUrl = "http://127.0.0.1:$Port/register-pilot.html"
 
 Write-Host ""
 Write-Host "GroundMesh registration pilot launch"
