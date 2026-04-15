@@ -49,6 +49,14 @@
       "summary": "Practical readiness gate for opening any real GroundMesh registration path beyond simple public contact."
     },
     {
+      "id": "CHECKLIST-REGISTRATION-INTEREST-TRIAGE",
+      "name": "Registration Interest Triage Checklist",
+      "type": "checklist",
+      "status": "active",
+      "path": "docs/checklists/Registration_Interest_Triage_Checklist.md",
+      "summary": "Smallest honest handling checklist for public registration-interest emails before any real pilot intake is open."
+    },
+    {
       "id": "TEMPLATE-REGISTRATION-PILOT-SCOPE",
       "name": "Registration Pilot Scope Canvas",
       "type": "template",
