@@ -45,7 +45,7 @@
       "name": "Registration Pilot Readiness Checklist",
       "type": "checklist",
       "status": "active",
-      "path": "checklists/Registration_Pilot_Readiness_Checklist.md",
+      "path": "docs/checklists/Registration_Pilot_Readiness_Checklist.md",
       "summary": "Practical readiness gate for opening any real GroundMesh registration path beyond simple public contact."
     },
     {
