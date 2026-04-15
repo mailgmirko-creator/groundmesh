@@ -100,6 +100,14 @@
       "summary": "Simple public contact path for questions, corrections, first contact, and participation guidance."
     },
     {
+      "id": "PAGE-REGISTER",
+      "name": "GroundMesh Registration Status",
+      "type": "page",
+      "status": "active",
+      "path": "docs/register.html",
+      "summary": "Honest public status page for joining, registration, and what must exist before GroundMesh opens a real pilot."
+    },
+    {
       "id": "PAGE-GET-STARTED",
       "name": "GroundMesh Get Started",
       "type": "page",

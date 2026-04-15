@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-04-14T08:20:00Z",
+  "updated_utc": "2026-04-15T08:19:08Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -12,6 +12,10 @@
     "contributors_page": {
       "status": "green",
       "note": "Contributors route loads publicly"
+    },
+    "registration_page": {
+      "status": "yellow",
+      "note": "Registration status page is prepared locally as the honest public path for future joining and will turn green after publish"
     },
     "get_started_page": {
       "status": "green",
