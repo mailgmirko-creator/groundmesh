@@ -80,3 +80,6 @@ sandboxes/TinySelfLearner_snapshot/web/app.py.bak-*
 .bridge-wt/
 public-bridge/*.log
 public-bridge/*.txt
+
+# Local-only registration pilot records
+private/registration_pilot/
