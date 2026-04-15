@@ -1,0 +1,99 @@
+name: Registration pilot proposal
+description: Define a narrow, reviewable first registration or declared-joining pilot.
+title: "[Registration Pilot]: "
+labels: ["spec"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for steward planning, not for public intake. Keep the first pilot narrow, honest, and aligned with `docs/templates/Registration_Pilot_Scope_Canvas.md`.
+  - type: input
+    id: pilot_name
+    attributes:
+      label: Pilot name
+      placeholder: Short working title for the first pilot
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Steward / owner
+      placeholder: Who is responsible for this pilot?
+    validations:
+      required: true
+  - type: input
+    id: backup_owner
+    attributes:
+      label: Backup steward
+      placeholder: Who covers if the primary steward is unavailable?
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose and smallest promise
+      description: What real need does this serve, and what is the smallest promise being made?
+      placeholder: One clear purpose, one careful first promise.
+    validations:
+      required: true
+  - type: textarea
+    id: cohort
+    attributes:
+      label: Cohort and invitation path
+      description: Who is this for, and how is the first cohort limited?
+      placeholder: Geography, known circle, invitation path, or other narrow boundary.
+    validations:
+      required: true
+  - type: checkboxes
+    id: participation_types
+    attributes:
+      label: Participation types allowed
+      options:
+        - label: Public declaration
+        - label: Pseudonymous participation
+        - label: Builder / contributor
+        - label: Local circle / node interest
+  - type: textarea
+    id: minimal_data
+    attributes:
+      label: Minimal data requested
+      description: Ask only for what the first purpose truly requires.
+      placeholder: Region or country, contact preference, participation type, optional note.
+    validations:
+      required: true
+  - type: textarea
+    id: privacy_boundary
+    attributes:
+      label: Public / private boundary
+      description: What becomes public, what stays private, and what must never go through ordinary email?
+      placeholder: Public fields, review-only fields, forbidden sensitive data, future secure handling.
+    validations:
+      required: true
+  - type: textarea
+    id: review_path
+    attributes:
+      label: Review and moderation path
+      description: Who reads submissions, how often, and what leads to accept, pause, reject, or escalate?
+      placeholder: Owner, cadence, response target, moderation rule.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification level
+      description: What can remain self-declared, and what requires follow-up before stronger claims are made?
+      placeholder: Proportional verification for the first promise.
+  - type: textarea
+    id: success_stop
+    attributes:
+      label: Success and stop conditions
+      description: What counts as safe success, and what triggers pause or rollback?
+      placeholder: Volume limit, safe outcomes, confusion or harm thresholds.
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Explicit non-goals
+      description: What is clearly out of scope for this first pilot?
+      placeholder: Broad planetary intake, confidential identity collection on the static docs site, emergency promises beyond handling capacity.
+    validations:
+      required: true
