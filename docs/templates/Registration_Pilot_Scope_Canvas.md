@@ -3,6 +3,14 @@
 Use this when GroundMesh is genuinely nearing its first real registration or declared-joining pilot.
 This is not the launch itself. It is the smallest honest sheet for defining what the first pilot is.
 
+Related:
+- [Pilot decision](../decisions/0005-public-registration-pilot.md)
+- [Readiness checklist](../checklists/Registration_Pilot_Readiness_Checklist.md)
+- [Registration pilot proposal issue form](https://github.com/mailgmirko-creator/groundmesh/issues/new?template=registration_pilot.yml)
+
+When this canvas becomes concrete enough to track, open the GitHub issue form above and carry the
+filled sections into one visible proposal.
+
 ## Pilot name
 - Working title:
 - Date prepared:
