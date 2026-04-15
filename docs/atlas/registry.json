@@ -49,6 +49,14 @@
       "summary": "Practical readiness gate for opening any real GroundMesh registration path beyond simple public contact."
     },
     {
+      "id": "TEMPLATE-REGISTRATION-PILOT-SCOPE",
+      "name": "Registration Pilot Scope Canvas",
+      "type": "template",
+      "status": "active",
+      "path": "docs/templates/Registration_Pilot_Scope_Canvas.md",
+      "summary": "Compact fill-in canvas for defining the first real registration pilot before opening intake beyond simple public contact."
+    },
+    {
       "id": "DOC-ASSISTANT-BRIEF",
       "name": "Assistant Brief",
       "type": "guide",
