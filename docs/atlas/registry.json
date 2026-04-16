@@ -57,6 +57,22 @@
       "summary": "Smallest honest handling checklist for public registration-interest emails before any real pilot intake is open."
     },
     {
+      "id": "NOTE-SESSION-0001",
+      "name": "Codex Session 0001: First Contact and Working Basis",
+      "type": "note",
+      "status": "active",
+      "path": "docs/atlas/session-0001-codex-first-contact.md",
+      "summary": "Tracked memory of the first major Codex GroundMesh session, including workflow doctrine, public-surface stabilization, and the first real registration pilot outcomes."
+    },
+    {
+      "id": "GUIDE-NEW-CHAT-HANDOFF",
+      "name": "GroundMesh New Chat Handoff",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/atlas/groundmesh-new-chat-handoff.md",
+      "summary": "Compact reload note for starting a new chat without losing the current GroundMesh state or falling into long recap mode."
+    },
+    {
       "id": "PAGE-REGISTER-PILOT",
       "name": "GroundMesh Invited-Circle Registration Pilot",
       "type": "page",
