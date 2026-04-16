@@ -55,6 +55,9 @@ start .\docs\atlas\index.html
 - Contact: [docs/contact.html](docs/contact.html)
 - Privacy: [docs/privacy.html](docs/privacy.html)
 - Landscape scan: [docs/landscape.html](docs/landscape.html)
+- PWA readiness note: [docs/PWA_READINESS.md](docs/PWA_READINESS.md)
+- Runtime boundary map: [docs/RUNTIME_BOUNDARY.md](docs/RUNTIME_BOUNDARY.md)
+- One-loop breathing test: [docs/ONE_LOOP.md](docs/ONE_LOOP.md)
 
 ## Working pattern
 
