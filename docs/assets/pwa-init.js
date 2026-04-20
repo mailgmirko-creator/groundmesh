@@ -4,6 +4,10 @@
   const serviceWorkerUrl = new URL("sw.js", rootUrl);
   const dismissKey = "groundmesh.pwa.install-banner.dismissed.v1";
   const navStackKey = "groundmesh.pwa.nav-stack.v1";
+  const resourceViewerUrl = new URL("resource.html", rootUrl);
+  const resourceViewerParam = "path";
+  const resourcePathname = rootUrl.pathname.endsWith("/") ? rootUrl.pathname : `${rootUrl.pathname}/`;
+  const localResourcePattern = /\.(md|json|txt)$/i;
   const canUseServiceWorker = "serviceWorker" in navigator;
   const isHttpPage = /^https?:$/.test(window.location.protocol);
   let deferredPrompt = null;
@@ -29,6 +33,51 @@
 
   const isHomePage = () =>
     normalizePath(window.location.pathname) === normalizePath(rootUrl.pathname);
+
+  const isResourceViewerLink = (url) =>
+    normalizePath(url.pathname) === normalizePath(resourceViewerUrl.pathname);
+
+  const isLocalResourceUrl = (url) =>
+    url.origin === window.location.origin &&
+    url.pathname.startsWith(resourcePathname) &&
+    localResourcePattern.test(url.pathname) &&
+    !isResourceViewerLink(url);
+
+  const getRelativeResourcePath = (url) =>
+    decodeURIComponent(url.pathname.slice(resourcePathname.length).replace(/^\/+/, ""));
+
+  const getResourceViewerHref = (url) => {
+    const viewerUrl = new URL(resourceViewerUrl.href);
+    viewerUrl.searchParams.set(resourceViewerParam, getRelativeResourcePath(url));
+    return viewerUrl.href;
+  };
+
+  const upgradeResourceLinks = () => {
+    document.querySelectorAll("a[href]").forEach((anchor) => {
+      if (anchor.dataset.bypassResourceViewer === "true") {
+        return;
+      }
+
+      const href = anchor.getAttribute("href");
+      if (!href || href.startsWith("#") || href.startsWith("mailto:")) {
+        return;
+      }
+
+      let url;
+      try {
+        url = new URL(href, window.location.href);
+      } catch {
+        return;
+      }
+
+      if (!isLocalResourceUrl(url)) {
+        return;
+      }
+
+      anchor.dataset.rawHref = url.href;
+      anchor.href = getResourceViewerHref(url);
+    });
+  };
 
   const bannerDismissed = () => {
     try {
@@ -186,16 +235,16 @@
     style.textContent = `
       #gm-shell-nav {
         position: fixed;
-        left: 14px;
-        bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+        left: 12px;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
         z-index: 9998;
         display: flex;
-        gap: 8px;
-        padding: 8px;
-        border-radius: 999px;
+        gap: 6px;
+        padding: 6px;
+        border-radius: 18px;
         border: 1px solid rgba(255, 255, 255, 0.12);
         background: rgba(11, 15, 20, 0.94);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
         backdrop-filter: blur(12px);
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
       }
@@ -203,10 +252,10 @@
         appearance: none;
         border: 0;
         border-radius: 999px;
-        min-height: 40px;
-        padding: 0 14px;
+        min-height: 34px;
+        padding: 0 12px;
         font: inherit;
-        font-size: 0.94rem;
+        font-size: 0.84rem;
         font-weight: 700;
         cursor: pointer;
       }
@@ -220,13 +269,16 @@
       }
       @media (max-width: 640px) {
         #gm-shell-nav {
-          left: 12px;
-          right: 12px;
-          bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
-          justify-content: space-between;
+          left: 10px;
+          right: auto;
+          bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+          gap: 5px;
+          padding: 5px;
         }
         .gm-shell-nav-btn {
-          flex: 1 1 0;
+          min-height: 30px;
+          padding: 0 10px;
+          font-size: 0.78rem;
         }
       }
     `;
@@ -358,6 +410,7 @@
 
   window.addEventListener("DOMContentLoaded", () => {
     trackCurrentLocation();
+    upgradeResourceLinks();
     showShellNav();
 
     if (isStandalone() || bannerDismissed()) {
