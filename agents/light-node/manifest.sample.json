@@ -1,0 +1,48 @@
+{
+  "protocol_version": "gm.node.v1",
+  "agent_version": "0.1.0",
+  "node_id": "node-0001",
+  "node_class": "light",
+  "device_class": "desktop",
+  "display_name": "Mirko-Tivat-Desk-01",
+  "operator": {
+    "name": "Mirko Giljaca",
+    "consent_mode": "explicit"
+  },
+  "location_hint": {
+    "country": "Montenegro",
+    "city": "Tivat"
+  },
+  "capabilities": {
+    "cpu_cores": 8,
+    "memory_gb": 16,
+    "storage_free_gb": 120,
+    "can_cache_public_state": true,
+    "can_run_local_model": false,
+    "can_relay_bandwidth": true,
+    "can_accept_background_jobs": true
+  },
+  "limits": {
+    "max_job_minutes": 15,
+    "max_cpu_percent": 35,
+    "network_mode": "metered-safe",
+    "energy_mode": "prefer-plugged-in"
+  },
+  "consent": {
+    "public_state_sync": true,
+    "public_cache": true,
+    "public_health_probe": true,
+    "non_sensitive_compute": false
+  },
+  "paths": {
+    "workspace_root": "private/node_agent/workspace/",
+    "heartbeat_path": "private/node_agent/node-heartbeat.latest.json",
+    "inbox_path": "private/node_agent/public-node-inbox.latest.json",
+    "outbox_path": "private/node_agent/public-node-outbox.latest.json",
+    "claims_path": "private/node_agent/public-node-claims.latest.json",
+    "acks_path": "private/node_agent/public-node-acks.latest.json",
+    "log_path": "private/node_agent/node-agent.log"
+  },
+  "created_utc": "2026-04-17T00:30:00Z",
+  "updated_utc": "2026-04-17T00:30:00Z"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "CC.light_node_ack_public_assignment.v1",
+  "version": "1.0.0",
+  "action": {
+    "name": "light_node_ack_public_assignment",
+    "params": {
+      "acks_path": "private/node_agent/public-node-acks.latest.json",
+      "public_ack_feed": "docs/data/public-node-acks.json",
+      "allow_public_append_only": true
+    }
+  },
+  "scope": {
+    "project": "GroundMesh",
+    "resources": [
+      "private/node_agent/public-node-acks.latest.json",
+      "docs/data/public-node-acks.json"
+    ]
+  },
+  "contexts": [
+    "dev",
+    "staging",
+    "prod"
+  ],
+  "requires": [
+    "human_signature",
+    "audit_log_entry"
+  ],
+  "safeguards": {
+    "revert_window": "5m",
+    "alert_nodes": [
+      "lead_node",
+      "guardian_node"
+    ],
+    "rate_limit": "12/h",
+    "dry_run_first": true
+  },
+  "approvals": {
+    "min_signatures": 1,
+    "roles": [
+      "maintainer",
+      "steward"
+    ]
+  },
+  "constraints": {
+    "env_vars_required": []
+  },
+  "audit": {
+    "reason": "Allow a light node to append a public acknowledgement that resolves a prior assignment claim without mutating the original claim trail.",
+    "created_by": "Mirko",
+    "issue_ref": "atlas-light-node-v1"
+  },
+  "created": "2026-04-20T00:00:00Z",
+  "updated": "2026-04-20T00:00:00Z"
+}

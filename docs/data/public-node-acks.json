@@ -1,0 +1,19 @@
+{
+  "protocol_version": "gm.node.v1",
+  "updated_utc": "2026-04-20T09:25:00Z",
+  "published_by": "seed-reference-node",
+  "acknowledgements": [
+    {
+      "protocol_version": "gm.node.v1",
+      "ack_id": "ack-public-sync-0001",
+      "claim_id": "clm-public-sync-0001",
+      "assignment_id": "asg-public-sync-0001",
+      "node_id": "node-0001",
+      "acknowledged_at_utc": "2026-04-20T09:25:00Z",
+      "disposition": "completed",
+      "status": "ok",
+      "result_id": "res-public-sync-0001",
+      "note": "Reference node closed the sample public-state sync claim after recording the bounded result."
+    }
+  ]
+}

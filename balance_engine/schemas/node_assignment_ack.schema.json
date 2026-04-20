@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Light Node Assignment Acknowledgement",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "ack_id",
+    "claim_id",
+    "assignment_id",
+    "node_id",
+    "acknowledged_at_utc",
+    "disposition",
+    "status"
+  ],
+  "properties": {
+    "protocol_version": {
+      "type": "string",
+      "const": "gm.node.v1"
+    },
+    "ack_id": {
+      "type": "string",
+      "pattern": "^ack-[a-z0-9-]{4,80}$"
+    },
+    "claim_id": {
+      "type": "string",
+      "pattern": "^clm-[a-z0-9-]{4,80}$"
+    },
+    "assignment_id": {
+      "type": "string",
+      "pattern": "^asg-[a-z0-9-]{4,80}$"
+    },
+    "node_id": {
+      "type": "string",
+      "pattern": "^node-[a-z0-9-]{4,64}$"
+    },
+    "acknowledged_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "disposition": {
+      "type": "string",
+      "enum": ["completed", "released", "refused", "expired", "error"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "warn", "error"]
+    },
+    "result_id": {
+      "type": "string",
+      "pattern": "^res-[a-z0-9-]{4,80}$"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

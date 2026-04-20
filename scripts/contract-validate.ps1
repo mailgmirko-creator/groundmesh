@@ -19,7 +19,13 @@ $rxRate          = '^[0-9]+/[smhd]$'
 $rxSha256        = '^[A-Fa-f0-9]{64}$'
 
 $root = (git rev-parse --show-toplevel) 2>$null
-if ($LASTEXITCODE -ne 0 -or -not $root) { $root = (Get-Location).Path }
+if ($LASTEXITCODE -ne 0 -or -not $root) {
+  if ($PSScriptRoot) {
+    $root = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+  } else {
+    $root = (Get-Location).Path
+  }
+}
 
 $absContracts = Join-Path $root $ContractsDir
 $absSchema    = Join-Path $root $SchemaPath

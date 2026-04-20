@@ -1,0 +1,55 @@
+{
+  "id": "CC.light_node_report_public_result.v1",
+  "version": "1.0.0",
+  "action": {
+    "name": "light_node_report_public_result",
+    "params": {
+      "outbox_path": "private/node_agent/outbox/public-node-outbox.latest.json",
+      "public_feed": "docs/data/public-node-outbox.json",
+      "max_payload_kb": 128,
+      "allow_append_only": true
+    }
+  },
+  "scope": {
+    "project": "GroundMesh",
+    "resources": [
+      "private/node_agent/outbox/",
+      "docs/data/public-node-outbox.json"
+    ]
+  },
+  "contexts": [
+    "dev",
+    "staging",
+    "prod"
+  ],
+  "requires": [
+    "human_signature",
+    "audit_log_entry"
+  ],
+  "safeguards": {
+    "revert_window": "5m",
+    "alert_nodes": [
+      "lead_node",
+      "guardian_node"
+    ],
+    "rate_limit": "12/h",
+    "dry_run_first": true
+  },
+  "approvals": {
+    "min_signatures": 1,
+    "roles": [
+      "maintainer",
+      "steward"
+    ]
+  },
+  "constraints": {
+    "env_vars_required": []
+  },
+  "audit": {
+    "reason": "Allow a light node to produce a bounded public result record without privileged write behavior.",
+    "created_by": "Mirko",
+    "issue_ref": "atlas-light-node-v1"
+  },
+  "created": "2026-04-17T00:00:00Z",
+  "updated": "2026-04-17T00:00:00Z"
+}

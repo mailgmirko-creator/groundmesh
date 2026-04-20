@@ -22,6 +22,11 @@ jobs:
                   json.loads(p.read_text(encoding='utf-8'))
               except Exception as e:
                   bad.append((str(p), str(e)))
+          for p in pathlib.Path('.').rglob('*.webmanifest'):
+              try:
+                  json.loads(p.read_text(encoding='utf-8'))
+              except Exception as e:
+                  bad.append((str(p), str(e)))
           for p in pathlib.Path('.').rglob('*.schema.json'):
               try:
                   json.loads(p.read_text(encoding='utf-8'))

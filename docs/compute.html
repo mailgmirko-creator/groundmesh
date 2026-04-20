@@ -1,48 +1,351 @@
-<!doctype html><html lang="en"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GroundMesh — Compute Transparency</title>
-<style>body{margin:0;background:#0b0b0c;color:#e9e9ee;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',sans-serif;line-height:1.45}.wrap{max-width:980px;margin:0 auto;padding:28px 20px}h1{font-size:24px;margin:0 0 8px}p{color:#b8b8c3}.card{background:#141417;border:1px solid #23232a;border-radius:14px;padding:16px;margin:12px 0}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.k{color:#b8b8c3}.btn{display:inline-block;text-decoration:none;padding:10px 14px;border-radius:10px;border:1px solid #2a2a33;background:#1a1a20;color:#e9e9ee;font-weight:600}</style>
-<div class="wrap">
-  <h1>Compute Transparency</h1>
-  <p>This page shows a public snapshot (non-sensitive) of the GroundMesh grid. Values update when we publish a new <code>docs/data/metrics.json</code>.</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GroundMesh — Compute and Node Flow</title>
+  <meta name="theme-color" content="#1f5c46">
+  <link rel="icon" href="./assets/gm-app-icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <script src="./assets/pwa-init.js" defer></script>
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --card: #141417;
+      --line: #23232a;
+      --text: #e9e9ee;
+      --muted: #b8b8c3;
+      --accent: #6ee7b7;
+      --accent2: #93c5fd;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',sans-serif;
+      line-height: 1.45;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+    h1 {
+      font-size: clamp(1.8rem,3vw,2.6rem);
+      margin: 0 0 10px;
+    }
+    h2 {
+      font-size: 1.05rem;
+      margin: 0 0 12px;
+    }
+    p, li {
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .stat-value {
+      margin-top: 4px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .k {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .item {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 12px;
+      background: rgba(255,255,255,0.02);
+    }
+    .item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .item small {
+      display: block;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-right: 6px;
+      background: rgba(110,231,183,0.14);
+      color: var(--accent);
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #2a2a33;
+      background: #1a1a20;
+      color: var(--text);
+      font-weight: 600;
+      margin: 8px 8px 0 0;
+    }
+    .empty {
+      color: var(--muted);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Compute and Node Flow</h1>
+    <p>
+      This page now shows both the public compute snapshot and the first file-based
+      inbox/claim/outbox/ack loop for light nodes. It is intentionally modest:
+      visible, bounded, and public-state only.
+    </p>
 
-  <div id="panel" class="card">
-    <div id="updated" class="k">Loading…</div>
-    <div class="row">
-      <div><strong>Nodes online</strong><div id="nodes_online">—</div></div>
-      <div><strong>Nodes registered</strong><div id="nodes_registered">—</div></div>
-      <div><strong>Jobs completed</strong><div id="jobs_completed">—</div></div>
-      <div><strong>Donated CPU hours</strong><div id="donated_cpu_hours">—</div></div>
-      <div><strong>Donated GPU hours</strong><div id="donated_gpu_hours">—</div></div>
+    <div class="grid">
+      <section id="metrics-panel" class="card">
+        <div id="metrics-updated" class="k">Loading compute metrics…</div>
+        <div class="stats">
+          <div><div class="stat-label">Nodes online</div><div id="nodes_online" class="stat-value">—</div></div>
+          <div><div class="stat-label">Nodes registered</div><div id="nodes_registered" class="stat-value">—</div></div>
+          <div><div class="stat-label">Jobs completed</div><div id="jobs_completed" class="stat-value">—</div></div>
+          <div><div class="stat-label">Donated CPU hours</div><div id="donated_cpu_hours" class="stat-value">—</div></div>
+          <div><div class="stat-label">Donated GPU hours</div><div id="donated_gpu_hours" class="stat-value">—</div></div>
+        </div>
+      </section>
+
+      <section id="inbox-panel" class="card">
+        <h2>Public Node Inbox</h2>
+        <div id="inbox-updated" class="k">Loading public assignment feed…</div>
+        <div id="inbox-list" class="list"></div>
+      </section>
+
+      <section id="outbox-panel" class="card">
+        <h2>Public Node Outbox</h2>
+        <div id="outbox-updated" class="k">Loading recent node results…</div>
+        <div id="outbox-list" class="list"></div>
+      </section>
+
+      <section id="claims-panel" class="card">
+        <h2>Public Node Claims</h2>
+        <div id="claims-updated" class="k">Loading current claim trail…</div>
+        <div id="claims-list" class="list"></div>
+      </section>
+
+      <section id="acks-panel" class="card">
+        <h2>Public Node Acks</h2>
+        <div id="acks-updated" class="k">Loading acknowledgement trail…</div>
+        <div id="acks-list" class="list"></div>
+      </section>
+    </div>
+
+    <div class="card">
+      <a class="btn" href="data/metrics.json" rel="noopener">Open metrics JSON</a>
+      <a class="btn" href="data/public-node-inbox.json" rel="noopener">Open inbox JSON</a>
+      <a class="btn" href="data/public-node-outbox.json" rel="noopener">Open outbox JSON</a>
+      <a class="btn" href="data/public-node-claims.json" rel="noopener">Open claims JSON</a>
+      <a class="btn" href="data/public-node-acks.json" rel="noopener">Open acks JSON</a>
+      <a class="btn" href="https://mailgmirko-creator.github.io/groundmesh/contribute.html" rel="noopener">Back to Contributors</a>
+      <a class="btn" href="https://mailgmirko-creator.github.io/groundmesh/atlas/index.html" rel="noopener">Project Atlas</a>
     </div>
   </div>
 
-  <div class="card">
-    <a class="btn" href="data/metrics.json" rel="noopener">Open raw metrics JSON</a>
-    <a class="btn" href="https://mailgmirko-creator.github.io/groundmesh/contribute.html" rel="noopener">Back to Contributors</a>
-    <a class="btn" href="https://mailgmirko-creator.github.io/groundmesh/atlas/index.html" rel="noopener">Project Atlas</a>
-  </div>
-</div>
+  <script>
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
 
-<script>
-(async function(){
-  try{
-    const r = await fetch('data/metrics.json',{cache:'no-store'});
-    if(!r.ok) throw new Error('metrics fetch: '+r.status);
-    const j = await r.json();
-    const g = (id,v)=>document.getElementById(id).textContent = v;
-    g('updated', 'Last updated: ' + (j.last_updated_utc||'n/a'));
-    const t = j.totals||{};
-    g('nodes_online', t.nodes_online ?? '0');
-    g('nodes_registered', t.nodes_registered ?? '0');
-    g('jobs_completed', t.jobs_completed ?? '0');
-    g('donated_cpu_hours', t.donated_cpu_hours ?? '0');
-    g('donated_gpu_hours', t.donated_gpu_hours ?? '0');
-  }catch(e){
-    document.getElementById('panel').innerHTML = '<strong>Could not load metrics.json</strong><p class="k">Publish docs/data/metrics.json first, then refresh.</p>';
-  }
-})();
-</script>
+    function renderEmpty(targetId, message) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      el.innerHTML = '<div class="empty">' + message + '</div>';
+    }
+
+    function renderAssignments(assignments) {
+      const el = document.getElementById('inbox-list');
+      if (!el) return;
+      if (!assignments || assignments.length === 0) {
+        renderEmpty('inbox-list', 'No public assignments are queued right now.');
+        return;
+      }
+
+      el.innerHTML = assignments.map((assignment) => {
+        const sources = Array.isArray(assignment.payload && assignment.payload.sources)
+          ? assignment.payload.sources.map((source) => '<li><code>' + source + '</code></li>').join('')
+          : '';
+        return [
+          '<div class="item">',
+          '<span class="pill">' + assignment.job_class + '</span>',
+          '<span class="pill">' + (assignment.priority || 'normal') + '</span>',
+          '<strong>' + assignment.assignment_id + '</strong>',
+          '<div>Contract: <code>' + assignment.contract_id + '</code></div>',
+          '<div>Issued by: ' + assignment.issued_by + '</div>',
+          '<div>Expires: ' + assignment.expires_at + '</div>',
+          sources ? '<ul>' + sources + '</ul>' : '',
+          '</div>'
+        ].join('');
+      }).join('');
+    }
+
+    function renderResults(results) {
+      const el = document.getElementById('outbox-list');
+      if (!el) return;
+      if (!results || results.length === 0) {
+        renderEmpty('outbox-list', 'No public node results are listed yet.');
+        return;
+      }
+
+      el.innerHTML = results.map((result) => {
+        const notes = Array.isArray(result.notes) && result.notes.length > 0
+          ? '<small>' + result.notes.join(' ') + '</small>'
+          : '';
+        return [
+          '<div class="item">',
+          '<span class="pill">' + result.disposition + '</span>',
+          '<span class="pill">' + result.status + '</span>',
+          '<strong>' + result.assignment_id + '</strong>',
+          '<div>Node: <code>' + result.node_id + '</code></div>',
+          '<div>' + result.summary + '</div>',
+          '<div class="k">Recorded: ' + result.recorded_at_utc + '</div>',
+          notes,
+          '</div>'
+        ].join('');
+      }).join('');
+    }
+
+    function renderClaims(claims) {
+      const el = document.getElementById('claims-list');
+      if (!el) return;
+      if (!claims || claims.length === 0) {
+        renderEmpty('claims-list', 'No public claim trail is listed yet.');
+        return;
+      }
+
+      el.innerHTML = claims.map((claim) => {
+        return [
+          '<div class="item">',
+          '<span class="pill">' + claim.status + '</span>',
+          '<strong>' + claim.assignment_id + '</strong>',
+          '<div>Claim: <code>' + claim.claim_id + '</code></div>',
+          '<div>Node: <code>' + claim.node_id + '</code></div>',
+          '<div>Claimed: ' + claim.claimed_at_utc + '</div>',
+          '<div class="k">TTL minutes: ' + claim.claim_ttl_minutes + '</div>',
+          claim.note ? '<small>' + claim.note + '</small>' : '',
+          '</div>'
+        ].join('');
+      }).join('');
+    }
+
+    function renderAcks(acks) {
+      const el = document.getElementById('acks-list');
+      if (!el) return;
+      if (!acks || acks.length === 0) {
+        renderEmpty('acks-list', 'No public acknowledgement trail is listed yet.');
+        return;
+      }
+
+      el.innerHTML = acks.map((ack) => {
+        return [
+          '<div class="item">',
+          '<span class="pill">' + ack.disposition + '</span>',
+          '<span class="pill">' + ack.status + '</span>',
+          '<strong>' + ack.assignment_id + '</strong>',
+          '<div>Ack: <code>' + ack.ack_id + '</code></div>',
+          '<div>Claim: <code>' + ack.claim_id + '</code></div>',
+          '<div>Node: <code>' + ack.node_id + '</code></div>',
+          ack.result_id ? '<div>Result: <code>' + ack.result_id + '</code></div>' : '',
+          '<div class="k">Acknowledged: ' + ack.acknowledged_at_utc + '</div>',
+          ack.note ? '<small>' + ack.note + '</small>' : '',
+          '</div>'
+        ].join('');
+      }).join('');
+    }
+
+    (async function () {
+      try {
+        const metricsResponse = await fetch('data/metrics.json', { cache: 'no-store' });
+        if (!metricsResponse.ok) throw new Error('metrics fetch: ' + metricsResponse.status);
+        const metrics = await metricsResponse.json();
+        const totals = metrics.totals || {};
+        setText('metrics-updated', 'Metrics updated: ' + (metrics.last_updated_utc || 'n/a'));
+        setText('nodes_online', totals.nodes_online ?? '0');
+        setText('nodes_registered', totals.nodes_registered ?? '0');
+        setText('jobs_completed', totals.jobs_completed ?? '0');
+        setText('donated_cpu_hours', totals.donated_cpu_hours ?? '0');
+        setText('donated_gpu_hours', totals.donated_gpu_hours ?? '0');
+      } catch (error) {
+        document.getElementById('metrics-panel').innerHTML =
+          '<strong>Could not load metrics.json</strong><p class="k">Publish docs/data/metrics.json first, then refresh.</p>';
+      }
+
+      try {
+        const inboxResponse = await fetch('data/public-node-inbox.json', { cache: 'no-store' });
+        if (!inboxResponse.ok) throw new Error('inbox fetch: ' + inboxResponse.status);
+        const inbox = await inboxResponse.json();
+        setText('inbox-updated', 'Inbox updated: ' + (inbox.updated_utc || 'n/a'));
+        renderAssignments(inbox.assignments || []);
+      } catch (error) {
+        renderEmpty('inbox-list', 'Public inbox feed is not available yet.');
+      }
+
+      try {
+        const outboxResponse = await fetch('data/public-node-outbox.json', { cache: 'no-store' });
+        if (!outboxResponse.ok) throw new Error('outbox fetch: ' + outboxResponse.status);
+        const outbox = await outboxResponse.json();
+        setText('outbox-updated', 'Outbox updated: ' + (outbox.updated_utc || 'n/a'));
+        renderResults(outbox.results || []);
+      } catch (error) {
+        renderEmpty('outbox-list', 'Public outbox feed is not available yet.');
+      }
+
+      try {
+        const claimsResponse = await fetch('data/public-node-claims.json', { cache: 'no-store' });
+        if (!claimsResponse.ok) throw new Error('claims fetch: ' + claimsResponse.status);
+        const claims = await claimsResponse.json();
+        setText('claims-updated', 'Claims updated: ' + (claims.updated_utc || 'n/a'));
+        renderClaims(claims.claims || []);
+      } catch (error) {
+        renderEmpty('claims-list', 'Public claims feed is not available yet.');
+      }
+
+      try {
+        const acksResponse = await fetch('data/public-node-acks.json', { cache: 'no-store' });
+        if (!acksResponse.ok) throw new Error('acks fetch: ' + acksResponse.status);
+        const acks = await acksResponse.json();
+        setText('acks-updated', 'Acks updated: ' + (acks.updated_utc || 'n/a'));
+        renderAcks(acks.acknowledgements || []);
+      } catch (error) {
+        renderEmpty('acks-list', 'Public acknowledgement feed is not available yet.');
+      }
+    })();
+  </script>
+</body>
 </html>
-
-<!-- publish bump 2025-09-19T22:40:15Z -->

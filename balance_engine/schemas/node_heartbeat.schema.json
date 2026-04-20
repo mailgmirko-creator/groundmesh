@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Light Node Heartbeat",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "node_id",
+    "ts_utc",
+    "status",
+    "availability",
+    "resources",
+    "network",
+    "jobs"
+  ],
+  "properties": {
+    "protocol_version": {
+      "type": "string",
+      "const": "gm.node.v1"
+    },
+    "node_id": {
+      "type": "string",
+      "pattern": "^node-[a-z0-9-]{4,64}$"
+    },
+    "ts_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "paused", "degraded", "revoked"]
+    },
+    "availability": {
+      "type": "string",
+      "enum": ["accepting_public_work", "limited_work", "paused", "no_work"]
+    },
+    "resources": {
+      "type": "object",
+      "required": ["cpu_load", "memory_free_gb", "storage_free_gb"],
+      "properties": {
+        "cpu_load": { "type": "number", "minimum": 0, "maximum": 1 },
+        "memory_free_gb": { "type": "number", "minimum": 0 },
+        "storage_free_gb": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "network": {
+      "type": "object",
+      "required": ["reachable", "latency_class"],
+      "properties": {
+        "reachable": { "type": "boolean" },
+        "latency_class": {
+          "type": "string",
+          "enum": ["offline", "slow", "normal", "fast"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "jobs": {
+      "type": "object",
+      "required": ["running", "completed_since_boot", "last_result"],
+      "properties": {
+        "running": { "type": "integer", "minimum": 0 },
+        "completed_since_boot": { "type": "integer", "minimum": 0 },
+        "last_result": {
+          "type": "string",
+          "enum": ["unknown", "ok", "warn", "error"]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

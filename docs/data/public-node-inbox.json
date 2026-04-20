@@ -1,0 +1,30 @@
+{
+  "protocol_version": "gm.node.v1",
+  "updated_utc": "2026-04-20T10:20:00Z",
+  "issued_by": "seed-reference-node",
+  "assignments": [
+    {
+      "protocol_version": "gm.node.v1",
+      "assignment_id": "asg-public-sync-0001",
+      "job_class": "public_state_sync",
+      "contract_id": "CC.light_node_sync_public_state.v1",
+      "issued_by": "seed-reference-node",
+      "issued_at": "2026-04-20T10:15:00Z",
+      "expires_at": "2026-04-20T11:15:00Z",
+      "priority": "normal",
+      "target": {
+        "audience": "all-light-nodes",
+        "node_class": "light"
+      },
+      "payload": {
+        "sources": [
+          "docs/data/metrics.json",
+          "docs/data/status.json",
+          "docs/ledger/data/nodes.json"
+        ],
+        "workspace_root": "node_cache/public_state/",
+        "max_download_kb": 768
+      }
+    }
+  ]
+}

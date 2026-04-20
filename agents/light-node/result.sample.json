@@ -1,0 +1,25 @@
+{
+  "protocol_version": "gm.node.v1",
+  "result_id": "res-public-sync-0001",
+  "assignment_id": "asg-public-sync-0001",
+  "contract_id": "CC.light_node_sync_public_state.v1",
+  "node_id": "node-0001",
+  "recorded_at_utc": "2026-04-17T14:22:00Z",
+  "disposition": "completed",
+  "status": "ok",
+  "summary": "Pulled current public metrics, status, and node ledger snapshot into the local public cache.",
+  "artifacts": [
+    {
+      "kind": "local_cache",
+      "path": "node_cache/public_state/docs/data/metrics.json"
+    },
+    {
+      "kind": "local_cache",
+      "path": "node_cache/public_state/docs/ledger/data/nodes.json"
+    }
+  ],
+  "notes": [
+    "No publish-back attempted.",
+    "Payload stayed within public-state boundaries."
+  ]
+}

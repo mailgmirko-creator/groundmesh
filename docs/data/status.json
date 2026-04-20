@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-04-15T09:05:00Z",
+  "updated_utc": "2026-04-20T10:40:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -8,6 +8,22 @@
     "home_page": {
       "status": "green",
       "note": "Unified docs front door is live at the public root URL"
+    },
+    "pwa_shell": {
+      "status": "green",
+      "note": "Manifest, service worker, install helper banner, and shared install wiring are now present on the public docs entry pages"
+    },
+    "node_queue": {
+      "status": "green",
+      "note": "Public light-node inbox and outbox feeds are now exposed through the docs surface for bounded assignment visibility"
+    },
+    "node_claims": {
+      "status": "green",
+      "note": "Append-only public claim feed now shows when a light node has taken bounded ownership of an assignment before reporting the result"
+    },
+    "node_acks": {
+      "status": "green",
+      "note": "Append-only public acknowledgement feed now shows how a node closed its prior claim after reporting a bounded assignment outcome"
     },
     "contributors_page": {
       "status": "green",

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Light Node Assignment Claim",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "claim_id",
+    "assignment_id",
+    "node_id",
+    "claimed_at_utc",
+    "claim_ttl_minutes",
+    "status"
+  ],
+  "properties": {
+    "protocol_version": {
+      "type": "string",
+      "const": "gm.node.v1"
+    },
+    "claim_id": {
+      "type": "string",
+      "pattern": "^clm-[a-z0-9-]{4,80}$"
+    },
+    "assignment_id": {
+      "type": "string",
+      "pattern": "^asg-[a-z0-9-]{4,80}$"
+    },
+    "node_id": {
+      "type": "string",
+      "pattern": "^node-[a-z0-9-]{4,64}$"
+    },
+    "claimed_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "claim_ttl_minutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1440
+    },
+    "status": {
+      "type": "string",
+      "enum": ["claimed", "released", "completed", "expired"]
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

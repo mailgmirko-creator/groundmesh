@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Light Node Manifest",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "agent_version",
+    "node_id",
+    "node_class",
+    "device_class",
+    "display_name",
+    "operator",
+    "capabilities",
+    "limits",
+    "consent",
+    "paths",
+    "created_utc",
+    "updated_utc"
+  ],
+  "properties": {
+    "protocol_version": {
+      "type": "string",
+      "const": "gm.node.v1"
+    },
+    "agent_version": {
+      "type": "string"
+    },
+    "node_id": {
+      "type": "string",
+      "pattern": "^node-[a-z0-9-]{4,64}$"
+    },
+    "node_class": {
+      "type": "string",
+      "enum": ["light"]
+    },
+    "device_class": {
+      "type": "string",
+      "enum": ["desktop", "mini-pc", "home-server", "edge-box", "laptop", "mobile"]
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operator": {
+      "type": "object",
+      "required": ["name", "consent_mode"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "consent_mode": {
+          "type": "string",
+          "enum": ["explicit", "delegated"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "location_hint": {
+      "type": "object",
+      "properties": {
+        "country": { "type": "string" },
+        "city": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "capabilities": {
+      "type": "object",
+      "required": [
+        "cpu_cores",
+        "memory_gb",
+        "storage_free_gb",
+        "can_cache_public_state",
+        "can_run_local_model",
+        "can_relay_bandwidth",
+        "can_accept_background_jobs"
+      ],
+      "properties": {
+        "cpu_cores": { "type": "integer", "minimum": 1 },
+        "memory_gb": { "type": "number", "minimum": 0 },
+        "storage_free_gb": { "type": "number", "minimum": 0 },
+        "can_cache_public_state": { "type": "boolean" },
+        "can_run_local_model": { "type": "boolean" },
+        "can_relay_bandwidth": { "type": "boolean" },
+        "can_accept_background_jobs": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "limits": {
+      "type": "object",
+      "required": [
+        "max_job_minutes",
+        "max_cpu_percent",
+        "network_mode",
+        "energy_mode"
+      ],
+      "properties": {
+        "max_job_minutes": { "type": "integer", "minimum": 1, "maximum": 1440 },
+        "max_cpu_percent": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "network_mode": {
+          "type": "string",
+          "enum": ["metered-safe", "unmetered", "offline-only"]
+        },
+        "energy_mode": {
+          "type": "string",
+          "enum": ["prefer-plugged-in", "balanced", "always-on"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "consent": {
+      "type": "object",
+      "required": [
+        "public_state_sync",
+        "public_cache",
+        "public_health_probe",
+        "non_sensitive_compute"
+      ],
+      "properties": {
+        "public_state_sync": { "type": "boolean" },
+        "public_cache": { "type": "boolean" },
+        "public_health_probe": { "type": "boolean" },
+        "non_sensitive_compute": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "paths": {
+      "type": "object",
+      "required": ["workspace_root", "heartbeat_path", "inbox_path", "outbox_path", "claims_path", "acks_path", "log_path"],
+      "properties": {
+        "workspace_root": { "type": "string" },
+        "heartbeat_path": { "type": "string" },
+        "inbox_path": { "type": "string" },
+        "outbox_path": { "type": "string" },
+        "claims_path": { "type": "string" },
+        "acks_path": { "type": "string" },
+        "log_path": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "created_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_utc": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
