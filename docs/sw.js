@@ -1,5 +1,5 @@
 // docs/sw.js — prefer fresh network content, fall back to cache when offline
-const CACHE = "gm-v7";
+const CACHE = "gm-v8";
 const ASSETS = [
   "./",
   "./index.html",

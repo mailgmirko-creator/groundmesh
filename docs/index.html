@@ -9,6 +9,7 @@
   <link rel="icon" href="./assets/gm-app-icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="./manifest.webmanifest" />
   <script src="./assets/pwa-init.js" defer></script>
+  <script>document.documentElement.classList.add('js');</script>
   <style>
     :root {
       --bg: #0b0f14;
@@ -64,6 +65,29 @@
     }
     .brand strong { display: block; font-size: 1.05rem; }
     .brand span { color: var(--muted); font-size: .9rem; }
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      min-height: 46px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+    .nav-toggle::before {
+      content: "";
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 -5px 0 currentColor, 0 5px 0 currentColor;
+    }
     .nav-links {
       display: flex;
       gap: 12px;
@@ -81,6 +105,11 @@
     .nav-link:hover {
       color: #0a0f13;
       background: var(--accent);
+      border-color: transparent;
+    }
+    .nav[data-menu-open="true"] .nav-toggle {
+      background: var(--accent);
+      color: #09100c;
       border-color: transparent;
     }
     main { padding: 34px 0 64px; }
@@ -177,8 +206,36 @@
       .hero, .cards, .two { grid-template-columns: 1fr; }
     }
     @media (max-width: 760px) {
-      .nav { grid-template-columns: 1fr; }
+      .nav {
+        grid-template-columns: minmax(0, 1fr) auto;
+        min-height: 0;
+        gap: 14px;
+        padding: 10px 0;
+      }
+      .brand { min-width: 0; }
+      .brand span { display: none; }
+      .js .nav-toggle { display: inline-flex; }
       .nav-links { justify-content: flex-start; }
+      .js .nav-links {
+        display: none;
+        grid-column: 1 / -1;
+        gap: 10px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(15,20,27,.98);
+        box-shadow: var(--shadow);
+        max-height: min(65vh, 420px);
+        overflow: auto;
+      }
+      .js .nav[data-menu-open="true"] .nav-links {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .js .nav-link {
+        width: 100%;
+        padding: 12px 14px;
+      }
       .hero-copy { padding: 26px; }
       .metric-grid, .surface-grid { grid-template-columns: 1fr; }
     }
@@ -194,7 +251,8 @@
           <span>Life-first covenant and public coordination layer</span>
         </div>
       </div>
-      <nav class="nav-links">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="nav-links" id="site-nav">
         <a class="nav-link" href="#covenant">Covenant</a>
         <a class="nav-link" href="#join">Join</a>
         <a class="nav-link" href="#support">Support</a>
@@ -354,6 +412,62 @@
       <p>This version is strong enough as a public statement and directional site. It is not yet strong enough to safely process live public declarations or emergencies without a real intake, review, privacy, and moderation layer behind it.</p>
     </section>
   </main>
+
+  <script>
+    (function () {
+      const nav = document.querySelector('.nav');
+      const toggle = document.querySelector('.nav-toggle');
+      const links = document.querySelectorAll('.nav-links a');
+
+      if (!nav || !toggle) {
+        return;
+      }
+
+      const setMenuOpen = (open) => {
+        nav.dataset.menuOpen = open ? 'true' : 'false';
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+
+      setMenuOpen(false);
+
+      toggle.addEventListener('click', () => {
+        setMenuOpen(nav.dataset.menuOpen !== 'true');
+      });
+
+      links.forEach((link) => {
+        link.addEventListener('click', () => setMenuOpen(false));
+      });
+
+      document.addEventListener('click', (event) => {
+        if (nav.dataset.menuOpen === 'true' && !nav.contains(event.target)) {
+          setMenuOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          setMenuOpen(false);
+        }
+      });
+
+      const desktopMedia = window.matchMedia('(min-width: 761px)');
+      const syncMenuState = (event) => {
+        if (event.matches) {
+          nav.removeAttribute('data-menu-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          return;
+        }
+
+        setMenuOpen(false);
+      };
+
+      if (typeof desktopMedia.addEventListener === 'function') {
+        desktopMedia.addEventListener('change', syncMenuState);
+      } else {
+        desktopMedia.addListener(syncMenuState);
+      }
+    }());
+  </script>
 
 </body>
 </html>
