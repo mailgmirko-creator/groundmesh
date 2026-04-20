@@ -1,16 +1,11 @@
 (() => {
-  if (!("serviceWorker" in navigator)) {
-    return;
-  }
-
-  if (!/^https?:$/.test(window.location.protocol)) {
-    return;
-  }
-
   const script = document.currentScript;
   const rootUrl = script ? new URL("../", script.src) : new URL("./", window.location.href);
   const serviceWorkerUrl = new URL("sw.js", rootUrl);
   const dismissKey = "groundmesh.pwa.install-banner.dismissed.v1";
+  const navStackKey = "groundmesh.pwa.nav-stack.v1";
+  const canUseServiceWorker = "serviceWorker" in navigator;
+  const isHttpPage = /^https?:$/.test(window.location.protocol);
   let deferredPrompt = null;
 
   const isStandalone = () =>
@@ -18,6 +13,22 @@
     window.navigator.standalone === true;
 
   const isIos = () => /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+
+  const normalizePath = (pathname) => {
+    let value = pathname || "/";
+    if (value.endsWith("/index.html")) {
+      value = value.slice(0, -"/index.html".length);
+    }
+    if (value.length > 1 && value.endsWith("/")) {
+      value = value.slice(0, -1);
+    }
+    return value;
+  };
+
+  const getHomeHref = () => rootUrl.href;
+
+  const isHomePage = () =>
+    normalizePath(window.location.pathname) === normalizePath(rootUrl.pathname);
 
   const bannerDismissed = () => {
     try {
@@ -111,6 +122,150 @@
     document.head.appendChild(style);
   };
 
+  const readNavStack = () => {
+    try {
+      const raw = window.sessionStorage.getItem(navStackKey);
+      if (!raw) {
+        return [];
+      }
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed.filter((item) => typeof item === "string") : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const writeNavStack = (stack) => {
+    try {
+      window.sessionStorage.setItem(navStackKey, JSON.stringify(stack.slice(-24)));
+    } catch {
+      // Ignore storage failures. Navigation still falls back to home.
+    }
+  };
+
+  const trackCurrentLocation = () => {
+    const current = window.location.href;
+    const stack = readNavStack();
+    const existingIndex = stack.lastIndexOf(current);
+
+    if (existingIndex === -1) {
+      stack.push(current);
+      writeNavStack(stack);
+      return;
+    }
+
+    if (existingIndex !== stack.length - 1) {
+      writeNavStack(stack.slice(0, existingIndex + 1));
+    }
+  };
+
+  const goHome = () => {
+    window.location.href = getHomeHref();
+  };
+
+  const goBackWithinGroundMesh = () => {
+    const stack = readNavStack();
+    if (stack.length > 1) {
+      stack.pop();
+      const previous = stack[stack.length - 1];
+      writeNavStack(stack);
+      window.location.href = previous;
+      return;
+    }
+
+    goHome();
+  };
+
+  const ensureShellNavStyles = () => {
+    if (document.getElementById("gm-shell-nav-style")) {
+      return;
+    }
+
+    const style = document.createElement("style");
+    style.id = "gm-shell-nav-style";
+    style.textContent = `
+      #gm-shell-nav {
+        position: fixed;
+        left: 14px;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+        z-index: 9998;
+        display: flex;
+        gap: 8px;
+        padding: 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(11, 15, 20, 0.94);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(12px);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+      }
+      .gm-shell-nav-btn {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        min-height: 40px;
+        padding: 0 14px;
+        font: inherit;
+        font-size: 0.94rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .gm-shell-nav-btn-primary {
+        background: linear-gradient(135deg, #95e3ae, #8bc4ff);
+        color: #091018;
+      }
+      .gm-shell-nav-btn-secondary {
+        background: rgba(255, 255, 255, 0.08);
+        color: #eef2f7;
+      }
+      @media (max-width: 640px) {
+        #gm-shell-nav {
+          left: 12px;
+          right: 12px;
+          bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+          justify-content: space-between;
+        }
+        .gm-shell-nav-btn {
+          flex: 1 1 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  const removeShellNav = () => {
+    document.getElementById("gm-shell-nav")?.remove();
+  };
+
+  const showShellNav = () => {
+    if (!document.body || isHomePage()) {
+      return;
+    }
+
+    ensureShellNavStyles();
+    removeShellNav();
+
+    const nav = document.createElement("nav");
+    nav.id = "gm-shell-nav";
+    nav.setAttribute("aria-label", "GroundMesh app navigation");
+
+    const back = document.createElement("button");
+    back.type = "button";
+    back.className = "gm-shell-nav-btn gm-shell-nav-btn-secondary";
+    back.textContent = "Back";
+    back.addEventListener("click", goBackWithinGroundMesh);
+
+    const home = document.createElement("button");
+    home.type = "button";
+    home.className = "gm-shell-nav-btn gm-shell-nav-btn-primary";
+    home.textContent = "Home";
+    home.addEventListener("click", goHome);
+
+    nav.appendChild(back);
+    nav.appendChild(home);
+    document.body.appendChild(nav);
+  };
+
   const removeBanner = () => {
     document.getElementById("gm-pwa-banner")?.remove();
   };
@@ -161,6 +316,10 @@
   };
 
   window.addEventListener("load", () => {
+    if (!canUseServiceWorker || !isHttpPage) {
+      return;
+    }
+
     navigator.serviceWorker
       .register(serviceWorkerUrl.href, { scope: rootUrl.pathname })
       .catch(console.error);
@@ -198,6 +357,9 @@
   });
 
   window.addEventListener("DOMContentLoaded", () => {
+    trackCurrentLocation();
+    showShellNav();
+
     if (isStandalone() || bannerDismissed()) {
       return;
     }
