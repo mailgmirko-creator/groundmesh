@@ -1,6 +1,7 @@
 # Tranquility Checklist (Individual/System)
 
 - Is there an imbalance signal? (lie/steal/kill/destroy or precursor)
+- Check interpretation hygiene before escalation when evidence is thin or framing is reactive
 - Map to opposite (truth/stewardship/care/creation)
 - Add safety: consent, proportionality, de-escalation, transparency
 - Execute smallest effective step

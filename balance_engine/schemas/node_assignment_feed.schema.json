@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Light Node Assignment Feed",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "updated_utc",
+    "issued_by",
+    "assignments"
+  ],
+  "properties": {
+    "protocol_version": {
+      "type": "string",
+      "const": "gm.node.v1"
+    },
+    "updated_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "issued_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "node_id": {
+      "type": "string",
+      "pattern": "^node-[a-z0-9-]{4,64}$"
+    },
+    "source_path": {
+      "type": "string"
+    },
+    "assignments": {
+      "type": "array",
+      "items": {
+        "$ref": "node_assignment_envelope.schema.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

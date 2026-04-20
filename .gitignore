@@ -83,3 +83,5 @@ public-bridge/*.txt
 
 # Local-only registration pilot records
 private/registration_pilot/
+# Local-only light node agent state
+private/node_agent/

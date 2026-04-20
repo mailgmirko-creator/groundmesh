@@ -1,0 +1,47 @@
+{
+  "name": "GroundMesh",
+  "short_name": "GroundMesh",
+  "description": "Life-first public covenant, coordination seed, and mesh entry point.",
+  "lang": "en",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0f14",
+  "theme_color": "#1f5c46",
+  "icons": [
+    {
+      "src": "./assets/gm-app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Atlas",
+      "short_name": "Atlas",
+      "description": "Open the GroundMesh Atlas.",
+      "url": "./atlas/index.html"
+    },
+    {
+      "name": "Register",
+      "short_name": "Register",
+      "description": "Open the public registration path.",
+      "url": "./register.html"
+    },
+    {
+      "name": "Map",
+      "short_name": "Map",
+      "description": "Open the living map.",
+      "url": "./map.html"
+    },
+    {
+      "name": "Compute",
+      "short_name": "Compute",
+      "description": "Open public compute transparency.",
+      "url": "./compute.html"
+    }
+  ]
+}

@@ -46,6 +46,39 @@
         "type": "string"
       }
     },
+    "interpretation_risk": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "pre_action_checks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reflective_signals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "interpretation_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "ambiguity_level": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
     "metrics_delta": {
       "type": "object"
     }

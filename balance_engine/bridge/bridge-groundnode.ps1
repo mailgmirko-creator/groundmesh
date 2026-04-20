@@ -49,6 +49,7 @@ function Send-BalanceEvent {
     event_id = $evtId
     opposite = $decision.opposite
     plan     = ($decision.plan -join "; ")
+    precheck = ($decision.pre_action_checks -join "; ")
     safety   = ($decision.safety_checks -join "; ")
     ledger   = $att.ledger
     hash     = $att.hash

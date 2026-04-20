@@ -1,0 +1,21 @@
+{
+  "protocol_version": "gm.node.v1",
+  "node_id": "node-0001",
+  "ts_utc": "2026-04-17T00:31:00Z",
+  "status": "active",
+  "availability": "accepting_public_work",
+  "resources": {
+    "cpu_load": 0.21,
+    "memory_free_gb": 9.8,
+    "storage_free_gb": 118.2
+  },
+  "network": {
+    "reachable": true,
+    "latency_class": "normal"
+  },
+  "jobs": {
+    "running": 0,
+    "completed_since_boot": 5,
+    "last_result": "ok"
+  }
+}

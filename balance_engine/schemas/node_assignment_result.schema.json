@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Light Node Assignment Result",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "result_id",
+    "assignment_id",
+    "contract_id",
+    "node_id",
+    "recorded_at_utc",
+    "disposition",
+    "status",
+    "summary"
+  ],
+  "properties": {
+    "protocol_version": {
+      "type": "string",
+      "const": "gm.node.v1"
+    },
+    "result_id": {
+      "type": "string",
+      "pattern": "^res-[a-z0-9-]{4,80}$"
+    },
+    "assignment_id": {
+      "type": "string",
+      "pattern": "^asg-[a-z0-9-]{4,80}$"
+    },
+    "contract_id": {
+      "type": "string",
+      "pattern": "^CC\\.[A-Za-z0-9_.-]+\\.v1$"
+    },
+    "node_id": {
+      "type": "string",
+      "pattern": "^node-[a-z0-9-]{4,64}$"
+    },
+    "recorded_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "disposition": {
+      "type": "string",
+      "enum": ["accepted", "completed", "refused", "expired", "error"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "warn", "error"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["local_cache", "local_log", "local_report", "none"]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

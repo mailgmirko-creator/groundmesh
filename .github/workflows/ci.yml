@@ -20,5 +20,12 @@ jobs:
           test -f docs/index.html
           test -f docs/contribute.html
           test -f docs/map.html
+          test -f docs/manifest.webmanifest
+          test -f docs/assets/pwa-init.js
+          test -f docs/assets/gm-app-icon.svg
+          test -f docs/data/public-node-inbox.json
+          test -f docs/data/public-node-outbox.json
+          test -f docs/data/public-node-claims.json
+          test -f docs/data/public-node-acks.json
           test -f docs/atlas/registry.json
           test -f scripts/health-check.ps1

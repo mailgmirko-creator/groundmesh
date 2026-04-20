@@ -1,6 +1,30 @@
 // docs/sw.js — prefer fresh network content, fall back to cache when offline
-const CACHE = "gm-v2";
-const ASSETS = ["./", "./index.html"];
+const CACHE = "gm-v6";
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./manifest.webmanifest",
+  "./assets/gm-app-icon.svg",
+  "./assets/pwa-init.js",
+  "./assets/style.css",
+  "./atlas/index.html",
+  "./compute.html",
+  "./contact.html",
+  "./contribute.html",
+  "./data/public-node-inbox.json",
+  "./data/public-node-outbox.json",
+  "./data/public-node-claims.json",
+  "./data/public-node-acks.json",
+  "./donate-cycles.html",
+  "./get-started.html",
+  "./get-started/index.html",
+  "./landscape.html",
+  "./ledger/index.html",
+  "./map.html",
+  "./privacy.html",
+  "./register-pilot.html",
+  "./register.html"
+];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
@@ -29,6 +53,17 @@ self.addEventListener("fetch", (e) => {
         caches.open(CACHE).then((c) => c.put(req, clone));
         return res;
       })
-      .catch(() => caches.match(req))
+      .catch(async () => {
+        const cached = await caches.match(req);
+        if (cached) {
+          return cached;
+        }
+
+        if (req.mode === "navigate") {
+          return caches.match("./index.html");
+        }
+
+        return Response.error();
+      })
   );
 });

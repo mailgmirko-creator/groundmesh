@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">GroundMesh app icon</title>
+  <desc id="desc">A circular mesh glyph with grounded lines and shared connection points.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f14" />
+      <stop offset="100%" stop-color="#173326" />
+    </linearGradient>
+    <linearGradient id="wire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#95e3ae" />
+      <stop offset="100%" stop-color="#8bc4ff" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <circle cx="256" cy="256" r="154" fill="none" stroke="url(#wire)" stroke-width="18" opacity="0.92" />
+  <path d="M154 190 256 134 358 190 358 322 256 378 154 322Z" fill="none" stroke="url(#wire)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M154 190 256 256 358 190M256 256V378" fill="none" stroke="url(#wire)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="154" cy="190" r="18" fill="#95e3ae" />
+  <circle cx="256" cy="134" r="18" fill="#8bc4ff" />
+  <circle cx="358" cy="190" r="18" fill="#95e3ae" />
+  <circle cx="256" cy="256" r="18" fill="#f3efe6" />
+  <circle cx="154" cy="322" r="18" fill="#8bc4ff" />
+  <circle cx="256" cy="378" r="18" fill="#95e3ae" />
+  <circle cx="358" cy="322" r="18" fill="#8bc4ff" />
+</svg>

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroundMesh Light Node Assignment Envelope",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "assignment_id",
+    "job_class",
+    "contract_id",
+    "issued_by",
+    "issued_at",
+    "expires_at",
+    "target",
+    "payload"
+  ],
+  "properties": {
+    "protocol_version": {
+      "type": "string",
+      "const": "gm.node.v1"
+    },
+    "assignment_id": {
+      "type": "string",
+      "pattern": "^asg-[a-z0-9-]{4,80}$"
+    },
+    "job_class": {
+      "type": "string",
+      "enum": [
+        "public_state_sync",
+        "public_cache_refresh",
+        "public_health_probe",
+        "local_tsl_assessment",
+        "non_sensitive_batch"
+      ]
+    },
+    "contract_id": {
+      "type": "string",
+      "pattern": "^CC\\.[A-Za-z0-9_.-]+\\.v1$"
+    },
+    "issued_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high"]
+    },
+    "target": {
+      "type": "object",
+      "required": ["audience", "node_class"],
+      "properties": {
+        "audience": {
+          "type": "string",
+          "enum": ["all-light-nodes", "node_id", "node_list"]
+        },
+        "node_class": {
+          "type": "string",
+          "enum": ["light"]
+        },
+        "node_id": {
+          "type": "string",
+          "pattern": "^node-[a-z0-9-]{4,64}$"
+        },
+        "node_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^node-[a-z0-9-]{4,64}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "payload": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "target": {
+            "properties": {
+              "audience": { "const": "node_id" }
+            },
+            "required": ["audience"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "target": {
+            "required": ["node_id"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "target": {
+            "properties": {
+              "audience": { "const": "node_list" }
+            },
+            "required": ["audience"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "target": {
+            "required": ["node_ids"]
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

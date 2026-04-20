@@ -1,0 +1,59 @@
+{
+  "id": "CC.light_node_sync_public_state.v1",
+  "version": "1.0.0",
+  "action": {
+    "name": "light_node_sync_public_state",
+    "params": {
+      "sources": [
+        "docs/data/metrics.json",
+        "docs/ledger/data/nodes.json"
+      ],
+      "workspace_root": "node_cache/public_state/",
+      "max_download_kb": 512,
+      "allow_publish_back": false
+    }
+  },
+  "scope": {
+    "project": "GroundMesh",
+    "resources": [
+      "docs/data/metrics.json",
+      "docs/ledger/data/nodes.json",
+      "node_cache/public_state/"
+    ]
+  },
+  "contexts": [
+    "dev",
+    "staging",
+    "prod"
+  ],
+  "requires": [
+    "human_signature",
+    "audit_log_entry"
+  ],
+  "safeguards": {
+    "revert_window": "5m",
+    "alert_nodes": [
+      "lead_node",
+      "guardian_node"
+    ],
+    "rate_limit": "12/h",
+    "dry_run_first": true
+  },
+  "approvals": {
+    "min_signatures": 1,
+    "roles": [
+      "maintainer",
+      "steward"
+    ]
+  },
+  "constraints": {
+    "env_vars_required": []
+  },
+  "audit": {
+    "reason": "Allow a lightweight node to pull and cache public non-sensitive GroundMesh state only.",
+    "created_by": "Mirko",
+    "issue_ref": "atlas-light-node-v1"
+  },
+  "created": "2026-04-17T00:00:00Z",
+  "updated": "2026-04-17T00:00:00Z"
+}

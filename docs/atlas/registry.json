@@ -221,6 +221,22 @@
       "related": [
         "GM-INV-VIII"
       ]
+    },
+    {
+      "id": "GUIDE-ARCH-SEED-TRUST-MESH-EDGE",
+      "name": "GroundMesh Architecture: Seed / Trust / Mesh / Edge",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/atlas/seed-trust-mesh-edge.md",
+      "summary": "Combines the structure view and rollout view for GroundMesh: bootstrap seed, trust layer, distributed mesh, edge participation, install lanes, and phased decentralization."
+    },
+    {
+      "id": "GUIDE-LIGHT-NODE-CONTRACT",
+      "name": "GroundMesh Light Node Agent Contract v1",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/atlas/light-node-agent-contract.md",
+      "summary": "Defines the first honest lightweight node role for GroundMesh: capability declaration, heartbeat, allowed job classes, refusal rules, data boundary, and the first safe command contract."
     }
   ]
 }

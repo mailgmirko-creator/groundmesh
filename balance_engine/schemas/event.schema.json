@@ -37,6 +37,56 @@
         "type": "string"
       }
     },
+    "inner_signals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "ambiguity_level": {
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ]
+    },
+    "reversibility": {
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ]
+    },
+    "fatigue_load": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
     "timestamp": {
       "type": "string",
       "format": "date-time"
