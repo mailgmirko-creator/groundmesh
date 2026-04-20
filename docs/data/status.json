@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-04-20T10:40:00Z",
+  "updated_utc": "2026-04-20T11:15:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -11,7 +11,7 @@
     },
     "pwa_shell": {
       "status": "green",
-      "note": "Manifest, service worker, install helper banner, and shared install wiring are now present on the public docs entry pages"
+      "note": "Manifest, service worker, install helper banner, shared install wiring, and shared back-home app navigation are now present on the public docs entry pages"
     },
     "node_queue": {
       "status": "green",
