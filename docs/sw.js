@@ -1,9 +1,10 @@
 // docs/sw.js — prefer fresh network content, fall back to cache when offline
-const CACHE = "gm-v8";
+const CACHE = "gm-v9";
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
+  "./resource.html",
   "./assets/gm-app-icon.svg",
   "./assets/pwa-init.js",
   "./assets/style.css",
