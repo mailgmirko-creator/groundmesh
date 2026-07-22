@@ -1,0 +1,332 @@
+{
+  "schema_version": "0.1",
+  "case": {
+    "case_id": "case-synthetic-harbor-shade",
+    "title": "Synthetic Harbor Shade Retrofit",
+    "scope_question": "Did the fictional Harbor Shade Retrofit show cooperation-supporting transparency and distribution patterns while leaving any evidenced access gaps?",
+    "status": "internal_review",
+    "is_synthetic": true,
+    "subject_ids": [
+      "subject-synthetic-harbor-shade"
+    ],
+    "temporal_scope": {
+      "start": "2026-01-01",
+      "end": "2026-06-30"
+    },
+    "geographic_scope": [
+      "Fictional Bay Municipality"
+    ],
+    "limitations": [
+      "This fixture is entirely fictional and exists only to test the M1 schema and validator.",
+      "The example.invalid source URLs do not resolve and must never be presented as real evidence.",
+      "The small claim set is not sufficient for a public Cooperation Index or a real-world conclusion."
+    ],
+    "correction_path": null,
+    "release": {
+      "release_id": "release-synthetic-sandbox-001",
+      "created_at": "2026-07-22T17:30:00Z",
+      "created_by_ref": "reviewer-sandbox-steward",
+      "previous_release_id": null,
+      "public_release": false
+    }
+  },
+  "subjects": [
+    {
+      "subject_id": "subject-synthetic-harbor-shade",
+      "subject_type": "project",
+      "display_name": "Synthetic Harbor Shade Retrofit",
+      "public_role_context": "A fictional municipal heat-mitigation project used only as a non-personal validation fixture.",
+      "jurisdiction": "Fictional Bay Municipality",
+      "temporal_scope": {
+        "start": "2026-01-01",
+        "end": "2026-06-30"
+      },
+      "notes": [
+        "No real institution, contract, official, resident, or place is represented."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source-synthetic-procurement",
+      "source_class": "A",
+      "source_type": "procurement",
+      "title": "Synthetic Harbor Shade Procurement Notice",
+      "publisher": "Fictional Bay Procurement Office",
+      "url": "https://example.invalid/behavior-atlas/synthetic/procurement-notice",
+      "archive_url": null,
+      "published_at": "2026-01-10",
+      "accessed_at": "2026-07-22T17:30:00Z",
+      "jurisdiction": "Fictional Bay Municipality",
+      "content_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "license_notes": "Synthetic fixture; no external rights or reuse claim.",
+      "handling_notes": "Invented primary-source analogue for schema testing only."
+    },
+    {
+      "source_id": "source-synthetic-audit",
+      "source_class": "A",
+      "source_type": "audit",
+      "title": "Synthetic Harbor Shade Midpoint Audit",
+      "publisher": "Fictional Bay Audit Office",
+      "url": "https://example.invalid/behavior-atlas/synthetic/midpoint-audit",
+      "archive_url": null,
+      "published_at": "2026-06-20",
+      "accessed_at": "2026-07-22T17:30:00Z",
+      "jurisdiction": "Fictional Bay Municipality",
+      "content_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "license_notes": "Synthetic fixture; no external rights or reuse claim.",
+      "handling_notes": "Invented audit analogue for schema testing only."
+    },
+    {
+      "source_id": "source-synthetic-reporting",
+      "source_class": "B",
+      "source_type": "local_reporting",
+      "title": "Synthetic Residents Review the Shade Plan",
+      "publisher": "Fictional Bay Public Ledger",
+      "url": "https://example.invalid/behavior-atlas/synthetic/local-reporting",
+      "archive_url": null,
+      "published_at": "2026-03-15",
+      "accessed_at": "2026-07-22T17:30:00Z",
+      "jurisdiction": "Fictional Bay Municipality",
+      "content_hash": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "license_notes": "Synthetic fixture; no external rights or reuse claim.",
+      "handling_notes": "Invented secondary-source analogue for schema testing only."
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "evidence-synthetic-criteria",
+      "source_id": "source-synthetic-procurement",
+      "locator": "Section 3, evaluation criteria",
+      "observation": "The fictional notice lists evaluation criteria and their relative weights before the submission deadline.",
+      "excerpt": null,
+      "captured_at": "2026-07-22T17:31:00Z",
+      "public_safe": true,
+      "handling_notes": "Paraphrase of invented fixture content; no quotation."
+    },
+    {
+      "evidence_id": "evidence-synthetic-benefit-map",
+      "source_id": "source-synthetic-audit",
+      "locator": "Table 2, neighborhood allocation",
+      "observation": "The fictional audit records that four of six highest-heat blocks received funded shade installations in the first round.",
+      "excerpt": null,
+      "captured_at": "2026-07-22T17:31:00Z",
+      "public_safe": true,
+      "handling_notes": "Paraphrase of invented fixture content; no quotation."
+    },
+    {
+      "evidence_id": "evidence-synthetic-consultation",
+      "source_id": "source-synthetic-reporting",
+      "locator": "Paragraphs 4-6, consultation account",
+      "observation": "The fictional report describes two open resident workshops and identifies three design changes attributed to workshop feedback.",
+      "excerpt": null,
+      "captured_at": "2026-07-22T17:31:00Z",
+      "public_safe": true,
+      "handling_notes": "Paraphrase of invented fixture content; no quotation."
+    },
+    {
+      "evidence_id": "evidence-synthetic-access-gap",
+      "source_id": "source-synthetic-audit",
+      "locator": "Finding 5, notice accessibility",
+      "observation": "The fictional audit records that workshop notices were published online but were not posted at the two community centers serving the least-connected blocks.",
+      "excerpt": null,
+      "captured_at": "2026-07-22T17:31:00Z",
+      "public_safe": true,
+      "handling_notes": "Paraphrase of invented fixture content; no quotation."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-synthetic-criteria-published",
+      "statement": "The fictional procurement published weighted evaluation criteria before bids were due.",
+      "claim_kind": "fact",
+      "state": "reviewed",
+      "subject_ids": [
+        "subject-synthetic-harbor-shade"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-synthetic-criteria",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2026-01-10",
+        "end": "2026-01-10"
+      },
+      "place": "Fictional Bay Municipality",
+      "reviewer_refs": [
+        "reviewer-sandbox-steward"
+      ],
+      "review_due": "2026-10-22",
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-synthetic-high-heat-allocation",
+      "statement": "The fictional first funding round reached four of the six blocks identified as having the highest heat exposure.",
+      "claim_kind": "fact",
+      "state": "reviewed",
+      "subject_ids": [
+        "subject-synthetic-harbor-shade"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-synthetic-benefit-map",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2026-01-01",
+        "end": "2026-06-20"
+      },
+      "place": "Fictional Bay Municipality",
+      "reviewer_refs": [
+        "reviewer-sandbox-steward"
+      ],
+      "review_due": "2026-10-22",
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-synthetic-feedback-changes",
+      "statement": "The fictional reporting attributes three design changes to feedback gathered in two open workshops.",
+      "claim_kind": "attributed_allegation",
+      "state": "reviewed",
+      "subject_ids": [
+        "subject-synthetic-harbor-shade"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-synthetic-consultation",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2026-02-01",
+        "end": "2026-03-15"
+      },
+      "place": "Fictional Bay Municipality",
+      "reviewer_refs": [
+        "reviewer-sandbox-steward"
+      ],
+      "review_due": "2026-10-22",
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-synthetic-notice-access-gap",
+      "statement": "The fictional workshop notice process omitted physical postings at two community centers serving the least-connected blocks.",
+      "claim_kind": "fact",
+      "state": "reviewed",
+      "subject_ids": [
+        "subject-synthetic-harbor-shade"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-synthetic-access-gap",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2026-02-01",
+        "end": "2026-03-15"
+      },
+      "place": "Fictional Bay Municipality",
+      "reviewer_refs": [
+        "reviewer-sandbox-steward"
+      ],
+      "review_due": "2026-10-22",
+      "supersedes_claim_id": null
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "assessment-synthetic-transparency",
+      "lens": "transparency_and_answerability",
+      "direction": "cooperation_supporting",
+      "confidence": "emerging",
+      "rationale": "The fictional record shows advance publication of evaluation criteria. The small synthetic source set supports only an emerging assessment, not a broad institutional conclusion.",
+      "supporting_claim_ids": [
+        "claim-synthetic-criteria-published"
+      ],
+      "counter_claim_ids": [],
+      "assessor_refs": [
+        "reviewer-sandbox-steward"
+      ],
+      "assessed_at": "2026-07-22T17:35:00Z",
+      "review_due": "2026-10-22"
+    },
+    {
+      "assessment_id": "assessment-synthetic-consent-access",
+      "lens": "consent_and_agency",
+      "direction": "mixed",
+      "confidence": "emerging",
+      "rationale": "The fictional reporting describes open workshops and feedback-linked changes, while the fictional audit records an access gap in how workshop notices reached less-connected blocks.",
+      "supporting_claim_ids": [
+        "claim-synthetic-feedback-changes"
+      ],
+      "counter_claim_ids": [
+        "claim-synthetic-notice-access-gap"
+      ],
+      "assessor_refs": [
+        "reviewer-sandbox-steward"
+      ],
+      "assessed_at": "2026-07-22T17:35:00Z",
+      "review_due": "2026-10-22"
+    },
+    {
+      "assessment_id": "assessment-synthetic-distribution",
+      "lens": "distribution_of_benefits_and_burdens",
+      "direction": "mixed",
+      "confidence": "emerging",
+      "rationale": "The fictional allocation reached most, but not all, highest-heat blocks. The fixture does not explain why two blocks were deferred, so a stronger direction would exceed the evidence.",
+      "supporting_claim_ids": [
+        "claim-synthetic-high-heat-allocation"
+      ],
+      "counter_claim_ids": [
+        "claim-synthetic-notice-access-gap"
+      ],
+      "assessor_refs": [
+        "reviewer-sandbox-steward"
+      ],
+      "assessed_at": "2026-07-22T17:35:00Z",
+      "review_due": "2026-10-22"
+    }
+  ],
+  "review_events": [
+    {
+      "review_event_id": "review-synthetic-case-created",
+      "target_type": "case",
+      "target_id": "case-synthetic-harbor-shade",
+      "action": "created",
+      "actor_role": "steward",
+      "actor_ref": "reviewer-sandbox-steward",
+      "timestamp": "2026-07-22T17:30:00Z",
+      "reason": "Create a fictional fixture for the M1 schema sandbox.",
+      "changed_fields": [
+        "case",
+        "subjects",
+        "sources",
+        "evidence_items",
+        "claims",
+        "assessments"
+      ],
+      "supersedes_record_id": null
+    },
+    {
+      "review_event_id": "review-synthetic-claims-reviewed",
+      "target_type": "case",
+      "target_id": "case-synthetic-harbor-shade",
+      "action": "reviewed",
+      "actor_role": "reviewer",
+      "actor_ref": "reviewer-sandbox-steward",
+      "timestamp": "2026-07-22T17:40:00Z",
+      "reason": "Confirm that every synthetic claim resolves to an evidence item and that counterevidence remains visible in the mixed assessments.",
+      "changed_fields": [
+        "claims",
+        "assessments",
+        "review_events"
+      ],
+      "supersedes_record_id": null
+    }
+  ],
+  "correction_requests": []
+}
