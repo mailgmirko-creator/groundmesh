@@ -49,6 +49,14 @@
       "summary": "Establishes the Behavior Atlas as an evidence-first, human-reviewed pilot that maps claims and patterns without person scoring or autonomous publication."
     },
     {
+      "id": "CHECKLIST-REGISTRATION-PILOT",
+      "name": "Registration Pilot Readiness Checklist",
+      "type": "checklist",
+      "status": "active",
+      "path": "docs/checklists/Registration_Pilot_Readiness_Checklist.md",
+      "summary": "Practical readiness gate for opening any real GroundMesh registration path beyond simple public contact."
+    },
+    {
       "id": "CHECKLIST-REGISTRATION-INTEREST-TRIAGE",
       "name": "Registration Interest Triage Checklist",
       "type": "checklist",
@@ -57,12 +65,44 @@
       "summary": "Smallest honest handling checklist for public registration-interest emails before any real pilot intake is open."
     },
     {
-      "id": "CHECKLIST-REGISTRATION-PILOT",
-      "name": "Registration Pilot Readiness Checklist",
-      "type": "checklist",
+      "id": "NOTE-SESSION-0001",
+      "name": "Codex Session 0001: First Contact and Working Basis",
+      "type": "note",
       "status": "active",
-      "path": "docs/checklists/Registration_Pilot_Readiness_Checklist.md",
-      "summary": "Practical readiness gate for opening any real GroundMesh registration path beyond simple public contact."
+      "path": "docs/atlas/session-0001-codex-first-contact.md",
+      "summary": "Tracked memory of the first major Codex GroundMesh session, including workflow doctrine, public-surface stabilization, and the first real registration pilot outcomes."
+    },
+    {
+      "id": "GUIDE-NEW-CHAT-HANDOFF",
+      "name": "GroundMesh New Chat Handoff",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/atlas/groundmesh-new-chat-handoff.md",
+      "summary": "Compact reload note for starting a new chat without losing the current GroundMesh state or falling into long recap mode."
+    },
+    {
+      "id": "PAGE-REGISTER-PILOT",
+      "name": "GroundMesh Invited-Circle Registration Pilot",
+      "type": "page",
+      "status": "active",
+      "path": "docs/register-pilot.html",
+      "summary": "Minimal steward-run pilot form for self-registration and a few invited friends when the local intake host is active."
+    },
+    {
+      "id": "TEMPLATE-REGISTRATION-PILOT-SCOPE",
+      "name": "Registration Pilot Scope Canvas",
+      "type": "template",
+      "status": "active",
+      "path": "docs/templates/Registration_Pilot_Scope_Canvas.md",
+      "summary": "Compact fill-in canvas for defining the first real registration pilot before opening intake beyond simple public contact."
+    },
+    {
+      "id": "TEMPLATE-REGISTRATION-PILOT-RECORD",
+      "name": "Registration Pilot Record Template",
+      "type": "template",
+      "status": "active",
+      "path": "docs/templates/Registration_Pilot_Record.md",
+      "summary": "Reusable minimal record for one actual participant during the invited-circle registration pilot."
     },
     {
       "id": "DOC-ASSISTANT-BRIEF",
@@ -100,38 +140,6 @@
       ]
     },
     {
-      "id": "GUIDE-ARCH-SEED-TRUST-MESH-EDGE",
-      "name": "GroundMesh Architecture: Seed / Trust / Mesh / Edge",
-      "type": "guide",
-      "status": "active",
-      "path": "docs/atlas/seed-trust-mesh-edge.md",
-      "summary": "Combines the structure view and rollout view for GroundMesh: bootstrap seed, trust layer, distributed mesh, edge participation, install lanes, and phased decentralization."
-    },
-    {
-      "id": "GUIDE-LIGHT-NODE-CONTRACT",
-      "name": "GroundMesh Light Node Agent Contract v1",
-      "type": "guide",
-      "status": "active",
-      "path": "docs/atlas/light-node-agent-contract.md",
-      "summary": "Defines the first honest lightweight node role for GroundMesh: capability declaration, heartbeat, allowed job classes, refusal rules, data boundary, and the first safe command contract."
-    },
-    {
-      "id": "GUIDE-NEW-CHAT-HANDOFF",
-      "name": "GroundMesh New Chat Handoff",
-      "type": "guide",
-      "status": "active",
-      "path": "docs/atlas/groundmesh-new-chat-handoff.md",
-      "summary": "Compact reload note for starting a new chat without losing the current GroundMesh state or falling into long recap mode."
-    },
-    {
-      "id": "NOTE-SESSION-0001",
-      "name": "Codex Session 0001: First Contact and Working Basis",
-      "type": "note",
-      "status": "active",
-      "path": "docs/atlas/session-0001-codex-first-contact.md",
-      "summary": "Tracked memory of the first major Codex GroundMesh session, including workflow doctrine, public-surface stabilization, and the first real registration pilot outcomes."
-    },
-    {
       "id": "PAGE-COMPUTE",
       "name": "Compute Transparency",
       "type": "page",
@@ -148,12 +156,12 @@
       "summary": "Simple public contact path for questions, corrections, first contact, and participation guidance."
     },
     {
-      "id": "PAGE-CONTRIBUTE",
-      "name": "Contributors Hub",
+      "id": "PAGE-REGISTER",
+      "name": "GroundMesh Registration Status",
       "type": "page",
       "status": "active",
-      "path": "docs/contribute.html",
-      "summary": "Primary public on-ramp for volunteers, issue filing, and low-friction participation."
+      "path": "docs/register.html",
+      "summary": "Honest public status page for joining, registration, and what must exist before GroundMesh opens a real pilot."
     },
     {
       "id": "PAGE-GET-STARTED",
@@ -180,14 +188,6 @@
       "summary": "Broad scan of live pages, local repos, mirrors, and adjacent web surfaces around GroundMesh."
     },
     {
-      "id": "PAGE-MAP",
-      "name": "GroundMesh Map",
-      "type": "page",
-      "status": "active",
-      "path": "docs/map.html",
-      "summary": "Public-facing orientation page for the project landscape and navigation."
-    },
-    {
       "id": "PAGE-PRIVACY",
       "name": "GroundMesh Privacy",
       "type": "page",
@@ -196,20 +196,20 @@
       "summary": "Plain-language statement of the current public privacy posture, limits, and data-minimization rule."
     },
     {
-      "id": "PAGE-REGISTER",
-      "name": "GroundMesh Registration Status",
+      "id": "PAGE-CONTRIBUTE",
+      "name": "Contributors Hub",
       "type": "page",
       "status": "active",
-      "path": "docs/register.html",
-      "summary": "Honest public status page for joining, registration, and what must exist before GroundMesh opens a real pilot."
+      "path": "docs/contribute.html",
+      "summary": "Primary public on-ramp for volunteers, issue filing, and low-friction participation."
     },
     {
-      "id": "PAGE-REGISTER-PILOT",
-      "name": "GroundMesh Invited-Circle Registration Pilot",
+      "id": "PAGE-MAP",
+      "name": "GroundMesh Map",
       "type": "page",
       "status": "active",
-      "path": "docs/register-pilot.html",
-      "summary": "Minimal steward-run pilot form for self-registration and a few invited friends when the local intake host is active."
+      "path": "docs/map.html",
+      "summary": "Public-facing orientation page for the project landscape and navigation."
     },
     {
       "id": "STATUS-PUBLIC",
@@ -218,22 +218,6 @@
       "status": "active",
       "path": "docs/data/status.json",
       "summary": "Tracks public health notes for the current docs surface and Atlas-backed pages."
-    },
-    {
-      "id": "TEMPLATE-REGISTRATION-PILOT-RECORD",
-      "name": "Registration Pilot Record Template",
-      "type": "template",
-      "status": "active",
-      "path": "docs/templates/Registration_Pilot_Record.md",
-      "summary": "Reusable minimal record for one actual participant during the invited-circle registration pilot."
-    },
-    {
-      "id": "TEMPLATE-REGISTRATION-PILOT-SCOPE",
-      "name": "Registration Pilot Scope Canvas",
-      "type": "template",
-      "status": "active",
-      "path": "docs/templates/Registration_Pilot_Scope_Canvas.md",
-      "summary": "Compact fill-in canvas for defining the first real registration pilot before opening intake beyond simple public contact."
     },
     {
       "id": "TP-03",
@@ -245,6 +229,22 @@
       "related": [
         "GM-INV-VIII"
       ]
+    },
+    {
+      "id": "GUIDE-ARCH-SEED-TRUST-MESH-EDGE",
+      "name": "GroundMesh Architecture: Seed / Trust / Mesh / Edge",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/atlas/seed-trust-mesh-edge.md",
+      "summary": "Combines the structure view and rollout view for GroundMesh: bootstrap seed, trust layer, distributed mesh, edge participation, install lanes, and phased decentralization."
+    },
+    {
+      "id": "GUIDE-LIGHT-NODE-CONTRACT",
+      "name": "GroundMesh Light Node Agent Contract v1",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/atlas/light-node-agent-contract.md",
+      "summary": "Defines the first honest lightweight node role for GroundMesh: capability declaration, heartbeat, allowed job classes, refusal rules, data boundary, and the first safe command contract."
     }
   ]
 }
