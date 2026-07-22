@@ -1,0 +1,966 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mailgmirko-creator.github.io/groundmesh/behavior-atlas/schema/v0.1.schema.json",
+  "title": "GroundMesh Behavior Atlas Case Bundle v0.1",
+  "description": "Experimental M1 schema for evidence-first, human-reviewed, public-source case bundles. It does not permit person subjects, public scores, rankings, inferred motives, or autonomous publication fields.",
+  "type": "object",
+  "propertyNames": {
+    "$ref": "#/$defs/safePropertyName"
+  },
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case",
+    "subjects",
+    "sources",
+    "evidence_items",
+    "claims",
+    "assessments",
+    "review_events",
+    "correction_requests"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "case": {
+      "$ref": "#/$defs/case"
+    },
+    "subjects": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/subject"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "evidence_items": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/evidenceItem"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "assessments": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/assessment"
+      }
+    },
+    "review_events": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/reviewEvent"
+      }
+    },
+    "correction_requests": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/correctionRequest"
+      }
+    }
+  },
+  "$defs": {
+    "safePropertyName": {
+      "type": "string",
+      "not": {
+        "enum": [
+          "score",
+          "rank",
+          "ranking",
+          "person_score",
+          "reputation_score",
+          "moral_label",
+          "guilt_finding",
+          "inferred_motive",
+          "composite_score",
+          "automatic_publication"
+        ]
+      }
+    },
+    "shortText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "dateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "timeScope": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "end": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        }
+      }
+    },
+    "case": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "title",
+        "scope_question",
+        "status",
+        "is_synthetic",
+        "subject_ids",
+        "temporal_scope",
+        "geographic_scope",
+        "limitations",
+        "correction_path",
+        "release"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^case-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "$ref": "#/$defs/shortText"
+        },
+        "scope_question": {
+          "$ref": "#/$defs/longText"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "internal_review",
+            "unlisted_preview",
+            "public_alpha",
+            "contested",
+            "retired"
+          ]
+        },
+        "is_synthetic": {
+          "type": "boolean"
+        },
+        "subject_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^subject-[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "temporal_scope": {
+          "$ref": "#/$defs/timeScope"
+        },
+        "geographic_scope": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/shortText"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/longText"
+          }
+        },
+        "correction_path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "release": {
+          "$ref": "#/$defs/release"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "unlisted_preview",
+                  "public_alpha",
+                  "contested"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "correction_path": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "release": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "release_id",
+        "created_at",
+        "created_by_ref",
+        "previous_release_id",
+        "public_release"
+      ],
+      "properties": {
+        "release_id": {
+          "type": "string",
+          "pattern": "^release-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "created_at": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "created_by_ref": {
+          "type": "string",
+          "pattern": "^reviewer-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "previous_release_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^release-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "public_release": {
+          "type": "boolean"
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "subject_id",
+        "subject_type",
+        "display_name",
+        "public_role_context",
+        "jurisdiction",
+        "temporal_scope",
+        "notes"
+      ],
+      "properties": {
+        "subject_id": {
+          "type": "string",
+          "pattern": "^subject-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "subject_type": {
+          "enum": [
+            "project",
+            "institution",
+            "public_program",
+            "policy",
+            "contract",
+            "event"
+          ]
+        },
+        "display_name": {
+          "$ref": "#/$defs/shortText"
+        },
+        "public_role_context": {
+          "$ref": "#/$defs/longText"
+        },
+        "jurisdiction": {
+          "$ref": "#/$defs/shortText"
+        },
+        "temporal_scope": {
+          "$ref": "#/$defs/timeScope"
+        },
+        "notes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/longText"
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_class",
+        "source_type",
+        "title",
+        "publisher",
+        "url",
+        "archive_url",
+        "published_at",
+        "accessed_at",
+        "jurisdiction",
+        "content_hash",
+        "license_notes",
+        "handling_notes"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^source-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "source_class": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "source_type": {
+          "enum": [
+            "law",
+            "budget",
+            "procurement",
+            "filing",
+            "audit",
+            "court_record",
+            "official_dataset",
+            "research",
+            "journalism",
+            "ngo_report",
+            "local_reporting",
+            "lead"
+          ]
+        },
+        "title": {
+          "$ref": "#/$defs/shortText"
+        },
+        "publisher": {
+          "$ref": "#/$defs/shortText"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "archive_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "published_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "accessed_at": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "jurisdiction": {
+          "$ref": "#/$defs/shortText"
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "license_notes": {
+          "$ref": "#/$defs/longText"
+        },
+        "handling_notes": {
+          "$ref": "#/$defs/longText"
+        }
+      }
+    },
+    "evidenceItem": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "source_id",
+        "locator",
+        "observation",
+        "excerpt",
+        "captured_at",
+        "public_safe",
+        "handling_notes"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "pattern": "^evidence-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^source-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "locator": {
+          "$ref": "#/$defs/shortText"
+        },
+        "observation": {
+          "$ref": "#/$defs/longText"
+        },
+        "excerpt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500
+        },
+        "captured_at": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "public_safe": {
+          "type": "boolean"
+        },
+        "handling_notes": {
+          "$ref": "#/$defs/longText"
+        }
+      }
+    },
+    "evidenceLink": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "relationship"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "pattern": "^evidence-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "relationship": {
+          "enum": [
+            "supports",
+            "contradicts",
+            "contextualizes"
+          ]
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "statement",
+        "claim_kind",
+        "state",
+        "subject_ids",
+        "evidence_links",
+        "temporal_scope",
+        "place",
+        "reviewer_refs",
+        "review_due",
+        "supersedes_claim_id"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "pattern": "^claim-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "statement": {
+          "$ref": "#/$defs/longText"
+        },
+        "claim_kind": {
+          "enum": [
+            "fact",
+            "attributed_allegation",
+            "inference"
+          ]
+        },
+        "state": {
+          "enum": [
+            "draft",
+            "sourced",
+            "reviewed",
+            "publishable",
+            "contested",
+            "corrected",
+            "retired"
+          ]
+        },
+        "subject_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^subject-[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "evidence_links": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/evidenceLink"
+          }
+        },
+        "temporal_scope": {
+          "$ref": "#/$defs/timeScope"
+        },
+        "place": {
+          "$ref": "#/$defs/shortText"
+        },
+        "reviewer_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^reviewer-[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "review_due": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "supersedes_claim_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^claim-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "sourced",
+                  "reviewed",
+                  "publishable",
+                  "contested",
+                  "corrected",
+                  "retired"
+                ]
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evidence_links": {
+                "type": "array",
+                "minItems": 1,
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "relationship": {
+                      "enum": [
+                        "supports",
+                        "contradicts"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "relationship"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "reviewed",
+                  "publishable",
+                  "contested",
+                  "corrected",
+                  "retired"
+                ]
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "reviewer_refs": {
+                "type": "array",
+                "minItems": 1
+              },
+              "review_due": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "assessment_id",
+        "lens",
+        "direction",
+        "confidence",
+        "rationale",
+        "supporting_claim_ids",
+        "counter_claim_ids",
+        "assessor_refs",
+        "assessed_at",
+        "review_due"
+      ],
+      "properties": {
+        "assessment_id": {
+          "type": "string",
+          "pattern": "^assessment-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "lens": {
+          "enum": [
+            "consent_and_agency",
+            "distribution_of_benefits_and_burdens",
+            "transparency_and_answerability",
+            "resource_stewardship",
+            "reciprocity_and_cooperation",
+            "concentration_and_capture_risk"
+          ]
+        },
+        "direction": {
+          "enum": [
+            "cooperation_supporting",
+            "extraction_risk",
+            "mixed",
+            "unclear"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "insufficient",
+            "emerging",
+            "substantiated",
+            "contested"
+          ]
+        },
+        "rationale": {
+          "$ref": "#/$defs/longText"
+        },
+        "supporting_claim_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^claim-[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "counter_claim_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^claim-[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "assessor_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^reviewer-[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "assessed_at": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "review_due": {
+          "$ref": "#/$defs/date"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "confidence": {
+                "const": "substantiated"
+              }
+            },
+            "required": [
+              "confidence"
+            ]
+          },
+          "then": {
+            "properties": {
+              "supporting_claim_ids": {
+                "type": "array",
+                "minItems": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    "reviewEvent": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "review_event_id",
+        "target_type",
+        "target_id",
+        "action",
+        "actor_role",
+        "actor_ref",
+        "timestamp",
+        "reason",
+        "changed_fields",
+        "supersedes_record_id"
+      ],
+      "properties": {
+        "review_event_id": {
+          "type": "string",
+          "pattern": "^review-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "target_type": {
+          "enum": [
+            "case",
+            "subject",
+            "source",
+            "evidence_item",
+            "claim",
+            "assessment",
+            "correction_request"
+          ]
+        },
+        "target_id": {
+          "$ref": "#/$defs/shortText"
+        },
+        "action": {
+          "enum": [
+            "created",
+            "sourced",
+            "reviewed",
+            "approved_for_publication",
+            "contested",
+            "corrected",
+            "retired",
+            "superseded",
+            "correction_received"
+          ]
+        },
+        "actor_role": {
+          "enum": [
+            "steward",
+            "reviewer",
+            "researcher",
+            "correction_handler"
+          ]
+        },
+        "actor_ref": {
+          "type": "string",
+          "pattern": "^reviewer-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "timestamp": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "reason": {
+          "$ref": "#/$defs/longText"
+        },
+        "changed_fields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/shortText"
+          }
+        },
+        "supersedes_record_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        }
+      }
+    },
+    "correctionRequest": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/safePropertyName"
+      },
+      "additionalProperties": false,
+      "required": [
+        "correction_id",
+        "request_reference",
+        "target_type",
+        "target_id",
+        "summary",
+        "status",
+        "received_at",
+        "resolved_at",
+        "resolution_note"
+      ],
+      "properties": {
+        "correction_id": {
+          "type": "string",
+          "pattern": "^correction-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "request_reference": {
+          "$ref": "#/$defs/shortText"
+        },
+        "target_type": {
+          "enum": [
+            "case",
+            "subject",
+            "source",
+            "evidence_item",
+            "claim",
+            "assessment"
+          ]
+        },
+        "target_id": {
+          "$ref": "#/$defs/shortText"
+        },
+        "summary": {
+          "$ref": "#/$defs/longText"
+        },
+        "status": {
+          "enum": [
+            "received",
+            "under_review",
+            "accepted",
+            "partially_accepted",
+            "rejected"
+          ]
+        },
+        "received_at": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "resolved_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "resolution_note": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "accepted",
+                  "partially_accepted",
+                  "rejected"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "resolved_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "resolution_note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

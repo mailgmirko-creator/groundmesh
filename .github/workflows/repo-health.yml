@@ -40,6 +40,11 @@ jobs:
           print("JSON OK")
           PY
 
+      - name: Validate Behavior Atlas schema sandbox
+        shell: pwsh
+        run: |
+          ./scripts/behavior-atlas-validate.ps1 -RequireSynthetic
+
       - name: Check links with lychee
         uses: lycheeverse/lychee-action@v1
         with:
