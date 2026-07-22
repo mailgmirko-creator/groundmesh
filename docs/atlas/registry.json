@@ -41,6 +41,14 @@
       "summary": "Requires GroundMesh registration to begin as a narrow pilot with explicit limits, separate sensitive intake, and real moderation, consent, and rollback gates."
     },
     {
+      "id": "ADR-0006",
+      "name": "Behavior Atlas Begins as an Evidence-First Pilot",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0006-behavior-atlas-evidence-pilot.md",
+      "summary": "Establishes the Behavior Atlas as an evidence-first, human-reviewed pilot that maps claims and patterns without person scoring or autonomous publication."
+    },
+    {
       "id": "CHECKLIST-REGISTRATION-PILOT",
       "name": "Registration Pilot Readiness Checklist",
       "type": "checklist",
