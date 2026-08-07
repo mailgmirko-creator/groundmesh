@@ -277,6 +277,14 @@
       "status": "active",
       "path": "docs/echo_archive/EA-0002_numbers-neighbor-and-coordination.md",
       "summary": "Reflection connecting numbers, hidden accounting boundaries, Jesus' teachings on neighbor, service, mammon, and non-retaliation, and GroundMesh's voluntary coordination posture."
+    },
+    {
+      "id": "TEST-COORDINATION-SYNTHETIC-V0-1",
+      "name": "Coordination Field Synthetic Breathing Test v0.1",
+      "type": "test",
+      "status": "active",
+      "path": "docs/coordination/synthetic-breathing-test.md",
+      "summary": "Guarded Stage-B fictional need-to-capacity cycle paired with a JSON fixture and repo-health validator; tests consent-sensitive commitments and delivery without real subjects or allocation authority."
     }
   ]
 }
