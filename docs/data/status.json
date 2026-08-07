@@ -1,9 +1,17 @@
 {
-  "updated_utc": "2026-08-07T14:20:00Z",
+  "updated_utc": "2026-08-07T14:45:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
       "note": "GitHub Pages serves the docs-based site through the GitHub Actions deployment path"
+    },
+    "release_artifact": {
+      "status": "green",
+      "note": "Qualifying main-branch changes build a ZIP plus SHA-256 manifest and preserve them as a 30-day GitHub Actions artifact"
+    },
+    "ipfs_mirror": {
+      "status": "yellow",
+      "note": "Optional Storacha/IPFS mirror uses the current delegated-key workflow but is not enabled until STORACHA_PRINCIPAL and STORACHA_PROOF are configured; GitHub Pages remains canonical"
     },
     "home_page": {
       "status": "green",
