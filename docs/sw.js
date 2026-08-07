@@ -1,5 +1,5 @@
 // docs/sw.js — prefer fresh network content, fall back to cache when offline
-const CACHE = "gm-v9";
+const CACHE = "gm-v10";
 const ASSETS = [
   "./",
   "./index.html",
@@ -24,7 +24,8 @@ const ASSETS = [
   "./map.html",
   "./privacy.html",
   "./register-pilot.html",
-  "./register.html"
+  "./register.html",
+  "./world.html"
 ];
 
 self.addEventListener("install", (e) => {
