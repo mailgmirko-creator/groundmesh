@@ -1,29 +1,33 @@
 {
-  "updated_utc": "2026-04-20T11:15:00Z",
+  "updated_utc": "2026-08-07T14:20:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
-      "note": "GitHub Pages is now serving the docs-based site successfully through the GitHub Actions deployment path"
+      "note": "GitHub Pages serves the docs-based site through the GitHub Actions deployment path"
     },
     "home_page": {
       "status": "green",
-      "note": "Unified docs front door is live at the public root URL"
+      "note": "Canonical public front door is available at the repository Pages root and now points people toward the World view first"
+    },
+    "world_page": {
+      "status": "green",
+      "note": "Lightweight World page exposes dated global indicators, current participation paths, coordination boundaries, and evidence links without requiring an account"
     },
     "pwa_shell": {
       "status": "green",
-      "note": "Manifest, service worker, install helper banner, shared install wiring, and shared back-home app navigation are now present on the public docs entry pages"
+      "note": "Manifest, service worker, install helper banner, shared install wiring, and shared back-home app navigation are present; World is included in the offline shell"
     },
     "node_queue": {
       "status": "green",
-      "note": "Public light-node inbox and outbox feeds are now exposed through the docs surface for bounded assignment visibility"
+      "note": "Public light-node inbox and outbox feeds are exposed through the docs surface for bounded assignment visibility"
     },
     "node_claims": {
       "status": "green",
-      "note": "Append-only public claim feed now shows when a light node has taken bounded ownership of an assignment before reporting the result"
+      "note": "Append-only public claim feed shows when a light node has taken bounded ownership of an assignment before reporting the result"
     },
     "node_acks": {
       "status": "green",
-      "note": "Append-only public acknowledgement feed now shows how a node closed its prior claim after reporting a bounded assignment outcome"
+      "note": "Append-only public acknowledgement feed shows how a node closed its prior claim after reporting a bounded assignment outcome"
     },
     "contributors_page": {
       "status": "green",
@@ -31,11 +35,11 @@
     },
     "registration_page": {
       "status": "green",
-      "note": "Registration status page now loads publicly as the honest path for joining status and pilot-first registration posture"
+      "note": "Registration status page loads publicly as the honest path for joining status and pilot-first registration posture"
     },
     "registration_checklist": {
       "status": "green",
-      "note": "Registration pilot readiness checklist now loads publicly from the docs surface and matches the live Atlas and registration path"
+      "note": "Registration pilot readiness checklist loads publicly from the docs surface and matches the live Atlas and registration path"
     },
     "get_started_page": {
       "status": "green",
@@ -43,11 +47,11 @@
     },
     "map_page": {
       "status": "green",
-      "note": "Map page and add-pin paths load publicly"
+      "note": "Map page and consent-based add-pin paths load publicly"
     },
     "contact_page": {
       "status": "green",
-      "note": "Simple public human contact path loads publicly"
+      "note": "Simple public human contact and correction path loads publicly"
     },
     "privacy_page": {
       "status": "green",
@@ -63,7 +67,11 @@
     },
     "atlas_page": {
       "status": "green",
-      "note": "Atlas route loads publicly"
+      "note": "Atlas route loads publicly and remains the canonical repository-orientation layer"
+    },
+    "coordination_stage_b": {
+      "status": "green",
+      "note": "Synthetic consent-to-delivery breathing test is merged and validated in repo-health; no live allocation service is enabled"
     }
   }
 }

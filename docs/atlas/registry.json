@@ -220,6 +220,14 @@
       "summary": "Public-facing orientation page for the project landscape and navigation."
     },
     {
+      "id": "PAGE-WORLD",
+      "name": "GroundMesh World",
+      "type": "page",
+      "status": "active",
+      "path": "docs/world.html",
+      "summary": "Lightweight public world view joining dated evidence-backed global needs with current GroundMesh participation paths and the consent-first coordination loop."
+    },
+    {
       "id": "STATUS-PUBLIC",
       "name": "Public Status Snapshot",
       "type": "data",

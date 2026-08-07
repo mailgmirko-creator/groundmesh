@@ -1,7 +1,7 @@
 {
   "name": "GroundMesh",
   "short_name": "GroundMesh",
-  "description": "Life-first public covenant, coordination seed, and mesh entry point.",
+  "description": "Lightweight public coordination layer for needs, capacity, evidence, and voluntary action.",
   "lang": "en",
   "dir": "ltr",
   "id": "./",
@@ -20,10 +20,16 @@
   ],
   "shortcuts": [
     {
-      "name": "Atlas",
-      "short_name": "Atlas",
-      "description": "Open the GroundMesh Atlas.",
-      "url": "./atlas/index.html"
+      "name": "World",
+      "short_name": "World",
+      "description": "Open the lightweight GroundMesh world view.",
+      "url": "./world.html"
+    },
+    {
+      "name": "Map",
+      "short_name": "Map",
+      "description": "Open the living map.",
+      "url": "./map.html"
     },
     {
       "name": "Register",
@@ -32,10 +38,10 @@
       "url": "./register.html"
     },
     {
-      "name": "Map",
-      "short_name": "Map",
-      "description": "Open the living map.",
-      "url": "./map.html"
+      "name": "Atlas",
+      "short_name": "Atlas",
+      "description": "Open the GroundMesh Atlas.",
+      "url": "./atlas/index.html"
     },
     {
       "name": "Compute",
