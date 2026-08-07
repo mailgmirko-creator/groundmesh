@@ -1,4 +1,4 @@
-name: Release & IPFS
+name: Release & Optional IPFS Mirror
 
 on:
   workflow_dispatch:
@@ -14,9 +14,10 @@ jobs:
   build-publish:
     runs-on: windows-latest
     permissions:
-      contents: write
+      contents: read
     env:
-      W3S_TOKEN: ${{ secrets.W3S_TOKEN }}
+      STORACHA_PRINCIPAL: ${{ secrets.STORACHA_PRINCIPAL }}
+      STORACHA_PROOF: ${{ secrets.STORACHA_PROOF }}
 
     steps:
       - uses: actions/checkout@v4
@@ -37,10 +38,35 @@ jobs:
           cd apps\local-cli
           .\.venv\Scripts\python .\main.py --task release
 
-      - name: Publish to IPFS (Web3.Storage)
-        if: ${{ env.W3S_TOKEN != '' }}
+      - name: Preserve release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: groundmesh-release-${{ github.sha }}
+          path: releases/*
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish docs mirror to Storacha / IPFS
+        id: storacha
+        if: ${{ env.STORACHA_PRINCIPAL != '' && env.STORACHA_PROOF != '' }}
+        uses: storacha/add-to-web3@v4
+        with:
+          path_to_add: docs
+          secret_key: ${{ env.STORACHA_PRINCIPAL }}
+          proof: ${{ env.STORACHA_PROOF }}
+
+      - name: Report IPFS mirror
+        if: ${{ steps.storacha.outcome == 'success' }}
         shell: pwsh
-        env:
-          W3S_TOKEN: ${{ env.W3S_TOKEN }}
         run: |
-          powershell -NoProfile -ExecutionPolicy Bypass -File scripts\ipfs_publish.ps1
+          "### GroundMesh IPFS mirror" >> $env:GITHUB_STEP_SUMMARY
+          "CID: `${{ steps.storacha.outputs.cid }}`" >> $env:GITHUB_STEP_SUMMARY
+          "Gateway: ${{ steps.storacha.outputs.url }}" >> $env:GITHUB_STEP_SUMMARY
+
+      - name: Note IPFS mirror is not configured
+        if: ${{ env.STORACHA_PRINCIPAL == '' || env.STORACHA_PROOF == '' }}
+        shell: pwsh
+        run: |
+          Write-Warning "Storacha/IPFS mirror is not configured. The release artifact was preserved and GitHub Pages remains the canonical public deployment. Configure STORACHA_PRINCIPAL and STORACHA_PROOF to enable the optional mirror."
+          "### GroundMesh IPFS mirror" >> $env:GITHUB_STEP_SUMMARY
+          "Not configured for this run. GitHub Pages remains canonical." >> $env:GITHUB_STEP_SUMMARY
