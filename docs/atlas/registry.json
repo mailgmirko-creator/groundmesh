@@ -253,6 +253,30 @@
       "status": "active",
       "path": "docs/atlas/light-node-agent-contract.md",
       "summary": "Defines the first honest lightweight node role for GroundMesh: capability declaration, heartbeat, allowed job classes, refusal rules, data boundary, and the first safe command contract."
+    },
+    {
+      "id": "GUIDE-COORDINATION-FIELD-V0-1",
+      "name": "GroundMesh Coordination Field v0.1",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/coordination/coordination-field.md",
+      "summary": "Human-readable model for exposing needs, capacity, commitments, delivery, gaps, externalities, and coordination failures without central planning, person scoring, or loss of consent."
+    },
+    {
+      "id": "DATA-COORDINATION-FIELD-V0-1",
+      "name": "GroundMesh Coordination Field Machine Model v0.1",
+      "type": "data",
+      "status": "active",
+      "path": "docs/coordination/coordination-field.v0.1.json",
+      "summary": "Machine-readable companion defining coordination quantities, measurement rules, cooperation loops, non-capture constraints, Behavior Atlas questions, and guarded implementation stages."
+    },
+    {
+      "id": "EA-0002",
+      "name": "Numbers, Neighbor, and the Coordination Field",
+      "type": "echo",
+      "status": "active",
+      "path": "docs/echo_archive/EA-0002_numbers-neighbor-and-coordination.md",
+      "summary": "Reflection connecting numbers, hidden accounting boundaries, Jesus' teachings on neighbor, service, mammon, and non-retaliation, and GroundMesh's voluntary coordination posture."
     }
   ]
 }
