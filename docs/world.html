@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh World — Needs, Capacity, Evidence, Action</title>
+  <meta name="description" content="A lightweight public GroundMesh view of major human needs, evidence, current participation paths, and the consent-first coordination model." />
+  <meta name="theme-color" content="#1f5c46" />
+  <link rel="icon" href="./assets/gm-app-icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <script src="./assets/pwa-init.js" defer></script>
+  <style>
+    :root {
+      --bg:#0b0f14;
+      --panel:#151c26;
+      --panel2:#1b2431;
+      --text:#eef2f7;
+      --muted:#b8c2cf;
+      --line:rgba(255,255,255,.09);
+      --accent:#95e3ae;
+      --accent2:#8bc4ff;
+      --warn:#ffd7a8;
+      --max:1080px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, rgba(139,196,255,.09), transparent 30%),
+        linear-gradient(180deg,#0a0e13,#0f141b);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.55;
+    }
+    a { color:inherit; }
+    .wrap { width:min(calc(100% - 30px),var(--max)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(10,14,19,.9); }
+    .topbar { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { font-weight:800; text-decoration:none; }
+    .nav { display:flex; flex-wrap:wrap; gap:8px; }
+    .nav a { color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:999px; border:1px solid var(--line); font-size:.92rem; }
+    main { padding:30px 0 54px; }
+    .hero,.card,.panel { border:1px solid var(--line); background:rgba(255,255,255,.025); border-radius:20px; }
+    .hero { padding:clamp(24px,5vw,46px); }
+    .eyebrow { color:var(--accent); font-size:.76rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; margin-bottom:12px; }
+    h1,h2,h3 { line-height:1.08; margin:0 0 14px; }
+    h1 { font-size:clamp(2.25rem,6vw,4.6rem); max-width:13ch; }
+    h2 { font-size:clamp(1.55rem,3vw,2.35rem); }
+    h3 { font-size:1.08rem; }
+    p { color:var(--muted); margin:0 0 14px; }
+    .lead { max-width:68ch; font-size:1.08rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+    .btn { min-height:44px; display:inline-flex; align-items:center; justify-content:center; padding:0 16px; border-radius:999px; text-decoration:none; font-weight:750; border:1px solid var(--line); }
+    .btn.primary { background:var(--accent); color:#08100b; border-color:transparent; }
+    .section { margin-top:22px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .card,.panel { padding:20px; }
+    .number { display:block; font-size:clamp(2rem,5vw,3.4rem); font-weight:850; letter-spacing:-.03em; margin:4px 0 8px; }
+    .label { color:var(--text); font-weight:750; }
+    .meta { color:var(--muted); font-size:.88rem; }
+    .source { display:inline-block; margin-top:9px; color:var(--accent2); font-weight:700; }
+    .path-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .path { padding:18px; border-radius:16px; background:var(--panel); border:1px solid var(--line); }
+    .path a { color:var(--accent); font-weight:800; }
+    .flow { display:flex; flex-wrap:wrap; gap:8px; align-items:center; color:var(--muted); }
+    .step { padding:8px 11px; border-radius:999px; background:var(--panel2); border:1px solid var(--line); color:var(--text); font-weight:650; }
+    .arrow { color:var(--accent2); }
+    .note { border-left:4px solid var(--warn); padding-left:14px; color:var(--muted); }
+    .plain-list { margin:8px 0 0; padding-left:20px; color:var(--muted); }
+    .plain-list li + li { margin-top:7px; }
+    footer { padding:0 0 36px; color:var(--muted); font-size:.9rem; }
+    @media (max-width:760px) {
+      .topbar { align-items:flex-start; flex-direction:column; padding:14px 0; }
+      .grid,.path-grid { grid-template-columns:1fr; }
+      main { padding-top:18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="index.html">GroundMesh</a>
+      <nav class="nav" aria-label="World navigation">
+        <a href="#world">World</a>
+        <a href="#use-now">Use now</a>
+        <a href="map.html">Map</a>
+        <a href="contact.html">Correct / Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="world">
+      <div class="eyebrow">GroundMesh World · public v0.1</div>
+      <h1>See needs. See capacity. Act freely.</h1>
+      <p class="lead">GroundMesh is building a public coordination layer where evidence-backed needs and available capacity can become easier to see, connect, verify, and correct — without turning the platform into a central planner or a judge of people.</p>
+      <p>No account is required to read this page. The numbers below are dated global indicators, not live local requests and not a score of the world.</p>
+      <div class="actions">
+        <a class="btn primary" href="#use-now">What can I do now?</a>
+        <a class="btn" href="map.html">Open Living Map</a>
+        <a class="btn" href="coordination/coordination-field.md">Read the model</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">A few visible gaps</div>
+      <h2>Large capability exists. Large access gaps remain.</h2>
+      <p class="lead">These indicators are deliberately few. They give the coordination problem a human scale without pretending four numbers describe the whole planet.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="number">2.1B</span>
+          <div class="label">people lacked safely managed drinking water</div>
+          <p>Global estimate for 2024 from the WHO/UNICEF Joint Monitoring Programme.</p>
+          <div class="meta">Data year: 2024 · checked: 2026-08-07</div>
+          <a class="source" href="https://data.unicef.org/resources/jmp-report-2025/" rel="noopener">Source: UNICEF / WHO JMP</a>
+        </article>
+        <article class="card">
+          <span class="number">655M</span>
+          <div class="label">people lacked access to electricity</div>
+          <p>Latest reported global estimate for 2024; global access was about 92%.</p>
+          <div class="meta">Data year: 2024 · checked: 2026-08-07</div>
+          <a class="source" href="https://www.worldbank.org/en/news/press-release/2026/06/16/accelerating-universal-energy-access" rel="noopener">Source: World Bank and SDG7 partners</a>
+        </article>
+        <article class="card">
+          <span class="number">2.6B</span>
+          <div class="label">people could not afford a healthy diet</div>
+          <p>FAO's 2025 food-security reporting also estimated about 673 million people experienced hunger in 2024.</p>
+          <div class="meta">Data year: 2024 · checked: 2026-08-07</div>
+          <a class="source" href="https://www.fao.org/newsroom/detail/global-hunger-declines--but-rises-in-africa-and-western-asia--un-report/" rel="noopener">Source: FAO / SOFI 2025</a>
+        </article>
+        <article class="card">
+          <span class="number">2.8B</span>
+          <div class="label">people experience some form of housing inadequacy</div>
+          <p>UN-Habitat's broad housing estimate includes different forms and severities of inadequate housing.</p>
+          <div class="meta">Published: 2025 · checked: 2026-08-07</div>
+          <a class="source" href="https://unhabitat.org/news/19-sep-2025/putting-housing-at-the-centre-of-sustainable-development" rel="noopener">Source: UN-Habitat</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="use-now">
+      <div class="eyebrow">Use GroundMesh now</div>
+      <h2>Four things are real today.</h2>
+      <div class="path-grid">
+        <div class="path"><h3>Explore</h3><p>See the current consent-based community map.</p><a href="map.html">Open Map</a></div>
+        <div class="path"><h3>Participate</h3><p>Check the honest registration status and pilot boundary.</p><a href="register.html">Registration</a></div>
+        <div class="path"><h3>Build</h3><p>Help improve code, evidence, documentation, or public surfaces.</p><a href="contribute.html">Contribute</a></div>
+        <div class="path"><h3>Correct</h3><p>Question a claim, request a correction, or ask what is public.</p><a href="contact.html">Contact</a></div>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="eyebrow">Coordination, not control</div>
+      <h2>The loop GroundMesh is testing</h2>
+      <div class="flow" aria-label="GroundMesh coordination loop">
+        <span class="step">Need</span><span class="arrow">→</span>
+        <span class="step">Capacity</span><span class="arrow">→</span>
+        <span class="step">Possible match</span><span class="arrow">→</span>
+        <span class="step">Consent</span><span class="arrow">→</span>
+        <span class="step">Commitment</span><span class="arrow">→</span>
+        <span class="step">Delivery</span><span class="arrow">→</span>
+        <span class="step">Verification</span><span class="arrow">→</span>
+        <span class="step">Correction</span>
+      </div>
+      <p style="margin-top:16px;">A proposal is not a command. A CI suggestion is not consent. A commitment is not delivery. A number without unit, place, time window, quality threshold, provenance, and uncertainty is not yet a coordination fact.</p>
+      <div class="actions">
+        <a class="btn" href="coordination/synthetic-breathing-test.md">See the synthetic breathing test</a>
+        <a class="btn" href="atlas/index.html">Inspect Project Atlas</a>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="eyebrow">Current boundary</div>
+      <h2>What is not live yet</h2>
+      <ul class="plain-list">
+        <li>No open public feed of real needs and offers yet.</li>
+        <li>No autonomous resource allocation or compulsory matching.</li>
+        <li>No emergency-response promise.</li>
+        <li>No person-worth, moral, or reputation score.</li>
+        <li>No claim that these global indicators tell us what any specific locality needs.</li>
+      </ul>
+      <p class="note" style="margin-top:16px;">The next real-world coordination demonstration should use low-risk public data and remain read-only until evidence, consent, privacy, correction, and governance rules are strong enough for more.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    GroundMesh World v0.1 · lightweight static public surface · evidence dates remain attached to the claims they support.
+  </footer>
+</body>
+</html>
