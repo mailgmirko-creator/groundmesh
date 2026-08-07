@@ -1,0 +1,225 @@
+{
+  "id": "GM-COORDINATION-FIELD-V0-1",
+  "version": "0.1",
+  "status": "working-design-note",
+  "date": "2026-08-07",
+  "purpose": "Machine-readable companion to the GroundMesh Coordination Field design note.",
+  "human_document": "docs/coordination/coordination-field.md",
+  "related": [
+    "ADR-0006",
+    "SCHEMA-BEHAVIOR-ATLAS-V0-1"
+  ],
+  "core_statement": "Capability, resources, and knowledge do not automatically produce universal access; GroundMesh should make coordination relationships more inspectable without becoming a central planner or person-scoring system.",
+  "objective_posture": {
+    "mode": "multi-objective-with-explicit-guardrails",
+    "preferred_dimensions": [
+      "human_dignity",
+      "agency_and_consent",
+      "evidence_provenance",
+      "distribution_of_benefits_and_burdens",
+      "ecological_integrity",
+      "resilience",
+      "cooperation",
+      "truth_and_correction",
+      "reversibility",
+      "non_capture"
+    ],
+    "forbidden_reductions": [
+      "single_global_moral_score",
+      "person_worth_score",
+      "hidden_objective_function",
+      "false_precision_for_contested_values"
+    ]
+  },
+  "coordination_stack": [
+    "physical_reality",
+    "technical_capacity",
+    "coordination",
+    "institutions",
+    "incentives",
+    "information",
+    "trust",
+    "human_choice_and_values"
+  ],
+  "quantities": {
+    "N": {
+      "name": "assessed_need",
+      "description": "Need for a defined place, population, resource class, quality threshold, and time window."
+    },
+    "C": {
+      "name": "available_capacity",
+      "description": "Declared or measured capacity available under compatible dimensions."
+    },
+    "K": {
+      "name": "valid_commitments",
+      "description": "Capacity already allocated through valid commitments."
+    },
+    "D": {
+      "name": "verified_delivery",
+      "description": "Completed and sufficiently verified delivery or service."
+    },
+    "U": {
+      "name": "observed_unmet_need",
+      "formula": "max(0, N - D)"
+    },
+    "G": {
+      "name": "planned_gap",
+      "formula": "max(0, N - D - K_valid)"
+    },
+    "S": {
+      "name": "spare_capacity",
+      "formula": "max(0, C - K)"
+    }
+  },
+  "quantity_requirements": [
+    "compatible_units",
+    "defined_geography",
+    "defined_population_or_subject_scope",
+    "defined_time_window",
+    "quality_threshold",
+    "source_or_provenance",
+    "uncertainty_state",
+    "revision_date"
+  ],
+  "cooperation_loop": [
+    "observe",
+    "declare_need_or_capacity",
+    "attach_evidence_and_uncertainty",
+    "identify_possible_match",
+    "obtain_consent",
+    "commit",
+    "act",
+    "verify_delivery_or_outcome",
+    "publish_appropriate_non_sensitive_evidence",
+    "correct",
+    "learn"
+  ],
+  "valid_states": [
+    "unknown",
+    "contested",
+    "declined",
+    "partially_fulfilled",
+    "fulfilled",
+    "superseded",
+    "corrected",
+    "withdrawn"
+  ],
+  "measurement_rules": {
+    "prefer_context_over_single_score": true,
+    "required_when_relevant": [
+      "unit",
+      "scope",
+      "geography",
+      "time_window",
+      "distribution_or_range",
+      "numerator_definition",
+      "denominator_definition",
+      "source",
+      "confidence_or_uncertainty",
+      "known_missing_population",
+      "revision_date",
+      "counterevidence_relationship"
+    ],
+    "warning": "A mathematically correct aggregate can still hide a materially important distribution."
+  },
+  "externality_classes": [
+    "environmental_damage",
+    "unpaid_care_work",
+    "public_cleanup_or_remediation",
+    "long_term_maintenance_liability",
+    "health_consequence",
+    "displacement",
+    "future_generation_cost",
+    "resilience_loss",
+    "concentration_or_capture_risk",
+    "degraded_trust",
+    "material_opportunity_cost"
+  ],
+  "behavior_atlas_questions": [
+    "what_need_existed",
+    "what_capacity_existed",
+    "what_was_promised",
+    "what_was_delivered",
+    "who_received_benefits",
+    "who_carried_burdens",
+    "which_costs_were_externalized",
+    "which_actors_gained_or_lost_agency",
+    "what_evidence_contradicts_the_current_interpretation",
+    "what_direction_of_travel_is_supported_by_evidence"
+  ],
+  "platform_role": {
+    "is_central_planner": false,
+    "may": [
+      "inform",
+      "surface_needs",
+      "surface_capacity",
+      "propose_matches",
+      "preserve_evidence",
+      "verify_when_possible",
+      "remember_commitments",
+      "show_bottlenecks",
+      "support_corrections"
+    ],
+    "may_not": [
+      "autonomously_allocate_resources",
+      "coerce_participation",
+      "assign_person_moral_scores",
+      "infer_motives_as_facts",
+      "hide_counterevidence",
+      "publish_contested_high_impact_claims_without_required_review"
+    ]
+  },
+  "non_capture_rules": [
+    "no_person_reputation_castes",
+    "no_forced_allocation",
+    "no_hidden_objective_functions",
+    "no_unreviewable_automated_publication",
+    "no_religious_political_commercial_or_ideological_membership_test",
+    "no_suppression_of_counterevidence",
+    "do_not_treat_unmeasured_values_as_zero",
+    "do_not_use_averages_to_hide_material_distributional_harm",
+    "do_not_convert_voluntary_mesh_into_compulsory_governance",
+    "do_not_present_research_metaphors_as_validated_science"
+  ],
+  "evidence_chain": [
+    "source",
+    "evidence_item",
+    "atomic_claim",
+    "pattern_assessment",
+    "case"
+  ],
+  "implementation_path": [
+    {
+      "stage": "A",
+      "name": "vocabulary_and_machine_readability",
+      "authorization": "current"
+    },
+    {
+      "stage": "B",
+      "name": "synthetic_coordination_fixture",
+      "authorization": "future_guarded_batch"
+    },
+    {
+      "stage": "C",
+      "name": "harmless_real_world_public_data_demonstration",
+      "authorization": "future_after_review"
+    },
+    {
+      "stage": "D",
+      "name": "read_only_matching_proposals",
+      "authorization": "future_after_review_and_consent_design"
+    }
+  ],
+  "research_questions": [
+    "compare_needs_and_capacity_without_erasing_local_quality_differences",
+    "represent_poorly_priced_goods_without_false_precision",
+    "propagate_uncertainty_from_evidence_into_coordination_proposals",
+    "increase_trust_without_reputation_castes",
+    "expose_capture_without_becoming_a_partisan_attack_surface",
+    "distinguish_resilient_decentralization_from_hidden_accountability",
+    "preserve_correction_without_permanent_stigma",
+    "prevent_successful_coordination_layer_from_becoming_controller",
+    "measure_whether_groundmesh_improves_delivery_cooperation_agency_and_understanding",
+    "know_when_to_decline_optimization_because_values_or_evidence_are_insufficient"
+  ]
+}

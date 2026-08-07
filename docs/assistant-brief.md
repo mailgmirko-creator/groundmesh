@@ -2,6 +2,7 @@
 
 ## How we work (directives)
 - Atlas-first: Consult docs/atlas/registry.json + Atlas page before adding or changing anything.
+- Coordination-field first: Before adding need/capacity matching, allocation, metric, or scoring logic, read `docs/coordination/coordination-field.md` and `docs/coordination/coordination-field.v0.1.json`; preserve consent, context, evidence provenance, non-capture, no person-worth scoring, and no autonomous allocation.
 - Smallest safe change: Prefer incremental, reversible edits.
 - Small batches: Prefer one meaningful chunk at a time, then summarize what changed and what remains next.
 - Recovery before rush: If a session or approval flow freezes, inspect current state first and resume from the last stable point.
