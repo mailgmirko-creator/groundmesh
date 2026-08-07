@@ -1,0 +1,171 @@
+{
+  "fixture_id": "GM-COORDINATION-SYNTHETIC-CYCLE-V0-1",
+  "version": "0.1",
+  "status": "synthetic_internal_test",
+  "date": "2026-08-07",
+  "is_synthetic": true,
+  "public_release": false,
+  "purpose": "Exercise Coordination Field arithmetic and consent-sensitive state transitions without real subjects or real allocation.",
+  "related": [
+    "docs/coordination/coordination-field.md",
+    "docs/coordination/coordination-field.v0.1.json",
+    "docs/coordination/synthetic-breathing-test.md"
+  ],
+  "provenance": {
+    "kind": "synthetic_test_fixture",
+    "real_world_claims": false,
+    "source": "constructed-for-groundmesh-stage-b",
+    "uncertainty": "none-about-arithmetic; scenario itself is fictional"
+  },
+  "resource": {
+    "resource_id": "synthetic-potable-water-delivery",
+    "class": "potable_water_delivery",
+    "unit": "m3/day",
+    "quality_threshold": "GM-SYNTH-WQ-1",
+    "time_window": {
+      "start": "2026-08-07T00:00:00Z",
+      "end": "2026-08-08T00:00:00Z"
+    },
+    "geography": "fictional-only",
+    "scope": "one fictional locality and one fictional provider"
+  },
+  "participants": [
+    {
+      "participant_id": "fictional-blue-harbor-locality",
+      "name": "Blue Harbor Locality",
+      "participant_type": "locality",
+      "fictional": true,
+      "is_person": false
+    },
+    {
+      "participant_id": "fictional-green-ridge-water-cooperative",
+      "name": "Green Ridge Water Cooperative",
+      "participant_type": "provider",
+      "fictional": true,
+      "is_person": false
+    }
+  ],
+  "semantics": {
+    "N": "assessed need for the defined resource and window",
+    "D": "verified delivery already completed in the defined window",
+    "K_outstanding": "valid committed quantity not yet delivered, cancelled, expired, or removed",
+    "C_remaining": "undelivered capacity still available in the defined window, including outstanding committed and uncommitted spare capacity",
+    "U_formula": "max(0, N - D)",
+    "G_formula": "max(0, N - D - K_outstanding)",
+    "S_formula": "max(0, C_remaining - K_outstanding)"
+  },
+  "authority": {
+    "proposal_only": true,
+    "allocation_authority": false,
+    "autonomous_commitment": false,
+    "consent_required": true
+  },
+  "states": [
+    {
+      "state_id": "S0-observed",
+      "stage": "observed",
+      "need": {
+        "N": 100,
+        "D": 20,
+        "K_outstanding": 30,
+        "U": 80,
+        "G": 50
+      },
+      "capacity": {
+        "C_remaining": 75,
+        "K_outstanding": 20,
+        "S": 55
+      },
+      "proposal": null,
+      "transition_from_previous": null
+    },
+    {
+      "state_id": "S1-proposed",
+      "stage": "proposed",
+      "need": {
+        "N": 100,
+        "D": 20,
+        "K_outstanding": 30,
+        "U": 80,
+        "G": 50
+      },
+      "capacity": {
+        "C_remaining": 75,
+        "K_outstanding": 20,
+        "S": 55
+      },
+      "proposal": {
+        "proposal_id": "synthetic-match-001",
+        "amount": 40,
+        "consent_state": "pending",
+        "binding": false
+      },
+      "transition_from_previous": {
+        "kind": "surface_candidate_match",
+        "quantity_effect": 0
+      }
+    },
+    {
+      "state_id": "S2-committed",
+      "stage": "committed",
+      "need": {
+        "N": 100,
+        "D": 20,
+        "K_outstanding": 70,
+        "U": 80,
+        "G": 10
+      },
+      "capacity": {
+        "C_remaining": 75,
+        "K_outstanding": 60,
+        "S": 15
+      },
+      "proposal": {
+        "proposal_id": "synthetic-match-001",
+        "amount": 40,
+        "consent_state": "accepted",
+        "binding": true
+      },
+      "transition_from_previous": {
+        "kind": "record_explicit_consent_and_commitment",
+        "committed_amount": 40,
+        "delivery_effect": 0
+      }
+    },
+    {
+      "state_id": "S3-partial-delivery",
+      "stage": "partial_verified_delivery",
+      "need": {
+        "N": 100,
+        "D": 55,
+        "K_outstanding": 35,
+        "U": 45,
+        "G": 10
+      },
+      "capacity": {
+        "C_remaining": 40,
+        "K_outstanding": 25,
+        "S": 15
+      },
+      "proposal": {
+        "proposal_id": "synthetic-match-001",
+        "amount": 40,
+        "consent_state": "accepted",
+        "binding": true
+      },
+      "transition_from_previous": {
+        "kind": "verify_partial_delivery",
+        "delivered_amount": 35,
+        "remaining_match_commitment": 5
+      }
+    }
+  ],
+  "expected_invariants": [
+    "pending proposal changes no K, D, or C quantities",
+    "accepted proposal increases outstanding commitment on compatible need and capacity ledgers by the same amount",
+    "verified delivery increases D and decreases need-side K_outstanding by the delivered amount",
+    "verified delivery decreases capacity-side C_remaining and K_outstanding by the delivered amount",
+    "delivery of an already-planned amount lowers U but does not by itself change G or S",
+    "no state contains person scoring, ranking, inferred motive, or autonomous allocation authority"
+  ]
+}
