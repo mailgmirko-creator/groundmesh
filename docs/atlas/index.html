@@ -49,7 +49,12 @@
     h1 { margin: 14px 0 10px; font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.04; }
     p { margin: 0; color: var(--muted); }
     .lede { max-width: 68ch; font-size: 1.05rem; }
-    .quicklinks, .stats { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .quicklinks, .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
     .quicklinks a {
       display: inline-block;
       padding: 10px 14px;
@@ -60,7 +65,10 @@
       text-decoration: none;
       font: 600 .95rem/1.2 "Segoe UI", Arial, sans-serif;
     }
-    .quicklinks a.secondary { background: transparent; color: var(--accent); }
+    .quicklinks a.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
     .stat {
       min-width: 150px;
       padding: 14px 16px;
@@ -77,13 +85,30 @@
       letter-spacing: .04em;
     }
     .stat strong { font-size: 1.55rem; }
-    .guide { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 20px; }
+    .guide {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
     .card { padding: 18px; }
-    .card h2 { margin: 0 0 8px; font-size: 1.08rem; font-family: "Segoe UI", Arial, sans-serif; }
-    .table-card { margin-top: 20px; overflow: hidden; }
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    .table-card {
+      margin-top: 20px;
+      overflow: hidden;
+    }
     .table-wrap { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 0.85rem 0.8rem; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th, td {
+      padding: 0.85rem 0.8rem;
+      border-top: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
     th {
       color: var(--muted);
       font: 600 .82rem/1.2 "Segoe UI", Arial, sans-serif;
@@ -92,7 +117,11 @@
       background: rgba(219,236,227,.45);
     }
     tr:first-child td { border-top: 0; }
-    .id-link { color: var(--accent); text-decoration: none; font: 700 .95rem/1.2 "Segoe UI", Arial, sans-serif; }
+    .id-link {
+      color: var(--accent);
+      text-decoration: none;
+      font: 700 .95rem/1.2 "Segoe UI", Arial, sans-serif;
+    }
     .id-link:hover { text-decoration: underline; }
     .id-link.missing { color: #915d21; }
     .chip, .status {
@@ -102,9 +131,21 @@
       font: 600 .8rem/1.2 "Segoe UI", Arial, sans-serif;
       white-space: nowrap;
     }
-    .chip { background: #efe8dc; border: 1px solid #ddd1bd; color: #5f5646; }
-    .status { border: 1px solid #cfe0d7; background: #eff7f2; color: #20563f; }
-    .status-active { border-color: #cfe0d7; background: #eff7f2; color: #20563f; }
+    .chip {
+      background: #efe8dc;
+      border: 1px solid #ddd1bd;
+      color: #5f5646;
+    }
+    .status {
+      border: 1px solid #cfe0d7;
+      background: #eff7f2;
+      color: #20563f;
+    }
+    .status-active {
+      border-color: #cfe0d7;
+      background: #eff7f2;
+      color: #20563f;
+    }
     code {
       display: inline-block;
       padding: 0.15rem 0.4rem;
@@ -114,7 +155,11 @@
       font-family: Consolas, "Courier New", monospace;
       word-break: break-word;
     }
-    .meta { margin-top: 14px; color: var(--muted); font-size: 0.92rem; }
+    .meta {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
   </style>
 </head>
 <body>
@@ -131,56 +176,318 @@
         <a class="secondary" href="../landscape.html">Landscape</a>
       </div>
       <div class="stats">
-        <div class="stat"><span class="label">Entries</span><strong>34</strong></div>
-        <div class="stat"><span class="label">Active</span><strong>34</strong></div>
+        <div class="stat">
+          <span class="label">Entries</span>
+          <strong>34</strong>
+        </div>
+        <div class="stat">
+          <span class="label">Active</span>
+          <strong>34</strong>
+        </div>
       </div>
     </section>
 
     <section class="guide">
-      <article class="card"><h2>1. Orient first</h2><p>Scan the registry before creating new files, pages, or concepts.</p></article>
-      <article class="card"><h2>2. Reuse what exists</h2><p>Follow linked artifacts outward and prefer extension over duplication.</p></article>
-      <article class="card"><h2>3. Grow carefully</h2><p>When new artifacts are added, update the registry so humans and systems stay aligned.</p></article>
+      <article class="card">
+        <h2>1. Orient first</h2>
+        <p>Scan the registry before creating new files, pages, or concepts.</p>
+      </article>
+      <article class="card">
+        <h2>2. Reuse what exists</h2>
+        <p>Follow linked artifacts outward and prefer extension over duplication.</p>
+      </article>
+      <article class="card">
+        <h2>3. Grow carefully</h2>
+        <p>When new artifacts are added, update the registry so humans and systems stay aligned.</p>
+      </article>
     </section>
 
     <section class="card table-card">
       <div class="table-wrap">
         <table>
-          <thead><tr><th>ID</th><th>Name</th><th>Type</th><th>Status</th><th>Path</th><th>Summary</th></tr></thead>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Path</th>
+              <th>Summary</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td><a class="id-link" href="../decisions/0001-why-atlas.md">ADR-0001</a></td><td><strong>Why Project Atlas</strong></td><td><span class="chip">decision</span></td><td><span class="status status-active">active</span></td><td><code>docs/decisions/0001-why-atlas.md</code></td><td>Establishes Atlas as the shared registry for repo orientation, safer changes, and lower duplication risk.</td></tr>
-            <tr><td><a class="id-link" href="../decisions/0002-groundmesh-world-relationship.md">ADR-0002</a></td><td><strong>Relationship Between GroundMesh World and GroundMesh</strong></td><td><span class="chip">decision</span></td><td><span class="status status-active">active</span></td><td><code>docs/decisions/0002-groundmesh-world-relationship.md</code></td><td>Keeps GroundMesh as the canonical core repo, keeps groundmesh-world as the narrative public seed, and merges by small translation steps rather than repo collapse.</td></tr>
-            <tr><td><a class="id-link" href="../decisions/0003-chatgpt-codex-github-operating-pattern.md">ADR-0003</a></td><td><strong>ChatGPT, Codex, and GitHub Operating Pattern</strong></td><td><span class="chip">decision</span></td><td><span class="status status-active">active</span></td><td><code>docs/decisions/0003-chatgpt-codex-github-operating-pattern.md</code></td><td>Establishes GitHub as the shared external spine between ChatGPT, Codex, and GroundMesh work so important state is anchored in visible project memory.</td></tr>
-            <tr><td><a class="id-link" href="../decisions/0004-active-dev-promotion-model.md">ADR-0004</a></td><td><strong>Active / Dev Promotion Model</strong></td><td><span class="chip">decision</span></td><td><span class="status status-active">active</span></td><td><code>docs/decisions/0004-active-dev-promotion-model.md</code></td><td>Keeps the ACTIVE / DEV instinct, but translates it into one canonical repo with main as the public lane, dev as staging when needed, and separate sensitive services only where risk truly differs.</td></tr>
-            <tr><td><a class="id-link" href="../decisions/0005-public-registration-pilot.md">ADR-0005</a></td><td><strong>Public Registration Begins as a Pilot</strong></td><td><span class="chip">decision</span></td><td><span class="status status-active">active</span></td><td><code>docs/decisions/0005-public-registration-pilot.md</code></td><td>Requires GroundMesh registration to begin as a narrow pilot with explicit limits, separate sensitive intake, and real moderation, consent, and rollback gates.</td></tr>
-            <tr><td><a class="id-link" href="../decisions/0006-behavior-atlas-evidence-pilot.md">ADR-0006</a></td><td><strong>Behavior Atlas Begins as an Evidence-First Pilot</strong></td><td><span class="chip">decision</span></td><td><span class="status status-active">active</span></td><td><code>docs/decisions/0006-behavior-atlas-evidence-pilot.md</code></td><td>Establishes the Behavior Atlas as an evidence-first, human-reviewed pilot that maps claims and patterns without person scoring or autonomous publication.</td></tr>
-            <tr><td><a class="id-link" href="../checklists/Registration_Interest_Triage_Checklist.md">CHECKLIST-REGISTRATION-INTEREST-TRIAGE</a></td><td><strong>Registration Interest Triage Checklist</strong></td><td><span class="chip">checklist</span></td><td><span class="status status-active">active</span></td><td><code>docs/checklists/Registration_Interest_Triage_Checklist.md</code></td><td>Smallest honest handling checklist for public registration-interest emails before any real pilot intake is open.</td></tr>
-            <tr><td><a class="id-link" href="../checklists/Registration_Pilot_Readiness_Checklist.md">CHECKLIST-REGISTRATION-PILOT</a></td><td><strong>Registration Pilot Readiness Checklist</strong></td><td><span class="chip">checklist</span></td><td><span class="status status-active">active</span></td><td><code>docs/checklists/Registration_Pilot_Readiness_Checklist.md</code></td><td>Practical readiness gate for opening any real GroundMesh registration path beyond simple public contact.</td></tr>
-            <tr><td><a class="id-link" href="../coordination/coordination-field.v0.1.json">DATA-COORDINATION-FIELD-V0-1</a></td><td><strong>GroundMesh Coordination Field Machine Model v0.1</strong></td><td><span class="chip">data</span></td><td><span class="status status-active">active</span></td><td><code>docs/coordination/coordination-field.v0.1.json</code></td><td>Machine-readable companion defining coordination quantities, measurement rules, cooperation loops, non-capture constraints, Behavior Atlas questions, and guarded implementation stages.</td></tr>
-            <tr><td><a class="id-link" href="../assistant-brief.md">DOC-ASSISTANT-BRIEF</a></td><td><strong>Assistant Brief</strong></td><td><span class="chip">guide</span></td><td><span class="status status-active">active</span></td><td><code>docs/assistant-brief.md</code></td><td>Defines Atlas-first workflow, smallest-safe-change practice, and the current stabilization focus.</td></tr>
-            <tr><td><a class="id-link" href="../glossary.md">DOC-GLOSSARY</a></td><td><strong>GroundMesh Glossary</strong></td><td><span class="chip">reference</span></td><td><span class="status status-active">active</span></td><td><code>docs/glossary.md</code></td><td>Compact shared language for Atlas, compute transparency, and contributor on-ramps.</td></tr>
-            <tr><td><a class="id-link" href="../echo_archive/EA-0001_soul-and-system.md">EA-0001</a></td><td><strong>The Soul and the System</strong></td><td><span class="chip">echo</span></td><td><span class="status status-active">active</span></td><td><code>docs/echo_archive/EA-0001_soul-and-system.md</code></td><td>Foundational reflection linking soul to relational balance and emotions to consequence, then translating that pattern into harmony-seeking CI behavior.</td></tr>
-            <tr><td><a class="id-link" href="../echo_archive/EA-0002_numbers-neighbor-and-coordination.md">EA-0002</a></td><td><strong>Numbers, Neighbor, and the Coordination Field</strong></td><td><span class="chip">echo</span></td><td><span class="status status-active">active</span></td><td><code>docs/echo_archive/EA-0002_numbers-neighbor-and-coordination.md</code></td><td>Reflection connecting numbers, hidden accounting boundaries, Jesus' teachings on neighbor, service, mammon, and non-retaliation, and GroundMesh's voluntary coordination posture.</td></tr>
-            <tr><td><a class="id-link" href="../invariants/GM-INV-VIII.md">GM-INV-VIII</a></td><td><strong>Continuity With Consent</strong></td><td><span class="chip">invariant</span></td><td><span class="status status-active">active</span></td><td><code>docs/invariants/GM-INV-VIII.md</code></td><td>Sustained participation must arise from voluntary re-engagement, not compulsion. Systems must preserve agency, rhythm, and the right to pause without loss of dignity.</td></tr>
-            <tr><td><a class="id-link" href="seed-trust-mesh-edge.md">GUIDE-ARCH-SEED-TRUST-MESH-EDGE</a></td><td><strong>GroundMesh Architecture: Seed / Trust / Mesh / Edge</strong></td><td><span class="chip">guide</span></td><td><span class="status status-active">active</span></td><td><code>docs/atlas/seed-trust-mesh-edge.md</code></td><td>Combines the structure view and rollout view for GroundMesh: bootstrap seed, trust layer, distributed mesh, edge participation, install lanes, and phased decentralization.</td></tr>
-            <tr><td><a class="id-link" href="../coordination/coordination-field.md">GUIDE-COORDINATION-FIELD-V0-1</a></td><td><strong>GroundMesh Coordination Field v0.1</strong></td><td><span class="chip">guide</span></td><td><span class="status status-active">active</span></td><td><code>docs/coordination/coordination-field.md</code></td><td>Human-readable model for exposing needs, capacity, commitments, delivery, gaps, externalities, and coordination failures without central planning, person scoring, or loss of consent.</td></tr>
-            <tr><td><a class="id-link" href="light-node-agent-contract.md">GUIDE-LIGHT-NODE-CONTRACT</a></td><td><strong>GroundMesh Light Node Agent Contract v1</strong></td><td><span class="chip">guide</span></td><td><span class="status status-active">active</span></td><td><code>docs/atlas/light-node-agent-contract.md</code></td><td>Defines the first honest lightweight node role for GroundMesh: capability declaration, heartbeat, allowed job classes, refusal rules, data boundary, and the first safe command contract.</td></tr>
-            <tr><td><a class="id-link" href="groundmesh-new-chat-handoff.md">GUIDE-NEW-CHAT-HANDOFF</a></td><td><strong>GroundMesh New Chat Handoff</strong></td><td><span class="chip">guide</span></td><td><span class="status status-active">active</span></td><td><code>docs/atlas/groundmesh-new-chat-handoff.md</code></td><td>Compact reload note for starting a new chat without losing the current GroundMesh state or falling into long recap mode.</td></tr>
-            <tr><td><a class="id-link" href="session-0001-codex-first-contact.md">NOTE-SESSION-0001</a></td><td><strong>Codex Session 0001: First Contact and Working Basis</strong></td><td><span class="chip">note</span></td><td><span class="status status-active">active</span></td><td><code>docs/atlas/session-0001-codex-first-contact.md</code></td><td>Tracked memory of the first major Codex GroundMesh session, including workflow doctrine, public-surface stabilization, and the first real registration pilot outcomes.</td></tr>
-            <tr><td><a class="id-link" href="../compute.html">PAGE-COMPUTE</a></td><td><strong>Compute Transparency</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/compute.html</code></td><td>Public snapshot page for non-sensitive grid metrics sourced from metrics.json.</td></tr>
-            <tr><td><a class="id-link" href="../contact.html">PAGE-CONTACT</a></td><td><strong>GroundMesh Contact</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/contact.html</code></td><td>Simple public contact path for questions, corrections, first contact, and participation guidance.</td></tr>
-            <tr><td><a class="id-link" href="../contribute.html">PAGE-CONTRIBUTE</a></td><td><strong>Contributors Hub</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/contribute.html</code></td><td>Primary public on-ramp for volunteers, issue filing, and low-friction participation.</td></tr>
-            <tr><td><a class="id-link" href="../get-started/index.html">PAGE-GET-STARTED</a></td><td><strong>GroundMesh Get Started</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/get-started/index.html</code></td><td>Builder-facing start page for local setup, health checks, Atlas-first work, and small-batch contributions.</td></tr>
-            <tr><td><a class="id-link" href="../index.html">PAGE-HOME</a></td><td><strong>GroundMesh Start Here</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/index.html</code></td><td>Unified public front door that joins the stronger narrative seed with the Atlas-backed docs layer.</td></tr>
-            <tr><td><a class="id-link" href="../landscape.html">PAGE-LANDSCAPE</a></td><td><strong>GroundMesh Landscape</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/landscape.html</code></td><td>Broad scan of live pages, local repos, mirrors, and adjacent web surfaces around GroundMesh.</td></tr>
-            <tr><td><a class="id-link" href="../map.html">PAGE-MAP</a></td><td><strong>GroundMesh Map</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/map.html</code></td><td>Public-facing orientation page for the project landscape and navigation.</td></tr>
-            <tr><td><a class="id-link" href="../privacy.html">PAGE-PRIVACY</a></td><td><strong>GroundMesh Privacy</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/privacy.html</code></td><td>Plain-language statement of the current public privacy posture, limits, and data-minimization rule.</td></tr>
-            <tr><td><a class="id-link" href="../register.html">PAGE-REGISTER</a></td><td><strong>GroundMesh Registration Status</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/register.html</code></td><td>Honest public status page for joining, registration, and what must exist before GroundMesh opens a real pilot.</td></tr>
-            <tr><td><a class="id-link" href="../register-pilot.html">PAGE-REGISTER-PILOT</a></td><td><strong>GroundMesh Invited-Circle Registration Pilot</strong></td><td><span class="chip">page</span></td><td><span class="status status-active">active</span></td><td><code>docs/register-pilot.html</code></td><td>Minimal steward-run pilot form for self-registration and a few invited friends when the local intake host is active.</td></tr>
-            <tr><td><a class="id-link" href="../behavior-atlas/schema/v0.1.schema.json">SCHEMA-BEHAVIOR-ATLAS-V0-1</a></td><td><strong>Behavior Atlas Schema Sandbox v0.1</strong></td><td><span class="chip">schema</span></td><td><span class="status status-active">active</span></td><td><code>docs/behavior-atlas/schema/v0.1.schema.json</code></td><td>Experimental M1 contract for synthetic, public-source case bundles, paired with a fictional fixture and semantic validator; forbids person subjects, scores, rankings, inferred motives, and autonomous publication.</td></tr>
-            <tr><td><a class="id-link" href="../data/status.json">STATUS-PUBLIC</a></td><td><strong>Public Status Snapshot</strong></td><td><span class="chip">data</span></td><td><span class="status status-active">active</span></td><td><code>docs/data/status.json</code></td><td>Tracks public health notes for the current docs surface and Atlas-backed pages.</td></tr>
-            <tr><td><a class="id-link" href="../templates/Registration_Pilot_Record.md">TEMPLATE-REGISTRATION-PILOT-RECORD</a></td><td><strong>Registration Pilot Record Template</strong></td><td><span class="chip">template</span></td><td><span class="status status-active">active</span></td><td><code>docs/templates/Registration_Pilot_Record.md</code></td><td>Reusable minimal record for one actual participant during the invited-circle registration pilot.</td></tr>
-            <tr><td><a class="id-link" href="../templates/Registration_Pilot_Scope_Canvas.md">TEMPLATE-REGISTRATION-PILOT-SCOPE</a></td><td><strong>Registration Pilot Scope Canvas</strong></td><td><span class="chip">template</span></td><td><span class="status status-active">active</span></td><td><code>docs/templates/Registration_Pilot_Scope_Canvas.md</code></td><td>Compact fill-in canvas for defining the first real registration pilot before opening intake beyond simple public contact.</td></tr>
-            <tr><td><a class="id-link" href="../protocols/TP-03.md">TP-03</a></td><td><strong>Sustaining Resolve Without Compulsion</strong></td><td><span class="chip">protocol</span></td><td><span class="status status-active">active</span></td><td><code>docs/protocols/TP-03.md</code></td><td>Guides humans through pressure and delay without collapse or loss of agency; restores resolve through meaning, rhythm, and consent.</td></tr>
+            <tr>
+  <td><a class="id-link" href="../decisions/0001-why-atlas.md">ADR-0001</a></td>
+  <td><strong>Why Project Atlas</strong></td>
+  <td><span class="chip">decision</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/decisions/0001-why-atlas.md</code></td>
+  <td>Establishes Atlas as the shared registry for repo orientation, safer changes, and lower duplication risk.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../decisions/0002-groundmesh-world-relationship.md">ADR-0002</a></td>
+  <td><strong>Relationship Between GroundMesh World and GroundMesh</strong></td>
+  <td><span class="chip">decision</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/decisions/0002-groundmesh-world-relationship.md</code></td>
+  <td>Keeps GroundMesh as the canonical core repo, keeps groundmesh-world as the narrative public seed, and merges by small translation steps rather than repo collapse.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../decisions/0003-chatgpt-codex-github-operating-pattern.md">ADR-0003</a></td>
+  <td><strong>ChatGPT, Codex, and GitHub Operating Pattern</strong></td>
+  <td><span class="chip">decision</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/decisions/0003-chatgpt-codex-github-operating-pattern.md</code></td>
+  <td>Establishes GitHub as the shared external spine between ChatGPT, Codex, and GroundMesh work so important state is anchored in visible project memory.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../decisions/0004-active-dev-promotion-model.md">ADR-0004</a></td>
+  <td><strong>Active / Dev Promotion Model</strong></td>
+  <td><span class="chip">decision</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/decisions/0004-active-dev-promotion-model.md</code></td>
+  <td>Keeps the ACTIVE / DEV instinct, but translates it into one canonical repo with main as the public lane, dev as staging when needed, and separate sensitive services only where risk truly differs.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../decisions/0005-public-registration-pilot.md">ADR-0005</a></td>
+  <td><strong>Public Registration Begins as a Pilot</strong></td>
+  <td><span class="chip">decision</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/decisions/0005-public-registration-pilot.md</code></td>
+  <td>Requires GroundMesh registration to begin as a narrow pilot with explicit limits, separate sensitive intake, and real moderation, consent, and rollback gates.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../decisions/0006-behavior-atlas-evidence-pilot.md">ADR-0006</a></td>
+  <td><strong>Behavior Atlas Begins as an Evidence-First Pilot</strong></td>
+  <td><span class="chip">decision</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/decisions/0006-behavior-atlas-evidence-pilot.md</code></td>
+  <td>Establishes the Behavior Atlas as an evidence-first, human-reviewed pilot that maps claims and patterns without person scoring or autonomous publication.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../checklists/Registration_Interest_Triage_Checklist.md">CHECKLIST-REGISTRATION-INTEREST-TRIAGE</a></td>
+  <td><strong>Registration Interest Triage Checklist</strong></td>
+  <td><span class="chip">checklist</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/checklists/Registration_Interest_Triage_Checklist.md</code></td>
+  <td>Smallest honest handling checklist for public registration-interest emails before any real pilot intake is open.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../checklists/Registration_Pilot_Readiness_Checklist.md">CHECKLIST-REGISTRATION-PILOT</a></td>
+  <td><strong>Registration Pilot Readiness Checklist</strong></td>
+  <td><span class="chip">checklist</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/checklists/Registration_Pilot_Readiness_Checklist.md</code></td>
+  <td>Practical readiness gate for opening any real GroundMesh registration path beyond simple public contact.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../coordination/coordination-field.v0.1.json">DATA-COORDINATION-FIELD-V0-1</a></td>
+  <td><strong>GroundMesh Coordination Field Machine Model v0.1</strong></td>
+  <td><span class="chip">data</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/coordination/coordination-field.v0.1.json</code></td>
+  <td>Machine-readable companion defining coordination quantities, measurement rules, cooperation loops, non-capture constraints, Behavior Atlas questions, and guarded implementation stages.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../assistant-brief.md">DOC-ASSISTANT-BRIEF</a></td>
+  <td><strong>Assistant Brief</strong></td>
+  <td><span class="chip">guide</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/assistant-brief.md</code></td>
+  <td>Defines Atlas-first workflow, smallest-safe-change practice, and the current stabilization focus.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../glossary.md">DOC-GLOSSARY</a></td>
+  <td><strong>GroundMesh Glossary</strong></td>
+  <td><span class="chip">reference</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/glossary.md</code></td>
+  <td>Compact shared language for Atlas, compute transparency, and contributor on-ramps.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../echo_archive/EA-0001_soul-and-system.md">EA-0001</a></td>
+  <td><strong>The Soul and the System</strong></td>
+  <td><span class="chip">echo</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/echo_archive/EA-0001_soul-and-system.md</code></td>
+  <td>Foundational reflection linking soul to relational balance and emotions to consequence, then translating that pattern into harmony-seeking CI behavior.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../echo_archive/EA-0002_numbers-neighbor-and-coordination.md">EA-0002</a></td>
+  <td><strong>Numbers, Neighbor, and the Coordination Field</strong></td>
+  <td><span class="chip">echo</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/echo_archive/EA-0002_numbers-neighbor-and-coordination.md</code></td>
+  <td>Reflection connecting numbers, hidden accounting boundaries, Jesus&#39; teachings on neighbor, service, mammon, and non-retaliation, and GroundMesh&#39;s voluntary coordination posture.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../invariants/GM-INV-VIII.md">GM-INV-VIII</a></td>
+  <td><strong>Continuity With Consent</strong></td>
+  <td><span class="chip">invariant</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/invariants/GM-INV-VIII.md</code></td>
+  <td>Sustained participation must arise from voluntary re-engagement, not compulsion. Systems must preserve agency, rhythm, and the right to pause without loss of dignity.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="seed-trust-mesh-edge.md">GUIDE-ARCH-SEED-TRUST-MESH-EDGE</a></td>
+  <td><strong>GroundMesh Architecture: Seed / Trust / Mesh / Edge</strong></td>
+  <td><span class="chip">guide</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/atlas/seed-trust-mesh-edge.md</code></td>
+  <td>Combines the structure view and rollout view for GroundMesh: bootstrap seed, trust layer, distributed mesh, edge participation, install lanes, and phased decentralization.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../coordination/coordination-field.md">GUIDE-COORDINATION-FIELD-V0-1</a></td>
+  <td><strong>GroundMesh Coordination Field v0.1</strong></td>
+  <td><span class="chip">guide</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/coordination/coordination-field.md</code></td>
+  <td>Human-readable model for exposing needs, capacity, commitments, delivery, gaps, externalities, and coordination failures without central planning, person scoring, or loss of consent.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="light-node-agent-contract.md">GUIDE-LIGHT-NODE-CONTRACT</a></td>
+  <td><strong>GroundMesh Light Node Agent Contract v1</strong></td>
+  <td><span class="chip">guide</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/atlas/light-node-agent-contract.md</code></td>
+  <td>Defines the first honest lightweight node role for GroundMesh: capability declaration, heartbeat, allowed job classes, refusal rules, data boundary, and the first safe command contract.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="groundmesh-new-chat-handoff.md">GUIDE-NEW-CHAT-HANDOFF</a></td>
+  <td><strong>GroundMesh New Chat Handoff</strong></td>
+  <td><span class="chip">guide</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/atlas/groundmesh-new-chat-handoff.md</code></td>
+  <td>Compact reload note for starting a new chat without losing the current GroundMesh state or falling into long recap mode.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="session-0001-codex-first-contact.md">NOTE-SESSION-0001</a></td>
+  <td><strong>Codex Session 0001: First Contact and Working Basis</strong></td>
+  <td><span class="chip">note</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/atlas/session-0001-codex-first-contact.md</code></td>
+  <td>Tracked memory of the first major Codex GroundMesh session, including workflow doctrine, public-surface stabilization, and the first real registration pilot outcomes.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../compute.html">PAGE-COMPUTE</a></td>
+  <td><strong>Compute Transparency</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/compute.html</code></td>
+  <td>Public snapshot page for non-sensitive grid metrics sourced from metrics.json.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../contact.html">PAGE-CONTACT</a></td>
+  <td><strong>GroundMesh Contact</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/contact.html</code></td>
+  <td>Simple public contact path for questions, corrections, first contact, and participation guidance.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../contribute.html">PAGE-CONTRIBUTE</a></td>
+  <td><strong>Contributors Hub</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/contribute.html</code></td>
+  <td>Primary public on-ramp for volunteers, issue filing, and low-friction participation.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../get-started/index.html">PAGE-GET-STARTED</a></td>
+  <td><strong>GroundMesh Get Started</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/get-started/index.html</code></td>
+  <td>Builder-facing start page for local setup, health checks, Atlas-first work, and small-batch contributions.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../index.html">PAGE-HOME</a></td>
+  <td><strong>GroundMesh Start Here</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/index.html</code></td>
+  <td>Unified public front door that joins the stronger narrative seed with the Atlas-backed docs layer.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../landscape.html">PAGE-LANDSCAPE</a></td>
+  <td><strong>GroundMesh Landscape</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/landscape.html</code></td>
+  <td>Broad scan of live pages, local repos, mirrors, and adjacent web surfaces around GroundMesh.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../map.html">PAGE-MAP</a></td>
+  <td><strong>GroundMesh Map</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/map.html</code></td>
+  <td>Public-facing orientation page for the project landscape and navigation.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../privacy.html">PAGE-PRIVACY</a></td>
+  <td><strong>GroundMesh Privacy</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/privacy.html</code></td>
+  <td>Plain-language statement of the current public privacy posture, limits, and data-minimization rule.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../register.html">PAGE-REGISTER</a></td>
+  <td><strong>GroundMesh Registration Status</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/register.html</code></td>
+  <td>Honest public status page for joining, registration, and what must exist before GroundMesh opens a real pilot.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../register-pilot.html">PAGE-REGISTER-PILOT</a></td>
+  <td><strong>GroundMesh Invited-Circle Registration Pilot</strong></td>
+  <td><span class="chip">page</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/register-pilot.html</code></td>
+  <td>Minimal steward-run pilot form for self-registration and a few invited friends when the local intake host is active.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../behavior-atlas/schema/v0.1.schema.json">SCHEMA-BEHAVIOR-ATLAS-V0-1</a></td>
+  <td><strong>Behavior Atlas Schema Sandbox v0.1</strong></td>
+  <td><span class="chip">schema</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/behavior-atlas/schema/v0.1.schema.json</code></td>
+  <td>Experimental M1 contract for synthetic, public-source case bundles, paired with a fictional fixture and semantic validator; forbids person subjects, scores, rankings, inferred motives, and autonomous publication.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../data/status.json">STATUS-PUBLIC</a></td>
+  <td><strong>Public Status Snapshot</strong></td>
+  <td><span class="chip">data</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/data/status.json</code></td>
+  <td>Tracks public health notes for the current docs surface and Atlas-backed pages.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../templates/Registration_Pilot_Record.md">TEMPLATE-REGISTRATION-PILOT-RECORD</a></td>
+  <td><strong>Registration Pilot Record Template</strong></td>
+  <td><span class="chip">template</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/templates/Registration_Pilot_Record.md</code></td>
+  <td>Reusable minimal record for one actual participant during the invited-circle registration pilot.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../templates/Registration_Pilot_Scope_Canvas.md">TEMPLATE-REGISTRATION-PILOT-SCOPE</a></td>
+  <td><strong>Registration Pilot Scope Canvas</strong></td>
+  <td><span class="chip">template</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/templates/Registration_Pilot_Scope_Canvas.md</code></td>
+  <td>Compact fill-in canvas for defining the first real registration pilot before opening intake beyond simple public contact.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../protocols/TP-03.md">TP-03</a></td>
+  <td><strong>Sustaining Resolve Without Compulsion</strong></td>
+  <td><span class="chip">protocol</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/protocols/TP-03.md</code></td>
+  <td>Guides humans through pressure and delay without collapse or loss of agency; restores resolve through meaning, rhythm, and consent.</td>
+</tr>
           </tbody>
         </table>
       </div>
