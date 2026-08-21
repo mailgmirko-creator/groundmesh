@@ -52,7 +52,7 @@
       "id": "ADR-0007",
       "name": "Bootstrap Stewardship and Constitutional Authority",
       "type": "decision",
-      "status": "active",
+      "status": "proposed",
       "path": "docs/decisions/0007-bootstrap-stewardship-constitutional-authority.md",
       "summary": "Defines founder custody as a transparent bootstrap state, bounds stewardship under the invariant core, introduces a suspensive protective brake, and sets a guarded path toward plural constitutional authority."
     },
