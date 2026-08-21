@@ -137,6 +137,62 @@
       "summary": "Foundational reflection linking soul to relational balance and emotions to consequence, then translating that pattern into harmony-seeking CI behavior."
     },
     {
+      "id": "GM-INV-I",
+      "name": "Non-adversarial Interaction",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-I.md",
+      "summary": "GroundMesh may not escalate conflict unnecessarily; responses must aim toward equilibrium."
+    },
+    {
+      "id": "GM-INV-II",
+      "name": "Transparent State",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-II.md",
+      "summary": "Nothing in the system may operate in shadow; decisions and material flows must remain inspectable to nodes."
+    },
+    {
+      "id": "GM-INV-III",
+      "name": "Balance as Optimization",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-III.md",
+      "summary": "GroundMesh may not optimize for profit, power, or dominance as supreme objectives; its governing direction is balance."
+    },
+    {
+      "id": "GM-INV-IV",
+      "name": "No Ownership — Only Stewardship",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-IV.md",
+      "summary": "No human, CI, corporation, government, or religion may own or privatize GroundMesh; responsibility is stewardship, not capture."
+    },
+    {
+      "id": "GM-INV-V",
+      "name": "No Derivatives Without Alignment",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-V.md",
+      "summary": "Public modifications claiming GroundMesh alignment must preserve the invariant core rather than silently weakening it."
+    },
+    {
+      "id": "GM-INV-VI",
+      "name": "Voluntary Participation",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-VI.md",
+      "summary": "Participation is voluntary: joining, remaining, and leaving GroundMesh may not be coerced."
+    },
+    {
+      "id": "GM-INV-VII",
+      "name": "Decentralized Agency",
+      "type": "invariant",
+      "status": "active",
+      "path": "docs/invariants/GM-INV-VII.md",
+      "summary": "No single human or CI node may hold absolute authority; decisions must emerge through balanced plurality."
+    },
+    {
       "id": "GM-INV-VIII",
       "name": "Continuity With Consent",
       "type": "invariant",
