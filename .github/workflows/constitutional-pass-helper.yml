@@ -1,15 +1,15 @@
 name: constitutional-pass-helper
 
 on:
-  pull_request:
-    branches: [ main ]
+  push:
+    branches: [ docs/constitutional-stewardship-v0-1 ]
 
 permissions:
   contents: write
 
 jobs:
   patch:
-    if: github.head_ref == 'docs/constitutional-stewardship-v0-1' && github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +19,7 @@ jobs:
       - name: Normalize proposed registry status and Atlas row
         shell: python
         run: |
-          import json, re
+          import json
           from pathlib import Path
 
           reg_path = Path('docs/atlas/registry.json')
