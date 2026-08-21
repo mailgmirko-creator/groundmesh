@@ -3,6 +3,7 @@
 ## How we work (directives)
 - Atlas-first: Consult docs/atlas/registry.json + Atlas page before adding or changing anything.
 - Coordination-field first: Before adding need/capacity matching, allocation, metric, or scoring logic, read `docs/coordination/coordination-field.md` and `docs/coordination/coordination-field.v0.1.json`; preserve consent, context, evidence provenance, non-capture, no person-worth scoring, and no autonomous allocation.
+- Constitutional stewardship first: Before changing governance, administrator authority, repository ownership, constitutional voting, key custody, domain control, steward succession, suspension, or removal, read `docs/decisions/0007-bootstrap-stewardship-constitutional-authority.md`; distinguish technical control from constitutional legitimacy and preserve the invariant core.
 - Smallest safe change: Prefer incremental, reversible edits.
 - Small batches: Prefer one meaningful chunk at a time, then summarize what changed and what remains next.
 - Recovery before rush: If a session or approval flow freezes, inspect current state first and resume from the last stable point.
