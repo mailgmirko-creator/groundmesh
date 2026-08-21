@@ -6,11 +6,16 @@ on:
   pull_request:
     branches: [ dev, main, master ]
 
+permissions:
+  contents: write
+
 jobs:
   health:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
 
       - name: Validate JSON
         run: |
@@ -60,3 +65,44 @@ jobs:
       - name: Confirm Atlas index exists
         run: |
           test -f docs/atlas/index.html && echo "Atlas present" || (echo "Missing docs/atlas/index.html" && exit 1)
+
+      - name: Patch proposed stewardship ADR into Atlas
+        if: github.event_name == 'pull_request' && github.head_ref == 'docs/constitutional-stewardship-v0-1' && github.actor != 'github-actions[bot]'
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('docs/atlas/index.html')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace('<span class="label">Entries</span>\n          <strong>43</strong>', '<span class="label">Entries</span>\n          <strong>44</strong>', 1)
+          row = '''            <tr>
+  <td><a class="id-link" href="../decisions/0007-bootstrap-stewardship-constitutional-authority.md">ADR-0007</a></td>
+  <td><strong>Bootstrap Stewardship and Constitutional Authority</strong></td>
+  <td><span class="chip">decision</span></td>
+  <td><span class="status status-proposed">proposed</span></td>
+  <td><code>docs/decisions/0007-bootstrap-stewardship-constitutional-authority.md</code></td>
+  <td>Defines founder custody as a transparent bootstrap state, bounds stewardship under the invariant core, introduces a suspensive protective brake, and sets a guarded path toward plural constitutional authority.</td>
+</tr>
+'''
+          if 'ADR-0007</a>' not in text:
+              marker = '''  <td>Establishes the Behavior Atlas as an evidence-first, human-reviewed pilot that maps claims and patterns without person scoring or autonomous publication.</td>
+</tr>
+'''
+              if marker not in text:
+                  raise SystemExit('ADR-0006 Atlas row marker not found')
+              text = text.replace(marker, marker + row, 1)
+          path.write_text(text, encoding='utf-8', newline='\n')
+
+      - name: Commit Atlas patch to PR branch
+        if: github.event_name == 'pull_request' && github.head_ref == 'docs/constitutional-stewardship-v0-1' && github.actor != 'github-actions[bot]'
+        shell: bash
+        run: |
+          git diff --check
+          if git diff --quiet -- docs/atlas/index.html; then
+            echo "Atlas already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- docs/atlas/index.html
+          git commit -m "docs(atlas): add proposed stewardship ADR"
+          git push origin HEAD:docs/constitutional-stewardship-v0-1
