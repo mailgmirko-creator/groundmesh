@@ -1,0 +1,48 @@
+name: atlas-regenerate-windows-restore
+
+on:
+  push:
+    branches:
+      - docs/restore-invariants-i-vii
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/restore-invariants-i-vii
+
+      - name: Regenerate Atlas
+        shell: pwsh
+        run: ./scripts/atlas-generate.ps1
+
+      - name: Preserve Atlas PWA hooks
+        shell: pwsh
+        run: |
+          $path = 'docs/atlas/index.html'
+          $text = [System.IO.File]::ReadAllText($path)
+          $needle = "  <title>GroundMesh Atlas</title>`n"
+          $insert = $needle + "  <meta name=`"theme-color`" content=`"#1f5c46`" />`n" + "  <link rel=`"icon`" href=`"../assets/gm-app-icon.svg`" type=`"image/svg+xml`" />`n" + "  <link rel=`"manifest`" href=`"../manifest.webmanifest`" />`n" + "  <script src=`"../assets/pwa-init.js`" defer></script>`n"
+          if (-not $text.Contains($needle)) { throw 'Atlas title marker not found' }
+          $text = $text.Replace($needle, $insert)
+          [System.IO.File]::WriteAllText($path, $text, (New-Object System.Text.UTF8Encoding($false)))
+
+      - name: Commit generated Atlas
+        shell: pwsh
+        run: |
+          git diff --check
+          git diff --quiet -- docs/atlas/index.html
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host 'Atlas already current'
+            exit 0
+          }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- docs/atlas/index.html
+          git commit -m 'docs(atlas): restore correct relative links'
+          git push origin HEAD:docs/restore-invariants-i-vii
