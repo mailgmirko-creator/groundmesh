@@ -49,6 +49,14 @@
       "summary": "Establishes the Behavior Atlas as an evidence-first, human-reviewed pilot that maps claims and patterns without person scoring or autonomous publication."
     },
     {
+      "id": "ADR-0007",
+      "name": "Bootstrap Stewardship and Constitutional Authority",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0007-bootstrap-stewardship-constitutional-authority.md",
+      "summary": "Defines founder custody as a transparent bootstrap state, bounds stewardship under the invariant core, introduces a suspensive protective brake, and sets a guarded path toward plural constitutional authority."
+    },
+    {
       "id": "SCHEMA-BEHAVIOR-ATLAS-V0-1",
       "name": "Behavior Atlas Schema Sandbox v0.1",
       "type": "schema",
