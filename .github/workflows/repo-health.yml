@@ -40,10 +40,51 @@ jobs:
           print("JSON OK")
           PY
 
+      - name: Validate Behavior Atlas case bundles against Draft 2020-12 schema
+        run: |
+          python -m pip install --disable-pip-version-check --quiet 'jsonschema[format]>=4.23,<5'
+          python - << 'PY'
+          import json
+          import pathlib
+          import sys
+          from jsonschema import Draft202012Validator, FormatChecker
+
+          schema_path = pathlib.Path('docs/behavior-atlas/schema/v0.1.schema.json')
+          case_paths = [
+              pathlib.Path('docs/behavior-atlas/examples/synthetic-case.json'),
+              pathlib.Path('internal/behavior-atlas/cases/smokovac-matesevo.v0.1.json'),
+          ]
+
+          schema = json.loads(schema_path.read_text(encoding='utf-8'))
+          Draft202012Validator.check_schema(schema)
+          validator = Draft202012Validator(schema, format_checker=FormatChecker())
+
+          failed = False
+          for case_path in case_paths:
+              instance = json.loads(case_path.read_text(encoding='utf-8'))
+              errors = sorted(validator.iter_errors(instance), key=lambda e: list(e.absolute_path))
+              if errors:
+                  failed = True
+                  print(f'Schema errors in {case_path}:')
+                  for error in errors:
+                      where = '.'.join(str(part) for part in error.absolute_path) or '$'
+                      print(f'- {where}: {error.message}')
+              else:
+                  print(f'Schema OK: {case_path}')
+
+          if failed:
+              sys.exit(1)
+          PY
+
       - name: Validate Behavior Atlas schema sandbox
         shell: pwsh
         run: |
           ./scripts/behavior-atlas-validate.ps1 -RequireSynthetic
+
+      - name: Validate Behavior Atlas real M2 case
+        shell: pwsh
+        run: |
+          ./scripts/behavior-atlas-validate.ps1 -DataPath internal/behavior-atlas/cases/smokovac-matesevo.v0.1.json
 
       - name: Validate Coordination Field synthetic breathing test
         shell: pwsh
