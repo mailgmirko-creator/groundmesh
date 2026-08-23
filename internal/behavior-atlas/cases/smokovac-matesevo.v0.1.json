@@ -1,0 +1,381 @@
+{
+  "schema_version": "0.1",
+  "case": {
+    "case_id": "case-smokovac-matesevo-m2",
+    "title": "Smokovac–Mateševo Motorway Section — M2 Internal Evidence Case",
+    "scope_question": "What do inspectable public records support about the Smokovac–Mateševo section's connectivity and development rationale, fiscal burden, and distribution of benefits and burdens, and where does the evidence remain mixed or uncertain?",
+    "status": "internal_review",
+    "is_synthetic": false,
+    "subject_ids": [
+      "subject-smokovac-matesevo-section"
+    ],
+    "temporal_scope": {
+      "start": "2015-01-01",
+      "end": "2022-07-14"
+    },
+    "geographic_scope": [
+      "Montenegro",
+      "Smokovac–Mateševo corridor"
+    ],
+    "limitations": [
+      "This M2 case is deliberately narrow: it tests the evidence/review chain rather than attempting a complete cost-benefit history of the motorway.",
+      "The source set is weighted toward Government of Montenegro and IMF records. It does not yet include a full post-opening traffic, regional-income, safety, environmental, procurement, or household-distribution dataset.",
+      "Government development statements are recorded as policy rationale, not treated as proof that the projected benefits occurred.",
+      "IMF macroeconomic projections and fiscal assessments are recorded as institutional estimates and judgments, not converted into GroundMesh findings of motive, guilt, or person-level responsibility.",
+      "The case does not support a Cooperation Index, a project score, or a broad conclusion that the motorway is inherently cooperative or extractive."
+    ],
+    "correction_path": null,
+    "release": {
+      "release_id": "release-smokovac-matesevo-m2-001",
+      "created_at": "2026-08-23T19:30:00Z",
+      "created_by_ref": "reviewer-ci-research-assist",
+      "previous_release_id": null,
+      "public_release": false
+    }
+  },
+  "subjects": [
+    {
+      "subject_id": "subject-smokovac-matesevo-section",
+      "subject_type": "project",
+      "display_name": "Bar–Boljare motorway priority section: Smokovac–Mateševo",
+      "public_role_context": "A major publicly financed motorway section in Montenegro used here as the first real M2 Behavior Atlas project case. The unit of analysis is the project footprint, not any person's moral identity.",
+      "jurisdiction": "Montenegro",
+      "temporal_scope": {
+        "start": "2015-01-01",
+        "end": "2022-07-14"
+      },
+      "notes": [
+        "The case focuses on publicly documented development rationale, macroeconomic benefit estimates, fiscal burden, and opportunity-cost uncertainty.",
+        "No person is a Behavior Atlas subject in this bundle."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source-govme-2016-northern-development",
+      "source_class": "A",
+      "source_type": "filing",
+      "title": "PM Đukanović visits construction site of Bar – Boljare motorway: CCCC is ready to build next section Mateševo-Andrijevica",
+      "publisher": "Government of Montenegro",
+      "url": "https://www.gov.me/en/article/165940--pm-dukanovic-visits-construction-site-of-bar-boljare-motorway-cccc-is-ready-to-build-next-section-matesevo-andrijevica",
+      "archive_url": null,
+      "published_at": "2016-10-11",
+      "accessed_at": "2026-08-23T19:21:00Z",
+      "jurisdiction": "Montenegro",
+      "content_hash": "sha256:55f976c1552a42108611eb2231bf983686e7ec3f93601019a257cd300bc8460f",
+      "license_notes": "Public government publication. The case retains only one short integrity-checked excerpt and a paraphrased observation; the canonical source remains at the cited URL.",
+      "handling_notes": "Class A official government publication. The content_hash covers exactly the short excerpt stored in evidence-govme-northern-rationale, not the entire remote webpage."
+    },
+    {
+      "source_id": "source-govme-2022-opening",
+      "source_class": "A",
+      "source_type": "filing",
+      "title": "Opening ceremony of the first section of the Bar - Boljare motorway (Smokovac – Mateševo)",
+      "publisher": "Government of Montenegro",
+      "url": "https://www.gov.me/en/article/opening-ceremony-of-the-first-section-of-the-bar-boljare-motorway-smokovac-matesevo",
+      "archive_url": null,
+      "published_at": "2022-07-12",
+      "accessed_at": "2026-08-23T19:21:00Z",
+      "jurisdiction": "Montenegro",
+      "content_hash": "sha256:2310517e9bd5b54311ff51cd417a1a3fc6e3ad5e1f144eaaf647036952a75770",
+      "license_notes": "Public government publication. The case retains only one short integrity-checked excerpt and a paraphrased observation; the canonical source remains at the cited URL.",
+      "handling_notes": "Class A official government publication. The content_hash covers exactly the short excerpt stored in evidence-govme-section-opening, not the entire remote webpage."
+    },
+    {
+      "source_id": "source-imf-2018-article-iv-release",
+      "source_class": "A",
+      "source_type": "research",
+      "title": "Montenegro: IMF Executive Board Concludes 2018 Article IV Consultation",
+      "publisher": "International Monetary Fund",
+      "url": "https://www.imf.org/en/news/articles/2018/05/21/pr18187-montenegro-imf-executive-board-concludes-2018-article-iv-consultation",
+      "archive_url": null,
+      "published_at": "2018-05-21",
+      "accessed_at": "2026-08-23T19:21:00Z",
+      "jurisdiction": "Montenegro",
+      "content_hash": "sha256:3ee1516156a59c96a4f5e37e5f60db949e83c2df0d13425a45f5d973192d337b",
+      "license_notes": "Public IMF publication. The case retains only one short integrity-checked excerpt and paraphrased observations; the canonical source remains at the cited URL.",
+      "handling_notes": "Class A institutional Article IV record. The content_hash covers exactly the short excerpt stored in evidence-imf-debt-role, not the entire remote webpage."
+    },
+    {
+      "source_id": "source-imf-2018-country-report",
+      "source_class": "A",
+      "source_type": "research",
+      "title": "Montenegro: 2018 Article IV Consultation—Press Release and Staff Report",
+      "publisher": "International Monetary Fund",
+      "url": "https://www.imf.org/-/media/files/publications/cr/2018/cr18121.pdf",
+      "archive_url": null,
+      "published_at": "2018-05-21",
+      "accessed_at": "2026-08-23T19:21:00Z",
+      "jurisdiction": "Montenegro",
+      "content_hash": "sha256:9278dfd40e27439d738d65196794bb002f584a5924c0e43f883ba6910a79c385",
+      "license_notes": "Public IMF country report. The case retains only one short integrity-checked excerpt and paraphrased observations; the canonical PDF remains at the cited URL.",
+      "handling_notes": "Class A institutional research report. The content_hash covers exactly the short excerpt stored in evidence-imf-projected-gdp, not the entire PDF. PDF pages were inspected through the research tool; screenshot retrieval was attempted but the upstream PDF cache returned a miss."
+    },
+    {
+      "source_id": "source-imf-2019-concluding-statement",
+      "source_class": "A",
+      "source_type": "research",
+      "title": "Montenegro: Staff Concluding Statement of the 2019 Article IV Mission",
+      "publisher": "International Monetary Fund",
+      "url": "https://www.imf.org/en/news/articles/2019/06/27/mcs062819-montenegro-staff-concluding-statement-of-the-2019-article-iv-mission",
+      "archive_url": null,
+      "published_at": "2019-06-28",
+      "accessed_at": "2026-08-23T19:21:00Z",
+      "jurisdiction": "Montenegro",
+      "content_hash": "sha256:a0338ba8003f361afe9d9924ae76c8925387b3291a846c9730f165664c726bf8",
+      "license_notes": "Public IMF publication. The case retains only one short integrity-checked excerpt and paraphrased observations; the canonical source remains at the cited URL.",
+      "handling_notes": "Class A institutional Article IV mission record. The content_hash covers exactly the short excerpt stored in evidence-imf-opportunity-cost, not the entire remote webpage."
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "evidence-govme-northern-rationale",
+      "source_id": "source-govme-2016-northern-development",
+      "locator": "Government of Montenegro article, paragraph containing Prime Minister's development rationale (web lines 19–20 in captured research view)",
+      "observation": "The Government publicly framed motorway construction as a development-policy instrument for overcoming northern underdevelopment and enabling tourism and food-production plans.",
+      "excerpt": "the most important and most valuable precondition to duly and permanently overcome the problems of the underdevelopment of the northern areas",
+      "captured_at": "2026-08-23T19:24:00Z",
+      "public_safe": true,
+      "handling_notes": "Short attributed excerpt retained to integrity-check the policy rationale. It is evidence of the Government's stated rationale, not proof that the expected development outcomes occurred."
+    },
+    {
+      "evidence_id": "evidence-govme-section-opening",
+      "source_id": "source-govme-2022-opening",
+      "locator": "Government of Montenegro opening notice, paragraph stating start of official use",
+      "observation": "The Government announced that the Smokovac–Mateševo priority section would officially enter use on 14 July 2022.",
+      "excerpt": "The priority section of the motorway will officially be in use from 14 July at 8:00 a.m.",
+      "captured_at": "2026-08-23T19:24:00Z",
+      "public_safe": true,
+      "handling_notes": "Short official operational-status excerpt. Used only to establish the section's transition into service."
+    },
+    {
+      "evidence_id": "evidence-imf-debt-role",
+      "source_id": "source-imf-2018-article-iv-release",
+      "locator": "2018 Article IV Executive Board Assessment, paragraphs on highway and fiscal adjustment",
+      "observation": "The IMF Executive Board assessment said infrastructure development was needed but that construction of the first Bar–Boljare section had played a key role in raising debt to high levels; it also warned that fiscal space did not exist to debt-finance remaining phases.",
+      "excerpt": "the construction of the first section of the Bar-Boljare highway has had a key role in raising debt to high levels",
+      "captured_at": "2026-08-23T19:24:00Z",
+      "public_safe": true,
+      "handling_notes": "Short IMF excerpt retained to integrity-check the debt-burden observation. The wider fiscal context remains available at the canonical source."
+    },
+    {
+      "evidence_id": "evidence-imf-projected-gdp",
+      "source_id": "source-imf-2018-country-report",
+      "locator": "IMF Country Report No. 18/121, staff report page 10 (PDF page index 14 in parsed view), Highway impact paragraph",
+      "observation": "IMF staff estimated a positive macroeconomic effect from the highway: construction demand effects followed by supply effects, while also noting that low traffic projections reduced the expected boost compared with a typical project.",
+      "excerpt": "total GDP in 2023 will be about 3 p.p. of 2014 GDP higher with the highway than without it",
+      "captured_at": "2026-08-23T19:24:00Z",
+      "public_safe": true,
+      "handling_notes": "Short projection excerpt retained to integrity-check the positive-side macro estimate. It is a staff projection, not an observed post-opening outcome."
+    },
+    {
+      "evidence_id": "evidence-imf-opportunity-cost",
+      "source_id": "source-imf-2019-concluding-statement",
+      "locator": "2019 Article IV mission concluding statement, 'Choices regarding the Bar-Boljare highway project should be weighed against other alternatives'",
+      "observation": "IMF staff described phase 1 as expensive, said the economic benefits of the overall project remained uncertain, and highlighted opportunity costs because fiscal resources could instead support education, health, or other public infrastructure.",
+      "excerpt": "the economic benefits of the project as a whole are uncertain, and the fiscal resources could be put to alternative uses",
+      "captured_at": "2026-08-23T19:24:00Z",
+      "public_safe": true,
+      "handling_notes": "Short IMF excerpt retained to integrity-check the uncertainty/opportunity-cost observation. The case does not elevate this institutional judgment into a moral verdict."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-government-development-rationale",
+      "statement": "In 2016, the Government of Montenegro publicly framed the motorway as a development-policy precondition for reducing northern underdevelopment and enabling additional economic activity.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": [
+        "subject-smokovac-matesevo-section"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-govme-northern-rationale",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2016-10-11",
+        "end": "2016-10-11"
+      },
+      "place": "Montenegro",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-section-entered-use",
+      "statement": "The Government announced that the Smokovac–Mateševo priority section would officially enter use on 14 July 2022.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": [
+        "subject-smokovac-matesevo-section"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-govme-section-opening",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2022-07-14",
+        "end": "2022-07-14"
+      },
+      "place": "Smokovac–Mateševo, Montenegro",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-imf-positive-macro-projection",
+      "statement": "IMF staff projected that the highway would raise 2023 GDP relative to a no-highway counterfactual, while noting that low traffic projections reduced the expected supply-side boost.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": [
+        "subject-smokovac-matesevo-section"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-imf-projected-gdp",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2018-05-21",
+        "end": "2023-12-31"
+      },
+      "place": "Montenegro",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-imf-debt-burden",
+      "statement": "In its 2018 Article IV assessment, the IMF said construction of the first Bar–Boljare section had a key role in raising Montenegro's government debt to high levels.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": [
+        "subject-smokovac-matesevo-section"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-imf-debt-role",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2015-01-01",
+        "end": "2018-05-21"
+      },
+      "place": "Montenegro",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-imf-benefit-uncertainty-opportunity-cost",
+      "statement": "In 2019, IMF staff assessed the overall highway's economic benefits as uncertain and said scarce fiscal resources could have alternative productive uses.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": [
+        "subject-smokovac-matesevo-section"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-imf-opportunity-cost",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2019-06-28",
+        "end": "2019-06-28"
+      },
+      "place": "Montenegro",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "assessment-m2-distribution",
+      "lens": "distribution_of_benefits_and_burdens",
+      "direction": "mixed",
+      "confidence": "emerging",
+      "rationale": "The record supports a connectivity/northern-development rationale and an IMF-projected macroeconomic benefit, while also documenting a substantial sovereign fiscal burden and opportunity costs borne through constrained public resources. The current source set does not measure realized post-opening regional gains against those nationwide burdens on a like-for-like basis, so the distributional direction remains mixed rather than resolved.",
+      "supporting_claim_ids": [
+        "claim-government-development-rationale",
+        "claim-imf-positive-macro-projection"
+      ],
+      "counter_claim_ids": [
+        "claim-imf-debt-burden",
+        "claim-imf-benefit-uncertainty-opportunity-cost"
+      ],
+      "assessor_refs": [
+        "reviewer-ci-research-assist"
+      ],
+      "assessed_at": "2026-08-23T19:32:00Z",
+      "review_due": "2026-11-23"
+    },
+    {
+      "assessment_id": "assessment-m2-resource-stewardship",
+      "lens": "resource_stewardship",
+      "direction": "mixed",
+      "confidence": "emerging",
+      "rationale": "The project addressed a stated infrastructure and regional-development objective and IMF staff projected some positive macroeconomic effects. At the same time, IMF records link phase 1 to high public debt and warn that uncertain returns must be weighed against other uses of scarce fiscal resources. On this evidence, GroundMesh can identify a material stewardship tradeoff but cannot fairly collapse it into a single positive or negative verdict.",
+      "supporting_claim_ids": [
+        "claim-government-development-rationale",
+        "claim-imf-positive-macro-projection"
+      ],
+      "counter_claim_ids": [
+        "claim-imf-debt-burden",
+        "claim-imf-benefit-uncertainty-opportunity-cost"
+      ],
+      "assessor_refs": [
+        "reviewer-ci-research-assist"
+      ],
+      "assessed_at": "2026-08-23T19:32:00Z",
+      "review_due": "2026-11-23"
+    }
+  ],
+  "review_events": [
+    {
+      "review_event_id": "review-m2-case-created",
+      "target_type": "case",
+      "target_id": "case-smokovac-matesevo-m2",
+      "action": "created",
+      "actor_role": "researcher",
+      "actor_ref": "reviewer-ci-research-assist",
+      "timestamp": "2026-08-23T19:30:00Z",
+      "reason": "Create the first real M2 institutional/project case from inspectable public sources under ADR-0006 and Issue #47, with no public release.",
+      "changed_fields": [
+        "case",
+        "subjects",
+        "sources",
+        "evidence_items",
+        "claims",
+        "assessments"
+      ],
+      "supersedes_record_id": null
+    },
+    {
+      "review_event_id": "review-m2-source-closure",
+      "target_type": "case",
+      "target_id": "case-smokovac-matesevo-m2",
+      "action": "sourced",
+      "actor_role": "researcher",
+      "actor_ref": "reviewer-ci-research-assist",
+      "timestamp": "2026-08-23T19:34:00Z",
+      "reason": "Check that each sourced claim resolves to a named evidence item and source, that short capture hashes match retained excerpts, and that positive and burden-side evidence are both represented.",
+      "changed_fields": [
+        "sources",
+        "evidence_items",
+        "claims",
+        "assessments",
+        "review_events"
+      ],
+      "supersedes_record_id": null
+    }
+  ],
+  "correction_requests": []
+}
