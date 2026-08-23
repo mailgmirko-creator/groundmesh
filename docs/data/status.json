@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-23T19:40:00Z",
+  "updated_utc": "2026-08-23T19:41:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -83,7 +83,11 @@
     },
     "behavior_atlas_m2": {
       "status": "green",
-      "note": "First real project-level M2 evidence case is stored outside the public Pages tree in internal review and is wired into Draft 2020-12 plus semantic validation; no public Behavior Atlas route or release is enabled"
+      "note": "First real project-level M2 evidence case is preserved outside the public Pages tree and remains validation-wired as the source artifact for later guarded presentation work"
+    },
+    "behavior_atlas_m3": {
+      "status": "green",
+      "note": "One static Behavior Atlas case preview is available only by direct URL, marked noindex, protected by an unlisted-route CI guard, and shows source trails, limitations, a correction path, and the single-reviewer warning required by ADR-0006; M4 public alpha is not enabled"
     }
   }
 }
