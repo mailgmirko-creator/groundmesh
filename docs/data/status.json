@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-07T14:45:00Z",
+  "updated_utc": "2026-08-23T19:40:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -31,7 +31,7 @@
     },
     "node_claims": {
       "status": "green",
-      "note": "Append-only public claim feed shows when a light node has taken bounded ownership of an assignment before reporting the result"
+      "note": "Append-only public claim feed shows when a light node has taken bounded ownership of an assignment before reporting a bounded assignment outcome"
     },
     "node_acks": {
       "status": "green",
@@ -80,6 +80,10 @@
     "coordination_stage_b": {
       "status": "green",
       "note": "Synthetic consent-to-delivery breathing test is merged and validated in repo-health; no live allocation service is enabled"
+    },
+    "behavior_atlas_m2": {
+      "status": "green",
+      "note": "First real project-level M2 evidence case is stored outside the public Pages tree in internal review and is wired into Draft 2020-12 plus semantic validation; no public Behavior Atlas route or release is enabled"
     }
   }
 }
