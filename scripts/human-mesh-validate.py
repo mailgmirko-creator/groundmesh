@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import copy
 import json
 import pathlib
 import re
@@ -101,17 +102,15 @@ def validate_event_semantics(record):
     return errors
 
 
-def validate_one(path, schema_path, semantic_fn, label):
+def load_schema(path):
     if not path.is_file():
-        return [f"missing {label}: {path}"]
-    if not schema_path.is_file():
-        return [f"missing schema: {schema_path}"]
-
-    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        raise RuntimeError(f"missing schema: {path}")
+    schema = json.loads(path.read_text(encoding="utf-8"))
     Draft202012Validator.check_schema(schema)
-    validator = Draft202012Validator(schema, format_checker=FormatChecker())
-    record = json.loads(path.read_text(encoding="utf-8"))
+    return Draft202012Validator(schema, format_checker=FormatChecker())
 
+
+def validate_record(record, validator, semantic_fn):
     errors = []
     for error in sorted(validator.iter_errors(record), key=lambda e: list(e.absolute_path)):
         where = ".".join(str(part) for part in error.absolute_path) or "$"
@@ -120,27 +119,91 @@ def validate_one(path, schema_path, semantic_fn, label):
     return errors
 
 
+def validate_file(path, validator, semantic_fn, label):
+    if not path.is_file():
+        return [f"missing {label}: {path}"], None
+    record = json.loads(path.read_text(encoding="utf-8"))
+    return validate_record(record, validator, semantic_fn), record
+
+
+def negative_self_tests(declaration, declaration_validator, event, event_validator):
+    failures = []
+
+    scored = copy.deepcopy(declaration)
+    scored["trust_score"] = 99
+    if not validate_record(scored, declaration_validator, validate_declaration_semantics):
+        failures.append("negative test failed: trust_score was accepted")
+
+    contacted = copy.deepcopy(declaration)
+    contacted["private_email"] = "fictional@example.invalid"
+    if not validate_record(contacted, declaration_validator, validate_declaration_semantics):
+        failures.append("negative test failed: private_email was accepted")
+
+    precise = copy.deepcopy(declaration)
+    precise["location"]["latitude"] = 42.0
+    precise["location"]["longitude"] = 18.0
+    if not validate_record(precise, declaration_validator, validate_declaration_semantics):
+        failures.append("negative test failed: precise public coordinates were accepted")
+
+    not_self_authored = copy.deepcopy(event)
+    not_self_authored["authorship"]["self_authored"] = False
+    if not validate_record(not_self_authored, event_validator, validate_event_semantics):
+        failures.append("negative test failed: non-self-authored accountability event was accepted")
+
+    actor_mismatch = copy.deepcopy(event)
+    actor_mismatch["authorship"]["actor_node_id"] = "human-someone-else"
+    if not validate_record(actor_mismatch, event_validator, validate_event_semantics):
+        failures.append("negative test failed: accountability actor mismatch was accepted")
+
+    return failures
+
+
 def main():
     declaration_path = pathlib.Path("docs/human-mesh/examples/synthetic-human.json")
     declaration_schema = pathlib.Path("docs/human-mesh/schema/v0.1.schema.json")
     event_path = pathlib.Path("docs/human-mesh/examples/synthetic-accountability-event.json")
     event_schema = pathlib.Path("docs/human-mesh/schema/accountability-event.v0.1.schema.json")
 
-    checks = [
-        (declaration_path, declaration_schema, validate_declaration_semantics, "declaration"),
-        (event_path, event_schema, validate_event_semantics, "accountability event"),
-    ]
+    try:
+        declaration_validator = load_schema(declaration_schema)
+        event_validator = load_schema(event_schema)
+    except Exception as exc:
+        print(f"Human Mesh schema error: {exc}")
+        return 1
 
     failed = False
-    for path, schema_path, semantic_fn, label in checks:
-        errors = validate_one(path, schema_path, semantic_fn, label)
-        if errors:
+
+    declaration_errors, declaration = validate_file(
+        declaration_path, declaration_validator, validate_declaration_semantics, "declaration"
+    )
+    if declaration_errors:
+        failed = True
+        print(f"Human Mesh validation errors in {declaration_path}:")
+        for error in declaration_errors:
+            print(f"- {error}")
+    else:
+        print(f"Human Mesh declaration OK: {declaration_path}")
+
+    event_errors, event = validate_file(
+        event_path, event_validator, validate_event_semantics, "accountability event"
+    )
+    if event_errors:
+        failed = True
+        print(f"Human Mesh validation errors in {event_path}:")
+        for error in event_errors:
+            print(f"- {error}")
+    else:
+        print(f"Human Mesh accountability event OK: {event_path}")
+
+    if declaration is not None and event is not None:
+        negative_failures = negative_self_tests(declaration, declaration_validator, event, event_validator)
+        if negative_failures:
             failed = True
-            print(f"Human Mesh validation errors in {path}:")
-            for error in errors:
+            print("Human Mesh negative guardrail tests failed:")
+            for error in negative_failures:
                 print(f"- {error}")
         else:
-            print(f"Human Mesh {label} OK: {path}")
+            print("Human Mesh negative guardrail tests OK")
 
     if failed:
         return 1
