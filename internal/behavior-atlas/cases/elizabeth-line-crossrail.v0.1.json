@@ -1,0 +1,277 @@
+{
+  "schema_version": "0.1",
+  "case": {
+    "case_id": "case-elizabeth-line-crossrail-m4a",
+    "title": "Elizabeth line / Crossrail — M4A Internal Evidence Case",
+    "scope_question": "What do inspectable public records support about the Elizabeth line's transport-capacity and realised-use benefits, its public-resource burden, and the delivery tradeoffs created by cost growth and delay?",
+    "status": "internal_review",
+    "is_synthetic": false,
+    "subject_ids": [
+      "subject-elizabeth-line-crossrail"
+    ],
+    "temporal_scope": {
+      "start": "2010-01-01",
+      "end": "2026-03-31"
+    },
+    "geographic_scope": [
+      "London and South East England",
+      "United Kingdom"
+    ],
+    "limitations": [
+      "This M4A case is deliberately narrow and does not attempt a full ex-post economic appraisal of the Elizabeth line.",
+      "Usage and capacity evidence demonstrates substantial realised transport use, but it does not by itself establish the full distribution of economic benefits across households, businesses, regions, or income groups.",
+      "The cost and schedule record is drawn mainly from the UK National Audit Office and official sponsor publications; this case does not allocate moral blame to people or contractors.",
+      "The case does not yet incorporate a complete lifecycle carbon account, property-value distribution analysis, accessibility-by-income analysis, or full counterfactual transport model.",
+      "No Cooperation Index, project score, person score, motive finding, or moral identity label is supported by this record."
+    ],
+    "correction_path": null,
+    "release": {
+      "release_id": "release-elizabeth-line-crossrail-m4a-001",
+      "created_at": "2026-08-25T01:25:00Z",
+      "created_by_ref": "reviewer-ci-research-assist",
+      "previous_release_id": null,
+      "public_release": false
+    }
+  },
+  "subjects": [
+    {
+      "subject_id": "subject-elizabeth-line-crossrail",
+      "subject_type": "project",
+      "display_name": "Crossrail / Elizabeth line",
+      "public_role_context": "A major London rail infrastructure programme, now operating as the Elizabeth line, used here as a project-level Behavior Atlas case. The subject is the project footprint, not any person's moral identity.",
+      "jurisdiction": "United Kingdom",
+      "temporal_scope": {
+        "start": "2010-01-01",
+        "end": "2026-03-31"
+      },
+      "notes": [
+        "The case focuses on realised transport use and capacity alongside public-resource, cost-growth, and schedule evidence.",
+        "No person is a Behavior Atlas subject in this bundle."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source-crossrail-dft-opening-2022",
+      "source_class": "A",
+      "source_type": "filing",
+      "title": "Cheaper tickets and quicker journeys as part government funded Elizabeth line officially opens",
+      "publisher": "UK Department for Transport",
+      "url": "https://www.gov.uk/government/news/cheaper-tickets-and-quicker-journeys-as-part-government-funded-elizabeth-line-officially-opens",
+      "archive_url": null,
+      "published_at": "2022-05-24",
+      "accessed_at": "2026-08-25T01:20:00Z",
+      "jurisdiction": "United Kingdom",
+      "content_hash": "sha256:c1daf40bd85bc4895205310edf693f50d1106de510a6a9882269f9db67cb8a2a",
+      "license_notes": "Public UK government publication under the Open Government Licence except where otherwise stated. The case retains one short integrity fragment and paraphrased observations.",
+      "handling_notes": "Class A official sponsor publication. The content_hash covers exactly the short excerpt stored in evidence-crossrail-capacity-cost, not the whole webpage."
+    },
+    {
+      "source_id": "source-crossrail-nao-2019",
+      "source_class": "A",
+      "source_type": "audit",
+      "title": "Completing Crossrail",
+      "publisher": "UK National Audit Office",
+      "url": "https://www.nao.org.uk/press-releases/crossrail/",
+      "archive_url": null,
+      "published_at": null,
+      "accessed_at": "2026-08-25T01:20:00Z",
+      "jurisdiction": "United Kingdom",
+      "content_hash": "sha256:f2a12902a8135d4f938cfca9aef2c9fd0d3f9a3671ad4c23cffea202d952418d",
+      "license_notes": "Public National Audit Office publication. The case retains one short integrity fragment and paraphrased observations.",
+      "handling_notes": "Class A independent public-audit record. The content_hash covers exactly the short excerpt stored in evidence-crossrail-nao-public-value."
+    },
+    {
+      "source_id": "source-crossrail-nao-2021",
+      "source_class": "A",
+      "source_type": "audit",
+      "title": "Crossrail — a progress update",
+      "publisher": "UK National Audit Office",
+      "url": "https://www.nao.org.uk/reports/crossrail-progress-update/",
+      "archive_url": null,
+      "published_at": "2021-07-09",
+      "accessed_at": "2026-08-25T01:20:00Z",
+      "jurisdiction": "United Kingdom",
+      "content_hash": "sha256:b73486ecdd68bbd0a0ecafeb9e2a085de31612f82fdaf017369242a4d5c04af7",
+      "license_notes": "Public National Audit Office publication. The case retains one short integrity fragment and paraphrased observations.",
+      "handling_notes": "Class A independent public-audit record. The content_hash covers exactly the short excerpt stored in evidence-crossrail-nao-delay."
+    },
+    {
+      "source_id": "source-crossrail-tfl-q4-2025-26",
+      "source_class": "A",
+      "source_type": "official_dataset",
+      "title": "Transport for London quarterly performance report — Quarter 4 2025/26",
+      "publisher": "Transport for London",
+      "url": "https://content.tfl.gov.uk/quarterly-performance-report-q4-2025-26.pdf",
+      "archive_url": null,
+      "published_at": null,
+      "accessed_at": "2026-08-25T01:20:00Z",
+      "jurisdiction": "United Kingdom",
+      "content_hash": "sha256:95e1c6b0d25c0fcae679a70a4f2542e0eb5a36cb92516815568c970689d2b26d",
+      "license_notes": "Public Transport for London performance report. The case retains one short integrity fragment and paraphrased observations.",
+      "handling_notes": "Class A operator performance record. The content_hash covers exactly the short excerpt stored in evidence-crossrail-tfl-usage. The relevant Elizabeth line report page was visually inspected during research."
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "evidence-crossrail-capacity-cost",
+      "source_id": "source-crossrail-dft-opening-2022",
+      "locator": "GOV.UK opening notice, headline and paragraphs describing rail capacity, journey time, government investment, and total project cost",
+      "observation": "At opening, the Department for Transport said the Elizabeth line would increase central London rail capacity by 10%, substantially shorten some journeys, and had a total project cost of almost £19 billion, including £9 billion of government investment.",
+      "excerpt": "Elizabeth line will increase central London’s rail capacity by 10%",
+      "captured_at": "2026-08-25T01:21:00Z",
+      "public_safe": true,
+      "handling_notes": "Short official excerpt retained to integrity-check the capacity observation. Sponsor benefit claims are not treated as proof of every projected wider economic outcome."
+    },
+    {
+      "evidence_id": "evidence-crossrail-nao-public-value",
+      "source_id": "source-crossrail-nao-2019",
+      "locator": "NAO Completing Crossrail press release, opening findings and key facts",
+      "observation": "The National Audit Office concluded in 2019 that the delivery approach had driven unnecessary costs and damaged public value; it also recorded the funding package rising from £14.8 billion agreed in 2010 to £17.6 billion.",
+      "excerpt": "The way Crossrail has been delivered has driven unnecessary costs and damaged public value.",
+      "captured_at": "2026-08-25T01:21:00Z",
+      "public_safe": true,
+      "handling_notes": "Short audit excerpt retained to integrity-check the delivery/public-value observation. It is an attributed institutional assessment, not a GroundMesh guilt finding."
+    },
+    {
+      "evidence_id": "evidence-crossrail-nao-delay",
+      "source_id": "source-crossrail-nao-2021",
+      "locator": "NAO progress update, background and report conclusions",
+      "observation": "The NAO recorded a December 2020 funding package of £18.8 billion and said the central section was then expected to open up to three and a half years later than originally planned.",
+      "excerpt": "up to three and a half years later than originally planned",
+      "captured_at": "2026-08-25T01:21:00Z",
+      "public_safe": true,
+      "handling_notes": "Short audit excerpt retained to integrity-check the schedule observation. The source also records the then-current funding package."
+    },
+    {
+      "evidence_id": "evidence-crossrail-tfl-usage",
+      "source_id": "source-crossrail-tfl-q4-2025-26",
+      "locator": "TfL Q4 2025/26 performance report, Elizabeth line page 13",
+      "observation": "TfL reported 242 million Elizabeth line journeys in 2025/26, more than 800 million journeys since opening, and mid-week use regularly above 800,000 journeys a day.",
+      "excerpt": "The Elizabeth line saw 242 million journeys in 2025/26",
+      "captured_at": "2026-08-25T01:21:00Z",
+      "public_safe": true,
+      "handling_notes": "Short operator excerpt retained to integrity-check realised-use evidence. Usage does not by itself establish the distribution or net value of all benefits."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-crossrail-capacity-benefit",
+      "statement": "At the 2022 opening, the UK Department for Transport said the Elizabeth line would increase central London rail capacity by 10% and substantially reduce some cross-London journey times.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-elizabeth-line-crossrail"],
+      "evidence_links": [{"evidence_id": "evidence-crossrail-capacity-cost", "relationship": "supports"}],
+      "temporal_scope": {"start": "2022-05-24", "end": "2022-05-24"},
+      "place": "London, United Kingdom",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-crossrail-near-19b-cost",
+      "statement": "The Department for Transport described the Elizabeth line project cost at opening as almost £19 billion, with £9 billion of government investment.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-elizabeth-line-crossrail"],
+      "evidence_links": [{"evidence_id": "evidence-crossrail-capacity-cost", "relationship": "supports"}],
+      "temporal_scope": {"start": "2022-05-24", "end": "2022-05-24"},
+      "place": "United Kingdom",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-crossrail-realised-use",
+      "statement": "Transport for London reported 242 million Elizabeth line journeys in 2025/26 and more than 800 million journeys since opening.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-elizabeth-line-crossrail"],
+      "evidence_links": [{"evidence_id": "evidence-crossrail-tfl-usage", "relationship": "supports"}],
+      "temporal_scope": {"start": "2025-04-01", "end": "2026-03-31"},
+      "place": "London and South East England",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-crossrail-nao-cost-governance",
+      "statement": "In 2019, the National Audit Office concluded that Crossrail's delivery approach had driven unnecessary costs and damaged public value, while recording a substantial increase in the funding package.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-elizabeth-line-crossrail"],
+      "evidence_links": [{"evidence_id": "evidence-crossrail-nao-public-value", "relationship": "supports"}],
+      "temporal_scope": {"start": "2010-01-01", "end": "2019-05-31"},
+      "place": "United Kingdom",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-crossrail-schedule-delay",
+      "statement": "The National Audit Office reported in 2021 that the central section was expected to open up to three and a half years later than originally planned and that the funding package had reached £18.8 billion.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-elizabeth-line-crossrail"],
+      "evidence_links": [{"evidence_id": "evidence-crossrail-nao-delay", "relationship": "supports"}],
+      "temporal_scope": {"start": "2018-12-01", "end": "2021-07-09"},
+      "place": "United Kingdom",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "assessment-crossrail-distribution",
+      "lens": "distribution_of_benefits_and_burdens",
+      "direction": "mixed",
+      "confidence": "emerging",
+      "rationale": "The record supports substantial transport-capacity and realised-use benefits, while also showing a very large project cost and public financing burden. The current evidence does not compare benefits and burdens across households, income groups, businesses, or regions on a like-for-like basis, so the distributional direction remains mixed.",
+      "supporting_claim_ids": ["claim-crossrail-capacity-benefit", "claim-crossrail-realised-use"],
+      "counter_claim_ids": ["claim-crossrail-near-19b-cost", "claim-crossrail-nao-cost-governance"],
+      "assessor_refs": ["reviewer-ci-research-assist"],
+      "assessed_at": "2026-08-25T01:26:00Z",
+      "review_due": "2026-11-25"
+    },
+    {
+      "assessment_id": "assessment-crossrail-resource-stewardship",
+      "lens": "resource_stewardship",
+      "direction": "mixed",
+      "confidence": "emerging",
+      "rationale": "The operating railway is heavily used and has added major rail capacity, demonstrating that the investment produced a functioning high-demand public asset. Counterevidence is material: the NAO documented cost growth, schedule slippage, and delivery choices that damaged public value. The present case therefore identifies a real stewardship tradeoff rather than a single positive or negative verdict.",
+      "supporting_claim_ids": ["claim-crossrail-capacity-benefit", "claim-crossrail-realised-use"],
+      "counter_claim_ids": ["claim-crossrail-nao-cost-governance", "claim-crossrail-schedule-delay"],
+      "assessor_refs": ["reviewer-ci-research-assist"],
+      "assessed_at": "2026-08-25T01:26:00Z",
+      "review_due": "2026-11-25"
+    }
+  ],
+  "review_events": [
+    {
+      "review_event_id": "review-crossrail-m4a-case-created",
+      "target_type": "case",
+      "target_id": "case-elizabeth-line-crossrail-m4a",
+      "action": "created",
+      "actor_role": "researcher",
+      "actor_ref": "reviewer-ci-research-assist",
+      "timestamp": "2026-08-25T01:25:00Z",
+      "reason": "Create a second real project-level case for M4A plurality testing from official UK sponsor, audit, and operator records, with no public-alpha release.",
+      "changed_fields": ["case", "subjects", "sources", "evidence_items", "claims", "assessments"],
+      "supersedes_record_id": null
+    },
+    {
+      "review_event_id": "review-crossrail-m4a-source-closure",
+      "target_type": "case",
+      "target_id": "case-elizabeth-line-crossrail-m4a",
+      "action": "sourced",
+      "actor_role": "researcher",
+      "actor_ref": "reviewer-ci-research-assist",
+      "timestamp": "2026-08-25T01:27:00Z",
+      "reason": "Confirm that each claim resolves to inspectable source evidence, that benefit and burden evidence remain visible together, and that no person-level judgment or composite score is introduced.",
+      "changed_fields": ["sources", "evidence_items", "claims", "assessments", "review_events"],
+      "supersedes_record_id": null
+    }
+  ],
+  "correction_requests": []
+}
