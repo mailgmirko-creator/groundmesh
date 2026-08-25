@@ -17,21 +17,18 @@
       "case_id": "case-smokovac-matesevo-m2",
       "source_bundle": "internal/behavior-atlas/cases/smokovac-matesevo.v0.1.json",
       "public_path": "docs/behavior-atlas/cases/smokovac-matesevo.html",
-      "prior_preview": "docs/behavior-atlas/preview/smokovac-matesevo.html",
       "review_due": "2026-11-23"
     },
     {
       "case_id": "case-elizabeth-line-crossrail-m4a",
       "source_bundle": "internal/behavior-atlas/cases/elizabeth-line-crossrail.v0.1.json",
       "public_path": "docs/behavior-atlas/cases/elizabeth-line-crossrail.html",
-      "prior_preview": "docs/behavior-atlas/preview/elizabeth-line-crossrail.html",
       "review_due": "2026-11-25"
     },
     {
       "case_id": "case-room-for-river-waal-m4a",
       "source_bundle": "internal/behavior-atlas/cases/room-for-river-waal.v0.1.json",
       "public_path": "docs/behavior-atlas/cases/room-for-river-waal.html",
-      "prior_preview": "docs/behavior-atlas/preview/room-for-river-waal.html",
       "review_due": "2026-11-25"
     }
   ],
