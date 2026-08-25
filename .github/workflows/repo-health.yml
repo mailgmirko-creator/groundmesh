@@ -50,10 +50,12 @@ jobs:
           from jsonschema import Draft202012Validator, FormatChecker
 
           schema_path = pathlib.Path('docs/behavior-atlas/schema/v0.1.schema.json')
-          case_paths = [
-              pathlib.Path('docs/behavior-atlas/examples/synthetic-case.json'),
-              pathlib.Path('internal/behavior-atlas/cases/smokovac-matesevo.v0.1.json'),
-          ]
+          case_paths = [pathlib.Path('docs/behavior-atlas/examples/synthetic-case.json')]
+          case_paths.extend(sorted(pathlib.Path('internal/behavior-atlas/cases').glob('*.json')))
+
+          if len(case_paths) < 2:
+              print('No real Behavior Atlas case bundles found.')
+              sys.exit(1)
 
           schema = json.loads(schema_path.read_text(encoding='utf-8'))
           Draft202012Validator.check_schema(schema)
@@ -81,23 +83,28 @@ jobs:
         run: |
           ./scripts/behavior-atlas-validate.ps1 -RequireSynthetic
 
-      - name: Validate Behavior Atlas real M2 case
+      - name: Validate all real Behavior Atlas cases
         shell: pwsh
         run: |
-          ./scripts/behavior-atlas-validate.ps1 -DataPath internal/behavior-atlas/cases/smokovac-matesevo.v0.1.json
+          $cases = @(Get-ChildItem 'internal/behavior-atlas/cases/*.json' | Sort-Object Name)
+          if ($cases.Count -lt 1) { throw 'No real Behavior Atlas case bundles found.' }
+          foreach ($case in $cases) {
+            Write-Host "Validating real case: $($case.Name)"
+            ./scripts/behavior-atlas-validate.ps1 -DataPath $case.FullName
+          }
 
-      - name: Guard Behavior Atlas M3 unlisted preview
+      - name: Guard Behavior Atlas unlisted previews
         run: |
           python - << 'PY'
           import pathlib
           import sys
 
-          preview = pathlib.Path('docs/behavior-atlas/preview/smokovac-matesevo.html')
-          if not preview.is_file():
-              print(f'Missing M3 preview: {preview}')
+          preview_dir = pathlib.Path('docs/behavior-atlas/preview')
+          previews = sorted(preview_dir.glob('*.html'))
+          if not previews:
+              print('No Behavior Atlas preview pages found.')
               sys.exit(1)
 
-          html = preview.read_text(encoding='utf-8')
           required = [
               'noindex,nofollow,noarchive',
               'Single-reviewer warning',
@@ -105,34 +112,43 @@ jobs:
               'not a public-alpha finding',
               'footprint, not the soul',
           ]
-          missing = [marker for marker in required if marker not in html]
-          if missing:
-              print('M3 preview is missing required guardrail copy:')
-              for marker in missing:
-                  print(f'- {marker}')
+          searchable_suffixes = {'.html', '.md', '.json', '.js', '.webmanifest', '.txt'}
+          failed = False
+
+          for preview in previews:
+              html = preview.read_text(encoding='utf-8')
+              missing = [marker for marker in required if marker not in html]
+              if missing:
+                  failed = True
+                  print(f'{preview} is missing required guardrail copy:')
+                  for marker in missing:
+                      print(f'- {marker}')
+
+              public_path = preview.relative_to('docs').as_posix()
+              leaks = []
+              for path in pathlib.Path('docs').rglob('*'):
+                  if not path.is_file() or path == preview:
+                      continue
+                  if path.suffix.lower() not in searchable_suffixes:
+                      continue
+                  try:
+                      text = path.read_text(encoding='utf-8')
+                  except UnicodeDecodeError:
+                      continue
+                  if public_path in text:
+                      leaks.append(str(path))
+
+              if leaks:
+                  failed = True
+                  print(f'{preview} must remain unlisted; direct path was referenced from:')
+                  for path in leaks:
+                      print(f'- {path}')
+              else:
+                  print(f'Unlisted preview OK: {preview}')
+
+          if failed:
               sys.exit(1)
-
-          public_path = 'behavior-atlas/preview/smokovac-matesevo.html'
-          leaks = []
-          for path in pathlib.Path('docs').rglob('*'):
-              if not path.is_file() or path == preview:
-                  continue
-              if path.suffix.lower() not in {'.html', '.md', '.json', '.js', '.webmanifest', '.txt'}:
-                  continue
-              try:
-                  text = path.read_text(encoding='utf-8')
-              except UnicodeDecodeError:
-                  continue
-              if public_path in text:
-                  leaks.append(str(path))
-
-          if leaks:
-              print('M3 preview must remain unlisted; direct path was referenced from:')
-              for path in leaks:
-                  print(f'- {path}')
-              sys.exit(1)
-
-          print('M3 unlisted preview guard OK')
+          print(f'Behavior Atlas unlisted preview guard OK ({len(previews)} previews)')
           PY
 
       - name: Validate Coordination Field synthetic breathing test
