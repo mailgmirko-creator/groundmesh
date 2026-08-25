@@ -24,23 +24,26 @@
       top: 12px;
       left: 12px;
       z-index: 1000;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.94);
       padding: 10px 12px;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      max-width: 520px;
+      max-width: 560px;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     .topbar h1 { font-size: 16px; margin: 0 0 6px 0; }
-    .topbar p { font-size: 13px; margin: 0; line-height: 1.35; }
-    .muted { opacity: 0.75; }
+    .topbar p { font-size: 13px; margin: 4px 0 0; line-height: 1.35; }
+    .topbar a { color:#1f5c46; }
+    .muted { opacity: 0.78; }
   </style>
 </head>
 
 <body>
   <div class="topbar">
     <h1>Global Node Ledger (v0)</h1>
-    <p class="muted">Read-only. No anonymity. Human nodes require real name + real city/country.</p>
+    <p class="muted">Legacy read-only prototype. It predates the Human Mesh consent contract.</p>
+    <p class="muted">Future human declarations may use a public name or stable pseudonym and only coarse self-declared location. Broad registration is not open yet.</p>
+    <p><a href="../human-mesh/index.html">Open Human Mesh Foundation →</a></p>
   </div>
 
   <div id="map"></div>
