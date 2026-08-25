@@ -80,6 +80,10 @@ jobs:
               sys.exit(1)
           PY
 
+      - name: Validate Human Mesh foundation contracts
+        run: |
+          python scripts/human-mesh-validate.py
+
       - name: Validate Behavior Atlas schema sandbox
         shell: pwsh
         run: |
