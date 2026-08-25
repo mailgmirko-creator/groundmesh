@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Validate JSON
         run: |
@@ -150,6 +152,15 @@ jobs:
               sys.exit(1)
           print(f'Behavior Atlas unlisted preview guard OK ({len(previews)} previews)')
           PY
+
+      - name: Guard Behavior Atlas M4 public alpha release
+        run: |
+          python scripts/behavior-atlas-public-alpha-guard.py
+
+      - name: Run Behavior Atlas restore drill
+        shell: pwsh
+        run: |
+          ./scripts/behavior-atlas-restore-drill.ps1
 
       - name: Validate Coordination Field synthetic breathing test
         shell: pwsh

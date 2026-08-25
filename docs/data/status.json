@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-25T01:22:00Z",
+  "updated_utc": "2026-08-25T11:18:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -83,15 +83,15 @@
     },
     "behavior_atlas_m2": {
       "status": "green",
-      "note": "First real project-level M2 evidence case is preserved outside the public Pages tree and remains validation-wired as the source artifact for later guarded presentation work"
+      "note": "First real project-level M2 evidence case is preserved outside the public Pages tree and remains validation-wired as a sourced historical artifact"
     },
     "behavior_atlas_m3": {
       "status": "green",
-      "note": "One static Behavior Atlas case preview is available only by direct URL, marked noindex, protected by an unlisted-route CI guard, and shows source trails, limitations, a correction path, and the single-reviewer warning required by ADR-0006; M4 public alpha is not enabled"
+      "note": "The original M3/M4A unlisted noindex previews remain preserved as guarded historical snapshots and continue to be protected from accidental public navigation links"
     },
-    "behavior_atlas_m4_readiness": {
-      "status": "yellow",
-      "note": "Three real project-level Behavior Atlas cases now exist with unlisted noindex previews and shared schema, semantic, and unlisted-route CI guards; M4 public alpha remains disabled until changelog, expiry, privacy/harm, restore-drill, and human promotion gates are completed"
+    "behavior_atlas_m4_public_alpha": {
+      "status": "green",
+      "note": "Three-case public alpha has a dedicated front door, source trails, single-reviewer warnings, correction paths, review-due stale warnings, changelog, expiry policy, privacy/harm review, release manifest, Project Atlas registration, and a CI restore drill to the recorded pre-alpha baseline; no scoring, Cooperation Index, or autonomous monitoring is enabled"
     }
   }
 }

@@ -1,0 +1,44 @@
+{
+  "release_id": "behavior-atlas-m4-public-alpha-v0-1",
+  "stage": "public_alpha",
+  "created_at": "2026-08-25T11:10:00Z",
+  "activation_condition": "Becomes canonical only when the containing guarded pull request is merged into main by the human steward publication gate.",
+  "evidence_state": "sourced_not_independently_adjudicated",
+  "single_reviewer_warning_required": true,
+  "rollback_ref": "fd020026f34b615f084760e46e3ea100c31381b2",
+  "front_door": "docs/behavior-atlas/index.html",
+  "policy_paths": {
+    "expiry_review": "docs/behavior-atlas/PUBLIC_ALPHA_POLICY.md",
+    "privacy_harm_review": "docs/behavior-atlas/PRIVACY_HARM_REVIEW.md",
+    "changelog": "docs/behavior-atlas/CHANGELOG.md"
+  },
+  "cases": [
+    {
+      "case_id": "case-smokovac-matesevo-m2",
+      "source_bundle": "internal/behavior-atlas/cases/smokovac-matesevo.v0.1.json",
+      "public_path": "docs/behavior-atlas/cases/smokovac-matesevo.html",
+      "review_due": "2026-11-23"
+    },
+    {
+      "case_id": "case-elizabeth-line-crossrail-m4a",
+      "source_bundle": "internal/behavior-atlas/cases/elizabeth-line-crossrail.v0.1.json",
+      "public_path": "docs/behavior-atlas/cases/elizabeth-line-crossrail.html",
+      "review_due": "2026-11-25"
+    },
+    {
+      "case_id": "case-room-for-river-waal-m4a",
+      "source_bundle": "internal/behavior-atlas/cases/room-for-river-waal.v0.1.json",
+      "public_path": "docs/behavior-atlas/cases/room-for-river-waal.html",
+      "review_due": "2026-11-25"
+    }
+  ],
+  "prohibited_uses": [
+    "person scoring",
+    "moral ranking",
+    "guilt finding",
+    "inferred motive",
+    "Cooperation Index publication",
+    "autonomous publication",
+    "consequential eligibility or enforcement decisions"
+  ]
+}

@@ -212,6 +212,14 @@
       ]
     },
     {
+      "id": "PAGE-BEHAVIOR-ATLAS",
+      "name": "GroundMesh Behavior Atlas Public Alpha",
+      "type": "page",
+      "status": "active",
+      "path": "docs/behavior-atlas/index.html",
+      "summary": "Evidence-first M4 public-alpha front door for three project-level cases, with source trails, counterevidence, correction paths, review-due expiry handling, privacy/harm review, and rollback safeguards."
+    },
+    {
       "id": "PAGE-COMPUTE",
       "name": "Compute Transparency",
       "type": "page",
