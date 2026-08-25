@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-23T19:41:00Z",
+  "updated_utc": "2026-08-25T01:22:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -88,6 +88,10 @@
     "behavior_atlas_m3": {
       "status": "green",
       "note": "One static Behavior Atlas case preview is available only by direct URL, marked noindex, protected by an unlisted-route CI guard, and shows source trails, limitations, a correction path, and the single-reviewer warning required by ADR-0006; M4 public alpha is not enabled"
+    },
+    "behavior_atlas_m4_readiness": {
+      "status": "yellow",
+      "note": "Three real project-level Behavior Atlas cases now exist with unlisted noindex previews and shared schema, semantic, and unlisted-route CI guards; M4 public alpha remains disabled until changelog, expiry, privacy/harm, restore-drill, and human promotion gates are completed"
     }
   }
 }
