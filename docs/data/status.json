@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-25T11:18:00Z",
+  "updated_utc": "2026-08-25T12:12:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -48,6 +48,10 @@
     "registration_checklist": {
       "status": "green",
       "note": "Registration pilot readiness checklist loads publicly from the docs surface and matches the live Atlas and registration path"
+    },
+    "human_mesh_h0": {
+      "status": "yellow",
+      "note": "Human Mesh H0 foundation is defined through a public architecture page, versioned declaration and self-authored accountability-event schemas, fictional fixtures, privacy boundaries, and CI validation; broad global registration remains intentionally closed pending ADR-0005 pilot readiness and later trusted-circle operational proof"
     },
     "get_started_page": {
       "status": "green",
