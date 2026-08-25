@@ -86,6 +86,55 @@ jobs:
         run: |
           ./scripts/behavior-atlas-validate.ps1 -DataPath internal/behavior-atlas/cases/smokovac-matesevo.v0.1.json
 
+      - name: Guard Behavior Atlas M3 unlisted preview
+        run: |
+          python - << 'PY'
+          import pathlib
+          import sys
+
+          preview = pathlib.Path('docs/behavior-atlas/preview/smokovac-matesevo.html')
+          if not preview.is_file():
+              print(f'Missing M3 preview: {preview}')
+              sys.exit(1)
+
+          html = preview.read_text(encoding='utf-8')
+          required = [
+              'noindex,nofollow,noarchive',
+              'Single-reviewer warning',
+              'Submit a correction',
+              'not a public-alpha finding',
+              'footprint, not the soul',
+          ]
+          missing = [marker for marker in required if marker not in html]
+          if missing:
+              print('M3 preview is missing required guardrail copy:')
+              for marker in missing:
+                  print(f'- {marker}')
+              sys.exit(1)
+
+          public_path = 'behavior-atlas/preview/smokovac-matesevo.html'
+          leaks = []
+          for path in pathlib.Path('docs').rglob('*'):
+              if not path.is_file() or path == preview:
+                  continue
+              if path.suffix.lower() not in {'.html', '.md', '.json', '.js', '.webmanifest', '.txt'}:
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              if public_path in text:
+                  leaks.append(str(path))
+
+          if leaks:
+              print('M3 preview must remain unlisted; direct path was referenced from:')
+              for path in leaks:
+                  print(f'- {path}')
+              sys.exit(1)
+
+          print('M3 unlisted preview guard OK')
+          PY
+
       - name: Validate Coordination Field synthetic breathing test
         shell: pwsh
         run: |
