@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://groundmesh.example/human-mesh/schema/v0.1.schema.json",
+  "title": "GroundMesh Human Mesh Public Declaration v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "node_id", "node_type", "public_identity", "location", "consent", "lifecycle", "provenance"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "node_id": { "type": "string", "pattern": "^human-[a-z0-9][a-z0-9-]{2,63}$" },
+    "node_type": { "const": "human" },
+    "public_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["display_name", "identity_mode", "continuity_acknowledged"],
+      "properties": {
+        "display_name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "identity_mode": { "enum": ["public_name", "stable_pseudonym"] },
+        "continuity_acknowledged": { "const": true }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["precision", "label"],
+      "properties": {
+        "precision": { "enum": ["country", "region", "city"] },
+        "label": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "country_code": { "type": "string", "pattern": "^[A-Z]{2}$" }
+      }
+    },
+    "public_statement": { "type": "string", "maxLength": 1000 },
+    "accountability_commitments": {
+      "type": "array",
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "welcome_corrections",
+          "disclose_relevant_conflicts",
+          "keep_stewardship_actions_inspectable",
+          "publish_material_corrections",
+          "respect_voluntary_participation",
+          "avoid_person_scoring"
+        ]
+      }
+    },
+    "consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_fields", "location_precision", "provenance_history", "rules_version", "right_to_correct_withdraw", "affirmed_at"],
+      "properties": {
+        "public_fields": { "const": true },
+        "location_precision": { "const": true },
+        "provenance_history": { "const": true },
+        "rules_version": { "const": "human-mesh-foundation-v0.1" },
+        "right_to_correct_withdraw": { "const": true },
+        "affirmed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "effective_at"],
+      "properties": {
+        "status": { "enum": ["candidate", "active", "withdrawn"] },
+        "effective_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_version", "created_at", "created_by"],
+      "properties": {
+        "record_version": { "type": "integer", "minimum": 1 },
+        "created_at": { "type": "string", "format": "date-time" },
+        "created_by": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "supersedes_record_version": { "type": ["integer", "null"], "minimum": 1 }
+      }
+    }
+  }
+}
