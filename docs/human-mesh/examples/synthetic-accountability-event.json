@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1",
+  "event_id": "hm-event-example-correction-001",
+  "node_id": "human-example-001",
+  "event_type": "correction",
+  "statement": "I previously described a fictional coordination test too confidently. I am correcting the public note so uncertainty remains visible.",
+  "related_public_refs": [
+    "synthetic://human-mesh/example-note-001"
+  ],
+  "authorship": {
+    "self_authored": true,
+    "actor_node_id": "human-example-001"
+  },
+  "visibility": "public_by_consent",
+  "created_at": "2026-08-25T12:06:00Z",
+  "supersedes_event_id": null
+}
