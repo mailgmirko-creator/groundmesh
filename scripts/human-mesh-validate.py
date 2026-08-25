@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import argparse
 import json
 import pathlib
 import re
@@ -52,15 +51,19 @@ def iter_keys(value, path="$"):
             yield from iter_keys(child, f"{path}[{index}]")
 
 
-def validate_semantics(record):
+def forbidden_field_errors(record):
     errors = []
-
     for key, path in iter_keys(record):
         normalized = key.lower().replace("-", "_")
         for pattern in FORBIDDEN_KEY_PATTERNS:
             if re.search(pattern, normalized):
                 errors.append(f"forbidden public-record field at {path}: {key}")
                 break
+    return errors
+
+
+def validate_declaration_semantics(record):
+    errors = forbidden_field_errors(record)
 
     identity = record.get("public_identity", {})
     if identity.get("identity_mode") == "stable_pseudonym" and identity.get("continuity_acknowledged") is not True:
@@ -86,46 +89,58 @@ def validate_semantics(record):
     return errors
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Validate GroundMesh Human Mesh public declaration records.")
-    parser.add_argument(
-        "paths",
-        nargs="*",
-        default=["docs/human-mesh/examples/synthetic-human.json"],
-        help="Declaration JSON paths. Defaults to the synthetic fixture only.",
-    )
-    args = parser.parse_args()
+def validate_event_semantics(record):
+    errors = forbidden_field_errors(record)
+    authorship = record.get("authorship", {})
+    if authorship.get("self_authored") is not True:
+        errors.append("accountability events must be self-authored")
+    if authorship.get("actor_node_id") != record.get("node_id"):
+        errors.append("accountability event actor_node_id must equal node_id")
+    if record.get("visibility") != "public_by_consent":
+        errors.append("accountability event visibility must be public_by_consent")
+    return errors
 
-    schema_path = pathlib.Path("docs/human-mesh/schema/v0.1.schema.json")
+
+def validate_one(path, schema_path, semantic_fn, label):
+    if not path.is_file():
+        return [f"missing {label}: {path}"]
     if not schema_path.is_file():
-        raise SystemExit(f"missing schema: {schema_path}")
+        return [f"missing schema: {schema_path}"]
 
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     Draft202012Validator.check_schema(schema)
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    record = json.loads(path.read_text(encoding="utf-8"))
+
+    errors = []
+    for error in sorted(validator.iter_errors(record), key=lambda e: list(e.absolute_path)):
+        where = ".".join(str(part) for part in error.absolute_path) or "$"
+        errors.append(f"schema {where}: {error.message}")
+    errors.extend(f"semantic: {error}" for error in semantic_fn(record))
+    return errors
+
+
+def main():
+    declaration_path = pathlib.Path("docs/human-mesh/examples/synthetic-human.json")
+    declaration_schema = pathlib.Path("docs/human-mesh/schema/v0.1.schema.json")
+    event_path = pathlib.Path("docs/human-mesh/examples/synthetic-accountability-event.json")
+    event_schema = pathlib.Path("docs/human-mesh/schema/accountability-event.v0.1.schema.json")
+
+    checks = [
+        (declaration_path, declaration_schema, validate_declaration_semantics, "declaration"),
+        (event_path, event_schema, validate_event_semantics, "accountability event"),
+    ]
 
     failed = False
-    for raw_path in args.paths:
-        path = pathlib.Path(raw_path)
-        if not path.is_file():
-            print(f"missing declaration: {path}")
-            failed = True
-            continue
-
-        record = json.loads(path.read_text(encoding="utf-8"))
-        schema_errors = sorted(validator.iter_errors(record), key=lambda e: list(e.absolute_path))
-        semantic_errors = validate_semantics(record)
-
-        if schema_errors or semantic_errors:
+    for path, schema_path, semantic_fn, label in checks:
+        errors = validate_one(path, schema_path, semantic_fn, label)
+        if errors:
             failed = True
             print(f"Human Mesh validation errors in {path}:")
-            for error in schema_errors:
-                where = ".".join(str(part) for part in error.absolute_path) or "$"
-                print(f"- schema {where}: {error.message}")
-            for error in semantic_errors:
-                print(f"- semantic: {error}")
+            for error in errors:
+                print(f"- {error}")
         else:
-            print(f"Human Mesh declaration OK: {path}")
+            print(f"Human Mesh {label} OK: {path}")
 
     if failed:
         return 1
