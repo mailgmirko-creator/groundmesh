@@ -1,0 +1,252 @@
+{
+  "schema_version": "0.1",
+  "case": {
+    "case_id": "case-room-for-river-waal-m4a",
+    "title": "Room for the River Waal / Nijmegen — M4A Internal Evidence Case",
+    "scope_question": "What do inspectable public records support about the Room for the River Waal project's flood-safety, ecological, and cooperation outcomes, and how should those benefits be weighed against concentrated land, compensation, and public-resource burdens?",
+    "status": "internal_review",
+    "is_synthetic": false,
+    "subject_ids": [
+      "subject-room-for-river-waal"
+    ],
+    "temporal_scope": {
+      "start": "2007-01-01",
+      "end": "2018-12-31"
+    },
+    "geographic_scope": [
+      "Nijmegen and Lent, Netherlands",
+      "Dutch river system"
+    ],
+    "limitations": [
+      "This M4A case focuses on the Nijmegen/Waal intervention while using some programme-level Room for the River evidence for context.",
+      "The evidence documents flood-safety, ecological, and participation outcomes but does not quantify every household's relocation burden, compensation adequacy, or long-term distributional effect.",
+      "The OECD source summarises programme-level outcomes and coordination; it is not a substitute for a full Dutch project audit.",
+      "The case does not attempt a complete lifecycle ecological evaluation, land-value study, or long-term maintenance-cost analysis.",
+      "No Cooperation Index, project score, person score, inferred motive, guilt finding, or moral identity label is supported by this record."
+    ],
+    "correction_path": null,
+    "release": {
+      "release_id": "release-room-for-river-waal-m4a-001",
+      "created_at": "2026-08-25T01:25:00Z",
+      "created_by_ref": "reviewer-ci-research-assist",
+      "previous_release_id": null,
+      "public_release": false
+    }
+  },
+  "subjects": [
+    {
+      "subject_id": "subject-room-for-river-waal",
+      "subject_type": "project",
+      "display_name": "Room for the River Waal / Nijmegen",
+      "public_role_context": "A Dutch flood-adaptation project within the wider Room for the River programme, used here to test project-level evidence about safety, ecological benefit, stakeholder participation, and concentrated land burdens.",
+      "jurisdiction": "Netherlands",
+      "temporal_scope": {
+        "start": "2007-01-01",
+        "end": "2018-12-31"
+      },
+      "notes": [
+        "The case maps the project footprint rather than judging any official, resident, institution, or community.",
+        "No person is a Behavior Atlas subject in this bundle."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source-rfr-rijkswaterstaat",
+      "source_class": "A",
+      "source_type": "filing",
+      "title": "Room for the River",
+      "publisher": "Rijkswaterstaat",
+      "url": "https://www.rijkswaterstaat.nl/en/projects/iconic-structures/room-for-the-river",
+      "archive_url": null,
+      "published_at": null,
+      "accessed_at": "2026-08-25T01:20:00Z",
+      "jurisdiction": "Netherlands",
+      "content_hash": "sha256:d0f22e59ace0ac249539edb73acd1744e675bcd20b96900ca897f2c56e204bd6",
+      "license_notes": "Public Dutch government infrastructure publication. The case retains one short integrity fragment and paraphrased observations.",
+      "handling_notes": "Class A official programme record. The content_hash covers exactly the short excerpt stored in evidence-rfr-national-purpose."
+    },
+    {
+      "source_id": "source-rfr-eea-waal",
+      "source_class": "A",
+      "source_type": "research",
+      "title": "Room for the River Waal – protecting the city of Nijmegen",
+      "publisher": "European Climate-ADAPT / European Environment Agency",
+      "url": "https://climate-adapt.eea.europa.eu/en/metadata/case-studies/room-for-the-river-waal-2013-protecting-the-city-of-nijmegen",
+      "archive_url": null,
+      "published_at": "2016-06-07",
+      "accessed_at": "2026-08-25T01:20:00Z",
+      "jurisdiction": "Netherlands",
+      "content_hash": "sha256:cb8cb434d866db9a25327a31a33d234ca5f0100c199f2a960e247f99b86bc6df",
+      "license_notes": "Public European Climate-ADAPT case-study material. The case retains one short integrity fragment and paraphrased observations.",
+      "handling_notes": "Class A public institutional case study. The content_hash covers exactly the short excerpt stored in evidence-rfr-waal-outcomes-burdens."
+    },
+    {
+      "source_id": "source-rfr-oecd-2026",
+      "source_class": "A",
+      "source_type": "research",
+      "title": "OECD Economic Surveys: Romania 2026 — Box 3.1 Room for the River",
+      "publisher": "OECD",
+      "url": "https://www.oecd.org/en/publications/oecd-economic-surveys-romania-2026_4844067e-en/full-report/enhancing-resilience-to-climate-risks_ae66c1bc.html",
+      "archive_url": null,
+      "published_at": null,
+      "accessed_at": "2026-08-25T01:20:00Z",
+      "jurisdiction": "Netherlands",
+      "content_hash": "sha256:70871cc1e4fe4146a9117c094bbe9d0eb91c960e5473be6808480100049a84ca",
+      "license_notes": "Public OECD economic-survey material. The case retains one short integrity fragment and paraphrased observations.",
+      "handling_notes": "Class A intergovernmental research summary. The content_hash covers exactly the short excerpt stored in evidence-rfr-oecd-programme."
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "evidence-rfr-national-purpose",
+      "source_id": "source-rfr-rijkswaterstaat",
+      "locator": "Rijkswaterstaat Room for the River page, programme purpose and measures",
+      "observation": "Rijkswaterstaat describes Room for the River as a flood-risk reduction programme using measures at 30 locations, including moving dykes inland, building flood channels, and lowering floodplains.",
+      "excerpt": "It aims to reduce the risk of flooding by giving rivers more room to flood.",
+      "captured_at": "2026-08-25T01:22:00Z",
+      "public_safe": true,
+      "handling_notes": "Short official excerpt retained to integrity-check the programme-purpose observation."
+    },
+    {
+      "evidence_id": "evidence-rfr-waal-outcomes-burdens",
+      "source_id": "source-rfr-eea-waal",
+      "locator": "Climate-ADAPT case study, overview, solutions, stakeholder participation, success/limiting factors, and costs/benefits sections",
+      "observation": "The Climate-ADAPT case study records that the main dike at Lent was moved 350 metres inland, a new channel was dug, the project achieved a 35 cm water-height reduction by completion in 2016, stakeholders were engaged through meetings and workshops, and implementation required land expropriation and compensation schemes.",
+      "excerpt": "This involved expropriation of land and compensation schemes.",
+      "captured_at": "2026-08-25T01:22:00Z",
+      "public_safe": true,
+      "handling_notes": "Short excerpt retained to integrity-check the concentrated land-burden observation. The broader observation paraphrases the same institutional case-study record."
+    },
+    {
+      "evidence_id": "evidence-rfr-oecd-programme",
+      "source_id": "source-rfr-oecd-2026",
+      "locator": "OECD Economic Surveys: Romania 2026, Box 3.1 on the Netherlands Room for the River programme",
+      "observation": "OECD summarises the 2006–2018 programme as approximately EUR 2.3 billion, strongly coordinated across levels of government, and associated with improved flood safety, water-retention capacity, and biodiversity.",
+      "excerpt": "the programme significantly improved flood safety, increased water retention capacity, and enhanced biodiversity",
+      "captured_at": "2026-08-25T01:22:00Z",
+      "public_safe": true,
+      "handling_notes": "Short OECD excerpt retained to integrity-check the programme-outcome observation."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-rfr-national-flood-purpose",
+      "statement": "Rijkswaterstaat describes Room for the River as a national flood-risk reduction programme using river-capacity measures at 30 locations.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-room-for-river-waal"],
+      "evidence_links": [{"evidence_id": "evidence-rfr-national-purpose", "relationship": "supports"}],
+      "temporal_scope": {"start": "2007-01-01", "end": "2018-12-31"},
+      "place": "Netherlands",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-rfr-waal-measured-outcome",
+      "statement": "The Climate-ADAPT case study reports that the Nijmegen/Waal project moved the Lent dike 350 metres inland and achieved a 35 cm river water-height reduction by completion in 2016.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-room-for-river-waal"],
+      "evidence_links": [{"evidence_id": "evidence-rfr-waal-outcomes-burdens", "relationship": "supports"}],
+      "temporal_scope": {"start": "2012-01-01", "end": "2016-12-31"},
+      "place": "Nijmegen and Lent, Netherlands",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-rfr-stakeholder-participation",
+      "statement": "The Climate-ADAPT case study reports that local stakeholders were engaged through information meetings and interactive workshops and that broad involvement addressed much of the recorded doubt and opposition.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-room-for-river-waal"],
+      "evidence_links": [{"evidence_id": "evidence-rfr-waal-outcomes-burdens", "relationship": "supports"}],
+      "temporal_scope": {"start": "2012-01-01", "end": "2016-12-31"},
+      "place": "Nijmegen and Lent, Netherlands",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-rfr-land-burden",
+      "statement": "The Nijmegen/Waal intervention involved land expropriation and compensation schemes, concentrating some project burdens on affected landholders and users.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-room-for-river-waal"],
+      "evidence_links": [{"evidence_id": "evidence-rfr-waal-outcomes-burdens", "relationship": "supports"}],
+      "temporal_scope": {"start": "2012-01-01", "end": "2016-12-31"},
+      "place": "Nijmegen and Lent, Netherlands",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    },
+    {
+      "claim_id": "claim-rfr-oecd-programme-outcomes",
+      "statement": "OECD reports that the wider Room for the River programme used approximately EUR 2.3 billion and significantly improved flood safety, water-retention capacity, and biodiversity through strong multi-level coordination.",
+      "claim_kind": "fact",
+      "state": "sourced",
+      "subject_ids": ["subject-room-for-river-waal"],
+      "evidence_links": [{"evidence_id": "evidence-rfr-oecd-programme", "relationship": "supports"}],
+      "temporal_scope": {"start": "2006-01-01", "end": "2018-12-31"},
+      "place": "Netherlands",
+      "reviewer_refs": [],
+      "review_due": null,
+      "supersedes_claim_id": null
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "assessment-rfr-distribution",
+      "lens": "distribution_of_benefits_and_burdens",
+      "direction": "mixed",
+      "confidence": "emerging",
+      "rationale": "The record supports broad flood-safety, ecological, recreational, and water-management benefits, while the Nijmegen intervention imposed concentrated land-acquisition and compensation burdens. The current case does not quantify affected households or compare compensation and long-term benefits on a like-for-like basis, so the distributional direction remains mixed.",
+      "supporting_claim_ids": ["claim-rfr-waal-measured-outcome", "claim-rfr-oecd-programme-outcomes"],
+      "counter_claim_ids": ["claim-rfr-land-burden"],
+      "assessor_refs": ["reviewer-ci-research-assist"],
+      "assessed_at": "2026-08-25T01:26:00Z",
+      "review_due": "2026-11-25"
+    },
+    {
+      "assessment_id": "assessment-rfr-reciprocity-cooperation",
+      "lens": "reciprocity_and_cooperation",
+      "direction": "cooperation_supporting",
+      "confidence": "emerging",
+      "rationale": "The available institutional record describes coordinated action across national, provincial, municipal, and water-governance bodies together with structured local stakeholder participation, while also documenting that the project required expropriation and compensation. This supports an emerging cooperation-supporting pattern without erasing the agency costs borne by directly affected landholders.",
+      "supporting_claim_ids": ["claim-rfr-stakeholder-participation", "claim-rfr-oecd-programme-outcomes"],
+      "counter_claim_ids": ["claim-rfr-land-burden"],
+      "assessor_refs": ["reviewer-ci-research-assist"],
+      "assessed_at": "2026-08-25T01:26:00Z",
+      "review_due": "2026-11-25"
+    }
+  ],
+  "review_events": [
+    {
+      "review_event_id": "review-rfr-m4a-case-created",
+      "target_type": "case",
+      "target_id": "case-room-for-river-waal-m4a",
+      "action": "created",
+      "actor_role": "researcher",
+      "actor_ref": "reviewer-ci-research-assist",
+      "timestamp": "2026-08-25T01:25:00Z",
+      "reason": "Create a third real project-level case for M4A plurality testing from Dutch, European, and OECD public sources, with no public-alpha release.",
+      "changed_fields": ["case", "subjects", "sources", "evidence_items", "claims", "assessments"],
+      "supersedes_record_id": null
+    },
+    {
+      "review_event_id": "review-rfr-m4a-source-closure",
+      "target_type": "case",
+      "target_id": "case-room-for-river-waal-m4a",
+      "action": "sourced",
+      "actor_role": "researcher",
+      "actor_ref": "reviewer-ci-research-assist",
+      "timestamp": "2026-08-25T01:27:00Z",
+      "reason": "Confirm that benefit, cooperation, and concentrated land-burden evidence remain visible together and that the case maps the project footprint without person-level scoring or motive inference.",
+      "changed_fields": ["sources", "evidence_items", "claims", "assessments", "review_events"],
+      "supersedes_record_id": null
+    }
+  ],
+  "correction_requests": []
+}
