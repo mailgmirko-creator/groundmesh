@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://groundmesh.example/human-mesh/schema/accountability-event.v0.1.schema.json",
+  "title": "GroundMesh Human Mesh Self-Authored Accountability Event v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "event_id", "node_id", "event_type", "statement", "authorship", "visibility", "created_at"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "event_id": { "type": "string", "pattern": "^hm-event-[a-z0-9][a-z0-9-]{2,79}$" },
+    "node_id": { "type": "string", "pattern": "^human-[a-z0-9][a-z0-9-]{2,63}$" },
+    "event_type": {
+      "enum": [
+        "commitment",
+        "conflict_disclosure",
+        "correction",
+        "stewardship_action",
+        "withdrawal",
+        "restoration"
+      ]
+    },
+    "statement": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "related_public_refs": {
+      "type": "array",
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 300 }
+    },
+    "authorship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["self_authored", "actor_node_id"],
+      "properties": {
+        "self_authored": { "const": true },
+        "actor_node_id": { "type": "string", "pattern": "^human-[a-z0-9][a-z0-9-]{2,63}$" }
+      }
+    },
+    "visibility": { "const": "public_by_consent" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "supersedes_event_id": { "type": ["string", "null"], "pattern": "^hm-event-[a-z0-9][a-z0-9-]{2,79}$" }
+  }
+}
