@@ -22,6 +22,7 @@
     .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:16px; }
     .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
     .btn { display:inline-block; text-decoration:none; padding:10px 14px; border-radius:10px; border:1px solid #2a2a33; background:#1a1a20; color:var(--text); font-weight:600; }
+    .btn.primary { background:#183126; border-color:#315a48; color:#dffff0; }
     .notice { border-left:4px solid var(--warn); padding-left:12px; color:var(--text); }
     ul { margin:8px 0 0 18px; }
     code { background:rgba(255,255,255,.08); padding:2px 6px; border-radius:6px; }
@@ -43,6 +44,7 @@
         or emergency registration system, and do not send sensitive identity documents.
       </p>
       <div class="cta">
+        <a class="btn primary" href="human-mesh/steward-chair.html">Try the Steward Chair</a>
         <a class="btn" href="human-mesh/index.html">Human Mesh Foundation</a>
         <a class="btn" href="register-pilot.html">Open Pilot Form</a>
         <a class="btn" href="contribute.html">Contributors Hub</a>
@@ -60,6 +62,7 @@
           <li>H1 private lifecycle: candidate → review → correction → withdrawal</li>
           <li>H2 optional one-time invite gate for a bounded reachable cohort</li>
           <li>H3 private steward roster: only active reviewers with recorded explicit role acceptance can record review decisions</li>
+          <li>H3 synthetic Steward Chair: public training UI that writes nothing and publishes nothing</li>
           <li>No automatic public declaration or automatic identity verification</li>
         </ul>
       </article>
@@ -83,6 +86,7 @@
           cannot record a review. Synthetic reviewers prove the mechanism in CI; they do not count as real decentralization.
           Operational plurality begins only when at least two real humans voluntarily accept the reviewer role.
         </p>
+        <p><a href="human-mesh/steward-chair.html">Try the synthetic Steward Chair</a></p>
         <p><a href="human-mesh/h3-steward-role-v0.1.md">Read the H3 steward role and first-human trial</a></p>
       </article>
 
