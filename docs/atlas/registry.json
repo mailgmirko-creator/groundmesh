@@ -244,6 +244,14 @@
       "summary": "Public H0 foundation page for the universal voluntary Human Mesh invitation, two-plane privacy model, Open Accountability Log, and guarded path toward future planetary registration without opening broad intake yet."
     },
     {
+      "id": "PAGE-HUMAN-MESH-STEWARD-CHAIR",
+      "name": "GroundMesh Human Mesh Steward Chair",
+      "type": "page",
+      "status": "active",
+      "path": "docs/human-mesh/steward-chair.html",
+      "summary": "Public H3 synthetic training surface that explains the reviewer role, loads the canonical fictional Human Mesh fixture, and lets a visitor practice approve/pause/reject locally without storing or publishing a decision."
+    },
+    {
       "id": "PAGE-COMPUTE",
       "name": "Compute Transparency",
       "type": "page",
