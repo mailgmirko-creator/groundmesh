@@ -220,6 +220,14 @@
       "summary": "Defines a voluntary planetary human-registry foundation with separate public and private planes, stable identity continuity, coarse location, self-authored accountability events, correction/withdrawal rights, and no computable human-worth score."
     },
     {
+      "id": "GUIDE-HUMAN-MESH-H3-STEWARD-ROLE-V0-1",
+      "name": "Human Mesh H3 Steward Role v0.1",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/human-mesh/h3-steward-role-v0.1.md",
+      "summary": "Defines the voluntary H3 steward role, explicit private acceptance record, bounded reviewer authority, conflict/refusal rights, deactivation, and the first real-human chair test without publication authority."
+    },
+    {
       "id": "PAGE-BEHAVIOR-ATLAS",
       "name": "GroundMesh Behavior Atlas Public Alpha",
       "type": "page",

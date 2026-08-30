@@ -31,6 +31,8 @@ VALIDATOR_PATH = ROOT / "scripts" / "human-mesh-validate.py"
 DECISIONS = {"approve", "pause", "reject"}
 STEWARD_ROLES = {"reviewer", "intake"}
 STEWARD_ID_RE = re.compile(r"^steward-[a-z0-9][a-z0-9-]{1,62}$")
+STEWARD_TERMS_VERSION = "human-mesh-h3-steward-role-v0.1"
+STEWARD_ACCEPTANCE_KINDS = {"human_explicit", "synthetic_fixture"}
 COMMITMENTS = [
     "welcome_corrections",
     "disclose_relevant_conflicts",
@@ -135,11 +137,40 @@ def normalize_steward_id(steward_id: str) -> str:
     return steward_id
 
 
+def make_steward_acceptance(acceptance_kind: str, acceptance_attested: bool, now: str) -> dict:
+    if acceptance_attested is not True:
+        raise ValueError(
+            "steward roles require explicit acceptance; record the role only after the person directly accepts the current H3 steward terms"
+        )
+    if acceptance_kind not in STEWARD_ACCEPTANCE_KINDS:
+        raise ValueError(f"unsupported steward acceptance kind: {acceptance_kind}")
+    basis = "operator_attested_direct_acceptance" if acceptance_kind == "human_explicit" else "synthetic_fixture"
+    return {
+        "explicit": True,
+        "kind": acceptance_kind,
+        "recorded_at": now,
+        "recorded_basis": basis,
+        "terms_version": STEWARD_TERMS_VERSION,
+    }
+
+
+def steward_has_current_acceptance(steward: dict) -> bool:
+    acceptance = steward.get("acceptance")
+    return bool(
+        isinstance(acceptance, dict)
+        and acceptance.get("explicit") is True
+        and acceptance.get("kind") in STEWARD_ACCEPTANCE_KINDS
+        and acceptance.get("terms_version") == STEWARD_TERMS_VERSION
+    )
+
+
 def register_steward(
     workspace: pathlib.Path,
     steward_id: str,
     display_label: str,
     roles: list[str],
+    acceptance_kind: str,
+    acceptance_attested: bool,
 ) -> dict:
     steward_id = normalize_steward_id(steward_id)
     display_label = display_label.strip()[:100]
@@ -151,6 +182,7 @@ def register_steward(
 
     roster = load_steward_roster(workspace)
     now = utc_now()
+    acceptance = make_steward_acceptance(acceptance_kind, acceptance_attested, now)
     found = None
     for item in roster["stewards"]:
         if item.get("steward_id") == steward_id:
@@ -163,6 +195,7 @@ def register_steward(
             "display_label": display_label,
             "roles": normalized_roles,
             "active": True,
+            "acceptance": acceptance,
             "created_at": now,
             "updated_at": now,
         }
@@ -171,6 +204,7 @@ def register_steward(
         found["display_label"] = display_label
         found["roles"] = normalized_roles
         found["active"] = True
+        found["acceptance"] = acceptance
         found["updated_at"] = now
 
     roster["stewards"] = sorted(roster["stewards"], key=lambda item: item["steward_id"])
@@ -198,6 +232,10 @@ def require_active_steward(workspace: pathlib.Path, steward_id: str, role: str) 
             continue
         if item.get("active") is not True:
             raise ValueError(f"steward is inactive: {steward_id}")
+        if not steward_has_current_acceptance(item):
+            raise ValueError(
+                f"steward has no recorded explicit acceptance of {STEWARD_TERMS_VERSION}: {steward_id}; re-add only after direct acceptance"
+            )
         if role not in item.get("roles", []):
             raise ValueError(f"steward {steward_id} lacks required role: {role}")
         return item
@@ -206,7 +244,23 @@ def require_active_steward(workspace: pathlib.Path, steward_id: str, role: str) 
 
 def active_reviewer_count(workspace: pathlib.Path) -> int:
     roster = load_steward_roster(workspace)
-    return sum(1 for item in roster["stewards"] if item.get("active") is True and "reviewer" in item.get("roles", []))
+    return sum(
+        1
+        for item in roster["stewards"]
+        if item.get("active") is True and "reviewer" in item.get("roles", []) and steward_has_current_acceptance(item)
+    )
+
+
+def active_human_reviewer_count(workspace: pathlib.Path) -> int:
+    roster = load_steward_roster(workspace)
+    return sum(
+        1
+        for item in roster["stewards"]
+        if item.get("active") is True
+        and "reviewer" in item.get("roles", [])
+        and steward_has_current_acceptance(item)
+        and item["acceptance"].get("kind") == "human_explicit"
+    )
 
 
 def candidate_files(workspace: pathlib.Path, node_id: str) -> list[pathlib.Path]:
@@ -519,13 +573,73 @@ def run_dry_run() -> None:
         }
         write_json(submission_path, submission)
 
-        reviewer_a = register_steward(workspace, "steward-synthetic-a", "Synthetic Reviewer A", ["reviewer", "intake"])
-        reviewer_b = register_steward(workspace, "steward-synthetic-b", "Synthetic Reviewer B", ["reviewer"])
-        register_steward(workspace, "steward-intake-only", "Synthetic Intake Only", ["intake"])
-        register_steward(workspace, "steward-inactive", "Synthetic Inactive Reviewer", ["reviewer"])
+        missing_acceptance_rejected = False
+        try:
+            register_steward(
+                workspace,
+                "steward-unaccepted-cli-shape",
+                "Must Not Be Added",
+                ["reviewer"],
+                "human_explicit",
+                False,
+            )
+        except ValueError as exc:
+            missing_acceptance_rejected = "explicit acceptance" in str(exc)
+        if not missing_acceptance_rejected:
+            raise AssertionError("H3 allowed steward registration without explicit role acceptance")
+
+        reviewer_a = register_steward(
+            workspace,
+            "steward-synthetic-a",
+            "Synthetic Reviewer A",
+            ["reviewer", "intake"],
+            "synthetic_fixture",
+            True,
+        )
+        reviewer_b = register_steward(
+            workspace,
+            "steward-synthetic-b",
+            "Synthetic Reviewer B",
+            ["reviewer"],
+            "synthetic_fixture",
+            True,
+        )
+        register_steward(
+            workspace,
+            "steward-intake-only",
+            "Synthetic Intake Only",
+            ["intake"],
+            "synthetic_fixture",
+            True,
+        )
+        register_steward(
+            workspace,
+            "steward-inactive",
+            "Synthetic Inactive Reviewer",
+            ["reviewer"],
+            "synthetic_fixture",
+            True,
+        )
         deactivate_steward(workspace, "steward-inactive")
+
+        roster = load_steward_roster(workspace)
+        now = utc_now()
+        roster["stewards"].append(
+            {
+                "steward_id": "steward-legacy-unaccepted",
+                "display_label": "Legacy Unaccepted Reviewer",
+                "roles": ["reviewer"],
+                "active": True,
+                "created_at": now,
+                "updated_at": now,
+            }
+        )
+        save_steward_roster(workspace, roster)
+
         if active_reviewer_count(workspace) != 2:
-            raise AssertionError("H3 roster did not retain two active reviewers")
+            raise AssertionError("H3 accepted-reviewer count should ignore inactive and unaccepted roster entries")
+        if active_human_reviewer_count(workspace) != 0:
+            raise AssertionError("synthetic reviewers must not count as real-human operational plurality")
 
         candidate_path = prepare_candidate(
             submission_path=submission_path,
@@ -573,7 +687,12 @@ def run_dry_run() -> None:
         if any(item["publication"] != "not_authorized" for item in (pause, reject, approve)):
             raise AssertionError("steward decision unexpectedly granted publication authority")
 
-        for unauthorized_id in ("steward-unknown", "steward-inactive", "steward-intake-only"):
+        for unauthorized_id in (
+            "steward-unknown",
+            "steward-inactive",
+            "steward-intake-only",
+            "steward-legacy-unaccepted",
+        ):
             rejected = False
             try:
                 record_decision(workspace, first["node_id"], "approve", unauthorized_id, "must fail")
@@ -627,7 +746,8 @@ def run_dry_run() -> None:
             raise AssertionError("decision provenance does not show both active reviewers")
 
         print("Human Mesh H1/H3 synthetic lifecycle OK")
-        print("two active reviewers -> bounded decisions -> unauthorized rejection -> correction -> fresh review -> withdrawal")
+        print("two explicitly accepted synthetic reviewers -> bounded decisions -> unauthorized rejection -> correction -> fresh review -> withdrawal")
+        print("Synthetic reviewers do not count as real-human operational plurality.")
         print("No public file was created; all steward decisions remain publication:not_authorized.")
 
 
@@ -681,6 +801,7 @@ def command_status(args) -> None:
     workspace = pathlib.Path(args.workspace)
     path, candidate = latest_candidate(workspace, args.node_id)
     reviewers = active_reviewer_count(workspace)
+    human_reviewers = active_human_reviewer_count(workspace)
     output = {
         "candidate_file": str(path),
         "node_id": args.node_id,
@@ -688,14 +809,22 @@ def command_status(args) -> None:
         "lifecycle": candidate["lifecycle"]["status"],
         "decision_history": decision_history(workspace, args.node_id),
         "active_reviewer_count": reviewers,
-        "operational_plurality_capable": reviewers >= 2,
+        "active_human_reviewer_count": human_reviewers,
+        "operational_plurality_capable": human_reviewers >= 2,
         "publication": "not_authorized",
     }
     print(json.dumps(output, indent=2))
 
 
 def command_steward_add(args) -> None:
-    steward = register_steward(pathlib.Path(args.workspace), args.steward_id, args.label, args.role)
+    steward = register_steward(
+        pathlib.Path(args.workspace),
+        args.steward_id,
+        args.label,
+        args.role,
+        "human_explicit",
+        args.accepted_by_human,
+    )
     print(json.dumps(steward, indent=2))
 
 
@@ -707,10 +836,13 @@ def command_steward_deactivate(args) -> None:
 def command_steward_list(args) -> None:
     workspace = pathlib.Path(args.workspace)
     roster = load_steward_roster(workspace)
+    reviewer_count = active_reviewer_count(workspace)
+    human_reviewer_count = active_human_reviewer_count(workspace)
     print(json.dumps({
         **roster,
-        "active_reviewer_count": active_reviewer_count(workspace),
-        "operational_plurality_capable": active_reviewer_count(workspace) >= 2,
+        "active_reviewer_count": reviewer_count,
+        "active_human_reviewer_count": human_reviewer_count,
+        "operational_plurality_capable": human_reviewer_count >= 2,
     }, indent=2))
 
 
@@ -733,7 +865,7 @@ def build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--affirmed-at", default=utc_now())
     prepare.add_argument("--participant-consent", action="store_true", help="attest that the participant explicitly approved the selected public fields and H0 consent terms")
 
-    decide = sub.add_parser("decide", help="record a private decision by an active rostered reviewer; never publishes")
+    decide = sub.add_parser("decide", help="record a private decision by an active, explicitly accepted rostered reviewer; never publishes")
     decide.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
     decide.add_argument("--node-id", required=True)
     decide.add_argument("--decision", choices=sorted(DECISIONS), required=True)
@@ -760,17 +892,22 @@ def build_parser() -> argparse.ArgumentParser:
     status.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
     status.add_argument("--node-id", required=True)
 
-    steward_add = sub.add_parser("steward-add", help="add or reactivate a private H3 steward")
+    steward_add = sub.add_parser("steward-add", help="add or reactivate a private H3 steward after explicit human role acceptance")
     steward_add.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
     steward_add.add_argument("--steward-id", required=True)
     steward_add.add_argument("--label", required=True)
     steward_add.add_argument("--role", action="append", choices=sorted(STEWARD_ROLES), required=True)
+    steward_add.add_argument(
+        "--accepted-by-human",
+        action="store_true",
+        help=f"attest that the steward directly and explicitly accepted the assigned roles under {STEWARD_TERMS_VERSION}",
+    )
 
     steward_deactivate = sub.add_parser("steward-deactivate", help="deactivate a private H3 steward without deleting provenance")
     steward_deactivate.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
     steward_deactivate.add_argument("--steward-id", required=True)
 
-    steward_list = sub.add_parser("steward-list", help="show the private H3 steward roster and reviewer capacity")
+    steward_list = sub.add_parser("steward-list", help="show the private H3 steward roster and accepted real-human reviewer capacity")
     steward_list.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
     return parser
 
