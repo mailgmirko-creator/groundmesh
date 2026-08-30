@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-30T12:08:00Z",
+  "updated_utc": "2026-08-30T12:45:16Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -63,7 +63,7 @@
     },
     "human_mesh_h3_multi_steward": {
       "status": "yellow",
-      "note": "Private multi-steward review capability is implemented: decisions require an active rostered reviewer and retain steward-id provenance, while intake begins unassigned. Operational plurality is not claimed until at least two real human reviewers have explicitly accepted the role; synthetic CI reviewers do not count."
+      "note": "Private multi-steward review capability is implemented: decisions require an active rostered reviewer with recorded explicit acceptance of the current H3 steward-role terms and retain steward-id provenance, while intake begins unassigned. Synthetic reviewers test the mechanism but do not count toward operational plurality. H3 remains yellow until at least two real human reviewers have explicitly accepted the role."
     },
     "get_started_page": {
       "status": "green",
