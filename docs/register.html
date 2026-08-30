@@ -9,7 +9,7 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <script src="./assets/pwa-init.js" defer></script>
   <style>
-    :root { --bg:#0b0b0c; --card:#141417; --text:#e9e9ee; --muted:#b8b8c3; --line:#23232a; --accent:#6ee7b7; --accent2:#93c5fd; --warn:#ffd7a8; }
+    :root { --bg:#0b0b0c; --card:#141417; --text:#e9e9ee; --muted:#b8b8c3; --line:#23232a; --accent:#6ee7b7; --warn:#ffd7a8; }
     * { box-sizing:border-box; }
     body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif; line-height:1.5; }
     .wrap { max-width:980px; margin:0 auto; padding:28px 20px 56px; }
@@ -31,20 +31,20 @@
   <div class="wrap">
     <section class="hero">
       <div class="eyebrow">Registration status</div>
-      <h1>GroundMesh registration is not broadly open yet.</h1>
+      <h1>GroundMesh registration is real in pilot form, but not globally open.</h1>
       <p>
-        GroundMesh intends to support voluntary declared joining for any human who chooses it. The
-        long-range architecture is now described as the <strong>Human Mesh</strong>, but real intake must still
-        begin through careful pilots with moderation, privacy, consent, correction, removal, and rollback
-        gates behind it.
+        Human Mesh now has a validated public-record foundation and a private trusted-circle lifecycle for
+        candidate creation, steward review, correction, and withdrawal. The next bounded mode uses one-time
+        invitations so a pilot may be publicly reachable without becoming unrestricted registration.
       </p>
       <p class="notice">
-        For now, use the current public paths below. Do not treat this site as a confidential
-        intake or emergency registration system, and do not send sensitive identity documents.
+        H4 global open invitation is still closed. Do not treat this site as a confidential identity intake
+        or emergency registration system, and do not send sensitive identity documents.
       </p>
       <div class="cta">
         <a class="btn" href="human-mesh/index.html">Human Mesh Foundation</a>
-        <a class="btn" href="contribute.html">Open Contributors Hub</a>
+        <a class="btn" href="register-pilot.html">Open Pilot Form</a>
+        <a class="btn" href="contribute.html">Contributors Hub</a>
         <a class="btn" href="contact.html">Contact GroundMesh</a>
         <a class="btn" href="privacy.html">Privacy</a>
         <a class="btn" href="atlas/index.html">Atlas</a>
@@ -53,54 +53,59 @@
 
     <section class="grid">
       <article class="card">
-        <h2>What works right now</h2>
+        <h2>What works now</h2>
         <ul>
-          <li>First contact through the public contact page</li>
-          <li>Low-friction participation through the contributors hub</li>
-          <li>Public map pin requests with explicit consent</li>
-          <li>Builder participation through <code>Get Started</code></li>
-          <li>A machine-validated Human Mesh public-record foundation, using fictional fixtures only</li>
+          <li>Human Mesh H0 declaration and accountability-event contracts with CI guardrails</li>
+          <li>H1 private trusted-circle lifecycle: candidate → review → correction → withdrawal</li>
+          <li>The same pilot form can detect whether a steward-run intake host is active</li>
+          <li>First contact through ordinary email, contributors, map, and builder paths</li>
+          <li>No automatic public declaration or automatic identity verification</li>
         </ul>
       </article>
 
       <article class="card">
-        <h2>If you want to signal interest now</h2>
+        <h2>Limited invitation</h2>
         <p>
-          Use a minimal first-contact note rather than sending sensitive identity material. A good
-          first message is enough to say your region or country, what kind of participation you are
+          When the steward explicitly activates H2 mode, the same pilot server accepts only valid local
+          invite codes. Codes may expire or be one-use, are stored only as hashes, and are not copied into
+          participant records. A valid invite opens the intake door; it does not guarantee acceptance or publication.
+        </p>
+        <p><a href="register-pilot.html">Open the pilot form</a></p>
+      </article>
+
+      <article class="card">
+        <h2>If you want to signal interest without an invite</h2>
+        <p>
+          Send only a minimal first-contact note: your region or country, the kind of participation you are
           interested in, and whether you prefer public, pseudonymous, or private follow-up.
         </p>
         <p>
           <a href="mailto:mailgmirko@gmail.com?subject=GroundMesh%20Registration%20Interest&body=Region%20or%20country%3A%20%0AParticipation%20type%20(public%20declaration%2C%20pseudonymous%2C%20builder%2C%20local%20circle)%3A%20%0AContact%20preference%3A%20%0ANote%20(optional)%3A%20%0A%0AConsent%3A%20I%20understand%20this%20is%20ordinary%20email%20and%20not%20a%20confidential%20intake%20channel.">Send a minimal interest note</a>
         </p>
-        <p><a href="contact.html">Open Contact</a> · <a href="privacy.html">Open Privacy</a></p>
-        <p><a href="checklists/Registration_Interest_Triage_Checklist.md">Read the current handling checklist</a></p>
-        <p><a href="register-pilot.html">Open the invited-circle pilot form</a></p>
+        <p><a href="checklists/Registration_Interest_Triage_Checklist.md">Read the handling checklist</a></p>
       </article>
 
       <article class="card">
-        <h2>What is not open yet</h2>
+        <h2>What is not open</h2>
         <ul>
-          <li>Broad public registration at planetary scale</li>
-          <li>Confidential or sensitive identity intake on the static docs site</li>
-          <li>Automatic acceptance or automatic identity verification</li>
-          <li>Importing or scraping people from outside datasets</li>
-          <li>Any person score, reputation rank, moral label, or social-credit gate</li>
+          <li>Unrestricted planetary registration</li>
+          <li>Automatic acceptance or automatic publication</li>
+          <li>Confidential identity-document intake on the static site</li>
+          <li>Scraping or importing people from external datasets</li>
+          <li>Person scores, reputation ranks, moral labels, or social-credit gates</li>
         </ul>
       </article>
 
       <article class="card">
-        <h2>How it will open</h2>
+        <h2>How expansion stays guarded</h2>
         <p>
-          Human Mesh v0.1 defines the long-range public record and accountability-event contracts, but
-          ADR-0005 still controls operations: the first real registration path stays narrow until scope,
-          consent, moderation, operations, and rollback are honestly green.
+          ADR-0005 and the Human Mesh rollout remain binding: expansion follows demonstrated handling,
+          not excitement alone. H2 remains a limited cohort; H3 adds independent stewardship capacity;
+          H4 is the later universal open invitation.
         </p>
         <p><a href="human-mesh/foundation-v0.1.md">Read the Human Mesh foundation</a></p>
-        <p><a href="decisions/0005-public-registration-pilot.md">Read the pilot decision</a></p>
+        <p><a href="decisions/0005-public-registration-pilot.md">Read ADR-0005</a></p>
         <p><a href="checklists/Registration_Pilot_Readiness_Checklist.md">Read the readiness checklist</a></p>
-        <p><a href="templates/Registration_Pilot_Scope_Canvas.md">Read the pilot scope canvas</a></p>
-        <p><a href="templates/Registration_Pilot_Record.md">Read the participant record template</a></p>
       </article>
     </section>
   </div>
