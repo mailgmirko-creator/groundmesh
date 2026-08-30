@@ -31,7 +31,7 @@
     },
     "node_claims": {
       "status": "green",
-      "note": "Append-only public claim feed shows when a light node has taken bounded ownership of an assignment before reporting a bounded assignment outcome"
+      "note": "Append-only public claim feed shows when a light node has taken bounded ownership of an assignment before reporting the result"
     },
     "node_acks": {
       "status": "green",
