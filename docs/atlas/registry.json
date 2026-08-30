@@ -212,12 +212,28 @@
       ]
     },
     {
+      "id": "GUIDE-HUMAN-MESH-V0-1",
+      "name": "GroundMesh Human Mesh Foundation v0.1",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/human-mesh/foundation-v0.1.md",
+      "summary": "Defines a voluntary planetary human-registry foundation with separate public and private planes, stable identity continuity, coarse location, self-authored accountability events, correction/withdrawal rights, and no computable human-worth score."
+    },
+    {
       "id": "PAGE-BEHAVIOR-ATLAS",
       "name": "GroundMesh Behavior Atlas Public Alpha",
       "type": "page",
       "status": "active",
       "path": "docs/behavior-atlas/index.html",
       "summary": "Evidence-first M4 public-alpha front door for three project-level cases, with source trails, counterevidence, correction paths, review-due expiry handling, privacy/harm review, and rollback safeguards."
+    },
+    {
+      "id": "PAGE-HUMAN-MESH",
+      "name": "GroundMesh Human Mesh Foundation",
+      "type": "page",
+      "status": "active",
+      "path": "docs/human-mesh/index.html",
+      "summary": "Public H0 foundation page for the universal voluntary Human Mesh invitation, two-plane privacy model, Open Accountability Log, and guarded path toward future planetary registration without opening broad intake yet."
     },
     {
       "id": "PAGE-COMPUTE",
@@ -298,6 +314,22 @@
       "status": "active",
       "path": "docs/world.html",
       "summary": "Lightweight public world view joining dated evidence-backed global needs with current GroundMesh participation paths and the consent-first coordination loop."
+    },
+    {
+      "id": "SCHEMA-HUMAN-MESH-ACCOUNTABILITY-V0-1",
+      "name": "Human Mesh Accountability Event Schema v0.1",
+      "type": "schema",
+      "status": "active",
+      "path": "docs/human-mesh/schema/accountability-event.v0.1.schema.json",
+      "summary": "Machine contract for voluntary self-authored public commitments, conflict disclosures, corrections, stewardship actions, withdrawals, and restorations without system-generated moral judgment."
+    },
+    {
+      "id": "SCHEMA-HUMAN-MESH-V0-1",
+      "name": "Human Mesh Public Declaration Schema v0.1",
+      "type": "schema",
+      "status": "active",
+      "path": "docs/human-mesh/schema/v0.1.schema.json",
+      "summary": "Machine contract for minimal consented human-node declarations using stable public identity or pseudonym, coarse location, explicit consent, lifecycle state, and provenance while excluding sensitive identity data and scores."
     },
     {
       "id": "STATUS-PUBLIC",

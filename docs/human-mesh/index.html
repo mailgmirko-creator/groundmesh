@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GroundMesh Human Mesh — Foundation</title>
+  <meta name="theme-color" content="#1f5c46" />
+  <link rel="icon" href="../assets/gm-app-icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="../manifest.webmanifest" />
+  <script src="../assets/pwa-init.js" defer></script>
+  <style>
+    :root { --bg:#0b0b0c; --card:#141417; --text:#e9e9ee; --muted:#b8b8c3; --line:#2b2b33; --accent:#6ee7b7; --warn:#f7c873; --soft:#101c18; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif; line-height:1.55; }
+    .wrap { max-width:1000px; margin:0 auto; padding:30px 20px 64px; }
+    h1 { font-size:clamp(1.9rem,4vw,3.2rem); line-height:1.1; margin:8px 0 12px; }
+    h2 { font-size:1.18rem; margin:0 0 10px; }
+    p, li { color:var(--muted); }
+    a { color:#a7f3d0; }
+    .eyebrow { color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-size:.8rem; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; margin-top:14px; }
+    .hero { background:var(--soft); border-color:#244a3d; }
+    .warning { border-color:#6c5730; background:#19160f; }
+    .warning strong { color:var(--warn); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+    .pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:5px 9px; margin:4px 5px 0 0; color:var(--muted); font-size:.86rem; }
+    .btn { display:inline-block; text-decoration:none; padding:10px 14px; border-radius:10px; border:1px solid #345c4e; background:#15231e; color:#d9fff0; font-weight:700; margin:8px 8px 0 0; }
+    code { background:rgba(255,255,255,.08); padding:2px 6px; border-radius:6px; }
+    blockquote { margin:12px 0 0; padding:10px 14px; border-left:3px solid #3d705f; background:#101412; color:#d6d6dc; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="eyebrow">GroundMesh Human Mesh · H0 Foundation</div>
+    <h1>Every human may connect. No human is compelled to connect.</h1>
+    <p>The Human Mesh is the long-range GroundMesh foundation for voluntary planetary presence: a way for people to declare themselves, find one another, make chosen responsibility visible, correct themselves in public when needed, and leave without becoming a score in somebody else's machine.</p>
+
+    <section class="card warning">
+      <h2><strong>Foundation only — global registration is not open yet</strong></h2>
+      <p>This page defines the architecture we intend to grow into. Broad planetary intake remains closed under ADR-0005 until moderation, privacy, consent, correction/removal, operations, and rollback are proven through smaller pilots.</p>
+      <span class="pill">voluntary</span><span class="pill">no person scoring</span><span class="pill">no forced legal-name exposure</span><span class="pill">coarse location only</span>
+    </section>
+
+    <section class="card hero">
+      <h2>The inversion we are aiming for</h2>
+      <p>GroundMesh should make hidden power and public stewardship easier to inspect without making private human life easier to harvest.</p>
+      <blockquote>Make voluntary responsibility easier to see; never make human worth computable.</blockquote>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>1. Public declaration plane</h2>
+        <p>A minimal public record: stable GroundMesh node id, public name or stable pseudonym, country/region/city-level location, optional statement, explicit consent, and lifecycle state.</p>
+        <p>No passport, government ID, home address, private contact details, biometrics, birth date, hidden profile, or inferred sensitive traits.</p>
+      </article>
+
+      <article class="card">
+        <h2>2. Private enrollment plane</h2>
+        <p>If stronger continuity or verification is ever needed, it belongs in a separate hardened service—not in this static public site or public ledger. Verification must be proportional to the task and must not become a worth hierarchy.</p>
+      </article>
+
+      <article class="card">
+        <h2>3. Open Accountability Log</h2>
+        <p>Instead of a system deciding who is "light" or "dark," a participant may voluntarily publish self-authored commitments, relevant conflict disclosures, corrections, stewardship actions, withdrawals, and restorations.</p>
+        <p>The system preserves provenance. It does not calculate virtue.</p>
+      </article>
+
+      <article class="card">
+        <h2>4. Right to correct and leave</h2>
+        <p>Participation is not a trap. Records are versioned. Correction and withdrawal are first-class lifecycle actions. Pausing participation must not become a shame label or loss of dignity.</p>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>What "everyone" means here</h2>
+      <p>The invitation is universal, not compulsory. GroundMesh may eventually make registration easy enough that any person on Earth can declare presence, but browsing the site, appearing in public records, or being imported from another dataset can never count as consent.</p>
+      <p><strong>GroundMesh must never scrape people into the Human Mesh.</strong></p>
+    </section>
+
+    <section class="card">
+      <h2>Identity continuity without mandatory legal names</h2>
+      <p>A participant may use a public name or a stable pseudonym. The requirement is continuity: one declared identity should not become a disposable mask for evading accountability or manipulating decisions. Legal-name verification, if ever needed for a specific role, belongs to the separate private plane.</p>
+    </section>
+
+    <section class="card">
+      <h2>Location without unnecessary exposure</h2>
+      <p>The public contract only allows <code>country</code>, <code>region</code>, or <code>city</code> precision. Exact residence coordinates and home addresses do not belong in the Human Mesh public record.</p>
+    </section>
+
+    <section class="card">
+      <h2>Foundation machinery already present</h2>
+      <ul>
+        <li>Human Mesh Foundation v0.1 architecture</li>
+        <li>Draft 2020-12 public declaration schema</li>
+        <li>Draft 2020-12 self-authored accountability-event schema</li>
+        <li>fictional synthetic fixtures only</li>
+        <li>semantic validator that rejects sensitive-data and person-scoring field patterns</li>
+        <li>CI gate before later record formats can enter the project</li>
+      </ul>
+      <a class="btn" href="foundation-v0.1.md">Read the full foundation</a>
+      <a class="btn" href="schema/v0.1.schema.json">Public declaration schema</a>
+      <a class="btn" href="schema/accountability-event.v0.1.schema.json">Accountability event schema</a>
+    </section>
+
+    <section class="card warning">
+      <h2>Want to connect now?</h2>
+      <p>The planetary registry itself is not open. Use the existing Registration Status path to signal interest without sending sensitive identity material. The small invited-circle pilot remains the only real registration experiment currently defined.</p>
+      <a class="btn" href="../register.html">Registration Status</a>
+      <a class="btn" href="../privacy.html">Privacy</a>
+      <a class="btn" href="../ledger/index.html">Global Node Ledger prototype</a>
+    </section>
+  </main>
+</body>
+</html>

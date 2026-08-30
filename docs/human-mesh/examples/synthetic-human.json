@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "node_id": "human-example-001",
+  "node_type": "human",
+  "public_identity": {
+    "display_name": "River Lantern",
+    "identity_mode": "stable_pseudonym",
+    "continuity_acknowledged": true
+  },
+  "location": {
+    "precision": "region",
+    "label": "Fictional North Coast",
+    "country_code": "ZZ"
+  },
+  "public_statement": "I choose to be visible here as a fictional test participant for a consent-first planetary registry.",
+  "accountability_commitments": [
+    "welcome_corrections",
+    "disclose_relevant_conflicts",
+    "publish_material_corrections",
+    "respect_voluntary_participation",
+    "avoid_person_scoring"
+  ],
+  "consent": {
+    "public_fields": true,
+    "location_precision": true,
+    "provenance_history": true,
+    "rules_version": "human-mesh-foundation-v0.1",
+    "right_to_correct_withdraw": true,
+    "affirmed_at": "2026-08-25T12:05:00Z"
+  },
+  "lifecycle": {
+    "status": "candidate",
+    "effective_at": "2026-08-25T12:05:00Z"
+  },
+  "provenance": {
+    "record_version": 1,
+    "created_at": "2026-08-25T12:05:00Z",
+    "created_by": "synthetic-fixture",
+    "supersedes_record_version": null
+  }
+}

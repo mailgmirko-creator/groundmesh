@@ -3,6 +3,7 @@
 ## How we work (directives)
 - Atlas-first: Consult docs/atlas/registry.json + Atlas page before adding or changing anything.
 - Coordination-field first: Before adding need/capacity matching, allocation, metric, or scoring logic, read `docs/coordination/coordination-field.md` and `docs/coordination/coordination-field.v0.1.json`; preserve consent, context, evidence provenance, non-capture, no person-worth scoring, and no autonomous allocation.
+- Human-Mesh first: Before changing registration, human identity, public human-ledger fields, verification, accountability events, participant visibility, correction, withdrawal, or global enrollment, read `docs/human-mesh/foundation-v0.1.md` together with ADR-0005. Keep public declaration data minimal, keep sensitive enrollment separate, never scrape people into the registry, never compute human worth, and do not open broad intake from the static docs layer.
 - Constitutional stewardship first: Before changing governance, administrator authority, repository ownership, constitutional voting, key custody, domain control, steward succession, suspension, or removal, read `docs/decisions/0007-bootstrap-stewardship-constitutional-authority.md`; distinguish technical control from constitutional legitimacy and preserve the invariant core.
 - Smallest safe change: Prefer incremental, reversible edits.
 - Small batches: Prefer one meaningful chunk at a time, then summarize what changed and what remains next.
@@ -18,6 +19,7 @@
 - Stabilize public docs (Home, Get Started, Contributors, Map, Compute, Atlas, Landscape, Contact, Privacy).
 - Surface existing donate/volunteer flow; avoid re-invention and avoid repo drift.
 - Treat future registration as a narrow pilot with real moderation, privacy, and rollback gates rather than a broad launch.
+- Grow Human Mesh through H0/H1 guarded stages: universal voluntary invitation in principle, small real cohorts in practice until handling capacity is proven.
 
 ## Golden links
 - Get Started: /get-started/index.html
@@ -25,6 +27,8 @@
 - Landscape: /landscape.html
 - Contributors: /contribute.html
 - Map: /map.html
+- Human Mesh: /human-mesh/index.html
+- Registration: /register.html
 - Contact: /contact.html
 - Privacy: /privacy.html
 - Compute Transparency: /compute.html
