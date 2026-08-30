@@ -33,9 +33,10 @@
       <div class="eyebrow">Registration status</div>
       <h1>GroundMesh registration is real in pilot form, but not globally open.</h1>
       <p>
-        Human Mesh now has a validated public-record foundation and a private trusted-circle lifecycle for
-        candidate creation, steward review, correction, and withdrawal. The next bounded mode uses one-time
-        invitations so a pilot may be publicly reachable without becoming unrestricted registration.
+        Human Mesh has a validated public-record foundation, a private participant lifecycle, bounded one-time
+        invitations, and a private rostered-reviewer capability. New intake begins unassigned rather than being
+        pre-owned by one steward. Real multi-steward operation is not claimed until at least two actual humans
+        have explicitly accepted reviewer roles.
       </p>
       <p class="notice">
         H4 global open invitation is still closed. Do not treat this site as a confidential identity intake
@@ -56,9 +57,9 @@
         <h2>What works now</h2>
         <ul>
           <li>Human Mesh H0 declaration and accountability-event contracts with CI guardrails</li>
-          <li>H1 private trusted-circle lifecycle: candidate → review → correction → withdrawal</li>
-          <li>The same pilot form can detect whether a steward-run intake host is active</li>
-          <li>First contact through ordinary email, contributors, map, and builder paths</li>
+          <li>H1 private lifecycle: candidate → review → correction → withdrawal</li>
+          <li>H2 optional one-time invite gate for a bounded reachable cohort</li>
+          <li>H3 private steward roster: only active rostered reviewers can record review decisions</li>
           <li>No automatic public declaration or automatic identity verification</li>
         </ul>
       </article>
@@ -66,11 +67,21 @@
       <article class="card">
         <h2>Limited invitation</h2>
         <p>
-          When the steward explicitly activates H2 mode, the same pilot server accepts only valid local
+          When a steward explicitly activates H2 mode, the same pilot server accepts only valid local
           invite codes. Codes may expire or be one-use, are stored only as hashes, and are not copied into
           participant records. A valid invite opens the intake door; it does not guarantee acceptance or publication.
         </p>
         <p><a href="register-pilot.html">Open the pilot form</a></p>
+      </article>
+
+      <article class="card">
+        <h2>Multi-steward boundary</h2>
+        <p>
+          The H3 machinery can authorize more than one reviewer and preserves which steward made each decision.
+          Unknown, inactive, or non-reviewer identities cannot record a review. Synthetic reviewers prove the
+          mechanism in CI; they do not count as real decentralization. Operational plurality begins only when
+          at least two real humans voluntarily accept the reviewer role.
+        </p>
       </article>
 
       <article class="card">
@@ -100,8 +111,8 @@
         <h2>How expansion stays guarded</h2>
         <p>
           ADR-0005 and the Human Mesh rollout remain binding: expansion follows demonstrated handling,
-          not excitement alone. H2 remains a limited cohort; H3 adds independent stewardship capacity;
-          H4 is the later universal open invitation.
+          not excitement alone. H3 supplies the reviewer-plurality machinery, but H4 universal open invitation
+          waits for real multi-steward capacity, abuse handling, privacy, rollback, and operating experience.
         </p>
         <p><a href="human-mesh/foundation-v0.1.md">Read the Human Mesh foundation</a></p>
         <p><a href="decisions/0005-public-registration-pilot.md">Read ADR-0005</a></p>

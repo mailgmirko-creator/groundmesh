@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""GroundMesh Human Mesh H1 local pilot lifecycle bridge.
+"""GroundMesh Human Mesh H1-H3 local lifecycle bridge.
 
-This intentionally has no publish command. It reads an existing local invited-circle
-registration submission, creates only a participant-approved public candidate draft,
-and keeps candidates / decisions / event drafts inside the gitignored local pilot
-workspace.
+This intentionally has no publish command. It reads an existing local registration
+submission, creates only a participant-approved public candidate draft, and keeps
+candidates, steward decisions, accountability-event drafts, and the H3 steward roster
+inside the gitignored local pilot workspace.
 
 Run `python scripts/human-mesh-pilot-cycle.py dry-run` for the synthetic CI cycle.
 """
@@ -29,6 +29,8 @@ EVENT_SCHEMA = ROOT / "docs" / "human-mesh" / "schema" / "accountability-event.v
 VALIDATOR_PATH = ROOT / "scripts" / "human-mesh-validate.py"
 
 DECISIONS = {"approve", "pause", "reject"}
+STEWARD_ROLES = {"reviewer", "intake"}
+STEWARD_ID_RE = re.compile(r"^steward-[a-z0-9][a-z0-9-]{1,62}$")
 COMMITMENTS = [
     "welcome_corrections",
     "disclose_relevant_conflicts",
@@ -90,6 +92,7 @@ def workspace_paths(workspace: pathlib.Path) -> dict[str, pathlib.Path]:
         "decisions": workspace / "decisions",
         "events": workspace / "events",
         "index": workspace / "index.json",
+        "stewards": workspace / "stewards.json",
     }
 
 
@@ -105,6 +108,105 @@ def load_index(workspace: pathlib.Path) -> dict:
 
 def save_index(workspace: pathlib.Path, index: dict) -> None:
     write_json(workspace_paths(workspace)["index"], index)
+
+
+def empty_steward_roster() -> dict:
+    return {"version": 1, "stewards": []}
+
+
+def load_steward_roster(workspace: pathlib.Path) -> dict:
+    path = workspace_paths(workspace)["stewards"]
+    if not path.is_file():
+        return empty_steward_roster()
+    roster = load_json(path)
+    if roster.get("version") != 1 or not isinstance(roster.get("stewards"), list):
+        raise ValueError("private steward roster is malformed")
+    return roster
+
+
+def save_steward_roster(workspace: pathlib.Path, roster: dict) -> None:
+    write_json(workspace_paths(workspace)["stewards"], roster)
+
+
+def normalize_steward_id(steward_id: str) -> str:
+    steward_id = steward_id.strip().lower()
+    if not STEWARD_ID_RE.fullmatch(steward_id):
+        raise ValueError("steward id must match steward-<lowercase-stable-id>")
+    return steward_id
+
+
+def register_steward(
+    workspace: pathlib.Path,
+    steward_id: str,
+    display_label: str,
+    roles: list[str],
+) -> dict:
+    steward_id = normalize_steward_id(steward_id)
+    display_label = display_label.strip()[:100]
+    if not display_label:
+        raise ValueError("steward display label is required")
+    normalized_roles = sorted(set(roles))
+    if not normalized_roles or any(role not in STEWARD_ROLES for role in normalized_roles):
+        raise ValueError(f"steward roles must be drawn from: {', '.join(sorted(STEWARD_ROLES))}")
+
+    roster = load_steward_roster(workspace)
+    now = utc_now()
+    found = None
+    for item in roster["stewards"]:
+        if item.get("steward_id") == steward_id:
+            found = item
+            break
+
+    if found is None:
+        found = {
+            "steward_id": steward_id,
+            "display_label": display_label,
+            "roles": normalized_roles,
+            "active": True,
+            "created_at": now,
+            "updated_at": now,
+        }
+        roster["stewards"].append(found)
+    else:
+        found["display_label"] = display_label
+        found["roles"] = normalized_roles
+        found["active"] = True
+        found["updated_at"] = now
+
+    roster["stewards"] = sorted(roster["stewards"], key=lambda item: item["steward_id"])
+    save_steward_roster(workspace, roster)
+    return found
+
+
+def deactivate_steward(workspace: pathlib.Path, steward_id: str) -> dict:
+    steward_id = normalize_steward_id(steward_id)
+    roster = load_steward_roster(workspace)
+    for item in roster["stewards"]:
+        if item.get("steward_id") == steward_id:
+            item["active"] = False
+            item["updated_at"] = utc_now()
+            save_steward_roster(workspace, roster)
+            return item
+    raise ValueError(f"unknown steward id: {steward_id}")
+
+
+def require_active_steward(workspace: pathlib.Path, steward_id: str, role: str) -> dict:
+    steward_id = normalize_steward_id(steward_id)
+    roster = load_steward_roster(workspace)
+    for item in roster["stewards"]:
+        if item.get("steward_id") != steward_id:
+            continue
+        if item.get("active") is not True:
+            raise ValueError(f"steward is inactive: {steward_id}")
+        if role not in item.get("roles", []):
+            raise ValueError(f"steward {steward_id} lacks required role: {role}")
+        return item
+    raise ValueError(f"unknown steward id: {steward_id}")
+
+
+def active_reviewer_count(workspace: pathlib.Path) -> int:
+    roster = load_steward_roster(workspace)
+    return sum(1 for item in roster["stewards"] if item.get("active") is True and "reviewer" in item.get("roles", []))
 
 
 def candidate_files(workspace: pathlib.Path, node_id: str) -> list[pathlib.Path]:
@@ -203,7 +305,7 @@ def prepare_candidate(
         "provenance": {
             "record_version": 1,
             "created_at": created_at,
-            "created_by": "GroundMesh H1 local pilot bridge",
+            "created_by": "GroundMesh H1-H3 local pilot bridge",
             "supersedes_record_version": None,
         },
     }
@@ -231,9 +333,10 @@ def prepare_candidate(
     return candidate_path
 
 
-def record_decision(workspace: pathlib.Path, node_id: str, decision: str, steward: str, reason: str) -> dict:
+def record_decision(workspace: pathlib.Path, node_id: str, decision: str, steward_id: str, reason: str) -> dict:
     if decision not in DECISIONS:
         raise ValueError(f"decision must be one of: {', '.join(sorted(DECISIONS))}")
+    steward = require_active_steward(workspace, steward_id, "reviewer")
     _, candidate = latest_candidate(workspace, node_id)
     event = {
         "at": utc_now(),
@@ -241,7 +344,24 @@ def record_decision(workspace: pathlib.Path, node_id: str, decision: str, stewar
         "node_id": node_id,
         "record_version": candidate["provenance"]["record_version"],
         "decision": decision,
-        "steward": steward.strip()[:100] or "local-steward",
+        "steward_id": steward["steward_id"],
+        "steward_label": steward["display_label"],
+        "reason": reason.strip()[:1000],
+        "publication": "not_authorized",
+    }
+    append_jsonl(workspace_paths(workspace)["decisions"] / f"{node_id}.jsonl", event)
+    return event
+
+
+def record_system_pause(workspace: pathlib.Path, node_id: str, reason: str) -> dict:
+    _, candidate = latest_candidate(workspace, node_id)
+    event = {
+        "at": utc_now(),
+        "type": "system_hold",
+        "node_id": node_id,
+        "record_version": candidate["provenance"]["record_version"],
+        "decision": "pause",
+        "actor": "system",
         "reason": reason.strip()[:1000],
         "publication": "not_authorized",
     }
@@ -288,7 +408,7 @@ def correct_candidate(
     updated["provenance"] = {
         "record_version": new_version,
         "created_at": now,
-        "created_by": "GroundMesh H1 participant correction bridge",
+        "created_by": "GroundMesh H1-H3 participant correction bridge",
         "supersedes_record_version": old_version,
     }
     assert_valid_declaration(updated)
@@ -309,8 +429,7 @@ def correct_candidate(
             "publication": "not_authorized",
         },
     )
-    # A changed candidate always requires fresh steward review.
-    record_decision(workspace, node_id, "pause", "system", "participant correction requires fresh steward review")
+    record_system_pause(workspace, node_id, "participant correction requires fresh steward review")
     return path
 
 
@@ -333,7 +452,7 @@ def withdraw_candidate(
     withdrawn["provenance"] = {
         "record_version": new_version,
         "created_at": now,
-        "created_by": "GroundMesh H1 participant withdrawal bridge",
+        "created_by": "GroundMesh H1-H3 participant withdrawal bridge",
         "supersedes_record_version": old_version,
     }
     assert_valid_declaration(withdrawn)
@@ -381,7 +500,7 @@ def decision_history(workspace: pathlib.Path, node_id: str) -> list[dict]:
 
 
 def run_dry_run() -> None:
-    with tempfile.TemporaryDirectory(prefix="groundmesh-human-mesh-h1-") as raw:
+    with tempfile.TemporaryDirectory(prefix="groundmesh-human-mesh-h1-h3-") as raw:
         temp = pathlib.Path(raw)
         workspace = temp / "private" / "registration_pilot" / "human_mesh"
         submission_path = temp / "participant-0001-space-monkey.json"
@@ -392,13 +511,21 @@ def run_dry_run() -> None:
             "reply_contact": "private-contact@example.invalid",
             "contact_preference": "Email",
             "privacy_request": "Public declaration",
-            "note": "Synthetic H1 fixture only.",
+            "note": "Synthetic H1/H3 fixture only.",
             "consent_ordinary_email_only": True,
             "record_id": "participant-0001",
             "received_at": "2026-08-25T20:00:00+00:00",
-            "steward_reviewing": "synthetic-steward",
+            "steward_reviewing": "unassigned",
         }
         write_json(submission_path, submission)
+
+        reviewer_a = register_steward(workspace, "steward-synthetic-a", "Synthetic Reviewer A", ["reviewer", "intake"])
+        reviewer_b = register_steward(workspace, "steward-synthetic-b", "Synthetic Reviewer B", ["reviewer"])
+        register_steward(workspace, "steward-intake-only", "Synthetic Intake Only", ["intake"])
+        register_steward(workspace, "steward-inactive", "Synthetic Inactive Reviewer", ["reviewer"])
+        deactivate_steward(workspace, "steward-inactive")
+        if active_reviewer_count(workspace) != 2:
+            raise AssertionError("H3 roster did not retain two active reviewers")
 
         candidate_path = prepare_candidate(
             submission_path=submission_path,
@@ -438,10 +565,22 @@ def run_dry_run() -> None:
         if not duplicate_rejected:
             raise AssertionError("duplicate source-record handling did not reject the second candidate")
 
-        # Exercise all three steward states without giving any of them publication power.
-        record_decision(workspace, first["node_id"], "pause", "synthetic-steward", "clarify public statement")
-        record_decision(workspace, first["node_id"], "reject", "synthetic-steward", "synthetic rejection-path test")
-        record_decision(workspace, first["node_id"], "approve", "synthetic-steward", "candidate may proceed to a separate publication gate")
+        pause = record_decision(workspace, first["node_id"], "pause", reviewer_a["steward_id"], "clarify public statement")
+        reject = record_decision(workspace, first["node_id"], "reject", reviewer_b["steward_id"], "synthetic rejection-path test")
+        approve = record_decision(workspace, first["node_id"], "approve", reviewer_b["steward_id"], "candidate may proceed to a separate publication gate")
+        if pause["steward_id"] == approve["steward_id"]:
+            raise AssertionError("H3 plurality test did not exercise two distinct reviewers")
+        if any(item["publication"] != "not_authorized" for item in (pause, reject, approve)):
+            raise AssertionError("steward decision unexpectedly granted publication authority")
+
+        for unauthorized_id in ("steward-unknown", "steward-inactive", "steward-intake-only"):
+            rejected = False
+            try:
+                record_decision(workspace, first["node_id"], "approve", unauthorized_id, "must fail")
+            except ValueError:
+                rejected = True
+            if not rejected:
+                raise AssertionError(f"unauthorized reviewer was allowed to act: {unauthorized_id}")
 
         corrected_path = correct_candidate(
             workspace=workspace,
@@ -459,7 +598,7 @@ def run_dry_run() -> None:
         if decision_history(workspace, first["node_id"])[-1]["decision"] != "pause":
             raise AssertionError("correction did not force fresh steward review")
 
-        record_decision(workspace, first["node_id"], "approve", "synthetic-steward", "corrected candidate reviewed")
+        record_decision(workspace, first["node_id"], "approve", reviewer_a["steward_id"], "corrected candidate reviewed")
         withdrawn_path, withdrawal_event_path = withdraw_candidate(
             workspace=workspace,
             node_id=first["node_id"],
@@ -478,14 +617,18 @@ def run_dry_run() -> None:
         if event["authorship"]["actor_node_id"] != first["node_id"]:
             raise AssertionError("withdrawal event actor mismatch")
 
-        # H1 has no publication path: all generated artifacts stay under the supplied workspace.
         generated = [p for p in temp.rglob("*") if p.is_file() and p != submission_path]
         if not generated or any(workspace not in p.parents for p in generated):
-            raise AssertionError("H1 generated an artifact outside its private workspace")
+            raise AssertionError("Human Mesh lifecycle generated an artifact outside its private workspace")
 
-        print("Human Mesh H1 synthetic lifecycle OK")
-        print("prepare -> duplicate reject -> pause/reject/approve -> correction -> fresh pause -> approve -> withdrawal")
-        print("No public file was created and private reply contact did not leak into the candidate declaration.")
+        history = decision_history(workspace, first["node_id"])
+        steward_ids = {item.get("steward_id") for item in history if item.get("type") == "steward_decision"}
+        if not {reviewer_a["steward_id"], reviewer_b["steward_id"]}.issubset(steward_ids):
+            raise AssertionError("decision provenance does not show both active reviewers")
+
+        print("Human Mesh H1/H3 synthetic lifecycle OK")
+        print("two active reviewers -> bounded decisions -> unauthorized rejection -> correction -> fresh review -> withdrawal")
+        print("No public file was created; all steward decisions remain publication:not_authorized.")
 
 
 def command_prepare(args) -> None:
@@ -506,7 +649,7 @@ def command_prepare(args) -> None:
 
 
 def command_decide(args) -> None:
-    print(json.dumps(record_decision(pathlib.Path(args.workspace), args.node_id, args.decision, args.steward, args.reason), indent=2))
+    print(json.dumps(record_decision(pathlib.Path(args.workspace), args.node_id, args.decision, args.steward_id, args.reason), indent=2))
 
 
 def command_correct(args) -> None:
@@ -535,23 +678,47 @@ def command_withdraw(args) -> None:
 
 
 def command_status(args) -> None:
-    path, candidate = latest_candidate(pathlib.Path(args.workspace), args.node_id)
+    workspace = pathlib.Path(args.workspace)
+    path, candidate = latest_candidate(workspace, args.node_id)
+    reviewers = active_reviewer_count(workspace)
     output = {
         "candidate_file": str(path),
         "node_id": args.node_id,
         "record_version": candidate["provenance"]["record_version"],
         "lifecycle": candidate["lifecycle"]["status"],
-        "decision_history": decision_history(pathlib.Path(args.workspace), args.node_id),
+        "decision_history": decision_history(workspace, args.node_id),
+        "active_reviewer_count": reviewers,
+        "operational_plurality_capable": reviewers >= 2,
         "publication": "not_authorized",
     }
     print(json.dumps(output, indent=2))
 
 
+def command_steward_add(args) -> None:
+    steward = register_steward(pathlib.Path(args.workspace), args.steward_id, args.label, args.role)
+    print(json.dumps(steward, indent=2))
+
+
+def command_steward_deactivate(args) -> None:
+    steward = deactivate_steward(pathlib.Path(args.workspace), args.steward_id)
+    print(json.dumps(steward, indent=2))
+
+
+def command_steward_list(args) -> None:
+    workspace = pathlib.Path(args.workspace)
+    roster = load_steward_roster(workspace)
+    print(json.dumps({
+        **roster,
+        "active_reviewer_count": active_reviewer_count(workspace),
+        "operational_plurality_capable": active_reviewer_count(workspace) >= 2,
+    }, indent=2))
+
+
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="GroundMesh Human Mesh H1 local pilot lifecycle bridge")
+    parser = argparse.ArgumentParser(description="GroundMesh Human Mesh H1-H3 local lifecycle bridge")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("dry-run", help="run the full synthetic H1 lifecycle in a temporary workspace")
+    sub.add_parser("dry-run", help="run the full synthetic H1/H3 lifecycle in a temporary workspace")
 
     prepare = sub.add_parser("prepare", help="create a private Human Mesh candidate from an existing pilot submission")
     prepare.add_argument("--submission", required=True)
@@ -566,11 +733,11 @@ def build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--affirmed-at", default=utc_now())
     prepare.add_argument("--participant-consent", action="store_true", help="attest that the participant explicitly approved the selected public fields and H0 consent terms")
 
-    decide = sub.add_parser("decide", help="record a private steward decision; never publishes")
+    decide = sub.add_parser("decide", help="record a private decision by an active rostered reviewer; never publishes")
     decide.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
     decide.add_argument("--node-id", required=True)
     decide.add_argument("--decision", choices=sorted(DECISIONS), required=True)
-    decide.add_argument("--steward", default="local-steward")
+    decide.add_argument("--steward-id", "--steward", dest="steward_id", required=True)
     decide.add_argument("--reason", default="")
 
     correct = sub.add_parser("correct", help="record participant-approved correction as a new candidate version")
@@ -589,9 +756,22 @@ def build_parser() -> argparse.ArgumentParser:
     withdraw.add_argument("--affirmed-at", default=utc_now())
     withdraw.add_argument("--participant-affirmed", action="store_true")
 
-    status = sub.add_parser("status", help="show local candidate lifecycle and steward decision history")
+    status = sub.add_parser("status", help="show local candidate lifecycle, decision history, and reviewer capacity")
     status.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
     status.add_argument("--node-id", required=True)
+
+    steward_add = sub.add_parser("steward-add", help="add or reactivate a private H3 steward")
+    steward_add.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
+    steward_add.add_argument("--steward-id", required=True)
+    steward_add.add_argument("--label", required=True)
+    steward_add.add_argument("--role", action="append", choices=sorted(STEWARD_ROLES), required=True)
+
+    steward_deactivate = sub.add_parser("steward-deactivate", help="deactivate a private H3 steward without deleting provenance")
+    steward_deactivate.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
+    steward_deactivate.add_argument("--steward-id", required=True)
+
+    steward_list = sub.add_parser("steward-list", help="show the private H3 steward roster and reviewer capacity")
+    steward_list.add_argument("--workspace", default=str(DEFAULT_WORKSPACE))
     return parser
 
 
@@ -610,10 +790,16 @@ def main() -> int:
             command_withdraw(args)
         elif args.command == "status":
             command_status(args)
+        elif args.command == "steward-add":
+            command_steward_add(args)
+        elif args.command == "steward-deactivate":
+            command_steward_deactivate(args)
+        elif args.command == "steward-list":
+            command_steward_list(args)
         else:
             raise ValueError(f"unknown command: {args.command}")
     except Exception as exc:
-        print(f"Human Mesh H1 error: {exc}", file=sys.stderr)
+        print(f"Human Mesh lifecycle error: {exc}", file=sys.stderr)
         return 1
     return 0
 

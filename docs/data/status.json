@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-30T11:42:00Z",
+  "updated_utc": "2026-08-30T12:08:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -43,7 +43,7 @@
     },
     "registration_page": {
       "status": "green",
-      "note": "Registration status page loads publicly and distinguishes trusted-circle, limited-invitation, and still-closed global invitation stages"
+      "note": "Registration status page loads publicly and distinguishes trusted-circle, limited-invitation, multi-steward capability, and still-closed global invitation stages"
     },
     "registration_checklist": {
       "status": "green",
@@ -55,11 +55,15 @@
     },
     "human_mesh_h1": {
       "status": "green",
-      "note": "Private trusted-circle lifecycle bridge is canonical and CI-tested for candidate creation, duplicate rejection, steward pause/reject/approve, correction with fresh review, withdrawal, and self-authored withdrawal-event drafts; no automatic publication exists"
+      "note": "Private lifecycle bridge is canonical and CI-tested for candidate creation, duplicate rejection, steward review, correction with fresh review, withdrawal, and self-authored withdrawal-event drafts; no automatic publication exists"
     },
     "human_mesh_h2_limited_invitation": {
       "status": "green",
       "note": "The existing pilot server can optionally run in invite-gated H2 mode using expiring hashed invite codes, bounded requests, concurrency-safe record creation, and non-leaking participant storage; the mode is off by default and global open registration remains closed"
+    },
+    "human_mesh_h3_multi_steward": {
+      "status": "yellow",
+      "note": "Private multi-steward review capability is implemented: decisions require an active rostered reviewer and retain steward-id provenance, while intake begins unassigned. Operational plurality is not claimed until at least two real human reviewers have explicitly accepted the role; synthetic CI reviewers do not count."
     },
     "get_started_page": {
       "status": "green",
