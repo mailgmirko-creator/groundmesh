@@ -84,7 +84,7 @@ class PilotState:
         self,
         private_root: Path = DEFAULT_PRIVATE_ROOT,
         require_invite_code: bool = False,
-        steward_name: str = "Mirko Giljaca",
+        steward_name: str = "unassigned",
     ) -> None:
         self.private_root = private_root
         self.records_root = private_root / "records"
