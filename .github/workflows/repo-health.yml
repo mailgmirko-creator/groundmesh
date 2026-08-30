@@ -182,9 +182,35 @@ jobs:
       - name: Check links with lychee
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --no-progress --accept 200,206 --max-concurrency 8 --timeout 20s --retry-wait-time 2 --exclude-mail --verbose README.md docs/**/*.html docs/**/*.md
+          args: --no-progress --accept 200,206 --max-concurrency 8 --timeout 20 --retry-wait-time 2 --exclude-mail --verbose README.md docs/**/*.html docs/**/*.md
+          fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify lychee rejects a broken local link
+        run: |
+          probe_dir="$(mktemp -d)"
+          printf '[deliberately broken](./missing-groundmesh-link-health-probe.html)\n' > "$probe_dir/probe.md"
+
+          set +e
+          lychee --offline --no-progress "$probe_dir/probe.md" > "$probe_dir/output.txt" 2>&1
+          code=$?
+          set -e
+
+          cat "$probe_dir/output.txt"
+          if [ "$code" -eq 0 ]; then
+            echo "Lychee negative self-test failed: a deliberately broken local link was accepted."
+            rm -rf "$probe_dir"
+            exit 1
+          fi
+          if ! grep -q 'missing-groundmesh-link-health-probe.html' "$probe_dir/output.txt"; then
+            echo "Lychee negative self-test failed: nonzero exit did not identify the deliberately broken link."
+            rm -rf "$probe_dir"
+            exit 1
+          fi
+
+          rm -rf "$probe_dir"
+          echo "Lychee negative self-test OK: deliberately broken local link was rejected."
 
       - name: Confirm Atlas index exists
         run: |
