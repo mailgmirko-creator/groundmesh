@@ -180,11 +180,11 @@ jobs:
           ./scripts/coordination-fixture-validate.ps1
 
       # UNICEF Data serves this valid public page as 403 to GitHub-hosted runners.
-      # The adjacent WHO/UNICEF report link in the same source note remains checked.
+      # SIPRI's landing page can time out from hosted runners, so its official PDF is checked directly instead.
       - name: Check links with lychee
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --no-progress --accept 200,206 --max-concurrency 8 --timeout 20 --retry-wait-time 2 --exclude-mail --exclude 'https://data\.unicef\.org/resources/jmp-report-2025/' --verbose README.md docs/**/*.html docs/**/*.md
+          args: --no-progress --accept 200,206 --max-concurrency 8 --timeout 20 --retry-wait-time 2 --exclude 'https://data\.unicef\.org/resources/jmp-report-2025/' --exclude 'https://www\.sipri\.org/publications/2026/sipri-fact-sheets/trends-world-military-expenditure-2025' --verbose README.md docs/**/*.html docs/**/*.md https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
