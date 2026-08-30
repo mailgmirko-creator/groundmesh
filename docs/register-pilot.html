@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GroundMesh Invited-Circle Registration Pilot</title>
+  <title>GroundMesh Human Mesh Pilot</title>
   <meta name="theme-color" content="#1f5c46" />
   <link rel="icon" href="./assets/gm-app-icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="./manifest.webmanifest" />
@@ -20,7 +20,7 @@
     h2 { font-size:1.1rem; margin:0 0 10px; }
     p, li, label { color:var(--muted); }
     .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:16px; }
-    .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
+    .cta, .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
     .btn, button { display:inline-block; text-decoration:none; padding:10px 14px; border-radius:10px; border:1px solid #2a2a33; background:#1a1a20; color:var(--text); font-weight:600; cursor:pointer; }
     .btn.primary, button.primary { background:var(--accent); color:#09100c; border-color:transparent; }
     .notice { border-left:4px solid var(--warn); padding-left:12px; color:var(--text); }
@@ -31,62 +31,11 @@
     .badge.bad { background:rgba(255,183,183,.12); color:var(--bad); border:1px solid rgba(255,183,183,.2); }
     form { display:grid; gap:14px; margin-top:12px; }
     .field { display:grid; gap:6px; }
-    .labelrow { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-    .helpdot {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      border: 1px solid #3a3a44;
-      background: #181820;
-      color: var(--accent2);
-      font-size: .82rem;
-      font-weight: 700;
-      cursor: help;
-    }
-    .helpdot::after {
-      content: attr(data-tip);
-      position: absolute;
-      left: 0;
-      top: calc(100% + 8px);
-      width: min(320px, 70vw);
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid #2a2a33;
-      background: #111117;
-      color: var(--text);
-      box-shadow: 0 12px 30px rgba(0,0,0,.28);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-4px);
-      transition: opacity .18s ease, transform .18s ease;
-      font-size: .88rem;
-      font-weight: 400;
-      line-height: 1.45;
-      z-index: 5;
-    }
-    .helpdot:hover::after,
-    .helpdot:focus-visible::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .field-note { margin: 0; font-size: .92rem; color: var(--muted); }
-    input, select, textarea {
-      width:100%;
-      border:1px solid #2a2a33;
-      border-radius:10px;
-      background:#101015;
-      color:var(--text);
-      padding:12px 14px;
-      font:inherit;
-    }
+    .field-note { margin:0; font-size:.92rem; }
+    input, select, textarea { width:100%; border:1px solid #2a2a33; border-radius:10px; background:#101015; color:var(--text); padding:12px 14px; font:inherit; }
     textarea { min-height:110px; resize:vertical; }
     .checkbox { display:flex; gap:10px; align-items:flex-start; }
     .checkbox input { width:auto; margin-top:3px; }
-    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:4px; }
     .result { margin-top:12px; padding:12px 14px; border-radius:10px; border:1px solid #2a2a33; background:#111117; }
     .result.ok { border-color:rgba(184,255,211,.2); color:var(--ok); }
     .result.bad { border-color:rgba(255,183,183,.2); color:var(--bad); }
@@ -97,31 +46,36 @@
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="eyebrow">Invited-circle pilot</div>
-      <h1>First GroundMesh registration pilot</h1>
+      <div class="eyebrow">Human Mesh registration pilot</div>
+      <h1>A small real intake, still bounded.</h1>
       <p>
-        This page is for the first invited-circle pilot only: you, then a few directly invited trusted
-        friends. It is not a broad public launch and it is not a confidential secure intake system.
+        This one page serves both <strong>H1 trusted-circle mode</strong> and <strong>H2 limited-invitation mode</strong>.
+        H2 uses steward-issued invite codes so a publicly reachable pilot can remain a bounded cohort.
       </p>
       <p class="notice">
-        This form only fully works when the steward-run pilot intake is active. If intake is inactive on
-        this host, use the ordinary email path from <a href="register.html">Registration Status</a>.
+        This is not H4 global open registration, not a confidential identity service, and not automatic acceptance.
+        Do not submit passports, identity numbers, private addresses, biometrics, or emergency-only information.
       </p>
       <div class="statusline">
         <span id="statusBadge" class="badge warn">Checking intake...</span>
-        <span id="statusText">Looking for the local pilot intake service.</span>
+        <span id="statusText">Looking for the steward-run pilot intake service.</span>
       </div>
       <div class="cta">
-        <a class="btn" href="register.html">Back to Registration Status</a>
-        <a class="btn" href="contact.html">Contact</a>
+        <a class="btn" href="register.html">Registration Status</a>
+        <a class="btn" href="human-mesh/index.html">Human Mesh</a>
         <a class="btn" href="privacy.html">Privacy</a>
       </div>
     </section>
 
     <section class="card">
       <h2>Submit a pilot registration</h2>
-      <p>Keep this minimal. Do not enter passports, identity numbers, private addresses, or emergency-only information.</p>
+      <p>Nothing entered here becomes a public Human Mesh declaration automatically. A steward reviews it first, and the H1 lifecycle still keeps publication separate.</p>
       <form id="pilotForm">
+        <div class="field">
+          <label for="invitationCode">Invitation code <span id="inviteRequirement">(used only when H2 mode is active)</span></label>
+          <input id="invitationCode" name="invitationCode" maxlength="160" autocomplete="off" spellcheck="false" placeholder="gmh2-..." />
+          <p class="field-note">The code is used only to admit this submission. GroundMesh does not save it in your participant record, browser draft, or downloaded copy.</p>
+        </div>
         <div class="field">
           <label for="displayName">Display or chosen name</label>
           <input id="displayName" name="displayName" maxlength="80" required />
@@ -145,15 +99,7 @@
           <input id="replyContact" name="replyContact" maxlength="120" placeholder="email@example.com or other agreed handle" required />
         </div>
         <div class="field">
-          <div class="labelrow">
-            <label for="contactPreference">Contact preference</label>
-            <span
-              class="helpdot"
-              tabindex="0"
-              aria-label="Explain contact preference options"
-              data-tip="Email means ordinary email. Signal is the Signal messaging app, known for private messaging. WhatsApp is the Meta chat app. Telegram is another chat app. Other means a different contact method you and the steward already agree on."
-            >?</span>
-          </div>
+          <label for="contactPreference">Contact preference</label>
           <select id="contactPreference" name="contactPreference" required>
             <option value="">Choose one</option>
             <option>Email</option>
@@ -162,25 +108,16 @@
             <option>Telegram</option>
             <option>Other</option>
           </select>
-          <p class="field-note">If unsure, choose the route you actually want Mirko to use for follow-up. Signal means the Signal messaging app.</p>
         </div>
         <div class="field">
-          <div class="labelrow">
-            <label for="privacyRequest">Privacy / declaration preference</label>
-            <span
-              class="helpdot"
-              tabindex="0"
-              aria-label="Explain privacy or declaration preference options"
-              data-tip="Public declaration means you are comfortable with an openly named public statement later. Pseudonymous means you prefer a chosen name that is not your legal identity. Private follow-up first means do not treat this as public yet; clarify with the steward first."
-            >?</span>
-          </div>
+          <label for="privacyRequest">Privacy / declaration preference</label>
           <select id="privacyRequest" name="privacyRequest" required>
             <option value="">Choose one</option>
             <option>Public declaration</option>
             <option>Pseudonymous</option>
             <option>Private follow-up first</option>
           </select>
-          <p class="field-note">Choose the most cautious honest option if you are unsure. Nothing here creates automatic public visibility.</p>
+          <p class="field-note">Choose the most cautious honest option if unsure. Nothing here creates automatic public visibility.</p>
         </div>
         <div class="field">
           <label for="note">Short note</label>
@@ -200,20 +137,16 @@
 
     <section class="grid">
       <article class="card">
-        <h2>When intake is active</h2>
-        <ul>
-          <li>Your submission is stored in the steward-run local pilot workspace.</li>
-          <li>The smallest useful participant record is created.</li>
-          <li>The current invited-circle pilot rules still apply.</li>
-        </ul>
+        <h2>H1 — trusted circle</h2>
+        <p>The steward starts the existing local intake without invite gating. It remains for directly invited people and private lifecycle testing.</p>
       </article>
       <article class="card">
-        <h2>When intake is inactive</h2>
-        <ul>
-          <li>Use the ordinary interest email path from the registration page.</li>
-          <li>Do not assume a silent form means acceptance.</li>
-          <li>Wait for explicit invited-circle confirmation before sharing this more widely.</li>
-        </ul>
+        <h2>H2 — limited invitation</h2>
+        <p>The same server is reachable to a bounded cohort, but every accepted submission needs a valid steward-issued invite code. Codes are hashed locally, may expire, and can be one-use.</p>
+      </article>
+      <article class="card">
+        <h2>H4 — global invitation</h2>
+        <p>Still closed. H2 does not authorize unrestricted intake, automatic acceptance, person scoring, or automatic publication.</p>
       </article>
     </section>
   </div>
@@ -223,17 +156,20 @@
     const result = document.getElementById("result");
     const statusBadge = document.getElementById("statusBadge");
     const statusText = document.getElementById("statusText");
+    const invitationCode = document.getElementById("invitationCode");
+    const inviteRequirement = document.getElementById("inviteRequirement");
     const downloadBtn = document.getElementById("downloadBtn");
     const storageKey = "groundmesh.registrationPilotDraft";
     let intakeActive = false;
+    let inviteRequired = false;
 
-    function setStatus(kind, text) {
+    function setStatus(kind, badge, text) {
       statusBadge.className = "badge " + kind;
-      statusBadge.textContent = kind === "ok" ? "Pilot intake active" : kind === "bad" ? "Pilot intake inactive" : "Checking intake...";
+      statusBadge.textContent = badge;
       statusText.textContent = text;
     }
 
-    function formDataObject() {
+    function publicDraftData() {
       return {
         display_name: document.getElementById("displayName").value.trim(),
         region_or_country: document.getElementById("region").value.trim(),
@@ -246,8 +182,13 @@
       };
     }
 
+    function submissionData() {
+      return { ...publicDraftData(), invitation_code: invitationCode.value.trim() };
+    }
+
     function saveDraft() {
-      localStorage.setItem(storageKey, JSON.stringify(formDataObject()));
+      // Invitation codes are deliberately not persisted in localStorage.
+      localStorage.setItem(storageKey, JSON.stringify(publicDraftData()));
     }
 
     function loadDraft() {
@@ -295,20 +236,31 @@
         if (!response.ok) throw new Error("inactive");
         const data = await response.json();
         intakeActive = Boolean(data.intake_active);
-        if (intakeActive) {
-          setStatus("ok", "The steward-run pilot intake is active on this host.");
+        inviteRequired = Boolean(data.invite_required);
+        invitationCode.required = inviteRequired;
+        inviteRequirement.textContent = inviteRequired ? "(required for this H2 cohort)" : "(not required in H1 mode)";
+        if (!intakeActive) {
+          setStatus("bad", "Pilot intake inactive", "The pilot service answered, but intake is not active.");
+        } else if (inviteRequired) {
+          setStatus("ok", "H2 limited invitation active", "This host is accepting only valid invite-gated pilot submissions.");
         } else {
-          setStatus("bad", "The pilot intake answered, but is not active.");
+          setStatus("ok", "H1 trusted-circle active", "This host is running the direct trusted-circle pilot intake.");
         }
       } catch (error) {
         intakeActive = false;
-        setStatus("bad", "No active intake was found here. Use the ordinary registration-interest email path unless Mirko has explicitly activated this host for the pilot.");
+        inviteRequired = false;
+        invitationCode.required = false;
+        inviteRequirement.textContent = "(used only when H2 mode is active)";
+        setStatus("bad", "Pilot intake inactive", "No active intake was found here. Use the ordinary registration-interest path unless the steward has explicitly activated a pilot host.");
       }
     }
 
-    form.addEventListener("input", saveDraft);
+    form.addEventListener("input", (event) => {
+      if (event.target !== invitationCode) saveDraft();
+    });
+
     downloadBtn.addEventListener("click", () => {
-      const data = formDataObject();
+      const data = publicDraftData();
       const blob = new Blob([markdownCopy(data)], { type: "text/markdown;charset=utf-8" });
       const link = document.createElement("a");
       const safeName = (data.display_name || "pilot-registration").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -316,16 +268,20 @@
       link.download = (safeName || "pilot-registration") + ".md";
       link.click();
       URL.revokeObjectURL(link.href);
-      showResult("ok", "Downloaded a local copy of your draft.");
+      showResult("ok", "Downloaded a local copy without the invitation code.");
     });
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const data = formDataObject();
+      const data = submissionData();
       saveDraft();
 
       if (!intakeActive) {
-        showResult("bad", "Pilot intake is not active on this host. Use the ordinary registration-interest email path from the main registration page for now.");
+        showResult("bad", "Pilot intake is not active on this host.");
+        return;
+      }
+      if (inviteRequired && !data.invitation_code) {
+        showResult("bad", "This H2 cohort requires an invitation code.");
         return;
       }
 
@@ -340,8 +296,9 @@
           throw new Error((payload.errors || ["Submission failed."]).join(" "));
         }
         localStorage.removeItem(storageKey);
-        showResult("ok", "Stored as " + payload.record_id + ". The steward-run pilot workspace received your submission.");
         form.reset();
+        invitationCode.value = "";
+        showResult("ok", "Stored as " + payload.record_id + ". The steward-run private pilot workspace received your submission; nothing was published automatically.");
       } catch (error) {
         showResult("bad", error.message || "Submission failed.");
       }
