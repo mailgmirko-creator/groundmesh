@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-25T12:12:00Z",
+  "updated_utc": "2026-08-30T11:42:00Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -43,15 +43,23 @@
     },
     "registration_page": {
       "status": "green",
-      "note": "Registration status page loads publicly as the honest path for joining status and pilot-first registration posture"
+      "note": "Registration status page loads publicly and distinguishes trusted-circle, limited-invitation, and still-closed global invitation stages"
     },
     "registration_checklist": {
       "status": "green",
       "note": "Registration pilot readiness checklist loads publicly from the docs surface and matches the live Atlas and registration path"
     },
     "human_mesh_h0": {
-      "status": "yellow",
-      "note": "Human Mesh H0 foundation is defined through a public architecture page, versioned declaration and self-authored accountability-event schemas, fictional fixtures, privacy boundaries, and CI validation; broad global registration remains intentionally closed pending ADR-0005 pilot readiness and later trusted-circle operational proof"
+      "status": "green",
+      "note": "Human Mesh H0 public architecture, declaration/accountability schemas, privacy boundaries, fictional fixtures, semantic guardrails, and CI validation are canonical"
+    },
+    "human_mesh_h1": {
+      "status": "green",
+      "note": "Private trusted-circle lifecycle bridge is canonical and CI-tested for candidate creation, duplicate rejection, steward pause/reject/approve, correction with fresh review, withdrawal, and self-authored withdrawal-event drafts; no automatic publication exists"
+    },
+    "human_mesh_h2_limited_invitation": {
+      "status": "green",
+      "note": "The existing pilot server can optionally run in invite-gated H2 mode using expiring hashed invite codes, bounded requests, concurrency-safe record creation, and non-leaking participant storage; the mode is off by default and global open registration remains closed"
     },
     "get_started_page": {
       "status": "green",
