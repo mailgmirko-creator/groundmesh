@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GroundMesh Human Mesh — Steward Chair</title>
-  <meta name="description" content="A bounded, synthetic Human Mesh steward training surface for learning the H3 review role without publishing or storing a real decision." />
+  <title>GroundMesh — Steward Chair</title>
+  <meta name="description" content="A bounded, synthetic steward training surface for learning the H3 review role without publishing or storing a real decision." />
   <meta name="theme-color" content="#1f5c46" />
   <link rel="icon" href="../assets/gm-app-icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="../manifest.webmanifest" />
@@ -44,7 +44,7 @@
     .brand { display:flex; gap:10px; align-items:center; font-weight:800; }
     .dot { width:12px; height:12px; border-radius:999px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow:0 0 0 7px rgba(120,227,181,.07); }
     .back { text-decoration:none; color:var(--muted); font-weight:700; }
-    .hero,.card,.candidate,.decision-box {
+    .hero,.card,.registration,.decision-box {
       border:1px solid var(--line);
       border-radius:var(--radius);
       background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01));
@@ -68,7 +68,7 @@
     .btn.primary { background:var(--accent); color:#07100c; border-color:transparent; }
     .btn.ghost { background:transparent; }
     .chair { margin-top:22px; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr); gap:18px; }
-    .candidate,.decision-box { padding:24px; }
+    .registration,.decision-box { padding:24px; }
     .training-badge { display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(154,199,255,.08); border:1px solid rgba(154,199,255,.28); color:#cbe0ff; font-weight:800; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; }
     .identity { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin:18px 0; padding-bottom:18px; border-bottom:1px solid var(--line); }
     .identity h2 { font-size:1.65rem; margin:0 0 4px; }
@@ -103,15 +103,15 @@
 <body>
   <main class="wrap">
     <div class="topline">
-      <div class="brand"><span class="dot"></span>GroundMesh · Human Mesh</div>
-      <a class="back" href="index.html">← Human Mesh</a>
+      <div class="brand"><span class="dot"></span>GroundMesh · Steward Chair</div>
+      <a class="back" href="index.html">← Registration</a>
     </div>
 
     <section class="hero">
       <div class="eyebrow">H3 · Steward Chair · Synthetic training</div>
-      <h1>Review the record, not the human.</h1>
-      <p>This is the first human-shaped entrance to the Human Mesh reviewer role. It lets you understand the responsibility and practice one bounded decision before any real participant is shown to you.</p>
-      <div class="notice"><strong>Training only.</strong> This page loads a fictional CI-validated Human Mesh fixture. Your practice decision stays in this browser session. It is not sent to GroundMesh, not stored in the steward roster, and cannot publish anyone.</div>
+      <h1>Review the registration, not the person.</h1>
+      <p>This is a training entrance to the steward role. It lets you practice one bounded review before any real participant's registration is presented.</p>
+      <div class="notice"><strong>Training only.</strong> This page loads a fictional CI-validated registration fixture. Your practice decision stays in this browser session. It is not sent to GroundMesh, not stored in the steward roster, and cannot publish anyone.</div>
       <div class="actions">
         <a class="btn primary" href="#chair">Try the chair</a>
         <a class="btn ghost" href="h3-steward-role-v0.1.md">Read the role terms</a>
@@ -120,22 +120,22 @@
     </section>
 
     <section class="grid" aria-label="Steward orientation">
-      <article class="card"><span class="number">1</span><h2>What is this?</h2><p>A second human checks whether one candidate record respects the visible Human Mesh rules.</p></article>
-      <article class="card"><span class="number">2</span><h2>Why another human?</h2><p>Because CI can prepare and validate structure, but it must not silently become the final authority over a person.</p></article>
-      <article class="card"><span class="number">3</span><h2>What power?</h2><p>Only <strong>approve</strong>, <strong>pause</strong>, or <strong>reject</strong> the current record, with a short reason. Review does not publish.</p></article>
+      <article class="card"><span class="number">1</span><h2>What are you deciding?</h2><p>Whether one <strong>registration request</strong> follows the visible rules well enough to move to the next gate.</p></article>
+      <article class="card"><span class="number">2</span><h2>Why a steward?</h2><p>Because CI can prepare and validate structure, but it must not silently become the final authority over participation.</p></article>
+      <article class="card"><span class="number">3</span><h2>What power?</h2><p>Only <strong>approve</strong>, <strong>pause</strong>, or <strong>reject</strong> the registration in its current form, with a short reason. Review does not publish.</p></article>
       <article class="card"><span class="number">4</span><h2>What boundary?</h2><p>No person scoring, moral labels, inferred motives, hidden veto, or copying unnecessary private information.</p></article>
     </section>
 
     <section class="chair" id="chair">
-      <article class="candidate" aria-live="polite">
-        <span class="training-badge">Fictional candidate</span>
+      <article class="registration" aria-live="polite">
+        <span class="training-badge">Fictional registration</span>
         <div class="identity">
           <div>
-            <span class="label">Public identity</span>
+            <span class="label">Public display name</span>
             <h2 id="display-name">Loading…</h2>
             <div class="muted" id="identity-mode">Loading synthetic fixture</div>
           </div>
-          <span class="status-pill" id="candidate-status">candidate</span>
+          <span class="status-pill" id="review-status">pending review</span>
         </div>
 
         <div class="field">
@@ -166,8 +166,8 @@
 
       <aside class="decision-box">
         <span class="training-badge">Your practice review</span>
-        <h2 style="margin-top:14px">Choose the record's next state</h2>
-        <p>There is no “good person / bad person” choice here. You are deciding only whether this candidate record may proceed to a separate gate in its present form.</p>
+        <h2 style="margin-top:14px">Choose the registration's next state</h2>
+        <p>You are not rating or selecting a person. You are deciding only whether this registration request follows the rules well enough to proceed in its present form.</p>
 
         <div class="choice-grid" role="group" aria-label="Practice decision">
           <button class="choice" type="button" data-decision="approve" aria-pressed="false">Approve</button>
@@ -175,8 +175,8 @@
           <button class="choice reject" type="button" data-decision="reject" aria-pressed="false">Reject</button>
         </div>
 
-        <label for="reason" class="label">Short reason another steward could inspect</label>
-        <textarea id="reason" placeholder="Example: The consent fields are explicit and the public record contains no unnecessary private information."></textarea>
+        <label for="reason" class="label">Short reason another steward can inspect</label>
+        <textarea id="reason" placeholder="Example: The consent fields are explicit and the registration contains no unnecessary private information."></textarea>
 
         <label class="confirm-row"><input type="checkbox" id="training-confirm" /> <span>I understand this is a synthetic training exercise and that this page does not record or publish my decision.</span></label>
 
@@ -195,13 +195,13 @@
     </section>
 
     <div class="footer-note">
-      <strong>When this becomes a real chair:</strong> the next guarded step is not to turn this static page into a global identity portal. It is to connect an explicitly accepted steward to one deliberately presented private candidate while preserving the existing H3 authorization, provenance, correction, withdrawal, and no-publication boundaries.
+      <strong>When this becomes a real chair:</strong> the next guarded step is not to turn this static page into a global identity portal. It is to connect an explicitly accepted steward to one deliberately presented private registration request while preserving the existing H3 authorization, provenance, correction, withdrawal, and no-publication boundaries.
     </div>
   </main>
 
   <script>
     (() => {
-      const humanUrl = 'examples/synthetic-human.json';
+      const fixtureUrl = 'examples/synthetic-human.json';
       const displayName = document.getElementById('display-name');
       const identityMode = document.getElementById('identity-mode');
       const location = document.getElementById('location');
@@ -209,7 +209,7 @@
       const consentList = document.getElementById('consent-list');
       const commitmentList = document.getElementById('commitment-list');
       const provenance = document.getElementById('provenance');
-      const candidateStatus = document.getElementById('candidate-status');
+      const reviewStatus = document.getElementById('review-status');
       const reason = document.getElementById('reason');
       const confirm = document.getElementById('training-confirm');
       const error = document.getElementById('error');
@@ -231,7 +231,7 @@
         target.appendChild(li);
       };
 
-      fetch(humanUrl, {cache:'no-store'})
+      fetch(fixtureUrl, {cache:'no-store'})
         .then(response => {
           if (!response.ok) throw new Error(`Synthetic fixture unavailable (${response.status})`);
           return response.json();
@@ -241,7 +241,7 @@
           identityMode.textContent = `${pretty(data.public_identity.identity_mode)} · continuity acknowledged`;
           location.textContent = `${data.location.label} · ${pretty(data.location.precision)} precision`;
           statement.textContent = data.public_statement;
-          candidateStatus.textContent = data.lifecycle.status;
+          reviewStatus.textContent = data.lifecycle.status === 'candidate' ? 'pending review' : pretty(data.lifecycle.status);
           consentList.innerHTML = '';
           addCheck(consentList, 'Public fields explicitly consented');
           addCheck(consentList, `${pretty(data.location.precision)} location precision explicitly consented`);
@@ -254,7 +254,7 @@
         .catch(err => {
           displayName.textContent = 'Training fixture unavailable';
           identityMode.textContent = err.message;
-          statement.textContent = 'The chair intentionally refuses to invent candidate data when the canonical fixture cannot be loaded.';
+          statement.textContent = 'The chair intentionally refuses to invent registration data when the canonical fixture cannot be loaded.';
           error.textContent = 'Reload the page before continuing the training exercise.';
         });
 
