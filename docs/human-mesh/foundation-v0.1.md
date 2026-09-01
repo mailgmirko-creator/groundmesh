@@ -96,6 +96,27 @@ Exact residence is unnecessary for planetary participation and should not be req
 
 If a map later needs a pin, the displayed coordinate should represent an approximate public area chosen for that declaration, not a home location unless a person knowingly and explicitly chooses otherwise through a separately reviewed feature.
 
+## Local expression without forced normalization
+
+Planetary participation does not require one planetary language, alphabet, naming convention, or cultural presentation.
+
+The shared Human Mesh contract should stay small and machine-readable where interoperability requires it: node identity continuity, consent, lifecycle, provenance, correction, withdrawal, and bounded stewardship actions.
+
+Within that contract:
+
+- a public name or stable pseudonym may be written in the participant's own language and script;
+- public statements may be written in the participant's own language;
+- place names and public location labels should preserve local spelling where practical;
+- GroundMesh must not require English or ASCII merely because those forms are easier to normalize;
+- translations may be added for accessibility, but should remain visibly secondary to the participant's original expression rather than silently replacing it;
+- local categories and practices should not be collapsed into one global ontology unless a shared technical purpose genuinely requires a common field.
+
+A useful architecture rule is:
+
+> **Shared protocol; locally expressed life.**
+
+The current public web and JSON surfaces are already UTF-8 capable. This rule therefore does not authorize a new translation service, locale framework, or schema expansion by itself. Those should be added only when real participation demonstrates a concrete need.
+
 ## Bringing darkness to light: the GroundMesh translation
 
 GroundMesh must never implement a "darkness score," confession score, virtue score, sin ledger, trust rank, or model-generated moral profile.
