@@ -15,13 +15,13 @@ This page documents the minimal TSL decision loop used by GroundNode.
 - **Act** the smallest sufficient action, then **Learn** and log a Transparency note
 
 ## Run locally
-    cd C:\Projects\GroundMesh-DEV
-    python .\balance_engine\tsl_loop.py
-    # or
-    py .\balance_engine\tsl_loop.py
+    cd <repo-root>
+    .\scripts\tsl-run.ps1
 
 ## Output (sample)
 - Transparency JSON line
 - A final `RESULT:` block with action, assessment, and outcome
 
 **Source:** `balance_engine/tsl_loop.py`
+
+**See also:** `docs/tsl/balance-engine-core-spec.md`

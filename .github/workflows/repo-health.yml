@@ -112,6 +112,11 @@ jobs:
         run: |
           ./scripts/money-value-readiness-guard.ps1
 
+      - name: Validate Balance Engine boundary
+        shell: pwsh
+        run: |
+          ./scripts/balance-engine-boundary-guard.ps1
+
       - name: Validate Behavior Atlas schema sandbox
         shell: pwsh
         run: |
