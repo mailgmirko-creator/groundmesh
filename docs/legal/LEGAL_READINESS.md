@@ -28,6 +28,7 @@ Do not expand GroundMesh beyond the current public-docs posture until the releva
 - Public cases: pass `docs/legal/PUBLICATION_GATE.md`, Behavior Atlas validation, privacy/harm review, correction path, review-due date, and rollback drill.
 - Registration or Human Mesh intake: define controller/steward, data categories, consent path, withdrawal path, retention, access control, storage location, and breach response before collecting real participant data.
 - Donations or money flows: document recipient, tax/accounting posture, no access-conditioned donation language, refund/error handling, and anti-fraud handling before asking the public for funds.
+- Money/value exchange, Mesh Credits, tokens, wallets, fiat bridges, public balances, rewards, grants, sponsorships, or paid services: pass `docs/checklists/Money_Value_Exchange_Readiness_Checklist.md` and counsel/accounting review before publishing or enabling any real feature.
 - External validators, press, institutions, or public accusations: prepare a counsel-ready packet first; do not send M2/internal case material or person-related claims without review.
 - New CI-assisted public text on matters of public interest: disclose material CI assistance where appropriate and keep human steward responsibility visible.
 
@@ -39,6 +40,13 @@ Do not expand GroundMesh beyond the current public-docs posture until the releva
 - EU GDPR: official personal-data regulation reference for EU/EEA processing risk analysis. https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng
 - European Commission AI Act page: AI Act obligations apply progressively and include transparency rules relevant to public-interest CI-generated or CI-assisted content. https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
 - Montenegro Agency for Personal Data Protection and Free Access to Information: national supervisory authority reference point for Montenegro data-protection questions. https://www.azlp.me/en/personal-data-protection
+- SEC digital asset investment-contract framework: official U.S. securities-law analysis reference for digital assets and investment-contract questions. https://www.sec.gov/about/divisions-offices/division-corporation-finance/framework-investment-contract-analysis-digital-assets
+- SEC small-business glossary: official reference for investment contracts and the Howey test. https://www.sec.gov/resources-small-businesses/glossary
+- FinCEN convertible virtual currency business-model guidance: official U.S. Bank Secrecy Act / money-services-business reference for CVC business models. https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-certain-business-models
+- FinCEN administrators/exchangers/users guidance: official reference for convertible virtual currency administrators, exchangers, and users. https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering
+- IRS Publication 526: official U.S. charitable-contributions reference for donor deduction questions. https://www.irs.gov/publications/p526
+- IRS charities and nonprofits: official U.S. reference for exempt-organization types and related requirements. https://www.irs.gov/charities-and-nonprofits
+- EU Markets in Crypto-Assets Regulation (MiCA): official EU crypto-asset regulation reference. https://eur-lex.europa.eu/eli/reg/2023/1114/oj/eng
 
 ## Counsel Packet To Prepare Before Expansion
 
@@ -49,6 +57,7 @@ Do not expand GroundMesh beyond the current public-docs posture until the releva
 - CI-use disclosure note and human review flow
 - source list and evidence handling notes for any public case
 - money-flow description for any donation, grant, sponsorship, or payment path
+- value-exchange design notes for any Mesh Credit, token, wallet, public balance, reward, fiat bridge, custody, exchange, or paid-service path
 - risk register for privacy, defamation, copyright, platform terms, consumer protection, and safety
 
 ## Smallest Safe Next Step

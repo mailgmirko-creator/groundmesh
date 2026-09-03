@@ -121,6 +121,14 @@
       "summary": "Gate for opening any needs/offers issue template, page, feed, form, board, or matching workflow without creating emergency, confidential, money-flow, ranking, or over-capacity public intake."
     },
     {
+      "id": "CHECKLIST-MONEY-VALUE-EXCHANGE-READINESS",
+      "name": "Money / Value Exchange Readiness Checklist",
+      "type": "checklist",
+      "status": "active",
+      "path": "docs/checklists/Money_Value_Exchange_Readiness_Checklist.md",
+      "summary": "Gate for publishing or enabling Mesh Credits, seed-vault economy material, payments, donations, grants, sponsorships, tokens, wallets, fiat bridges, public balances, rewards, custody, or other value exchange."
+    },
+    {
       "id": "GUIDE-ACTIVE-LANE-READINESS",
       "name": "GroundMesh ACTIVE Lane Readiness",
       "type": "guide",
@@ -191,6 +199,14 @@
       "status": "active",
       "path": "scripts/needs-offers-readiness-guard.ps1",
       "summary": "CI guard that confirms the needs/offers checklist, Atlas registration, closed public-intake status, and absence of public needs/offers surfaces unless deliberately opened."
+    },
+    {
+      "id": "SCRIPT-MONEY-VALUE-READINESS-GUARD",
+      "name": "Money / Value Readiness Guard",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/money-value-readiness-guard.ps1",
+      "summary": "CI guard that confirms the money/value checklist, official legal-readiness anchors, closed money/value status, volunteer compute boundary, and absence of seed-vault or money/value surfaces unless deliberately opened."
     },
     {
       "id": "NOTE-SESSION-0001",

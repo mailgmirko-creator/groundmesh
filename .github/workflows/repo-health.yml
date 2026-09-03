@@ -107,6 +107,11 @@ jobs:
         run: |
           ./scripts/needs-offers-readiness-guard.ps1
 
+      - name: Validate money/value readiness gate
+        shell: pwsh
+        run: |
+          ./scripts/money-value-readiness-guard.ps1
+
       - name: Validate Behavior Atlas schema sandbox
         shell: pwsh
         run: |
