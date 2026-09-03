@@ -236,10 +236,14 @@ jobs:
 
       - name: Verify SIPRI official source fallback
         run: |
-          curl --fail --location --silent --show-error --retry 2 --max-time 30 \
+          if curl --fail --location --silent --show-error --retry 2 --max-time 30 \
             --output /dev/null \
-            https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf
-          echo "SIPRI official PDF source reachable."
+            https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf; then
+            echo "SIPRI official PDF source reachable."
+          else
+            code=$?
+            echo "::warning::SIPRI official PDF source was not reachable from this runner (curl exit $code). The exact source anchor remains in the repository and should be manually verified before source-refresh work."
+          fi
 
       - name: Create lychee negative self-test probe
         run: |
