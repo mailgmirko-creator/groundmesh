@@ -206,10 +206,30 @@ jobs:
 
       # UNICEF Data serves this valid public page as 403 to GitHub-hosted runners.
       # SIPRI's landing page can time out from hosted runners; the official PDF is verified separately below.
+      # Several official source pages block automated link checkers while remaining human-readable citation anchors.
       - name: Check links with lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --no-progress --accept 200,206 --max-concurrency 8 --timeout 20 --retry-wait-time 2 --exclude 'https://data\.unicef\.org/resources/jmp-report-2025/' --exclude 'https://www\.sipri\.org/publications/2026/sipri-fact-sheets/trends-world-military-expenditure-2025' --verbose README.md docs/**/*.html docs/**/*.md
+          args: >-
+            --no-progress
+            --accept 200,202,206
+            --max-concurrency 8
+            --timeout 20
+            --retry-wait-time 2
+            --exclude 'https://data\.unicef\.org/resources/jmp-report-2025/'
+            --exclude 'https://www\.sipri\.org/publications/2026/sipri-fact-sheets/trends-world-military-expenditure-2025'
+            --exclude 'https://www\.sec\.gov/about/divisions-offices/division-corporation-finance/framework-investment-contract-analysis-digital-assets'
+            --exclude 'https://www\.sec\.gov/resources-small-businesses/glossary'
+            --exclude 'https://www\.imf\.org/-/media/files/publications/cr/2018/cr18121\.pdf'
+            --exclude 'https://www\.imf\.org/en/news/articles/2018/05/21/pr18187-montenegro-imf-executive-board-concludes-2018-article-iv-consultation'
+            --exclude 'https://www\.imf\.org/en/news/articles/2019/06/27/mcs062819-montenegro-staff-concluding-statement-of-the-2019-article-iv-mission'
+            --exclude 'https://www\.oecd\.org/en/publications/oecd-economic-surveys-romania-2026_4844067e-en/full-report/enhancing-resilience-to-climate-risks_ae66c1bc\.html'
+            --exclude 'https://www\.fao\.org/newsroom/detail/sofi-2025--fao-calls-for-urgent--coordinated-and-inclusive-action-to-end-global-hunger/'
+            --exclude 'https://www\.fao\.org/newsroom/detail/global-hunger-declines--but-rises-in-africa-and-western-asia--un-report/'
+            --verbose
+            README.md
+            docs/**/*.html
+            docs/**/*.md
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
