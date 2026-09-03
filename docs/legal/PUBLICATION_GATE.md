@@ -10,6 +10,7 @@ Use this gate before publishing or expanding:
 - Behavior Atlas public-alpha cases
 - Human Mesh or registration intake
 - needs/offers, public coordination, or capacity-matching intake
+- Mesh Credits, seed-vault economy material, tokens, wallets, fiat bridges, public balances, rewards, or other money/value-exchange designs
 - public claims about real projects, institutions, contracts, or events
 - donation, sponsorship, grant, payment, or value-exchange pages
 - any page that could be read as legal, safety, emergency, medical, financial, or rights guidance
@@ -42,6 +43,7 @@ Stop and do not publish if any of these are true:
 - the publication would be hard to reverse without erasing history
 - the release depends on an unreviewed CI-generated conclusion
 - a needs/offers or matching surface opens before moderation, privacy, correction, rollback, no-emergency, no-confidential, and no-ranking rules are in place
+- a token, credit, wallet, fiat bridge, public balance, reward, payment, fundraising, or other value-exchange surface opens before legal, tax/accounting, privacy, anti-fraud, and rollback review
 
 ## Behavior Atlas Extra Gate
 
@@ -68,6 +70,19 @@ Before any public needs/offers doorway opens:
 - confirm no autonomous matching, allocation, prioritization, or public person ranking is enabled
 - add a release record and status update for the exact opened paths
 - deliberately update `scripts/needs-offers-readiness-guard.ps1` or its CI invocation if the release intentionally opens a public surface
+
+## Money / Value Exchange Extra Gate
+
+Before any money/value feature or seed-vault economy material opens:
+
+- complete `docs/checklists/Money_Value_Exchange_Readiness_Checklist.md`
+- identify the operator, recipient, purpose, audience jurisdictions, and accounting category
+- confirm public copy creates no expectation of profit, charitable deduction, asset ownership, redemption, guaranteed value, passive income, or access-conditioned payment
+- confirm no token, wallet, fiat bridge, transferable credit, public balance, reward, exchange, or custody path is enabled without counsel/accounting review
+- document refund/error handling, anti-fraud handling, payment-processor/platform terms, privacy handling, and incident response
+- keep private payment, wallet, tax, bank, receipt, and support data out of the public repo
+- add a release record and status update for the exact opened paths
+- deliberately update `scripts/money-value-readiness-guard.ps1` or its CI invocation if the release intentionally opens a public surface
 
 ## Release Record
 

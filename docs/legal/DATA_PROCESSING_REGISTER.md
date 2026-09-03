@@ -17,6 +17,7 @@ Public Git history is not private storage. Do not commit secrets, private corres
 | Behavior Atlas public alpha | Project, institution, policy, contract, event, and source-reference data | Evidence-first public-alpha case presentation | Public site and repository history | No person subjects, no scores, no private evidence |
 | Contact email | Sender-provided message content and email metadata | Respond to questions, corrections, and participation inquiries | Ordinary email provider chosen by steward | Not a confidential reporting channel |
 | Needs/offers coordination signals | If activated later: submitter-provided public summaries, broad region, category, next-step request or offer, and optional contact routed through the chosen channel | Non-sensitive coordination visibility and human-reviewed connection proposals | Not open today; future public GitHub issue/page/feed or protected steward storage depending on release design | Public intake is not open; readiness checklist, release record, and review are required before collecting real signals |
+| Money/value exchange | If activated later: donor, payer, sponsor, grantor, recipient, contributor, wallet, payment, receipt, tax/accounting, refund, dispute, and support data | Handle money, value exchange, financial records, or contribution accounting only after a specific approved release | Not open today; future protected payment/accounting systems and steward records outside the public repo | Money/value exchange is not open; readiness checklist, counsel/accounting review, privacy handling, and anti-fraud handling are required before collection |
 | Registration pilot tooling | Participant-submitted pilot records only if the local steward-run pilot is activated | Small invited-circle pilot handling | Local/protected storage outside the public repo unless explicitly sanitized | Broad public intake is not open |
 | Human Mesh examples | Synthetic example declarations and accountability events | Schema and workflow testing | Repository examples | Synthetic only |
 | CI/tool logs | Prompts, tool output, generated drafts, validation output, and review notes | Drafting, validation, and project stewardship | Local tools, connected services, and repository records when committed | Do not paste secrets or confidential personal data into CI tools |
@@ -46,6 +47,7 @@ Review this register before:
 
 - opening registration beyond an invited pilot
 - opening needs/offers, public coordination, or capacity-matching intake
+- opening payments, donations, grants, sponsorships, wallets, tokens, credits, public balances, fiat bridges, rewards, or other value exchange
 - collecting real Human Mesh declarations
 - receiving sensitive corrections or evidence
 - adding analytics, forms, comments, payments, mailing lists, or third-party widgets

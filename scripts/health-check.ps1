@@ -26,6 +26,7 @@ $files = @(
   "docs/get-started/index.html",
   "docs/checklists/Registration_Pilot_Readiness_Checklist.md",
   "docs/checklists/Needs_Offers_Readiness_Checklist.md",
+  "docs/checklists/Money_Value_Exchange_Readiness_Checklist.md",
   "docs/map.html",
   "docs/contact.html",
   "docs/privacy.html",

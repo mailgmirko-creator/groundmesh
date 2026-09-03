@@ -174,11 +174,11 @@
       <div class="stats">
         <div class="stat">
           <span class="label">Entries</span>
-          <strong>67</strong>
+          <strong>69</strong>
         </div>
         <div class="stat">
           <span class="label">Active</span>
-          <strong>65</strong>
+          <strong>67</strong>
         </div>
       </div>
     </section>
@@ -275,6 +275,14 @@
   <td><span class="status status-active">active</span></td>
   <td><code>docs/decisions/0008-legal-readiness-and-release-gates.md</code></td>
   <td>Adopts legal readiness as a release gate for public cases, registration, personal-data handling, money flows, CI-assisted public-interest text, licensing language, and guarded publication.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../checklists/Money_Value_Exchange_Readiness_Checklist.md">CHECKLIST-MONEY-VALUE-EXCHANGE-READINESS</a></td>
+  <td><strong>Money / Value Exchange Readiness Checklist</strong></td>
+  <td><span class="chip">checklist</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/checklists/Money_Value_Exchange_Readiness_Checklist.md</code></td>
+  <td>Gate for publishing or enabling Mesh Credits, seed-vault economy material, payments, donations, grants, sponsorships, tokens, wallets, fiat bridges, public balances, rewards, custody, or other value exchange.</td>
 </tr>
             <tr>
   <td><a class="id-link" href="../checklists/Needs_Offers_Readiness_Checklist.md">CHECKLIST-NEEDS-OFFERS-READINESS</a></td>
@@ -683,6 +691,14 @@
   <td><span class="status status-active">active</span></td>
   <td><code>scripts/install-git-hooks.ps1</code></td>
   <td>Check-only and install script for the tracked `.githooks/pre-push` guard that blocks direct pushes to main.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../../scripts/money-value-readiness-guard.ps1">SCRIPT-MONEY-VALUE-READINESS-GUARD</a></td>
+  <td><strong>Money / Value Readiness Guard</strong></td>
+  <td><span class="chip">script</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>scripts/money-value-readiness-guard.ps1</code></td>
+  <td>CI guard that confirms the money/value checklist, official legal-readiness anchors, closed money/value status, volunteer compute boundary, and absence of seed-vault or money/value surfaces unless deliberately opened.</td>
 </tr>
             <tr>
   <td><a class="id-link" href="../../scripts/needs-offers-readiness-guard.ps1">SCRIPT-NEEDS-OFFERS-READINESS-GUARD</a></td>
