@@ -85,3 +85,5 @@ public-bridge/*.txt
 private/registration_pilot/
 # Local-only light node agent state
 private/node_agent/
+# Local-only steward synthesis reports
+private/steward/

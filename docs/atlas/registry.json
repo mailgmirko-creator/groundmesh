@@ -169,6 +169,14 @@
       "summary": "Check-only and install script for the tracked `.githooks/pre-push` guard that blocks direct pushes to main."
     },
     {
+      "id": "SCRIPT-GROUNDMESH-STEWARD",
+      "name": "GroundMesh Steward Loop Script",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/groundmesh-steward.ps1",
+      "summary": "Generates ignored local steward reports and provides a CI-safe check-only mode for confirming steward-loop anchors, privacy ignore rules, and Atlas registration."
+    },
+    {
       "id": "NOTE-SESSION-0001",
       "name": "Codex Session 0001: First Contact and Working Basis",
       "type": "note",
@@ -183,6 +191,14 @@
       "status": "active",
       "path": "docs/atlas/groundmesh-new-chat-handoff.md",
       "summary": "Compact reload note for starting a new chat without losing the current GroundMesh state or falling into long recap mode."
+    },
+    {
+      "id": "GUIDE-STEWARD-LOOP",
+      "name": "GroundMesh Steward Loop",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/atlas/steward-loop.md",
+      "summary": "Local-only steward loop for broad, memory-heavy, or emotionally charged sessions; writes ignored private reports and proposes small reversible next actions without publishing or contacting anyone."
     },
     {
       "id": "PAGE-REGISTER-PILOT",
@@ -452,6 +468,20 @@
       "summary": "Guides humans through pressure and delay without collapse or loss of agency; restores resolve through meaning, rhythm, and consent.",
       "related": [
         "GM-INV-VIII"
+      ]
+    },
+    {
+      "id": "TP-04",
+      "name": "First Node Grounding",
+      "type": "protocol",
+      "status": "proposed",
+      "path": "docs/protocols/TP-04.md",
+      "summary": "Guarded human-facing protocol for returning intense or overloaded GroundMesh sessions to one small reversible action without diagnosis, coercion, spiritual authority, or public escalation.",
+      "related": [
+        "TP-03",
+        "GM-INV-VIII",
+        "GUIDE-STEWARD-LOOP",
+        "ADR-0008"
       ]
     },
     {
