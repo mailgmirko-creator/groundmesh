@@ -1,0 +1,12 @@
+#!/bin/sh
+# GroundMesh local release guard: direct pushes to main must go through PR/release review.
+
+while read local_ref local_sha remote_ref remote_sha
+do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    echo "Blocked: direct push to main. Use a guarded branch, PR, and release review."
+    exit 1
+  fi
+done
+
+exit 0

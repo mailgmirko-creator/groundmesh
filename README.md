@@ -37,6 +37,7 @@ system. The public layer should stay honest about those limits.
 git clone https://github.com/mailgmirko-creator/groundmesh.git
 cd groundmesh
 Set-ExecutionPolicy -Scope Process Bypass -Force
+.\scripts\install-git-hooks.ps1
 .\scripts\bootstrap-node.ps1
 .\scripts\health-check.ps1
 ```
@@ -71,3 +72,5 @@ start .\docs\atlas\index.html
 Tranquility Commons License - NoDerivatives 1.0 (`TCL-ND-1.0`).
 Non-commercial. No derivatives. Attribution plus purpose-integrity required.
 See [LICENSE-TRANQUILITY.md](LICENSE-TRANQUILITY.md).
+
+Plain-language licensing notes: [LICENSING.md](LICENSING.md).

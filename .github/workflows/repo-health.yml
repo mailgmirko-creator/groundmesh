@@ -92,10 +92,20 @@ jobs:
         run: |
           python tools/registration_pilot_server.py --self-test
 
+      - name: Validate tracked git hooks
+        shell: pwsh
+        run: |
+          ./scripts/install-git-hooks.ps1 -CheckOnly
+
       - name: Validate Behavior Atlas schema sandbox
         shell: pwsh
         run: |
           ./scripts/behavior-atlas-validate.ps1 -RequireSynthetic
+
+      - name: Validate Behavior Atlas negative fixtures
+        shell: pwsh
+        run: |
+          ./scripts/behavior-atlas-negative-fixtures.ps1
 
       - name: Validate all real Behavior Atlas cases
         shell: pwsh

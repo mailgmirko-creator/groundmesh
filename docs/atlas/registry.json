@@ -57,12 +57,44 @@
       "summary": "Defines founder custody as a transparent bootstrap state, bounds stewardship under the invariant core, introduces a suspensive protective brake, and sets a guarded path toward plural constitutional authority."
     },
     {
+      "id": "ADR-0008",
+      "name": "Legal Readiness and Release Gates",
+      "type": "decision",
+      "status": "active",
+      "path": "docs/decisions/0008-legal-readiness-and-release-gates.md",
+      "summary": "Adopts legal readiness as a release gate for public cases, registration, personal-data handling, money flows, CI-assisted public-interest text, licensing language, and guarded publication."
+    },
+    {
       "id": "SCHEMA-BEHAVIOR-ATLAS-V0-1",
       "name": "Behavior Atlas Schema Sandbox v0.1",
       "type": "schema",
       "status": "active",
       "path": "docs/behavior-atlas/schema/v0.1.schema.json",
-      "summary": "Experimental M1 contract for synthetic, public-source case bundles, paired with a fictional fixture and semantic validator; forbids person subjects, scores, rankings, inferred motives, and autonomous publication."
+      "summary": "Experimental M1 contract for synthetic, public-source case bundles, paired with a fictional fixture and semantic validator; forbids person subjects, scores, rankings, enemy labels, inferred motives, verdicts, and autonomous publication."
+    },
+    {
+      "id": "DOC-BEHAVIOR-PATTERNS-NOT-ENEMIES",
+      "name": "Behavior Atlas Patterns, Not Enemies",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/behavior-atlas/PATTERNS_NOT_ENEMIES.md",
+      "summary": "Names the Behavior Atlas guardrail that maps evidence-backed coordination patterns without person assessments, enemy labels, motive inference, verdicts, or unguarded M2 publication."
+    },
+    {
+      "id": "TEST-BEHAVIOR-ATLAS-NEGATIVE-FIXTURES",
+      "name": "Behavior Atlas Negative Fixtures",
+      "type": "test",
+      "status": "active",
+      "path": "tests/behavior-atlas/fixtures",
+      "summary": "Synthetic failing fixtures that prove person subjects, forbidden judgment fields, unsafe publishable claims, and synthetic public-release attempts remain rejected by the validator."
+    },
+    {
+      "id": "SCRIPT-BEHAVIOR-ATLAS-NEGATIVE-FIXTURES",
+      "name": "Behavior Atlas Negative Fixture Guard",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/behavior-atlas-negative-fixtures.ps1",
+      "summary": "Runs the Behavior Atlas validator in child PowerShell processes and fails CI if any negative fixture unexpectedly passes."
     },
     {
       "id": "CHECKLIST-REGISTRATION-PILOT",
@@ -79,6 +111,62 @@
       "status": "active",
       "path": "docs/checklists/Registration_Interest_Triage_Checklist.md",
       "summary": "Smallest honest handling checklist for public registration-interest emails before any real pilot intake is open."
+    },
+    {
+      "id": "GUIDE-ACTIVE-LANE-READINESS",
+      "name": "GroundMesh ACTIVE Lane Readiness",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/atlas/active-lane-readiness.md",
+      "summary": "Defines ACTIVE, DEV, preservation, certification checks, and hook restoration so local lanes can be cleaned without losing work or weakening main protection."
+    },
+    {
+      "id": "DOC-LEGAL-READINESS",
+      "name": "GroundMesh Legal Readiness Working Note",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/legal/LEGAL_READINESS.md",
+      "summary": "Working legal-readiness note that marks current public-docs limits, counsel triggers, source anchors, and release gates without claiming legal certification."
+    },
+    {
+      "id": "CHECKLIST-PUBLICATION-GATE",
+      "name": "GroundMesh Publication Gate",
+      "type": "checklist",
+      "status": "active",
+      "path": "docs/legal/PUBLICATION_GATE.md",
+      "summary": "High-risk publication checklist for public cases, registration, personal-data processing, money flows, and CI-assisted public-interest text."
+    },
+    {
+      "id": "REGISTER-DATA-PROCESSING",
+      "name": "GroundMesh Data Processing Register",
+      "type": "register",
+      "status": "active",
+      "path": "docs/legal/DATA_PROCESSING_REGISTER.md",
+      "summary": "Working register for current and future personal-data processing, including public repo, Behavior Atlas, contact email, registration pilot, Human Mesh examples, and CI/tool logs."
+    },
+    {
+      "id": "DOC-CI-USE-DISCLOSURE",
+      "name": "GroundMesh CI Use and Disclosure",
+      "type": "guide",
+      "status": "active",
+      "path": "docs/legal/CI_USE_AND_DISCLOSURE.md",
+      "summary": "Bounds CI to drafting, validation, comparison, and source-review assistance while preserving human publication responsibility and disclosure for high-risk public text."
+    },
+    {
+      "id": "DOC-LICENSING",
+      "name": "GroundMesh Licensing Notes",
+      "type": "guide",
+      "status": "active",
+      "path": "LICENSING.md",
+      "summary": "Plain-language license clarification that TCL-ND-1.0 is custom source-available commons licensing, not OSI open source, and that GitHub visibility is separate from off-platform reuse rights."
+    },
+    {
+      "id": "SCRIPT-INSTALL-GIT-HOOKS",
+      "name": "GroundMesh Git Hook Installer",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/install-git-hooks.ps1",
+      "summary": "Check-only and install script for the tracked `.githooks/pre-push` guard that blocks direct pushes to main."
     },
     {
       "id": "NOTE-SESSION-0001",
