@@ -102,6 +102,11 @@ jobs:
         run: |
           ./scripts/groundmesh-steward.ps1 -CheckOnly
 
+      - name: Validate needs/offers readiness gate
+        shell: pwsh
+        run: |
+          ./scripts/needs-offers-readiness-guard.ps1
+
       - name: Validate Behavior Atlas schema sandbox
         shell: pwsh
         run: |

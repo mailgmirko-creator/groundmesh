@@ -9,6 +9,7 @@ Use this gate before publishing or expanding:
 
 - Behavior Atlas public-alpha cases
 - Human Mesh or registration intake
+- needs/offers, public coordination, or capacity-matching intake
 - public claims about real projects, institutions, contracts, or events
 - donation, sponsorship, grant, payment, or value-exchange pages
 - any page that could be read as legal, safety, emergency, medical, financial, or rights guidance
@@ -40,6 +41,7 @@ Stop and do not publish if any of these are true:
 - a money path is public before the recipient, purpose, tax/accounting posture, and refund/error handling are documented
 - the publication would be hard to reverse without erasing history
 - the release depends on an unreviewed CI-generated conclusion
+- a needs/offers or matching surface opens before moderation, privacy, correction, rollback, no-emergency, no-confidential, and no-ranking rules are in place
 
 ## Behavior Atlas Extra Gate
 
@@ -53,6 +55,19 @@ Before any Behavior Atlas public-alpha expansion:
 - confirm review-due date is in the future
 - confirm public page has correction path and single-reviewer warning where applicable
 - confirm restore drill still proves rollback from the release manifest
+
+## Needs / Offers Extra Gate
+
+Before any public needs/offers doorway opens:
+
+- complete `docs/checklists/Needs_Offers_Readiness_Checklist.md`
+- keep public and private fields separated
+- confirm the static docs layer is not presented as confidential intake
+- confirm the flow rejects emergencies, sensitive personal data, accusations, scams, and high-risk location details
+- confirm no money-flow, fundraising, or value-exchange promise is included
+- confirm no autonomous matching, allocation, prioritization, or public person ranking is enabled
+- add a release record and status update for the exact opened paths
+- deliberately update `scripts/needs-offers-readiness-guard.ps1` or its CI invocation if the release intentionally opens a public surface
 
 ## Release Record
 

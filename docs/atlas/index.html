@@ -174,11 +174,11 @@
       <div class="stats">
         <div class="stat">
           <span class="label">Entries</span>
-          <strong>65</strong>
+          <strong>67</strong>
         </div>
         <div class="stat">
           <span class="label">Active</span>
-          <strong>63</strong>
+          <strong>65</strong>
         </div>
       </div>
     </section>
@@ -275,6 +275,14 @@
   <td><span class="status status-active">active</span></td>
   <td><code>docs/decisions/0008-legal-readiness-and-release-gates.md</code></td>
   <td>Adopts legal readiness as a release gate for public cases, registration, personal-data handling, money flows, CI-assisted public-interest text, licensing language, and guarded publication.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../checklists/Needs_Offers_Readiness_Checklist.md">CHECKLIST-NEEDS-OFFERS-READINESS</a></td>
+  <td><strong>Needs / Offers Readiness Checklist</strong></td>
+  <td><span class="chip">checklist</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>docs/checklists/Needs_Offers_Readiness_Checklist.md</code></td>
+  <td>Gate for opening any needs/offers issue template, page, feed, form, board, or matching workflow without creating emergency, confidential, money-flow, ranking, or over-capacity public intake.</td>
 </tr>
             <tr>
   <td><a class="id-link" href="../legal/PUBLICATION_GATE.md">CHECKLIST-PUBLICATION-GATE</a></td>
@@ -675,6 +683,14 @@
   <td><span class="status status-active">active</span></td>
   <td><code>scripts/install-git-hooks.ps1</code></td>
   <td>Check-only and install script for the tracked `.githooks/pre-push` guard that blocks direct pushes to main.</td>
+</tr>
+            <tr>
+  <td><a class="id-link" href="../../scripts/needs-offers-readiness-guard.ps1">SCRIPT-NEEDS-OFFERS-READINESS-GUARD</a></td>
+  <td><strong>Needs / Offers Readiness Guard</strong></td>
+  <td><span class="chip">script</span></td>
+  <td><span class="status status-active">active</span></td>
+  <td><code>scripts/needs-offers-readiness-guard.ps1</code></td>
+  <td>CI guard that confirms the needs/offers checklist, Atlas registration, closed public-intake status, and absence of public needs/offers surfaces unless deliberately opened.</td>
 </tr>
             <tr>
   <td><a class="id-link" href="../data/status.json">STATUS-PUBLIC</a></td>
