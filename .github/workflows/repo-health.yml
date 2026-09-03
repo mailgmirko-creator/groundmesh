@@ -97,6 +97,11 @@ jobs:
         run: |
           ./scripts/install-git-hooks.ps1 -CheckOnly
 
+      - name: Validate GroundMesh steward loop
+        shell: pwsh
+        run: |
+          ./scripts/groundmesh-steward.ps1 -CheckOnly
+
       - name: Validate Behavior Atlas schema sandbox
         shell: pwsh
         run: |
