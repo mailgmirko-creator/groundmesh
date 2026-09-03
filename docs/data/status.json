@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-08-30T12:45:16Z",
+  "updated_utc": "2026-09-03T11:44:41Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -96,6 +96,10 @@
     "coordination_stage_b": {
       "status": "green",
       "note": "Synthetic consent-to-delivery breathing test is merged and validated in repo-health; no live allocation service is enabled"
+    },
+    "needs_offers_public_intake": {
+      "status": "yellow",
+      "note": "Needs/offers readiness checklist and CI guard are present, but public intake is not open; no issue template, public page, or public data feed is enabled yet"
     },
     "behavior_atlas_m2": {
       "status": "green",

@@ -113,6 +113,14 @@
       "summary": "Smallest honest handling checklist for public registration-interest emails before any real pilot intake is open."
     },
     {
+      "id": "CHECKLIST-NEEDS-OFFERS-READINESS",
+      "name": "Needs / Offers Readiness Checklist",
+      "type": "checklist",
+      "status": "active",
+      "path": "docs/checklists/Needs_Offers_Readiness_Checklist.md",
+      "summary": "Gate for opening any needs/offers issue template, page, feed, form, board, or matching workflow without creating emergency, confidential, money-flow, ranking, or over-capacity public intake."
+    },
+    {
       "id": "GUIDE-ACTIVE-LANE-READINESS",
       "name": "GroundMesh ACTIVE Lane Readiness",
       "type": "guide",
@@ -175,6 +183,14 @@
       "status": "active",
       "path": "scripts/groundmesh-steward.ps1",
       "summary": "Generates ignored local steward reports and provides a CI-safe check-only mode for confirming steward-loop anchors, privacy ignore rules, and Atlas registration."
+    },
+    {
+      "id": "SCRIPT-NEEDS-OFFERS-READINESS-GUARD",
+      "name": "Needs / Offers Readiness Guard",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/needs-offers-readiness-guard.ps1",
+      "summary": "CI guard that confirms the needs/offers checklist, Atlas registration, closed public-intake status, and absence of public needs/offers surfaces unless deliberately opened."
     },
     {
       "id": "NOTE-SESSION-0001",
