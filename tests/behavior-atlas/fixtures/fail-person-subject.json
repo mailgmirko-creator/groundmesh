@@ -1,0 +1,121 @@
+{
+  "schema_version": "0.1",
+  "case": {
+    "case_id": "case-synthetic-person-subject",
+    "title": "Synthetic Person Subject Rejection",
+    "scope_question": "This fictional fixture must fail because Behavior Atlas case bundles do not permit person subjects.",
+    "status": "internal_review",
+    "is_synthetic": true,
+    "subject_ids": [
+      "subject-synthetic-person"
+    ],
+    "temporal_scope": {
+      "start": "2026-01-01",
+      "end": "2026-01-31"
+    },
+    "geographic_scope": [
+      "Fictional Review Zone"
+    ],
+    "limitations": [
+      "Synthetic negative fixture for validator testing only."
+    ],
+    "correction_path": null,
+    "release": {
+      "release_id": "release-negative-person-001",
+      "created_at": "2026-09-03T00:00:00Z",
+      "created_by_ref": "reviewer-sandbox-steward",
+      "previous_release_id": null,
+      "public_release": false
+    }
+  },
+  "subjects": [
+    {
+      "subject_id": "subject-synthetic-person",
+      "subject_type": "person",
+      "display_name": "Synthetic Individual",
+      "public_role_context": "Fictional placeholder used only to prove person subjects are rejected.",
+      "jurisdiction": "Fictional Review Zone",
+      "temporal_scope": {
+        "start": "2026-01-01",
+        "end": "2026-01-31"
+      },
+      "notes": [
+        "No real person is represented."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source-negative-person",
+      "source_class": "A",
+      "source_type": "research",
+      "title": "Synthetic Person Subject Source",
+      "publisher": "GroundMesh Synthetic Fixtures",
+      "url": "https://example.invalid/behavior-atlas/negative/person-subject",
+      "archive_url": null,
+      "published_at": "2026-01-01",
+      "accessed_at": "2026-09-03T00:00:00Z",
+      "jurisdiction": "Fictional Review Zone",
+      "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "license_notes": "Synthetic fixture; no external rights or reuse claim.",
+      "handling_notes": "Invented source analogue for negative validator testing only."
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "evidence-negative-person",
+      "source_id": "source-negative-person",
+      "locator": "Synthetic paragraph 1",
+      "observation": "The fictional source exists only to keep references complete while the subject type fails.",
+      "excerpt": null,
+      "captured_at": "2026-09-03T00:00:00Z",
+      "public_safe": true,
+      "handling_notes": "Synthetic negative fixture only."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-negative-person",
+      "statement": "This fictional claim exists only to keep the negative fixture structurally complete.",
+      "claim_kind": "fact",
+      "state": "reviewed",
+      "subject_ids": [
+        "subject-synthetic-person"
+      ],
+      "evidence_links": [
+        {
+          "evidence_id": "evidence-negative-person",
+          "relationship": "supports"
+        }
+      ],
+      "temporal_scope": {
+        "start": "2026-01-01",
+        "end": "2026-01-31"
+      },
+      "place": "Fictional Review Zone",
+      "reviewer_refs": [
+        "reviewer-sandbox-steward"
+      ],
+      "review_due": "2026-12-03",
+      "supersedes_claim_id": null
+    }
+  ],
+  "assessments": [],
+  "review_events": [
+    {
+      "review_event_id": "review-negative-person-created",
+      "target_type": "case",
+      "target_id": "case-synthetic-person-subject",
+      "action": "created",
+      "actor_role": "steward",
+      "actor_ref": "reviewer-sandbox-steward",
+      "timestamp": "2026-09-03T00:00:00Z",
+      "reason": "Create a negative fixture that must fail person-subject validation.",
+      "changed_fields": [
+        "subjects"
+      ],
+      "supersedes_record_id": null
+    }
+  ],
+  "correction_requests": []
+}

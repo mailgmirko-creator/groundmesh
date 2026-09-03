@@ -33,6 +33,12 @@ function Get-PropertyValue {
   return $property.Value
 }
 
+function ConvertTo-PropertyToken {
+  param([string]$Name)
+  if ($null -eq $Name) { return "" }
+  return ([string]$Name).ToLowerInvariant() -replace '[^a-z0-9]', ''
+}
+
 function Test-ForbiddenProperties {
   param(
     [object]$Node,
@@ -59,14 +65,24 @@ function Test-ForbiddenProperties {
     'person_score',
     'reputation_score',
     'moral_label',
+    'moral_verdict',
+    'guilt',
     'guilt_finding',
+    'motive',
+    'motive_attribution',
     'inferred_motive',
+    'enemy',
+    'enemy_class',
+    'enemy_label',
     'composite_score',
+    'cooperation_score',
+    'cooperation_index',
+    'verdict',
     'automatic_publication'
-  )
+  ) | ForEach-Object { ConvertTo-PropertyToken $_ }
 
   foreach ($property in $Node.PSObject.Properties) {
-    $name = $property.Name.ToLowerInvariant()
+    $name = ConvertTo-PropertyToken $property.Name
     if ($forbidden -contains $name) {
       Add-ValidationError ("Forbidden public field at {0}.{1}" -f $Path, $property.Name)
     }
@@ -118,8 +134,13 @@ function Test-DateValue {
     if (-not $AllowNull) { Add-ValidationError ("Missing date value at {0}." -f $Context) }
     return
   }
+  if ($Value -is [DateTimeOffset] -or $Value -is [DateTime]) {
+    return
+  }
   $parsed = [DateTimeOffset]::MinValue
-  if (-not [DateTimeOffset]::TryParse([string]$Value, [ref]$parsed)) {
+  $culture = [System.Globalization.CultureInfo]::InvariantCulture
+  $styles = [System.Globalization.DateTimeStyles]::AssumeUniversal -bor [System.Globalization.DateTimeStyles]::AdjustToUniversal
+  if (-not [DateTimeOffset]::TryParse([string]$Value, $culture, $styles, [ref]$parsed)) {
     Add-ValidationError ("Invalid date or date-time '{0}' at {1}." -f $Value, $Context)
   }
 }
