@@ -11,6 +11,7 @@ Use this gate before publishing or expanding:
 - Human Mesh or registration intake
 - needs/offers, public coordination, or capacity-matching intake
 - Mesh Credits, seed-vault economy material, tokens, wallets, fiat bridges, public balances, rewards, or other money/value-exchange designs
+- Balance Engine, TSL, CI action-selection, optimization, decision-support API, public ledger, dashboard, or runtime surfaces
 - public claims about real projects, institutions, contracts, or events
 - donation, sponsorship, grant, payment, or value-exchange pages
 - any page that could be read as legal, safety, emergency, medical, financial, or rights guidance
@@ -44,6 +45,7 @@ Stop and do not publish if any of these are true:
 - the release depends on an unreviewed CI-generated conclusion
 - a needs/offers or matching surface opens before moderation, privacy, correction, rollback, no-emergency, no-confidential, and no-ranking rules are in place
 - a token, credit, wallet, fiat bridge, public balance, reward, payment, fundraising, or other value-exchange surface opens before legal, tax/accounting, privacy, anti-fraud, and rollback review
+- a Balance Engine or TSL surface performs autonomous allocation, publication, governance, punishment, scoring of people, motive inference, remote authority, or money/value optimization before the relevant gates pass
 
 ## Behavior Atlas Extra Gate
 
@@ -83,6 +85,21 @@ Before any money/value feature or seed-vault economy material opens:
 - keep private payment, wallet, tax, bank, receipt, and support data out of the public repo
 - add a release record and status update for the exact opened paths
 - deliberately update `scripts/money-value-readiness-guard.ps1` or its CI invocation if the release intentionally opens a public surface
+
+## Balance Engine / CI Action-Selection Extra Gate
+
+Before any Balance Engine or TSL surface becomes public, relied upon, or connected to live action:
+
+- read `docs/tsl/balance-engine-core-spec.md`
+- run `scripts/balance-engine-boundary-guard.ps1`
+- run `scripts/balance-engine-validate.py`
+- confirm outputs are decision-support proposals, not binding governance or allocation orders
+- confirm no person-worth score, public ranking, motive inference, enemy label, diagnosis, guilt finding, or loyalty metric is produced
+- confirm no autonomous publication, punishment, registration, matching, payment, reward, resource movement, or remote command authority is enabled
+- confirm the money/value gate is passed before any value optimization, credit, token, wallet, fiat bridge, payment, reward, sponsorship, grant, or public balance feature exists
+- keep private signals, logs, credentials, ledgers, and sensitive correspondence out of the public repo
+- add a release record and status update for the exact opened paths
+- deliberately update `scripts/balance-engine-boundary-guard.ps1` or its CI invocation if a public surface is intentionally opened
 
 ## Release Record
 

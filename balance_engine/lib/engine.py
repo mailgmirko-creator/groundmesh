@@ -208,6 +208,12 @@ def _assess_interpretation(event: dict) -> dict:
 
 
 def _plan_for_opposite(opposite: str, event_type: str) -> tuple[list[str], float]:
+    if event_type in POSITIVE:
+        return [
+            "reinforce positive behavior",
+            "document what worked",
+            "share template for reuse",
+        ], 0.9
     if opposite == "truth":
         return [
             "verify evidence from multiple sources",

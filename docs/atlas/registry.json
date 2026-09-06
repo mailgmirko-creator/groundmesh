@@ -209,6 +209,22 @@
       "summary": "CI guard that confirms the money/value checklist, official legal-readiness anchors, closed money/value status, volunteer compute boundary, and absence of seed-vault or money/value surfaces unless deliberately opened."
     },
     {
+      "id": "SCRIPT-BALANCE-ENGINE-VALIDATE",
+      "name": "Balance Engine Validator",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/balance-engine-validate.py",
+      "summary": "Validates the experimental local Balance Engine event and decision-support schemas plus golden fixture behavior without appending ledger records."
+    },
+    {
+      "id": "SCRIPT-BALANCE-ENGINE-BOUNDARY-GUARD",
+      "name": "Balance Engine Boundary Guard",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/balance-engine-boundary-guard.ps1",
+      "summary": "CI guard that confirms the Balance Engine boundary spec, Atlas registration, status posture, publication gate, repo-relative runtime references, closed public docs/data surface, and golden validator."
+    },
+    {
       "id": "NOTE-SESSION-0001",
       "name": "Codex Session 0001: First Contact and Working Basis",
       "type": "note",
@@ -547,6 +563,14 @@
       "status": "active",
       "path": "docs/coordination/coordination-field.v0.1.json",
       "summary": "Machine-readable companion defining coordination quantities, measurement rules, cooperation loops, non-capture constraints, Behavior Atlas questions, and guarded implementation stages."
+    },
+    {
+      "id": "SPEC-BALANCE-ENGINE-CORE-V0-1",
+      "name": "GroundMesh Balance Engine Core Spec v0.1",
+      "type": "spec",
+      "status": "active",
+      "path": "docs/tsl/balance-engine-core-spec.md",
+      "summary": "Boundary spec for the existing experimental local Balance Engine and TSL files: decision-support only, human review, no public authority, no person scoring, no autonomous allocation or publication, and no money/value optimization."
     },
     {
       "id": "EA-0002",

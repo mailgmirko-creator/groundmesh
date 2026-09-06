@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-09-03T12:05:13Z",
+  "updated_utc": "2026-09-03T21:10:43Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -104,6 +104,10 @@
     "money_value_exchange_gate": {
       "status": "yellow",
       "note": "Money/value readiness checklist and CI guard are present, but money/value exchange is not open; no Mesh Credit, token, wallet, fiat bridge, public balance, payment, fundraising, or custody surface is enabled, and compute-cycle volunteering remains non-payment capacity"
+    },
+    "balance_engine_boundary": {
+      "status": "yellow",
+      "note": "Balance Engine boundary/spec and CI guard are present around the experimental local runtime; it is not a public authority, creates no autonomous allocation, and does not open public scoring, matching, governance, payment, reward, or remote-control surfaces"
     },
     "behavior_atlas_m2": {
       "status": "green",
