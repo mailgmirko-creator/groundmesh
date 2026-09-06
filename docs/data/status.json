@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-09-06T18:45:16Z",
+  "updated_utc": "2026-09-06T20:04:15Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -8,6 +8,10 @@
     "active_lane_certification": {
       "status": "green",
       "note": "A non-mutating ACTIVE certification command is registered and CI-smoke-tested for post-merge checks; it confirms clean main parity, pre-push protection, registry/status JSON, core guardrails, and live public health without fetching, merging, resetting, cleaning, stashing, pushing, or installing hooks"
+    },
+    "public_status_guard": {
+      "status": "green",
+      "note": "Public status guard is registered and CI-tested; it validates public status structure, required components, closed gates, and key caution notes before status changes are treated as settled"
     },
     "release_artifact": {
       "status": "green",
