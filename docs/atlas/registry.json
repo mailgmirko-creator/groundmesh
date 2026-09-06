@@ -185,6 +185,14 @@
       "summary": "Check-only and install script for the tracked `.githooks/pre-push` guard that blocks direct pushes to main."
     },
     {
+      "id": "SCRIPT-CERTIFY-ACTIVE",
+      "name": "GroundMesh ACTIVE Certification",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/certify-active.ps1",
+      "summary": "Non-mutating local certification command for confirming that GroundMesh-ACTIVE is clean, on main, synced with origin and live remote main, protected by pre-push hooks, and passing core guardrails."
+    },
+    {
       "id": "SCRIPT-GROUNDMESH-STEWARD",
       "name": "GroundMesh Steward Loop Script",
       "type": "script",
