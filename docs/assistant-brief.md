@@ -3,6 +3,7 @@
 ## How we work (directives)
 - Atlas-first: Consult docs/atlas/registry.json + Atlas page before adding or changing anything.
 - ACTIVE-certification first: After a PR merge or before treating the local `GroundMesh-ACTIVE` checkout as release-ready, run `.\scripts\certify-active.ps1`; it must remain non-mutating and must not fetch, pull, merge, reset, clean, stash, push, or install hooks.
+- Public-status first: Before changing `docs/data/status.json`, run `.\scripts\public-status-guard.ps1`; keep closed gates yellow unless their explicit release work, review, and guard changes are present.
 - Coordination-field first: Before adding need/capacity matching, allocation, metric, or scoring logic, read `docs/coordination/coordination-field.md` and `docs/coordination/coordination-field.v0.1.json`; preserve consent, context, evidence provenance, non-capture, no person-worth scoring, and no autonomous allocation.
 - Needs/offers readiness first: Before opening any public needs/offers page, issue template, data feed, form, board, or matching workflow, read `docs/checklists/Needs_Offers_Readiness_Checklist.md`; keep emergency, confidential, high-risk, money-flow, and public-ranking material out of the static public queue.
 - Money/value readiness first: Before adding Mesh Credits, seed-vault economy material, payments, donations, grants, sponsorships, tokens, wallets, fiat bridges, rewards, public balances, or value exchange, read `docs/checklists/Money_Value_Exchange_Readiness_Checklist.md`; keep legal, tax, accounting, securities, money-transmission, privacy, anti-fraud, and non-capture gates explicit.
@@ -46,5 +47,5 @@
 3) Fix one red/yellow or one integration slice, then summarize touched files + next step
 4) Update status.json if state changed
 5) Regenerate Atlas
-6) Run `.\scripts\certify-active.ps1` before certifying an ACTIVE checkout
+6) Run `.\scripts\public-status-guard.ps1`, then `.\scripts\certify-active.ps1` before certifying an ACTIVE checkout
 7) Anchor any real decision in GitHub-visible memory before treating it as settled
