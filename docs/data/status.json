@@ -1,9 +1,13 @@
 {
-  "updated_utc": "2026-09-03T21:10:43Z",
+  "updated_utc": "2026-09-06T18:45:16Z",
   "components": {
     "deployment_source": {
       "status": "green",
       "note": "GitHub Pages serves the docs-based site through the GitHub Actions deployment path"
+    },
+    "active_lane_certification": {
+      "status": "green",
+      "note": "A non-mutating ACTIVE certification command is registered and CI-smoke-tested for post-merge checks; it confirms clean main parity, pre-push protection, registry/status JSON, core guardrails, and live public health without fetching, merging, resetting, cleaning, stashing, pushing, or installing hooks"
     },
     "release_artifact": {
       "status": "green",

@@ -97,6 +97,11 @@ jobs:
         run: |
           ./scripts/install-git-hooks.ps1 -CheckOnly
 
+      - name: Smoke test ACTIVE certification command
+        shell: pwsh
+        run: |
+          ./scripts/certify-active.ps1 -AllowNonMain -AllowMissingInstalledHook -SkipRemoteHeadMatch -SkipLiveRemote -SkipHealth -Quiet
+
       - name: Validate GroundMesh steward loop
         shell: pwsh
         run: |

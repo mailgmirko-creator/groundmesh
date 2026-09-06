@@ -14,6 +14,14 @@ Clean means understood and safely placed. It does not mean deleted.
 
 ## ACTIVE Certification Checklist
 
+Preferred command:
+
+```powershell
+.\scripts\certify-active.ps1
+```
+
+The certification command is non-mutating: it does not fetch, pull, merge, stash, reset, clean, push, or install hooks. It confirms local state and tells you what is out of alignment.
+
 Run these checks from the ACTIVE checkout before treating it as certifiable:
 
 ```powershell
@@ -32,6 +40,9 @@ Expected result:
 - local HEAD, local `origin/main`, and live remote `refs/heads/main` match
 - `core.hooksPath` points to `.githooks` or the local `.git/hooks/pre-push` guard is present
 - no untracked deploy scripts, exports, private notes, case evidence, credentials, or generated archives sit in ACTIVE
+- core GroundMesh guards pass: tracked pre-push hook, steward-loop guard, needs/offers gate, money/value gate, Balance Engine boundary, JSON status/registry checks, and public health check
+
+If the command reports that `origin/main` or live remote `main` differs from local HEAD, stop and inspect. The usual safe recovery is a reviewed fast-forward from the clean ACTIVE checkout, not a reset or direct push.
 
 ## Preservation Before Cleaning
 
