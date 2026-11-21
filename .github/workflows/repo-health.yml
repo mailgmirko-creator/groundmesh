@@ -97,6 +97,11 @@ jobs:
         run: |
           ./scripts/install-git-hooks.ps1 -CheckOnly
 
+      - name: Validate public status guard
+        shell: pwsh
+        run: |
+          ./scripts/public-status-guard.ps1
+
       - name: Smoke test ACTIVE certification command
         shell: pwsh
         run: |

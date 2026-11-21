@@ -40,7 +40,7 @@ Expected result:
 - local HEAD, local `origin/main`, and live remote `refs/heads/main` match
 - `core.hooksPath` points to `.githooks` or the local `.git/hooks/pre-push` guard is present
 - no untracked deploy scripts, exports, private notes, case evidence, credentials, or generated archives sit in ACTIVE
-- core GroundMesh guards pass: tracked pre-push hook, steward-loop guard, needs/offers gate, money/value gate, Balance Engine boundary, JSON status/registry checks, and public health check
+- core GroundMesh guards pass: tracked pre-push hook, public status guard, steward-loop guard, needs/offers gate, money/value gate, Balance Engine boundary, JSON status/registry checks, and public health check
 
 If the command reports that `origin/main` or live remote `main` differs from local HEAD, stop and inspect. The usual safe recovery is a reviewed fast-forward from the clean ACTIVE checkout, not a reset or direct push.
 

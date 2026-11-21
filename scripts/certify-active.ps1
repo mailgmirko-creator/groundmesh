@@ -238,6 +238,11 @@ if ($null -ne $status) {
   }
 }
 
+$publicStatusScript = Join-Path $RepoRoot "scripts/public-status-guard.ps1"
+Invoke-Guard -Name "public status guard" -RelativePath "scripts/public-status-guard.ps1" -Command {
+  & $publicStatusScript -Quiet
+}
+
 $stewardScript = Join-Path $RepoRoot "scripts/groundmesh-steward.ps1"
 Invoke-Guard -Name "GroundMesh steward loop" -RelativePath "scripts/groundmesh-steward.ps1" -Command {
   & $stewardScript -CheckOnly -Quiet

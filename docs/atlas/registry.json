@@ -193,6 +193,14 @@
       "summary": "Non-mutating local certification command for confirming that GroundMesh-ACTIVE is clean, on main, synced with origin and live remote main, protected by pre-push hooks, and passing core guardrails."
     },
     {
+      "id": "SCRIPT-PUBLIC-STATUS-GUARD",
+      "name": "GroundMesh Public Status Guard",
+      "type": "script",
+      "status": "active",
+      "path": "scripts/public-status-guard.ps1",
+      "summary": "Validates docs/data/status.json structure, required components, key caution notes, and deliberately closed gates so status changes stay honest and reviewable."
+    },
+    {
       "id": "SCRIPT-GROUNDMESH-STEWARD",
       "name": "GroundMesh Steward Loop Script",
       "type": "script",
