@@ -1,3 +1,1 @@
 winget install -e --id OpenJS.NodeJS.LTS
-npm install -g @web3-storage/w3cli
-w3 --version

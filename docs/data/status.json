@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-09-06T20:04:15Z",
+  "updated_utc": "2026-11-21T19:40:59Z",
   "components": {
     "deployment_source": {
       "status": "green",
@@ -11,15 +11,15 @@
     },
     "public_status_guard": {
       "status": "green",
-      "note": "Public status guard is registered and CI-tested; it validates public status structure, required components, closed gates, and key caution notes before status changes are treated as settled"
+      "note": "Public status guard is registered and CI-tested; it validates public status structure, required components, closed gates, retired services, and key caution notes before status changes are treated as settled"
     },
     "release_artifact": {
       "status": "green",
       "note": "Qualifying main-branch changes build a ZIP plus SHA-256 manifest and preserve them as a 30-day GitHub Actions artifact"
     },
     "ipfs_mirror": {
-      "status": "yellow",
-      "note": "Optional Storacha/IPFS mirror uses the current delegated-key workflow but is not enabled until STORACHA_PRINCIPAL and STORACHA_PROOF are configured; GitHub Pages remains canonical"
+      "status": "red",
+      "note": "The IPFS mirror is unavailable because Storacha retired its developer upload service. GitHub Pages remains canonical. Any future mirror requires a separate provider decision."
     },
     "home_page": {
       "status": "green",

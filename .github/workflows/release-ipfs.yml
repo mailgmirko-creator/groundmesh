@@ -1,4 +1,4 @@
-name: Release & Optional IPFS Mirror
+name: Release Artifact
 
 on:
   workflow_dispatch:
@@ -15,9 +15,6 @@ jobs:
     runs-on: windows-latest
     permissions:
       contents: read
-    env:
-      STORACHA_PRINCIPAL: ${{ secrets.STORACHA_PRINCIPAL }}
-      STORACHA_PROOF: ${{ secrets.STORACHA_PROOF }}
 
     steps:
       - uses: actions/checkout@v4
@@ -46,27 +43,9 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Publish docs mirror to Storacha / IPFS
-        id: storacha
-        if: ${{ env.STORACHA_PRINCIPAL != '' && env.STORACHA_PROOF != '' }}
-        uses: storacha/add-to-web3@v4
-        with:
-          path_to_add: docs
-          secret_key: ${{ env.STORACHA_PRINCIPAL }}
-          proof: ${{ env.STORACHA_PROOF }}
-
-      - name: Report IPFS mirror
-        if: ${{ steps.storacha.outcome == 'success' }}
+      - name: Report release artifact and mirror status
         shell: pwsh
         run: |
-          "### GroundMesh IPFS mirror" >> $env:GITHUB_STEP_SUMMARY
-          "CID: `${{ steps.storacha.outputs.cid }}`" >> $env:GITHUB_STEP_SUMMARY
-          "Gateway: ${{ steps.storacha.outputs.url }}" >> $env:GITHUB_STEP_SUMMARY
-
-      - name: Note IPFS mirror is not configured
-        if: ${{ env.STORACHA_PRINCIPAL == '' || env.STORACHA_PROOF == '' }}
-        shell: pwsh
-        run: |
-          Write-Warning "Storacha/IPFS mirror is not configured. The release artifact was preserved and GitHub Pages remains the canonical public deployment. Configure STORACHA_PRINCIPAL and STORACHA_PROOF to enable the optional mirror."
-          "### GroundMesh IPFS mirror" >> $env:GITHUB_STEP_SUMMARY
-          "Not configured for this run. GitHub Pages remains canonical." >> $env:GITHUB_STEP_SUMMARY
+          "### GroundMesh release" >> $env:GITHUB_STEP_SUMMARY
+          "- Artifact: groundmesh-release-${{ github.sha }} (ZIP and SHA-256 manifest, retained for 30 days)" >> $env:GITHUB_STEP_SUMMARY
+          "- IPFS mirror: unavailable because Storacha retired its developer upload service." >> $env:GITHUB_STEP_SUMMARY

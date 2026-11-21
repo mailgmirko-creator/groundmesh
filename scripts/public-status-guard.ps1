@@ -1,5 +1,4 @@
 param(
-  [switch]$AllowIPFSMirrorEnabled,
   [switch]$AllowHumanMeshH3Green,
   [switch]$AllowNeedsOffersOpen,
   [switch]$AllowMoneyValueOpen,
@@ -61,7 +60,7 @@ function Get-SafeJson {
 
   if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { return $null }
   try {
-    return Get-Content -LiteralPath $Path -Raw | ConvertFrom-Json -Depth 100
+    return Get-Content -LiteralPath $Path -Raw -Encoding UTF8 | ConvertFrom-Json
   }
   catch {
     return $null
@@ -117,7 +116,7 @@ $errors = New-Object System.Collections.Generic.List[string]
 
 $statusAbs = Join-Path $RepoRoot $StatusPath
 $statusText = if (Test-Path -LiteralPath $statusAbs -PathType Leaf) {
-  Get-Content -LiteralPath $statusAbs -Raw
+  Get-Content -LiteralPath $statusAbs -Raw -Encoding UTF8
 }
 else {
   ""
@@ -190,9 +189,14 @@ else {
 
   $ipfs = Get-JsonProperty $components "ipfs_mirror"
   if ($null -ne $ipfs) {
-    Assert-Status $errors "ipfs_mirror" $ipfs "yellow" $AllowIPFSMirrorEnabled
-    if (-not $AllowIPFSMirrorEnabled) {
-      Assert-NoteContains $errors "ipfs_mirror" $ipfs @("not enabled", "GitHub Pages remains canonical")
+    if ((Get-JsonProperty $ipfs "status" "") -cne "red") {
+      $errors.Add("ipfs_mirror status must remain red while the former provider is retired.")
+    }
+    Assert-NoteContains $errors "ipfs_mirror" $ipfs @("unavailable because Storacha retired", "GitHub Pages remains canonical", "separate provider decision")
+
+    $ipfsNote = [string](Get-JsonProperty $ipfs "note" "")
+    if ($ipfsNote -match 'awaiting (configuration|credentials)|not enabled until|STORACHA_(PRINCIPAL|PROOF)') {
+      $errors.Add("ipfs_mirror note must not suggest configuring credentials for the retired service.")
     }
   }
 
