@@ -22,7 +22,8 @@ Important context:
 - The first self-registration has already been completed locally.
 - Local pilot tooling now exists for start/stop/open flows under `scripts/` and `tools/`.
 - Decisions already anchored include the ChatGPT/Codex/GitHub operating pattern, the ACTIVE/DEV promotion model, registration-as-pilot, Behavior Atlas evidence-first rollout, bootstrap stewardship, and legal-readiness release gates.
-- Needs/offers intake, money/value exchange, Balance Engine public authority, broad registration, and IPFS mirroring remain closed until their explicit gates pass.
+- Needs/offers intake, money/value exchange, Balance Engine public authority, and broad registration remain closed until their explicit gates pass.
+- The IPFS mirror is unavailable because Storacha retired its developer upload service. GitHub Pages remains canonical. Any future mirror requires a separate provider decision.
 - Behavior Atlas public alpha is guarded; preserve no person assessments, rankings, motive inference, enemy labels, autonomous publication, or unguarded M2/private publication.
 - Human Mesh H3 remains yellow until real plural steward review exists; synthetic reviewers do not count as operational plurality.
 - The next topic I want to work on is: [replace this line with the actual next topic].
